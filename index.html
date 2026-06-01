@@ -278,6 +278,7 @@ img { display: block; max-width: 100%; }
 .modal { width: 100%; max-width: 36rem; background: white; position: relative; border: 2px solid var(--gold); padding: 40px; }
 .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; font-size: 18px; color: var(--black); padding: 4px; }
 .modal h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 24px; }
+.modal-instruction { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--gold-deep); margin-top: -12px; margin-bottom: 20px; }
 .modal-options { display: flex; flex-direction: column; gap: 8px; }
 .modal-option { width: 100%; text-align: left; padding: 16px; border: 1px solid #e5e5e0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.2s; font-family: inherit; font-size: 14px; }
 .modal-option:hover { border-color: var(--black); background: #fafaf7; }
@@ -1666,22 +1667,23 @@ html { scroll-behavior: smooth; }
     <button class="modal-close" onclick="closeAssessment()">✕</button>
     <div id="modalContent">
       <div class="section-label" style="color: var(--black)"><div class="line"></div><span class="lbl">Self-Assessment</span></div>
-      <h3>Which best describes where you are right now?</h3>
+      <h3>Select the statement that best describes your current stage.</h3>
+      <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
         <button class="modal-option" onclick="answerAssessment(1)">
-          <span>I have an idea but haven't tested it with anyone</span>
+          <span>I have an idea that has not yet been tested with potential users.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(2)">
-          <span>I've validated demand and built a prototype or MVP</span>
+          <span>I have validated demand and developed a prototype or MVP.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(3)">
-          <span>I have customers or paying users and need capital</span>
+          <span>I have customers or paying users and require capital.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(4)">
-          <span>I've raised a seed round and need to scale</span>
+          <span>I have raised a seed round and need to scale.</span>
           <span class="arrow">→</span>
         </button>
       </div>
@@ -1752,12 +1754,13 @@ function closeAssessment(e) {
   setTimeout(() => {
     const content = document.getElementById('modalContent');
     content.innerHTML = `<div class="section-label" style="color: var(--black)"><div class="line"></div><span class="lbl">Self-Assessment</span></div>
-      <h3>Which best describes where you are right now?</h3>
+      <h3>Select the statement that best describes your current stage.</h3>
+      <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
-        <button class="modal-option" onclick="answerAssessment(1)"><span>I have an idea but haven't tested it with anyone</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(2)"><span>I've validated demand and built a prototype or MVP</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(3)"><span>I have customers or paying users and need capital</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(4)"><span>I've raised a seed round and need to scale</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(1)"><span>I have an idea that has not yet been tested with potential users.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(2)"><span>I have validated demand and developed a prototype or MVP.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(3)"><span>I have customers or paying users and require capital.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(4)"><span>I have raised a seed round and need to scale.</span><span class="arrow">→</span></button>
       </div>`;
   }, 300);
 }
@@ -1768,7 +1771,7 @@ function answerAssessment(phase) {
       <div class="num">0${phase}</div>
       <h3>Start with Phase ${phase}</h3>
       <p>${t.title} · ${t.sub}</p>
-      <div class="going">Taking you there now…</div>
+      <div class="going">Navigating to your recommended phase.</div>
     </div>`;
   setTimeout(() => {
     document.getElementById('assessmentModal').classList.remove('open');
