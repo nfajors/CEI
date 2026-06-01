@@ -290,6 +290,35 @@ img { display: block; max-width: 100%; }
 .modal-result p { font-size: 16px; color: #525252; margin-bottom: 24px; }
 .modal-result .going { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-deep); }
 
+
+/* How-To */
+.howto-list { display: flex; flex-direction: column; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
+.howto-card { background: white; }
+.howto-q { width: 100%; display: flex; align-items: center; gap: 20px; padding: 28px 32px; background: white; border: none; cursor: pointer; font-family: inherit; text-align: left; transition: background 0.2s; }
+.howto-q:hover { background: #fafaf7; }
+.howto-num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 28px; color: var(--gold-deep); flex-shrink: 0; }
+.howto-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--black); flex: 1; line-height: 1.2; }
+.howto-chev { font-size: 28px; font-weight: 300; color: var(--gold-deep); flex-shrink: 0; transition: transform 0.3s; line-height: 1; }
+.howto-q[aria-expanded="true"] .howto-chev { transform: rotate(45deg); }
+.howto-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 32px; }
+.howto-a.open { max-height: 2000px; padding: 0 32px 32px 32px; }
+.howto-a > * { margin-left: 48px; }
+.howto-source { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--gold-deep); margin-bottom: 16px; }
+.howto-a p { font-size: 15px; line-height: 1.65; color: #404040; margin-bottom: 16px; }
+.howto-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.howto-steps li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.6; color: #404040; counter-increment: step; }
+.howto-steps li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 18px; height: 18px; background: var(--black); color: var(--gold); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; }
+.howto-steps li strong { color: var(--black); }
+.howto-note { font-style: italic; font-size: 14px !important; color: #525252 !important; border-left: 2px solid var(--gold); padding-left: 16px; }
+.howto-link { display: inline-block; margin-right: 24px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+.howto-link:hover { color: var(--black); }
+@media (max-width: 640px) {
+  .howto-q { padding: 20px; gap: 12px; }
+  .howto-title { font-size: 18px; }
+  .howto-a > * { margin-left: 0; }
+  .howto-a.open { padding: 0 20px 24px 20px; }
+}
+
 /* Subtle scroll smoothing */
 html { scroll-behavior: smooth; }
 </style>
@@ -304,6 +333,7 @@ html { scroll-behavior: smooth; }
     </button>
     <div class="nav-links">
       <button onclick="scrollToSection('phases')">Phases</button>
+      <button onclick="scrollToSection('howto')">How-To</button>
       <button onclick="scrollToSection('resources')">Resources</button>
       <button onclick="scrollToSection('knowledge')">Knowledge</button>
       <button onclick="scrollToSection('alumni')">Alumni</button>
@@ -733,7 +763,7 @@ html { scroll-behavior: smooth; }
           <span class="ext">↗</span>
         </div>
         <h4>St. Louis Arch Angels</h4>
-        <p>Network of accredited angel investors funding early-stage Missouri-region startups. Members invest $25K–$100K individually, $250K–$750K as a group.</p>
+        <p>Network of accredited investors funding early-stage Missouri-region startups, typically $50,000&ndash;$500,000 per round &mdash; a range often underserved by institutional VCs. Since 2005: $122.7M invested across 156+ ventures. Recent exit: Acera Surgical, acquired by Solventum for up to $850M.</p>
       </a>
       <a href="https://archgrants.org/programs/startup-competition/" target="_blank" rel="noopener" class="resource-card">
         <div class="rc-top">
@@ -859,6 +889,95 @@ html { scroll-behavior: smooth; }
     </div>
       </div>
     </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW-TO -->
+<section class="section lg" id="howto">
+  <div class="section-inner">
+    <div style="margin-bottom: 48px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">The Playbook</span></div>
+      <h2>How to <span class="italic">do the hard things</span></h2>
+      <p class="lede">Three questions every first-time founder asks. The answers below are drawn from the most authoritative sources in venture — Sequoia Capital and Y Combinator — distilled into a starting point. Follow the links for the full frameworks.</p>
+    </div>
+
+    <div class="howto-list">
+
+      <!-- 1: Pitch Deck -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">01</span>
+          <span class="howto-title">How do I build my first pitch deck?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: the Sequoia Capital pitch deck framework</p>
+          <p>Sequoia, an early backer of Apple, Google, Stripe, and Airbnb, recommends a deck of roughly ten slides. The structure is deliberately spare: it is built around the questions an investor asks in the first few minutes. Each slide answers exactly one. The ten slides:</p>
+          <ol class="howto-steps">
+            <li><strong>Company purpose.</strong> Define the company in a single declarative sentence.</li>
+            <li><strong>Problem.</strong> Describe the customer pain. Outline how the customer addresses the issue today.</li>
+            <li><strong>Solution.</strong> Show your value proposition and why it makes the customer life better. Provide use cases.</li>
+            <li><strong>Why now.</strong> Establish the historical evolution of your category and the recent trends that make your solution possible.</li>
+            <li><strong>Market size.</strong> Identify the customer you serve. Calculate TAM, SAM, and SOM.</li>
+            <li><strong>Competition.</strong> List competitors and your competitive advantages.</li>
+            <li><strong>Product.</strong> Show the product: form, features, architecture, and roadmap.</li>
+            <li><strong>Business model.</strong> Explain how you make money: revenue model, pricing, account economics, and sales approach.</li>
+            <li><strong>Team.</strong> Present the founders and key team members, and the story of why this team wins.</li>
+            <li><strong>Financials.</strong> Share traction and a simple financial model.</li>
+          </ol>
+          <p class="howto-note">Sequoia notes that what wins is not slide design but clarity of thinking and scope of ambition. Airbnb early deck was plain; the thinking behind it was not.</p>
+          <a href="https://www.sequoiacap.com/article/writing-a-business-plan/" target="_blank" rel="noopener" class="howto-link">Read the Sequoia framework →</a>
+        </div>
+      </div>
+
+      <!-- 2: First Capital -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">02</span>
+          <span class="howto-title">How do I raise my first capital?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Y Combinator, A Guide to Seed Fundraising, and Paul Graham, How to Raise Money</p>
+          <p>Y Combinator has funded thousands of startups and codified what early founders need to know. The essentials:</p>
+          <ol class="howto-steps">
+            <li><strong>Build something people want first.</strong> The strongest fundraising position is traction. Do not raise before you have evidence the market wants what you are building.</li>
+            <li><strong>Know why and how much.</strong> Raise enough to reach a meaningful milestone, typically twelve to eighteen months of runway. Avoid raising on a vague plan.</li>
+            <li><strong>Use a standard instrument.</strong> YC created the SAFE (Simple Agreement for Future Equity) to make early rounds fast and inexpensive. Standard documents reduce legal cost and negotiation friction.</li>
+            <li><strong>Get the first commitment.</strong> Fundraising has momentum. One credible investor saying yes makes the next yes easier. Pursue the first lead aggressively.</li>
+            <li><strong>Treat it as a numbers game.</strong> You will hear no many times before yes. Meet many investors in parallel, set a deadline, and do not mistake politeness for commitment.</li>
+            <li><strong>Set a deadline and close.</strong> Fundraising is a distraction from building. Run it as a concentrated process, then return to the product.</li>
+          </ol>
+          <p class="howto-note">Paul Graham frames the typical path in three phases: tens of thousands from an accelerator or angels, then a few hundred thousand to a few million to build the company, then later rounds to accelerate growth once the company is clearly succeeding.</p>
+          <a href="https://www.ycombinator.com/library/4A-a-guide-to-seed-fundraising" target="_blank" rel="noopener" class="howto-link">Read the YC seed guide →</a>
+          <a href="https://paulgraham.com/fr.html" target="_blank" rel="noopener" class="howto-link">Read Paul Graham on raising money →</a>
+        </div>
+      </div>
+
+      <!-- 3: First Ten Customers -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">03</span>
+          <span class="howto-title">How do I secure my first ten customers?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Paul Graham, Do Things That Don&#x27;t Scale (Y Combinator)</p>
+          <p>The single most repeated piece of startup advice from Y Combinator: in the beginning, do the unscalable things. Your first customers will not arrive on their own. The principles:</p>
+          <ol class="howto-steps">
+            <li><strong>Recruit users manually, one by one.</strong> Nearly all startups have to. You cannot wait for users to come to you; you go out and get them. Stripe famously set up accounts for early users on the spot rather than asking them to try a beta later — what YC calls the Collison installation.</li>
+            <li><strong>Deliver an overwhelmingly good experience.</strong> With only a handful of customers you can give each one a level of attention that large companies never can. Make your first users so happy they tell others.</li>
+            <li><strong>Go to them in person.</strong> Airbnb founders flew to New York, knocked on hosts doors, and helped them directly. The direct contact is also a discovery mechanism: you learn what works, where users get confused, and what to build next.</li>
+            <li><strong>Start narrow, then widen.</strong> Facebook launched at one school, got it hot, then added the next. Contain the fire to get it really hot before adding more logs.</li>
+            <li><strong>Treat the unscalable work as the product, not a distraction.</strong> Manual recruiting and hands-on support are how you find product-market fit, not a detour from it.</li>
+          </ol>
+          <p class="howto-note">The question to ask is not whether the company is taking over the world today, but how big it could get if the founders did the right things — and the right things often seem laborious and inconsequential at the time.</p>
+          <a href="https://paulgraham.com/ds.html" target="_blank" rel="noopener" class="howto-link">Read Do Things That Don&#x27;t Scale →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1109,13 +1228,13 @@ html { scroll-behavior: smooth; }
       <h3>Centennial Investors</h3>
       <p>Early-stage venture capital firm focused on Midwest entrepreneurs and ventures.</p>
     </a>
-    <a href="https://www.stlouisarchangels.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Angel" data-phase="3" data-search="st. louis arch angels network of accredited angel investors funding early-stage missouri-region startups members invest individually group steve trampe co-founder angel">
+    <a href="https://www.stlouisarchangels.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Angel" data-phase="3" data-search="st. louis arch angels network of accredited investors funding early-stage missouri-region startups 50000 500000 122 million 156 ventures acera surgical solventum 850 million exit steve trampe co-founder angel">
       <div class="rc-top">
         <span class="tag">Angel</span>
         <span class="phase-pill">Phase 3</span>
       </div>
       <h3>St. Louis Arch Angels</h3>
-      <p>Network of accredited angel investors funding early-stage Missouri-region startups. Members invest $25K–$100K individually, $250K–$750K as a group.</p>
+      <p>Network of accredited investors funding early-stage Missouri-region startups, typically $50,000&ndash;$500,000 per round &mdash; a range often underserved by institutional VCs. Since 2005: $122.7M invested across 156+ ventures. Recent exit: Acera Surgical, acquired by Solventum for up to $850M.</p>
     </a>
     <a href="https://archgrants.org/programs/startup-competition/" target="_blank" rel="noopener" class="resource-card master" data-tag="Grant" data-phase="3" data-search="arch grants 75000 equity-free grants plus relocation early-stage startups headquarter st louis idea-stage pre-series a grant">
       <div class="rc-top">
@@ -1431,7 +1550,7 @@ html { scroll-behavior: smooth; }
         <div class="alum-avatar">ST</div>
         <div>
           <h3>Steve Trampe</h3>
-          <p class="alum-degree">Trulaske Alumnus 1974</p>
+          <p class="alum-degree">BSBA Finance &amp; Real Estate 1974</p>
         </div>
       </div>
       <p>Founder or co-founder of seven companies across five industries. Former Chairman of Sequoia Sciences (plant-based drug discovery), former Chairman of the Building Arts Foundation, former Vice Chairman of Opera America, and founder of Owen Development. Co-founder of Arch Angels. Active mentor and pitch competition judge.</p>
@@ -1638,6 +1757,7 @@ html { scroll-behavior: smooth; }
         <h4>Navigate</h4>
         <ul>
           <li><button onclick="scrollToSection('phases')">Phases</button></li>
+          <li><button onclick="scrollToSection('howto')">How-To</button></li>
           <li><button onclick="scrollToSection('resources')">Resources</button></li>
           <li><button onclick="scrollToSection('knowledge')">Knowledge</button></li>
           <li><button onclick="scrollToSection('alumni')">Alumni</button></li>
@@ -1698,6 +1818,18 @@ const PHASE_TITLES = {
   3: { title: 'Early Growth & Funding', sub: 'Turn traction into capital' },
   4: { title: 'Scale & Expansion', sub: 'Compete on the national stage' },
 };
+
+
+function toggleHowto(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  const answer = btn.nextElementSibling;
+  btn.setAttribute('aria-expanded', String(!expanded));
+  if (expanded) {
+    answer.classList.remove('open');
+  } else {
+    answer.classList.add('open');
+  }
+}
 
 function scrollToSection(id) {
   const el = document.getElementById(id);
