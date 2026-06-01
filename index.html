@@ -361,7 +361,7 @@ html { scroll-behavior: smooth; }
         </div>
         <div class="stats-grid">
           <div class="stat"><div class="num">4</div><div class="lbl">Phases</div></div>
-          <div class="stat"><div class="num">35</div><div class="lbl">Resources</div></div>
+          <div class="stat"><div class="num">37</div><div class="lbl">Resources</div></div>
           <div class="stat"><div class="num">12</div><div class="lbl">Alumni Stories</div></div>
           <div class="stat"><div class="num">11</div><div class="lbl">Support Network</div></div>
         </div>
@@ -726,6 +726,22 @@ html { scroll-behavior: smooth; }
         <h4>Centennial Investors</h4>
         <p>Early-stage venture capital firm focused on Midwest entrepreneurs and ventures.</p>
       </a>
+      <a href="https://www.stlouisarchangels.com/" target="_blank" rel="noopener" class="resource-card">
+        <div class="rc-top">
+          <span class="tag">Angel</span>
+          <span class="ext">↗</span>
+        </div>
+        <h4>St. Louis Arch Angels</h4>
+        <p>Network of accredited angel investors funding early-stage Missouri-region startups. Members invest $25K–$100K individually, $250K–$750K as a group.</p>
+      </a>
+      <a href="https://archgrants.org/programs/startup-competition/" target="_blank" rel="noopener" class="resource-card">
+        <div class="rc-top">
+          <span class="tag">Grant</span>
+          <span class="ext">↗</span>
+        </div>
+        <h4>Arch Grants</h4>
+        <p>$75,000 equity-free grants (plus $25,000 relocation) for early-stage startups that headquarter in St. Louis for at least one year. Idea-stage through pre-Series A.</p>
+      </a>
     
       <a href="https://www.mainstreetsummit.com/" target="_blank" rel="noopener" class="resource-card">
         <div class="rc-top">
@@ -852,7 +868,7 @@ html { scroll-behavior: smooth; }
     <div style="margin-bottom: 48px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
       <h2>Every resource, <span class="italic">searchable</span></h2>
-      <p class="lede">Filter by phase, type, or search by name. 35 resources across mid-Missouri and beyond.</p>
+      <p class="lede">Filter by phase, type, or search by name. 37 resources across mid-Missouri and beyond.</p>
     </div>
 
     <div class="filter-row">
@@ -863,12 +879,12 @@ html { scroll-behavior: smooth; }
         <option value="all">All Phases</option><option value="1">Phase 1 · Launch &amp; Validation</option><option value="2">Phase 2 · Network &amp; Connect</option><option value="3">Phase 3 · Early Growth &amp; Funding</option><option value="4">Phase 4 · Scale &amp; Expansion</option>
       </select>
       <select class="filter-select" id="tagFilter" onchange="filterResources()">
-        <option value="all">All Types</option><option value="Accelerator">Accelerator</option><option value="Community">Community</option><option value="Competition">Competition</option><option value="Core">Core</option><option value="Event">Event</option><option value="Federal">Federal</option><option value="Funding">Funding</option><option value="Incubator">Incubator</option><option value="Investment">Investment</option><option value="Mentorship">Mentorship</option><option value="Networking">Networking</option><option value="Platform">Platform</option><option value="Program">Program</option><option value="Reading">Reading</option><option value="Research">Research</option><option value="Retail">Retail</option><option value="State">State</option><option value="Student Org">Student Org</option><option value="Student Fund">Student Fund</option><option value="Support">Support</option><option value="VC">VC</option>
+        <option value="all">All Types</option><option value="Accelerator">Accelerator</option><option value="Angel">Angel</option><option value="Community">Community</option><option value="Competition">Competition</option><option value="Core">Core</option><option value="Event">Event</option><option value="Federal">Federal</option><option value="Grant">Grant</option><option value="Funding">Funding</option><option value="Incubator">Incubator</option><option value="Investment">Investment</option><option value="Mentorship">Mentorship</option><option value="Networking">Networking</option><option value="Platform">Platform</option><option value="Program">Program</option><option value="Reading">Reading</option><option value="Research">Research</option><option value="Retail">Retail</option><option value="State">State</option><option value="Student Org">Student Org</option><option value="Student Fund">Student Fund</option><option value="Support">Support</option><option value="VC">VC</option>
       </select>
       <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
     </div>
 
-    <div class="results-count" id="resultsCount">35 resources</div>
+    <div class="results-count" id="resultsCount">37 resources</div>
     <div class="resource-grid" id="resourceGrid">
     <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card master" data-tag="Core" data-phase="1" data-search="center for entrepreneurship &amp; innovation (cei) trulaske&#x27;s home for entrepreneurial resources, mentorship, and programs. core">
       <div class="rc-top">
@@ -1091,6 +1107,22 @@ html { scroll-behavior: smooth; }
       </div>
       <h3>Centennial Investors</h3>
       <p>Early-stage venture capital firm focused on Midwest entrepreneurs and ventures.</p>
+    </a>
+    <a href="https://www.stlouisarchangels.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Angel" data-phase="3" data-search="st. louis arch angels network of accredited angel investors funding early-stage missouri-region startups members invest individually group steve trampe co-founder angel">
+      <div class="rc-top">
+        <span class="tag">Angel</span>
+        <span class="phase-pill">Phase 3</span>
+      </div>
+      <h3>St. Louis Arch Angels</h3>
+      <p>Network of accredited angel investors funding early-stage Missouri-region startups. Members invest $25K–$100K individually, $250K–$750K as a group.</p>
+    </a>
+    <a href="https://archgrants.org/programs/startup-competition/" target="_blank" rel="noopener" class="resource-card master" data-tag="Grant" data-phase="3" data-search="arch grants 75000 equity-free grants plus relocation early-stage startups headquarter st louis idea-stage pre-series a grant">
+      <div class="rc-top">
+        <span class="tag">Grant</span>
+        <span class="phase-pill">Phase 3</span>
+      </div>
+      <h3>Arch Grants</h3>
+      <p>$75,000 equity-free grants (plus $25,000 relocation) for early-stage startups that headquarter in St. Louis for at least one year. Idea-stage through pre-Series A.</p>
     </a>
     
     <a href="https://www.mainstreetsummit.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="3" data-search="main street summit annual entrepreneurship conference — strong investor presence each year. event">
@@ -1398,10 +1430,10 @@ html { scroll-behavior: smooth; }
         <div class="alum-avatar">ST</div>
         <div>
           <h3>Steve Trampe</h3>
-          <p class="alum-degree">Trulaske Alumnus · [year needed]</p>
+          <p class="alum-degree">Trulaske Alumnus 1974</p>
         </div>
       </div>
-      <p>Founder or co-founder of seven companies across five industries. Chairman of Sequoia Sciences (plant-based drug discovery), director of Elemental Enzymes, Chairman of the Building Arts Foundation, Vice Chairman of Opera America, and principal in Owen Development. Active mentor and pitch competition judge.</p>
+      <p>Founder or co-founder of seven companies across five industries. Former Chairman of Sequoia Sciences (plant-based drug discovery), former Chairman of the Building Arts Foundation, former Vice Chairman of Opera America, and founder of Owen Development. Co-founder of Arch Angels. Active mentor and pitch competition judge.</p>
     </div>
     <div class="alum-cta">
         <div class="iconbox">✦</div>
@@ -1589,13 +1621,6 @@ html { scroll-behavior: smooth; }
       <p>Connection to Missouri&#x27;s entire small business support network.</p>
     </a>
     
-    <a href="https://www.archgrants.org/" target="_blank" rel="noopener" class="addl-card">
-      <div class="addl-top">
-        <h3>Arch Grants (St. Louis)</h3>
-        <span class="ext">↗</span>
-      </div>
-      <p>Equity-free startup grants for ventures relocating to or operating in St. Louis.</p>
-    </a>
     </div>
   </div>
 </section>
