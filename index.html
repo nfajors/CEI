@@ -21,6 +21,22 @@ html, body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); bac
 .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.02em; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 200; background: var(--black); color: var(--gold); padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.skip-link:focus { left: 8px; top: 8px; }
+.print-btn { background: none; border: 1px solid var(--gold); color: var(--gold); cursor: pointer; font: inherit; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 14px; margin-right: 16px; transition: background 0.2s, color 0.2s; }
+.print-btn:hover { background: var(--gold); color: var(--black); }
+.prompt-lib { margin-top: 64px; padding-top: 48px; border-top: 1px solid #e5e5e0; }
+.prompt-lib-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(24px, 3vw, 36px); margin: 12px 0 8px; }
+.prompt-lib-lede { font-size: 16px; color: #525252; max-width: 48rem; margin-bottom: 32px; }
+.prompt-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 768px) { .prompt-grid { grid-template-columns: 1fr 1fr; } }
+.prompt-card { border: 1px solid #e5e5e0; background: white; padding: 24px; display: flex; flex-direction: column; }
+.prompt-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.prompt-card pre { white-space: pre-wrap; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #404040; background: #fafaf7; padding: 16px; border-left: 2px solid var(--gold); margin-bottom: 16px; flex-grow: 1; }
+.prompt-copy { align-self: flex-start; background: var(--black); color: var(--gold); border: none; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 8px 18px; transition: background 0.2s; }
+.prompt-copy:hover { background: var(--gold-deep); color: var(--black); }
+.prompt-copy.copied { background: var(--gold); color: var(--black); }
+.prompt-lib-note { font-size: 14px; color: #525252; font-style: italic; margin-top: 24px; }
 
 /* ============ NAV ============ */
 .nav {
@@ -38,6 +54,8 @@ img { display: block; max-width: 100%; }
 .nav-links a, .nav-links button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; padding: 0; position: relative; }
 .nav-links a::after, .nav-links button::after { content: ''; display: block; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; position: absolute; bottom: -4px; left: 0; }
 .nav-links a:hover::after, .nav-links button:hover::after { width: 100%; }
+.nav-links button.active { color: var(--gold-deep); font-weight: 700; }
+.nav-links button.active::after { width: 100%; background: var(--gold-deep); }
 .nav-cta { display: none; align-items: center; gap: 6px; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; background: var(--black); color: var(--gold); border: none; cursor: pointer; }
 @media (min-width: 768px) { .nav-links { display: flex; } .nav-cta { display: inline-flex; } }
 
@@ -327,12 +345,27 @@ img { display: block; max-width: 100%; }
 
 /* Subtle scroll smoothing */
 html { scroll-behavior: smooth; }
+@media print {
+  .nav, .skip-link, .nav-cta, .feedback-cta, .modal-overlay, .hero-glow, .hero-grid-bg, .lines-bg, footer .footer-grid > div:first-child button, .print-btn { display: none !important; }
+  body { color: #000; background: #fff; font-size: 12pt; }
+  .section, .section.dark, .section.alt { background: #fff !important; color: #000 !important; padding: 16px 0 !important; }
+  .section.dark h2 .italic, .section h2 .italic { color: #000 !important; }
+  .section.dark .lede, .section .lede { color: #333 !important; }
+  .howto-a { max-height: none !important; display: block !important; overflow: visible !important; }
+  .howto-q { break-inside: avoid; }
+  h1, h2, h3, h4 { break-after: avoid; }
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; word-break: break-all; }
+}
 </style>
 </head>
+
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <button class="logo-text" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
       TRULASKE<span class="dot"> · </span>CEI
@@ -349,6 +382,8 @@ html { scroll-behavior: smooth; }
     <button class="nav-cta" onclick="openAssessment()">⌖ Find My Phase</button>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -1082,6 +1117,35 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
 
+    </div>
+
+    <div class="prompt-lib">
+      <div class="section-label"><div class="line"></div><span class="lbl">Put It To Work</span></div>
+      <h3 class="prompt-lib-title">Starter prompt library for founders</h3>
+      <p class="prompt-lib-lede">Copy, paste, and edit the bracketed parts. These are starting points — the best results come from iterating and feeding the model your real context.</p>
+      <div class="prompt-grid">
+        <div class="prompt-card">
+          <h4>Customer discovery interview script</h4>
+          <pre>I'm building [product] for [target customer]. Write a 12-question customer discovery interview script following The Mom Test principles: ask about past behavior and specific problems, never pitch my idea or ask if they'd buy. Group questions from broad context to specific pain points.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Competitor analysis brief</h4>
+          <pre>Act as a market analyst. For the [industry] space, identify the top 5 competitors to [my product]. For each, summarize their positioning, pricing model, target segment, and one clear weakness I could exploit. Present as a comparison table, then give me the single biggest gap in the market.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Pitch narrative refiner</h4>
+          <pre>Here is my current pitch: [paste]. Rewrite it using the problem-solution-why-now-why-us structure. Make the problem visceral and specific, cut jargon, and lead with the single most compelling number I have. Then flag the weakest claim an investor would challenge.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Go-to-market positioning statement</h4>
+          <pre>Using April Dunford's positioning framework, draft a positioning statement for [product]. Cover: competitive alternatives, unique attributes, the value those enable, the best-fit customer segment, and the market category I should frame myself in. Then suggest one alternative category framing.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+      </div>
+      <p class="prompt-lib-note">Have a prompt that works well for your venture? Suggest it via the feedback form below.</p>
     </div>
   </div>
 </section>
@@ -1872,6 +1936,8 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
@@ -1903,15 +1969,18 @@ html { scroll-behavior: smooth; }
     </div>
     <div class="footer-bottom">
       <div>© Trulaske College of Business · University of Missouri</div>
-      <div class="right">Black & Gold Standard</div>
+      <div class="right">
+        <button class="print-btn" onclick="window.print()">⎙ Download / Print Guidebook</button>
+        <span>Black &amp; Gold Standard</span>
+      </div>
     </div>
   </div>
 </footer>
 
 <!-- ASSESSMENT MODAL -->
 <div class="modal-overlay" id="assessmentModal" onclick="closeAssessment(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeAssessment()">✕</button>
+  <div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Phase self-assessment">
+    <button class="modal-close" onclick="closeAssessment()" aria-label="Close assessment">✕</button>
     <div id="modalContent">
       <div class="section-label" style="color: var(--black)"><div class="line"></div><span class="lbl">Self-Assessment</span></div>
       <h3>Select the statement that best describes your current stage.</h3>
@@ -1963,11 +2032,45 @@ function scrollToSection(id) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Nav scroll behavior
+function copyPrompt(btn) {
+  const text = btn.parentElement.querySelector('pre').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
+// Nav scroll behavior + scrollspy active-section highlighting
+const NAV_SECTION_IDS = ['phases', 'howto', 'ai', 'resources', 'knowledge', 'alumni', 'contacts'];
+function updateActiveNav() {
+  const trigger = window.innerHeight / 3;
+  let activeId = null;
+  for (const id of NAV_SECTION_IDS) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const top = el.getBoundingClientRect().top;
+    if (top <= trigger) activeId = id;
+  }
+  document.querySelectorAll('.nav-links button').forEach(btn => {
+    const matches = btn.getAttribute('onclick') === "scrollToSection('" + activeId + "')";
+    btn.classList.toggle('active', matches);
+  });
+}
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('nav');
   if (window.scrollY > 80) nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
+  updateActiveNav();
+});
+window.addEventListener('resize', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('assessmentModal');
+    if (modal && modal.classList.contains('open')) closeAssessment();
+  }
 });
 
 // Resource filtering
@@ -2004,7 +2107,10 @@ function clearFilters() {
 
 // Modal
 function openAssessment() {
-  document.getElementById('assessmentModal').classList.add('open');
+  const modal = document.getElementById('assessmentModal');
+  modal.classList.add('open');
+  const closeBtn = modal.querySelector('.modal-close');
+  if (closeBtn) closeBtn.focus();
 }
 function closeAssessment(e) {
   if (e && e.target !== e.currentTarget) return;
