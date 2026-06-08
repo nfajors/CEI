@@ -310,8 +310,12 @@ img { display: block; max-width: 100%; }
 .howto-steps li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 18px; height: 18px; background: var(--black); color: var(--gold); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; }
 .howto-steps li strong { color: var(--black); }
 .howto-note { font-style: italic; font-size: 14px !important; color: #525252 !important; border-left: 2px solid var(--gold); padding-left: 16px; }
+.howto-review { display: block; font-size: 13px; line-height: 1.5; color: #525252; background: rgba(253, 183, 25, 0.08); border: 1px solid rgba(253, 183, 25, 0.4); border-radius: 4px; padding: 12px 16px; margin-bottom: 20px; }
+.howto-review strong { color: var(--ink); font-weight: 700; }
 .howto-link { display: inline-block; margin-right: 24px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
 .howto-link:hover { color: var(--black); }
+.howto-steps a, .howto-a p a { color: var(--gold-deep); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 2px; font-weight: 600; transition: color 0.15s ease; }
+.howto-steps a:hover, .howto-a p a:hover { color: var(--black); text-decoration-color: var(--black); }
 .feedback-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; background: var(--gold); color: var(--black); border: none; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
 .feedback-cta:hover { background: var(--gold-deep); transform: translateY(-2px); }
 @media (max-width: 640px) {
@@ -1007,16 +1011,12 @@ html { scroll-behavior: smooth; }
           <p class="howto-source">Source: original research papers, peer-reviewed and openly published</p>
           <p>You do not need to read the math to grasp the ideas. A handful of papers explain why the tools you now use every day exist. Knowing the lineage helps you reason about what AI can and cannot do for your venture.</p>
           <ol class="howto-steps">
-            <li><strong>Attention Is All You Need (Vaswani et al., 2017).</strong> Introduced the Transformer architecture that underpins nearly every modern large language model. This is the foundational paper of the current era.</li>
-            <li><strong>BERT (Devlin et al., 2018).</strong> Showed the power of pre-training deep bidirectional language representations — a key step toward general-purpose language understanding.</li>
-            <li><strong>Language Models are Few-Shot Learners (Brown et al., 2020).</strong> The GPT-3 paper, which demonstrated that scaling models lets them perform new tasks from just a few examples in the prompt.</li>
-            <li><strong>Training language models to follow instructions with human feedback (Ouyang et al., 2022).</strong> The InstructGPT paper behind RLHF — the technique that made models genuinely helpful and conversational.</li>
+            <li><strong><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a> (Vaswani et al., 2017).</strong> Introduced the Transformer architecture that underpins nearly every modern large language model. This is the foundational paper of the current era.</li>
+            <li><strong><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT</a> (Devlin et al., 2018).</strong> Showed the power of pre-training deep bidirectional language representations — a key step toward general-purpose language understanding.</li>
+            <li><strong><a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">Language Models are Few-Shot Learners</a> (Brown et al., 2020).</strong> The GPT-3 paper, which demonstrated that scaling models lets them perform new tasks from just a few examples in the prompt.</li>
+            <li><strong><a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener">Training language models to follow instructions with human feedback</a> (Ouyang et al., 2022).</strong> The InstructGPT paper behind RLHF — the technique that made models genuinely helpful and conversational.</li>
           </ol>
           <p class="howto-note">For founders: these papers explain why prompting works the way it does. The "few-shot" insight in particular is the basis for most practical prompt engineering — show the model examples of what you want.</p>
-          <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener" class="howto-link">Attention Is All You Need →</a>
-          <a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener" class="howto-link">BERT →</a>
-          <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener" class="howto-link">GPT-3 / Few-Shot Learners →</a>
-          <a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener" class="howto-link">InstructGPT / RLHF →</a>
         </div>
       </div>
 
@@ -1029,18 +1029,15 @@ html { scroll-behavior: smooth; }
         </button>
         <div class="howto-a">
           <p class="howto-source">Source: model provider announcements and benchmark trackers, as of June 2026</p>
+          <p class="howto-review"><strong>Last reviewed: June 2026.</strong> Model names below age quickly. For the current leaderboard — live rankings on speed, price, and quality across every major provider — see <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">Artificial Analysis</a>.</p>
           <p>The frontier moves monthly, so treat any specific model as a snapshot. As of mid-2026, four labs are leapfrogging each other, and the practical takeaway matters more than the leaderboard: capable models are getting cheaper fast, which is pure upside for a bootstrapped founder.</p>
           <ol class="howto-steps">
-            <li><strong>The current flagships.</strong> Anthropic's Claude Opus 4.8, OpenAI's GPT-5.5, Google's Gemini 3.1 Pro, and xAI's Grok 4.3 are the models worth comparing for serious work in 2026.</li>
+            <li><strong>The current flagships.</strong> <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic's</a> Claude Opus 4.8, <a href="https://openai.com/news/" target="_blank" rel="noopener">OpenAI's</a> GPT-5.5, <a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">Google's</a> Gemini 3.1 Pro, and xAI's Grok 4.3 are the models worth comparing for serious work in 2026. Each lab's news page is the best place to track new releases.</li>
             <li><strong>Models became agents.</strong> The defining shift of 2026 is that frontier models stopped being chatbots and started doing multi-step work — operating tools, writing and running code, and completing long tasks with less hand-holding.</li>
             <li><strong>Price is collapsing.</strong> Mid-tier models now rival last year's flagships at a fraction of the cost, and open-weight options keep improving. For most startup use cases, you no longer need the most expensive model.</li>
-            <li><strong>Pin your version.</strong> Providers silently upgrade "latest" endpoints. If you build a product on a model, pin to an explicit version and keep a small test set so a new release doesn't quietly change your output.</li>
+            <li><strong>Compare before you commit.</strong> Leaderboards like <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">Artificial Analysis</a> track speed, price, and quality across providers — useful for picking the cheapest-capable model for a given task. And pin your version: providers silently upgrade "latest" endpoints, so build on an explicit version and keep a small test set so a new release doesn't quietly change your output.</li>
           </ol>
           <p class="howto-note">For founders: a sensible default is to build provider-agnostic where you can, prototype on whatever model is cheapest-capable for the task, and reserve the premium models for the parts that genuinely need top-tier reasoning or coding.</p>
-          <a href="https://www.anthropic.com/news" target="_blank" rel="noopener" class="howto-link">Anthropic news →</a>
-          <a href="https://openai.com/news/" target="_blank" rel="noopener" class="howto-link">OpenAI news →</a>
-          <a href="https://blog.google/technology/ai/" target="_blank" rel="noopener" class="howto-link">Google AI blog →</a>
-          <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener" class="howto-link">Artificial Analysis (benchmarks) →</a>
         </div>
       </div>
 
@@ -1055,17 +1052,13 @@ html { scroll-behavior: smooth; }
           <p class="howto-source">Source: consensus across 2026 "best AI podcast" roundups</p>
           <p>The field moves too fast for textbooks. These shows are consistently rated among the best in 2026 and are chosen here for founder relevance — investment perspective, building, and signal over hype. All are free on Spotify, Apple Podcasts, and YouTube.</p>
           <ol class="howto-steps">
-            <li><strong>No Priors</strong> — hosted by investors Sarah Guo and Elad Gil. The business-and-investment view of AI, with founders and frontier-lab guests. Start here if you are a founder or raising money.</li>
-            <li><strong>Latent Space</strong> — hosted by swyx and Alessio Fanelli. The trade publication for AI engineers; the most practical show on actually building with agents and infrastructure.</li>
-            <li><strong>The AI Daily Brief</strong> — short, daily news roundup. The fastest way to stay current without drowning in the firehose.</li>
-            <li><strong>Lenny's Podcast</strong> — product, growth, and building software. Not AI-only, but increasingly the best source on shipping AI-powered products.</li>
-            <li><strong>Training Data</strong> — Sequoia Capital's show, with AI builders and researchers; pairs well with the Sequoia frameworks in the How-To section.</li>
+            <li><strong><a href="https://www.no-priors.com/" target="_blank" rel="noopener">No Priors</a></strong> — hosted by investors Sarah Guo and Elad Gil. The business-and-investment view of AI, with founders and frontier-lab guests. Start here if you are a founder or raising money.</li>
+            <li><strong><a href="https://www.latent.space/" target="_blank" rel="noopener">Latent Space</a></strong> — hosted by swyx and Alessio Fanelli. The trade publication for AI engineers; the most practical show on actually building with agents and infrastructure.</li>
+            <li><strong><a href="https://aidailybrief.ai/" target="_blank" rel="noopener">The AI Daily Brief</a></strong> — Nathaniel Whittemore's short, daily news roundup. The fastest way to stay current without drowning in the firehose.</li>
+            <li><strong><a href="https://www.lennyspodcast.com/" target="_blank" rel="noopener">Lenny's Podcast</a></strong> — product, growth, and building software. Not AI-only, but increasingly the best source on shipping AI-powered products.</li>
+            <li><strong><a href="https://www.sequoiacap.com/podcast/" target="_blank" rel="noopener">Training Data</a></strong> — Sequoia Capital's show, with AI builders and researchers; pairs well with the Sequoia frameworks in the How-To section.</li>
           </ol>
           <p class="howto-note">Practitioner's tip echoed across the 2026 roundups: pick three to five shows that match your role and commit for a month. Quality beats quantity.</p>
-          <a href="https://www.no-priors.com/" target="_blank" rel="noopener" class="howto-link">No Priors →</a>
-          <a href="https://www.latent.space/" target="_blank" rel="noopener" class="howto-link">Latent Space →</a>
-          <a href="https://www.lennyspodcast.com/" target="_blank" rel="noopener" class="howto-link">Lenny's Podcast →</a>
-          <a href="https://www.sequoiacap.com/podcast/" target="_blank" rel="noopener" class="howto-link">Training Data (Sequoia) →</a>
         </div>
       </div>
 
@@ -1080,16 +1073,12 @@ html { scroll-behavior: smooth; }
           <p class="howto-source">Source: long-form essays and talks by leading AI figures</p>
           <p>Beyond the weekly news, a few thinkers try to reason about the next five to ten years. Read them not as prophecy but as a way to think a step ahead of your competitors about how AI reshapes industries — and where the opportunities will be. The first two below were published in 2026.</p>
           <ol class="howto-steps">
-            <li><strong>"The Adolescence of Technology" — Dario Amodei (Anthropic), January 2026.</strong> The ~20,000-word follow-up to Machines of Loving Grace. Where the earlier essay laid out the upside, this one maps five categories of risk from powerful AI and a pragmatic plan to navigate them. Widely cited as one of the most significant AI essays of 2026.</li>
-            <li><strong>Balaji Srinivasan — the "verification gap" (2025–2026).</strong> The Network State author and former Coinbase CTO argues that because AI is so good at faking things — media, data, even science — verification becomes scarce and valuable. His provocative claim: "AI makes everything fake, and crypto makes it real again," and that this creates large new categories of work in proctoring and verification. A useful contrarian lens for founders hunting for where value accrues.</li>
-            <li><strong>"Machines of Loving Grace" — Dario Amodei (Anthropic), 2024.</strong> The foundational optimistic case for how powerful AI could transform biology, health, and economic development. The memorable image: "a country of geniuses in a datacenter."</li>
-            <li><strong>"The Intelligence Age" — Sam Altman (OpenAI), 2024.</strong> A short, punchy counterpart arguing that deep learning worked and that abundance follows. A useful bookend to Amodei's longer pieces.</li>
+            <li><strong>"<a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank" rel="noopener">The Adolescence of Technology</a>" — Dario Amodei (Anthropic), January 2026.</strong> The ~20,000-word follow-up to Machines of Loving Grace. Where the earlier essay laid out the upside, this one maps five categories of risk from powerful AI and a pragmatic plan to navigate them. Widely cited as one of the most significant AI essays of 2026.</li>
+            <li><strong><a href="https://balajis.com/" target="_blank" rel="noopener">Balaji Srinivasan</a> — the "verification gap" (2025–2026).</strong> The Network State author and former Coinbase CTO argues that because AI is so good at faking things — media, data, even science — verification becomes scarce and valuable. His provocative claim: "AI makes everything fake, and crypto makes it real again," and that this creates large new categories of work in proctoring and verification. A useful contrarian lens for founders hunting for where value accrues.</li>
+            <li><strong>"<a href="https://www.darioamodei.com/essay/machines-of-loving-grace" target="_blank" rel="noopener">Machines of Loving Grace</a>" — Dario Amodei (Anthropic), 2024.</strong> The foundational optimistic case for how powerful AI could transform biology, health, and economic development. The memorable image: "a country of geniuses in a datacenter."</li>
+            <li><strong>"<a href="https://ia.samaltman.com/" target="_blank" rel="noopener">The Intelligence Age</a>" — Sam Altman (OpenAI), 2024.</strong> A short, punchy counterpart arguing that deep learning worked and that abundance follows. A useful bookend to Amodei's longer pieces.</li>
           </ol>
           <p class="howto-note">For founders: the practical lesson is to assume capability keeps compounding (Amodei) while watching for the second-order markets it creates (Balaji's point that an abundance of fakes makes trust and verification scarce). Build for the model you'll have in 18 months, and stay close to the human problems AI still can't solve on its own.</p>
-          <a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank" rel="noopener" class="howto-link">The Adolescence of Technology (2026) →</a>
-          <a href="https://balajis.com/" target="_blank" rel="noopener" class="howto-link">Balaji Srinivasan — balajis.com →</a>
-          <a href="https://www.darioamodei.com/essay/machines-of-loving-grace" target="_blank" rel="noopener" class="howto-link">Machines of Loving Grace (2024) →</a>
-          <a href="https://ia.samaltman.com/" target="_blank" rel="noopener" class="howto-link">The Intelligence Age (2024) →</a>
         </div>
       </div>
 
