@@ -94,6 +94,7 @@ img { display: block; max-width: 100%; }
 .hero-photo .caption .eb { font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; margin-bottom: 4px; color: var(--gold); }
 .hero-photo .caption .txt { font-size: 14px; font-weight: 300; font-style: italic; }
 
+
 /* Director quote */
 .quote-section { margin-top: 96px; }
 .quote-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
@@ -265,15 +266,6 @@ img { display: block; max-width: 100%; }
 .ct-linkedin { display: block; width: 18px; height: 18px; opacity: 0.5; margin-top: 10px; color: #0a66c2; transition: opacity 0.2s; }
 .contact-card:hover .ct-linkedin { opacity: 1; }
 
-/* Additional */
-.addl-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; }
-@media (min-width: 768px) { .addl-grid { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1024px) { .addl-grid { grid-template-columns: repeat(4, 1fr); } }
-.addl-card { padding: 24px; background: white; transition: all 0.25s; }
-.addl-card:hover { transform: translateY(-2px); }
-.addl-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-.addl-card h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; line-height: 1.2; color: var(--black); }
-.addl-card p { font-size: 14px; line-height: 1.6; color: #525252; }
 
 /* Footer */
 .footer { background: var(--black); color: var(--paper); padding: 64px 24px; }
@@ -435,9 +427,9 @@ html { scroll-behavior: smooth; }
         </div>
         <div class="stats-grid">
           <div class="stat"><div class="num">4</div><div class="lbl">Phases</div></div>
-          <div class="stat"><div class="num">37</div><div class="lbl">Resources</div></div>
+          <div class="stat"><div class="num">40</div><div class="lbl">Resources</div></div>
           <div class="stat"><div class="num">12</div><div class="lbl">Alumni Stories</div></div>
-          <div class="stat"><div class="num">11</div><div class="lbl">Support Network</div></div>
+          <div class="stat"><div class="num">12</div><div class="lbl">Support Network</div></div>
         </div>
       </div>
     </div>
@@ -547,6 +539,15 @@ html { scroll-behavior: smooth; }
         </div>
         <h4>Entrepreneurship Quest Accelerator</h4>
         <p>Intensive accelerator program offering courses, mentorship, networking, and $40,000 in prize money for student-led ventures.</p>
+      </a>
+    
+      <a href="https://research.missouri.edu/griggs-innovators-nexus/technology-venture-studio-redbud-vc" target="_blank" rel="noopener" class="resource-card">
+        <div class="rc-top">
+          <span class="tag">Accelerator</span>
+          <span class="ext">↗</span>
+        </div>
+        <h4>Technology Venture Studio by Redbud VC</h4>
+        <p>Griggs Innovators Nexus studio developing student founders with mentorship, networks, and capital. Sponsored by Redbud VC and EquipmentShare.</p>
       </a>
     
       <a href="https://columbiaredi.com/" target="_blank" rel="noopener" class="resource-card">
@@ -709,15 +710,6 @@ html { scroll-behavior: smooth; }
         <h4>Trulaske Alumni Entrepreneurs</h4>
         <p>Connect with Trulaske alumni founders and operators for mentorship and introductions.</p>
       </a>
-    
-      <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card">
-        <div class="rc-top">
-          <span class="tag">Funding</span>
-          <span class="ext">↗</span>
-        </div>
-        <h4>Trulaske VCs &amp; Angels</h4>
-        <p>Network of Trulaske alumni who are venture capitalists and angel investors.</p>
-      </a>
     </div>
       </div>
     </div>
@@ -824,6 +816,15 @@ html { scroll-behavior: smooth; }
         </div>
         <h4>Main Street Summit</h4>
         <p>Annual entrepreneurship conference — strong investor presence each year.</p>
+      </a>
+    
+      <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card">
+        <div class="rc-top">
+          <span class="tag">Funding</span>
+          <span class="ext">↗</span>
+        </div>
+        <h4>Trulaske VCs &amp; Angels</h4>
+        <p>Network of Trulaske alumni who are venture capitalists and angel investors.</p>
       </a>
     </div>
       </div>
@@ -948,10 +949,32 @@ html { scroll-behavior: smooth; }
 
     <div class="howto-list">
 
-      <!-- 1: Pitch Deck -->
+<!-- 1: First Ten Customers -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">01</span>
+          <span class="howto-title">How do I secure my first ten customers?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Paul Graham, Do Things That Don&#x27;t Scale (Y Combinator)</p>
+          <p>The single most repeated piece of startup advice from Y Combinator: in the beginning, do the unscalable things. Your first customers will not arrive on their own. The principles:</p>
+          <ol class="howto-steps">
+            <li><strong>Recruit users manually, one by one.</strong> Nearly all startups have to. You cannot wait for users to come to you; you go out and get them. Stripe famously set up accounts for early users on the spot rather than asking them to try a beta later — what YC calls the Collison installation.</li>
+            <li><strong>Deliver an overwhelmingly good experience.</strong> With only a handful of customers you can give each one a level of attention that large companies never can. Make your first users so happy they tell others.</li>
+            <li><strong>Go to them in person.</strong> Airbnb founders flew to New York, knocked on hosts doors, and helped them directly. The direct contact is also a discovery mechanism: you learn what works, where users get confused, and what to build next.</li>
+            <li><strong>Start narrow, then widen.</strong> Facebook launched at one school, got it hot, then added the next. Contain the fire to get it really hot before adding more logs.</li>
+            <li><strong>Treat the unscalable work as the product, not a distraction.</strong> Manual recruiting and hands-on support are how you find product-market fit, not a detour from it.</li>
+          </ol>
+          <p class="howto-note">The question to ask is not whether the company is taking over the world today, but how big it could get if the founders did the right things — and the right things often seem laborious and inconsequential at the time.</p>
+          <a href="https://paulgraham.com/ds.html" target="_blank" rel="noopener" class="howto-link">Read Do Things That Don&#x27;t Scale →</a>
+        </div>
+      </div>
+
+<!-- 2: Pitch Deck -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">02</span>
           <span class="howto-title">How do I build my first pitch deck?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -975,10 +998,10 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
 
-      <!-- 2: First Capital -->
+<!-- 3: First Capital -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">02</span>
+          <span class="howto-num">03</span>
           <span class="howto-title">How do I raise my first capital?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -996,28 +1019,6 @@ html { scroll-behavior: smooth; }
           <p class="howto-note">Paul Graham frames the typical path in three phases: tens of thousands from an accelerator or angels, then a few hundred thousand to a few million to build the company, then later rounds to accelerate growth once the company is clearly succeeding.</p>
           <a href="https://www.ycombinator.com/library/4A-a-guide-to-seed-fundraising" target="_blank" rel="noopener" class="howto-link">Read the YC seed guide →</a>
           <a href="https://paulgraham.com/fr.html" target="_blank" rel="noopener" class="howto-link">Read Paul Graham on raising money →</a>
-        </div>
-      </div>
-
-      <!-- 3: First Ten Customers -->
-      <div class="howto-card">
-        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">03</span>
-          <span class="howto-title">How do I secure my first ten customers?</span>
-          <span class="howto-chev">+</span>
-        </button>
-        <div class="howto-a">
-          <p class="howto-source">Source: Paul Graham, Do Things That Don&#x27;t Scale (Y Combinator)</p>
-          <p>The single most repeated piece of startup advice from Y Combinator: in the beginning, do the unscalable things. Your first customers will not arrive on their own. The principles:</p>
-          <ol class="howto-steps">
-            <li><strong>Recruit users manually, one by one.</strong> Nearly all startups have to. You cannot wait for users to come to you; you go out and get them. Stripe famously set up accounts for early users on the spot rather than asking them to try a beta later — what YC calls the Collison installation.</li>
-            <li><strong>Deliver an overwhelmingly good experience.</strong> With only a handful of customers you can give each one a level of attention that large companies never can. Make your first users so happy they tell others.</li>
-            <li><strong>Go to them in person.</strong> Airbnb founders flew to New York, knocked on hosts doors, and helped them directly. The direct contact is also a discovery mechanism: you learn what works, where users get confused, and what to build next.</li>
-            <li><strong>Start narrow, then widen.</strong> Facebook launched at one school, got it hot, then added the next. Contain the fire to get it really hot before adding more logs.</li>
-            <li><strong>Treat the unscalable work as the product, not a distraction.</strong> Manual recruiting and hands-on support are how you find product-market fit, not a detour from it.</li>
-          </ol>
-          <p class="howto-note">The question to ask is not whether the company is taking over the world today, but how big it could get if the founders did the right things — and the right things often seem laborious and inconsequential at the time.</p>
-          <a href="https://paulgraham.com/ds.html" target="_blank" rel="noopener" class="howto-link">Read Do Things That Don&#x27;t Scale →</a>
         </div>
       </div>
 
@@ -1145,6 +1146,36 @@ html { scroll-behavior: smooth; }
           <pre>Using April Dunford's positioning framework, draft a positioning statement for [product]. Cover: competitive alternatives, unique attributes, the value those enable, the best-fit customer segment, and the market category I should frame myself in. Then suggest one alternative category framing.</pre>
           <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
         </div>
+        <div class="prompt-card">
+          <h4>Financial model starter</h4>
+          <pre>Act as a startup CFO. Help me build a simple 3-year monthly financial model for [business]. Walk me through the core assumptions to set first (pricing, units sold, CAC, churn, headcount, COGS), then lay out the revenue, expense, and cash-flow sections. Flag the 3 assumptions my outcome is most sensitive to.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Unit economics check</h4>
+          <pre>Here are my numbers: [price, gross margin, CAC, average customer lifespan, monthly churn]. Calculate my LTV, LTV:CAC ratio, and CAC payback period. Tell me whether these are healthy for a [type] business, which lever would improve them most, and what a realistic target for each would be.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>First hire job description</h4>
+          <pre>I'm a founder making my first [role] hire for my [stage] startup. Write a job description that's honest about the ambiguity and scrappiness of early-stage work, screens for ownership and adaptability over pedigree, and avoids generic corporate filler. Include 5 interview questions that reveal whether someone thrives without structure.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Customer acquisition channel plan</h4>
+          <pre>My product is [product] for [customer], with a price point of [price]. Brainstorm 8 acquisition channels ranked by fit for my stage and budget. For the top 3, give me a concrete first experiment I could run this week for under [budget], the metric to watch, and what result would tell me to double down or kill it.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Cold outreach email</h4>
+          <pre>Write a cold email to [target persona] to get a [first meeting / pilot / intro]. Keep it under 90 words, lead with a specific observation about their world (not about me), make one clear ask, and sound like a human, not a sales sequence. Then give me two subject-line options and one short follow-up to send if they don't reply.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
+        <div class="prompt-card">
+          <h4>Weekly priorities planner</h4>
+          <pre>I'm a solo founder juggling [list current responsibilities/projects]. My single most important goal this quarter is [goal]. Help me cut the list down: tell me what to focus on this week, what to deliberately ignore for now, and the one task that would most move me toward the goal. Be opinionated.</pre>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </div>
       <p class="prompt-lib-note">Have a prompt that works well for your venture? Suggest it via the feedback form below.</p>
     </div>
@@ -1200,6 +1231,24 @@ html { scroll-behavior: smooth; }
       </div>
       <h3>Entrepreneurship Quest Accelerator</h3>
       <p>Intensive accelerator program offering courses, mentorship, networking, and $40,000 in prize money for student-led ventures.</p>
+    </a>
+    
+    <a href="https://research.missouri.edu/griggs-innovators-nexus/technology-venture-studio-redbud-vc" target="_blank" rel="noopener" class="resource-card master" data-tag="Accelerator" data-phase="1" data-search="technology venture studio redbud vc griggs innovators nexus develops student entrepreneurs into tech founders with knowledge networks and capital from world-class mentors education mentorship financing equipmentshare scale vc kelsey raymond accelerator studio">
+      <div class="rc-top">
+        <span class="tag">Accelerator</span>
+        <span class="phase-pill">Phase 1</span>
+      </div>
+      <h3>Technology Venture Studio by Redbud VC</h3>
+      <p>Griggs Innovators Nexus studio developing student founders with mentorship, networks, and capital. Sponsored by Redbud VC and EquipmentShare.</p>
+    </a>
+    
+    <a href="https://law.missouri.edu/elc/" target="_blank" rel="noopener" class="resource-card master" data-tag="Support" data-phase="1" data-search="mu law entrepreneurship legal clinic free legal services student startups incorporation intellectual property ip contracts support legal">
+      <div class="rc-top">
+        <span class="tag">Support</span>
+        <span class="phase-pill">Phase 1</span>
+      </div>
+      <h3>MU Law Entrepreneurship Legal Clinic</h3>
+      <p>Free legal services for student startups — incorporation, IP, and contracts.</p>
     </a>
     
     <a href="https://columbiaredi.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Research" data-phase="1" data-search="redi regional economic development inc. — research, economic development, and innovation support for columbia entrepreneurs. research">
@@ -1308,6 +1357,15 @@ html { scroll-behavior: smooth; }
       <p>Regional Economic Development Inc. — connects entrepreneurs with the broader Columbia business ecosystem.</p>
     </a>
     
+    <a href="https://www.mosourcelink.com" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="2" data-search="mosourcelink connection to missouri's entire small business support network statewide resource navigator partners networking">
+      <div class="rc-top">
+        <span class="tag">Networking</span>
+        <span class="phase-pill">Phase 2</span>
+      </div>
+      <h3>MOSourceLink</h3>
+      <p>Connection to Missouri's entire small business support network across the state.</p>
+    </a>
+    
     <a href="https://comochamber.com" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="2" data-search="columbia chamber of commerce local business community and networking hub for columbia-based ventures. networking">
       <div class="rc-top">
         <span class="tag">Networking</span>
@@ -1335,10 +1393,10 @@ html { scroll-behavior: smooth; }
       <p>Connect with Trulaske alumni founders and operators for mentorship and introductions.</p>
     </a>
     
-    <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card master" data-tag="Funding" data-phase="2" data-search="trulaske vcs &amp; angels network of trulaske alumni who are venture capitalists and angel investors. funding">
+    <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card master" data-tag="Funding" data-phase="3" data-search="trulaske vcs &amp; angels network of trulaske alumni who are venture capitalists and angel investors. funding">
       <div class="rc-top">
         <span class="tag">Funding</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Phase 3</span>
       </div>
       <h3>Trulaske VCs &amp; Angels</h3>
       <p>Network of Trulaske alumni who are venture capitalists and angel investors.</p>
@@ -1556,7 +1614,7 @@ html { scroll-behavior: smooth; }
           <p class="kn-sub">Know the market</p>
         </div>
       </div>
-      <ul><li><a href="https://www.angellist.com/blog/the-state-of-u-s-early-stage-venture-and-startups-h1-25" target="_blank" rel="noopener">AngelList State of Startups<span class="arrow">→</span></a></li><li><a href="https://nvca.org/research/" target="_blank" rel="noopener">NVCA Research<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/news/reports" target="_blank" rel="noopener">PitchBook Reports<span class="arrow">→</span></a></li><li><a href="https://libraryguides.missouri.edu/entrepreneurshipalliance/intro" target="_blank" rel="noopener">Gwen&#x27;s Library Guide<span class="arrow">→</span></a></li><li><a href="https://www.crunchbase.com/" target="_blank" rel="noopener">Crunchbase<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/" target="_blank" rel="noopener">PitchBook<span class="arrow">→</span></a></li></ul>
+      <ul><li><a href="https://www.angellist.com/blog/the-state-of-u-s-early-stage-venture-and-startups-h1-25" target="_blank" rel="noopener">AngelList State of Startups<span class="arrow">→</span></a></li><li><a href="https://nvca.org/research/" target="_blank" rel="noopener">NVCA Research<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/news/reports" target="_blank" rel="noopener">PitchBook Reports<span class="arrow">→</span></a></li><li><a href="https://libraryguides.missouri.edu/entrepreneurshipalliance/intro" target="_blank" rel="noopener">Gwen&#x27;s Library Guide<span class="arrow">→</span></a></li><li><a href="https://www.crunchbase.com/" target="_blank" rel="noopener">Crunchbase<span class="arrow">→</span></a></li><li><a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme · Tech News<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/" target="_blank" rel="noopener">PitchBook<span class="arrow">→</span></a></li></ul>
     </div>
     </div>
   </div>
@@ -1816,6 +1874,18 @@ html { scroll-behavior: smooth; }
       </div>
     </a>
     
+    <a href="https://www.linkedin.com/in/gwen-gray-2812bb65" target="_blank" rel="noopener" class="contact-card">
+      <div class="ct-avatar">GG</div>
+      <div class="ct-body">
+        <div class="ct-name-row">
+          <h3>Gwen Gray</h3>
+          
+        </div>
+        <p class="ct-title">Business Research Librarian, MU Libraries · Entrepreneurship research guide &amp; one-on-one help</p>
+        <svg class="ct-linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-label="LinkedIn"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+    </a>
+    
     <a href="https://www.linkedin.com/in/kelseymeyer1/" target="_blank" rel="noopener" class="contact-card">
       <div class="ct-avatar">KR</div>
       <div class="ct-body">
@@ -1898,42 +1968,6 @@ html { scroll-behavior: smooth; }
     <h2>What's <span class="italic">missing?</span></h2>
     <p class="lede" style="margin-bottom: 32px;">This guidebook is a living resource. A resource we should add, a question we didn't answer, something that's gone out of date — tell us, and we'll make it better.</p>
     <a href="https://forms.gle/GhbcUXu9vD3FwZgL7" target="_blank" rel="noopener" class="feedback-cta">Share your suggestion →</a>
-  </div>
-</section>
-
-<!-- ADDITIONAL -->
-<section class="section">
-  <div class="section-inner">
-    <div style="margin-bottom: 48px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">One More Thing</span></div>
-      <h2 style="font-size: clamp(28px, 4vw, 48px);">Additional resources</h2>
-    </div>
-    <div class="addl-grid">
-    <a href="https://law.missouri.edu/elc/" target="_blank" rel="noopener" class="addl-card">
-      <div class="addl-top">
-        <h3>MU Law Entrepreneurship Legal Clinic</h3>
-        <span class="ext">↗</span>
-      </div>
-      <p>Free legal services for student startups — incorporation, IP, contracts.</p>
-    </a>
-    
-    <a href="https://sbdc.missouri.edu/" target="_blank" rel="noopener" class="addl-card">
-      <div class="addl-top">
-        <h3>Missouri SBDC</h3>
-        <span class="ext">↗</span>
-      </div>
-      <p>Small Business Development Center. Free advising and training.</p>
-    </a>
-    
-    <a href="https://www.mosourcelink.com" target="_blank" rel="noopener" class="addl-card">
-      <div class="addl-top">
-        <h3>MOSourceLink</h3>
-        <span class="ext">↗</span>
-      </div>
-      <p>Connection to Missouri&#x27;s entire small business support network.</p>
-    </a>
-    
-    </div>
   </div>
 </section>
 
