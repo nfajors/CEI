@@ -427,9 +427,9 @@ html { scroll-behavior: smooth; }
         </div>
         <div class="stats-grid">
           <div class="stat"><div class="num">4</div><div class="lbl">Phases</div></div>
-          <div class="stat"><div class="num">40</div><div class="lbl">Resources</div></div>
+          <div class="stat"><div class="num" id="resourceCount">40</div><div class="lbl">Resources</div></div>
           <div class="stat"><div class="num">12</div><div class="lbl">Alumni Stories</div></div>
-          <div class="stat"><div class="num">12</div><div class="lbl">Support Network</div></div>
+          <div class="stat"><div class="num" id="founderToolsCount">20</div><div class="lbl">Founder Tools</div></div>
         </div>
       </div>
     </div>
@@ -944,7 +944,7 @@ html { scroll-behavior: smooth; }
     <div style="margin-bottom: 48px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The Playbook</span></div>
       <h2>How to <span class="italic">do the hard things</span></h2>
-      <p class="lede">Three questions every first-time founder asks. The answers below are drawn from the most authoritative sources in venture — Sequoia Capital and Y Combinator — distilled into a starting point. Follow the links for the full frameworks.</p>
+      <p class="lede">Ten questions every first-time founder faces. The answers below are distilled from the most authoritative voices in venture — Sequoia Capital, Y Combinator, Paul Graham, Marc Andreessen, and the founders who built Airbnb, Stripe, and Facebook — into a starting point. Follow the links for the full frameworks.</p>
     </div>
 
     <div class="howto-list">
@@ -1019,6 +1019,160 @@ html { scroll-behavior: smooth; }
           <p class="howto-note">Paul Graham frames the typical path in three phases: tens of thousands from an accelerator or angels, then a few hundred thousand to a few million to build the company, then later rounds to accelerate growth once the company is clearly succeeding.</p>
           <a href="https://www.ycombinator.com/library/4A-a-guide-to-seed-fundraising" target="_blank" rel="noopener" class="howto-link">Read the YC seed guide →</a>
           <a href="https://paulgraham.com/fr.html" target="_blank" rel="noopener" class="howto-link">Read Paul Graham on raising money →</a>
+        </div>
+      </div>
+
+<!-- 4: Product-Market Fit -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">04</span>
+          <span class="howto-title">How do I know if I have product-market fit?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Marc Andreessen, The Only Thing That Matters (2007)</p>
+          <p>Andreessen — co-creator of the first popular web browser and backer of Facebook, Stripe, and Coinbase — argues that the single thing a startup must achieve is product-market fit: being in a good market with a product that can satisfy it. Everything else is secondary. How to recognize it:</p>
+          <ol class="howto-steps">
+            <li><strong>You can feel its absence.</strong> When you do not have it, customers are not getting value, word of mouth is not spreading, usage is not growing, the press is indifferent, and sales cycles drag. If this is your reality, you do not have it yet — no matter how good the product looks.</li>
+            <li><strong>You can feel its presence even more clearly.</strong> When you have it, customers buy as fast as you can make the product, usage grows as fast as you can add servers, money piles up, and you are hiring sales and support as quickly as you can. Demand pulls the product out of you.</li>
+            <li><strong>Market is the dominant force.</strong> When a great team meets a lousy market, the market wins. When a lousy team meets a great market, the market wins. Pour your energy into being in a market with real, urgent demand — it forgives many other mistakes.</li>
+            <li><strong>Do whatever it takes to get there.</strong> Change people, rewrite the product, move to a different market, tell investors and your board to wait. Reaching fit is worth almost any sacrifice, because life before it and after it are entirely different.</li>
+            <li><strong>Measure the pull, not vanity metrics.</strong> Retention, organic word of mouth, and customers who would be very disappointed without you are truer signals than raw signups or press. The market votes with behavior, not compliments.</li>
+          </ol>
+          <p class="howto-note">Most startups that fail do so because they never reach product-market fit. Before it, focus on nothing else; after it, the job changes entirely.</p>
+          <a href="https://pmarchive.com/guide_to_startups_part4.html" target="_blank" rel="noopener" class="howto-link">Read The Only Thing That Matters →</a>
+        </div>
+      </div>
+
+<!-- 5: Co-founder & Equity -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">05</span>
+          <span class="howto-title">How do I choose a co-founder and split equity?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Y Combinator (Michael Seibel) and Paul Graham on co-founders</p>
+          <p>Co-founder conflict is one of the leading causes of startup death — Y Combinator has observed that roughly one in five of its startups loses a founder, and disputes over equity are a frequent trigger. The discipline that prevents it:</p>
+          <ol class="howto-steps">
+            <li><strong>Pick people you know, not résumés.</strong> The strongest co-founder relationships come from having worked or studied together. You are choosing someone to be in a high-stress relationship with for years; prior shared experience predicts survival better than skills on paper.</li>
+            <li><strong>Optimize for complementary strengths and shared values.</strong> You want different abilities (so you cover more ground) but aligned commitment and ethics (so you do not fracture under pressure). Talk explicitly about ambition, work expectations, and what each of you wants from the company.</li>
+            <li><strong>Split equity close to equal.</strong> Almost all the work is ahead of you, so dividing equity on the basis of who had the idea or who contributed first is a mistake. YC's guidance is to be generous: a meaningfully unequal split signals that you do not value a partner, and that resentment compounds over years.</li>
+            <li><strong>Always vest, always with a cliff.</strong> Equity should vest over about four years with a one-year cliff, for every founder including the CEO. This protects the company if someone leaves early, and protects each founder from carrying a partner who walks away.</li>
+            <li><strong>Decide who is CEO, and write it down.</strong> Equal equity does not mean no decision-maker. Name a single CEO to break ties, put the agreement in writing early, and have the hard conversation now rather than during a crisis.</li>
+          </ol>
+          <p class="howto-note">Fairness is not the same as symmetry, but generosity early is cheap insurance. The equity conversation feels awkward at the start and catastrophic if deferred — have it before there is anything to fight over.</p>
+          <a href="https://www.ycombinator.com/library/5x-how-to-split-equity-among-co-founders" target="_blank" rel="noopener" class="howto-link">Read the YC equity guide →</a>
+        </div>
+      </div>
+
+<!-- 6: First Key Hires -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">06</span>
+          <span class="howto-title">How do I make my first key hires?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Brian Chesky (Airbnb) on hiring, and standard early-stage practice</p>
+          <p>Your first ten hires set the culture and ceiling of the company. Airbnb co-founder Brian Chesky, who built a Fortune 500 company from three founders, argues founders should treat early hiring as one of the most important things they personally do — not something to delegate. The principles:</p>
+          <ol class="howto-steps">
+            <li><strong>Hire for the result, not the title.</strong> Focus on what a person has actually accomplished and the impact they can have, rather than pedigree or an impressive-sounding résumé. Early-stage work rewards ownership over credentials.</li>
+            <li><strong>Hire missionaries, not mercenaries.</strong> The best early employees believe in the mission and would take the work even without the upside. People motivated mainly by money or status leave when a better offer or a hard stretch arrives.</li>
+            <li><strong>Screen for slope, not just position.</strong> A startup changes fast; you need people whose rate of learning is high, who thrive without structure, and who will be more capable in a year than the role requires today.</li>
+            <li><strong>The founder stays in the details of hiring.</strong> Do not outsource your culture. Founders should interview early hires personally, define the bar, and be willing to wait for the right person rather than fill a seat fast.</li>
+            <li><strong>Hire slow, fire fast.</strong> A wrong early hire is disproportionately costly because each person is a large fraction of the company. Take time to get it right, and act quickly and humanely when someone clearly is not.</li>
+          </ol>
+          <p class="howto-note">Great leadership in the early days is presence, not absence. The people you bring in first will hire everyone after them — set the bar high enough that you would be proud to work for any of them.</p>
+          <a href="https://www.ycombinator.com/library/8a-how-to-hire-your-first-few-engineers" target="_blank" rel="noopener" class="howto-link">Read YC on early hiring →</a>
+        </div>
+      </div>
+
+<!-- 7: Pricing -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">07</span>
+          <span class="howto-title">How do I price my product?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: value-based pricing practice (Patrick Campbell / ProfitWell and others)</p>
+          <p>Pricing is the single most under-managed lever in most startups, and a change to it flows straight to the bottom line. Founders chronically underprice out of fear. The discipline that experienced operators apply:</p>
+          <ol class="howto-steps">
+            <li><strong>Price on value, not on cost.</strong> What it costs you to deliver should set a floor, not the price. Anchor instead to the economic value the customer receives — what your product saves or earns them — and capture a fraction of it.</li>
+            <li><strong>Talk to customers about willingness to pay.</strong> Pricing is a research problem, not a guess. Ask buyers what they currently spend to solve the problem, what would be too expensive, and what would be so cheap they would doubt the quality. Patterns emerge quickly.</li>
+            <li><strong>Pick a value metric that scales with the customer.</strong> Charge along the dimension that grows as the customer gets more value — seats, usage, transactions — so your revenue rises with their success rather than capping at a flat fee.</li>
+            <li><strong>Start higher than feels comfortable.</strong> Underpricing is more common and more dangerous than overpricing: it starves you of margin to reinvest and signals low value. You can almost always discount down; raising prices later is harder.</li>
+            <li><strong>Treat price as a living experiment.</strong> Revisit it regularly, segment it, and test changes deliberately. Small, disciplined adjustments to pricing often outperform large efforts to win new customers.</li>
+          </ol>
+          <p class="howto-note">A product's price is a statement about its value. If no customer ever pushes back on your price, it is almost certainly too low.</p>
+          <a href="https://www.profitwell.com/recur/all/the-anatomy-of-saas-pricing-strategy" target="_blank" rel="noopener" class="howto-link">Read on pricing strategy →</a>
+        </div>
+      </div>
+
+<!-- 8: When to Pivot -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">08</span>
+          <span class="howto-title">How do I know when to pivot?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Eric Ries, The Lean Startup</p>
+          <p>Eric Ries defines a pivot as a structured course-correction designed to test a new fundamental hypothesis about the product, strategy, or engine of growth. Knowing when to pivot — versus persevere — is one of the hardest judgments a founder makes. The framework:</p>
+          <ol class="howto-steps">
+            <li><strong>Hold a regular pivot-or-persevere meeting.</strong> Decide on a cadence and force the question deliberately. Pivots are delayed because founders avoid the conversation, not because the signal is unclear; scheduling it removes the emotion of avoidance.</li>
+            <li><strong>Judge by validated learning, not vanity metrics.</strong> Rising totals (downloads, registered users) can mask a failing engine. Use cohort analysis and actionable metrics: are new customers behaving better than old ones because of what you changed? If the numbers improve but never enough, that is a pivot signal.</li>
+            <li><strong>A pivot is a new hypothesis, not surrender.</strong> Keep what you have learned. A pivot might change the customer (same product, new segment), the problem, the business model, or the growth engine — while retaining the validated insights underneath.</li>
+            <li><strong>Watch for diminishing returns.</strong> When experiments become less productive and the current approach feels less effective over time, the runway you have left is your budget for pivots. Each one needs enough remaining runway to be tested properly.</li>
+            <li><strong>Pivot decisively, then commit.</strong> A half-pivot is the worst outcome — you keep one foot in the old idea and never give the new hypothesis a fair test. Once you decide, reset the experiments and run hard at the new direction.</li>
+          </ol>
+          <p class="howto-note">The startup's runway is the number of pivots it can still make. Conserve cash not just to survive, but to buy yourself more attempts to find what works.</p>
+          <a href="https://theleanstartup.com/principles" target="_blank" rel="noopener" class="howto-link">Read the Lean Startup principles →</a>
+        </div>
+      </div>
+
+<!-- 9: Runway & Default Alive -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">09</span>
+          <span class="howto-title">How do I manage runway and stay alive?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Paul Graham, Default Alive or Default Dead?</p>
+          <p>Paul Graham argues that every founder should know, at all times, the answer to one question: if your current growth rate and expenses hold and you raise no more money, do you reach profitability before the money runs out? That is the difference between default alive and default dead. The discipline:</p>
+          <ol class="howto-steps">
+            <li><strong>Know which one you are — today.</strong> Most founders cannot answer this off the top of their heads, which is dangerous. Model your revenue growth, expenses, and cash on hand so you always know whether the trajectory reaches profitability before zero.</li>
+            <li><strong>Ask the question early.</strong> The time to find out you are default dead is while you still have enough runway to do something about it. Discovering it late removes every good option and leaves only desperate ones.</li>
+            <li><strong>If default dead, fix growth before raising.</strong> Raising more money to cover a broken trajectory only postpones the reckoning. Investors can tell. Get to default alive on your own engine, and you raise from a position of strength rather than need.</li>
+            <li><strong>Control the two levers you own.</strong> You can grow revenue or cut costs. Hiring is the most common way founders accidentally become default dead — each hire pushes profitability further out, so add people deliberately and only against real growth.</li>
+            <li><strong>Default alive buys you freedom.</strong> A company that can reach profitability on its own terms can choose whether and when to raise, walk away from bad terms, and survive a funding winter. That optionality is worth more than a higher valuation.</li>
+          </ol>
+          <p class="howto-note">The first thing to do is measure honestly. A founder who knows they are default dead can act; one who assumes the next round will save them often runs out of room to be saved.</p>
+          <a href="https://paulgraham.com/aord.html" target="_blank" rel="noopener" class="howto-link">Read Default Alive or Default Dead? →</a>
+        </div>
+      </div>
+
+<!-- 10: Leading at Scale -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">10</span>
+          <span class="howto-title">How do I lead as the company grows?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Paul Graham, Founder Mode (2024)</p>
+          <p>As startups grow, founders are told to run them like a manager: hire good people and give them room to do their jobs. Drawing on a talk by Airbnb's Brian Chesky, Paul Graham argues this conventional advice often backfires, and that founders can lead differently. The ideas:</p>
+          <ol class="howto-steps">
+            <li><strong>"Hire good people and leave them alone" can fail.</strong> Chesky followed that standard advice at Airbnb and the results were poor; he reversed course by studying how Steve Jobs actually ran Apple. Delegation without engagement can let problems hide behind layers.</li>
+            <li><strong>Stay in the details that matter.</strong> Founder mode means remaining engaged below the layer of your direct reports — knowing the product, the customers, and the work deeply — rather than managing only through summaries and dashboards.</li>
+            <li><strong>Skip-level by design.</strong> Founders can legitimately reach past the org chart: company-wide meetings, direct contact with people several levels down, and involvement in key projects. What looks like micromanagement in a manager can be essential context for a founder.</li>
+            <li><strong>Guard against being managed by your reports.</strong> Well-meaning executives may try to keep you out of the details for the sake of tidy process. Founders who let that happen lose touch with their own company; presence, used well, is not the same as meddling.</li>
+            <li><strong>You have permission to run it your way.</strong> Much startup advice comes from people who have managed companies but never founded one. A founder's relationship to the company is different, and the way to lead it does not have to copy the professional-manager playbook.</li>
+          </ol>
+          <p class="howto-note">Founder mode is still being mapped, and it is not a license to micromanage — it is permission to stay deeply connected to the company you built as it grows beyond what one person can see at once.</p>
+          <a href="https://paulgraham.com/foundermode.html" target="_blank" rel="noopener" class="howto-link">Read Founder Mode →</a>
         </div>
       </div>
 
@@ -2179,6 +2333,29 @@ function answerAssessment(phase) {
     setTimeout(() => closeAssessment(), 500);
   }, 1500);
 }
+
+// Auto-count "Founder Tools" = Playbook Q&As + starter prompts.
+// Scoped to the howto section's .howto-list so the AI section's
+// .howto-card accordions are NOT counted.
+(function countFounderTools() {
+  var el = document.getElementById('founderToolsCount');
+  if (!el) return;
+  var howtoList = document.querySelector('#howto .howto-list');
+  var qas = howtoList ? howtoList.querySelectorAll('.howto-card').length : 0;
+  var prompts = document.querySelectorAll('.prompt-grid .prompt-card').length;
+  var total = qas + prompts;
+  if (total > 0) el.textContent = total;
+})();
+
+// Auto-count "Resources" = cards in the searchable index.
+// Scoped to #resources and the .master class so the phase-overview
+// cards (plain .resource-card) are NOT counted.
+(function countResources() {
+  var el = document.getElementById('resourceCount');
+  if (!el) return;
+  var count = document.querySelectorAll('#resources .resource-card.master').length;
+  if (count > 0) el.textContent = count;
+})();
 </script>
 
 </body>
