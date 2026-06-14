@@ -233,6 +233,18 @@ img { display: block; max-width: 100%; }
 .kn-card a .arrow { opacity: 0; transition: opacity 0.2s; color: var(--gold); }
 .kn-card a:hover .arrow { opacity: 1; }
 .kn-card a:hover { color: white; }
+/* Pitch Competitions */
+.comp-note { font-size: 13px; color: #737373; margin-top: 8px; font-style: italic; }
+.comp-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; margin-top: 40px; border: 1px solid #e5e5e0; }
+@media (min-width: 700px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
+.comp-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px 20px; background: var(--paper); transition: background 0.2s; }
+.comp-row:hover { background: #fff; }
+.comp-main { min-width: 0; }
+.comp-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; color: var(--black); display: inline-flex; align-items: center; gap: 8px; }
+.comp-name .ext { color: var(--gold-deep); font-size: 13px; opacity: 0; transition: opacity 0.2s; }
+.comp-row:hover .comp-name .ext { opacity: 1; }
+.comp-host { font-size: 13px; color: #737373; margin-top: 3px; }
+.comp-host .comp-focus { color: #525252; }
 
 /* Alumni */
 .alumni-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; }
@@ -369,6 +381,7 @@ html { scroll-behavior: smooth; }
       <button onclick="scrollToSection('ai')">AI</button>
       <button onclick="scrollToSection('resources')">Resources</button>
       <button onclick="scrollToSection('knowledge')">Knowledge</button>
+      <button onclick="scrollToSection('competitions')">Compete</button>
       <button onclick="scrollToSection('alumni')">Alumni</button>
       <button onclick="scrollToSection('contacts')">Contacts</button>
     </div>
@@ -1828,6 +1841,104 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
+<!-- PITCH COMPETITIONS -->
+<section class="section lg alt" id="competitions">
+  <div class="section-inner">
+    <div style="margin-bottom: 24px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">Compete &amp; Win</span></div>
+      <h2>National pitch <span class="italic">competitions</span></h2>
+      <p class="lede">Student-focused competitions across the country — real prize money, real investors, real exposure. Most are open to founders from any school.</p>
+      <p class="comp-note">External programs whose dates and eligibility change year to year. Confirm details on each site before applying. Last reviewed June 2026.</p>
+    </div>
+    <div class="comp-grid">
+      <a href="https://hankamer.baylor.edu/baugh-center/new-venture" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Baylor New Venture Competition<span class="ext">↗</span></span>
+          <div class="comp-host">Baylor University · <span class="comp-focus">Business plan & elevator pitch · global collegiate teams</span></div>
+        </div>
+      </a>
+      <a href="https://www.joinceo.org/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Collegiate Entrepreneurs' Organization (CEO)<span class="ext">↗</span></span>
+          <div class="comp-host">National network · <span class="comp-focus">Global pitch competition at the national CEO conference</span></div>
+        </div>
+      </a>
+      <a href="https://efest.biz/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">e-Fest (Schulze Entrepreneurship Challenge)<span class="ext">↗</span></span>
+          <div class="comp-host">University of St. Thomas · <span class="comp-focus">Undergraduate-focused · top-25 finalists pitch in Minneapolis</span></div>
+        </div>
+      </a>
+      <a href="https://www.fowlergsic.org/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Fowler Global Social Innovation Challenge<span class="ext">↗</span></span>
+          <div class="comp-host">University of San Diego · <span class="comp-focus">Social & environmental ventures · UN SDG focus</span></div>
+        </div>
+      </a>
+      <a href="https://www.gsea.org/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Global Student Entrepreneur Awards (GSEA)<span class="ext">↗</span></span>
+          <div class="comp-host">Entrepreneurs' Organization · <span class="comp-focus">For students already running a business</span></div>
+        </div>
+      </a>
+      <a href="https://www.mit100k.org/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">MIT $100K Entrepreneurship Competition<span class="ext">↗</span></span>
+          <div class="comp-host">MIT · <span class="comp-focus">Multi-stage: Pitch, Accelerate, Launch</span></div>
+        </div>
+      </a>
+      <a href="https://carlsonschool.umn.edu/mn-cup" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">MN Cup<span class="ext">↗</span></span>
+          <div class="comp-host">University of Minnesota · <span class="comp-focus">Largest statewide competition · strong student division</span></div>
+        </div>
+      </a>
+      <a href="https://www.terry.uga.edu/entrepreneurship/next-top-entrepreneur/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Next Top Entrepreneur<span class="ext">↗</span></span>
+          <div class="comp-host">UGA Terry College · <span class="comp-focus">Open to student teams nationwide</span></div>
+        </div>
+      </a>
+      <a href="https://www.rhsmith.umd.edu/centers-initiatives/dingman-lamone-center/initiatives-programs/pitch-dingman-competition" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Pitch Dingman Competition<span class="ext">↗</span></span>
+          <div class="comp-host">University of Maryland · <span class="comp-focus">Shark-Tank-style · $150K+ in prizes</span></div>
+        </div>
+      </a>
+      <a href="https://info.umkc.edu/regnier/regnier-venture-creation-challenge/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Regnier Venture Creation Challenge<span class="ext">↗</span></span>
+          <div class="comp-host">UMKC · <span class="comp-focus">Open to students in MO & surrounding states</span></div>
+        </div>
+      </a>
+      <a href="https://rbpc.rice.edu/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Rice Business Plan Competition<span class="ext">↗</span></span>
+          <div class="comp-host">Rice University · <span class="comp-focus">World's largest & richest · $1M+ in prizes (graduate-focused)</span></div>
+        </div>
+      </a>
+      <a href="https://tigerlaunch.com/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">TigerLaunch<span class="ext">↗</span></span>
+          <div class="comp-host">Princeton University · <span class="comp-focus">World's largest student-run competition · regional + finals</span></div>
+        </div>
+      </a>
+      <a href="https://www.futurefounders.com/u-pitch/" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">U.Pitch<span class="ext">↗</span></span>
+          <div class="comp-host">Future Founders · <span class="comp-focus">National elevator-pitch competition</span></div>
+        </div>
+      </a>
+      <a href="https://www.neeley.tcu.edu/centers/institute-for-entrepreneurship-and-innovation/values-and-ventures" target="_blank" rel="noopener" class="comp-row">
+        <div class="comp-main">
+          <span class="comp-name">Values and Ventures Competition<span class="ext">↗</span></span>
+          <div class="comp-host">TCU · <span class="comp-focus">Ethical & social-impact focus</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ALUMNI -->
 <section class="section lg" id="alumni">
   <div class="section-inner">
@@ -2286,7 +2397,7 @@ function copyPrompt(btn) {
 }
 
 // Nav scroll behavior + scrollspy active-section highlighting
-const NAV_SECTION_IDS = ['phases', 'howto', 'ai', 'resources', 'knowledge', 'alumni', 'contacts'];
+const NAV_SECTION_IDS = ['phases', 'howto', 'ai', 'resources', 'knowledge', 'competitions', 'alumni', 'contacts'];
 function updateActiveNav() {
   const trigger = window.innerHeight / 3;
   let activeId = null;
