@@ -37,6 +37,29 @@ img { display: block; max-width: 100%; }
 .prompt-copy:hover { background: var(--gold-deep); color: var(--black); }
 .prompt-copy.copied { background: var(--gold); color: var(--black); }
 .prompt-lib-note { font-size: 14px; color: #525252; font-style: italic; margin-top: 24px; }
+.prompt-grid-heading { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--black); margin-bottom: 4px; }
+.prompt-grid-sub { font-size: 14px; color: #525252; margin-bottom: 24px; }
+/* Prompt Studio */
+.studio { border: 1px solid var(--gold); background: #fffdf7; padding: 28px; margin-bottom: 40px; }
+.studio-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.studio-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--black); background: var(--gold); padding: 4px 10px; }
+.studio h4 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--black); margin: 0; }
+.studio-lede { font-size: 14px; color: #525252; margin: 8px 0 24px; max-width: 46rem; }
+.studio-fields { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+@media (min-width: 680px) { .studio-fields { grid-template-columns: 1fr 1fr; } }
+.studio-field { display: flex; flex-direction: column; gap: 6px; }
+.studio-field.full { grid-column: 1 / -1; }
+.studio-field label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #525252; }
+.studio-field input, .studio-field select { font: inherit; font-size: 14px; padding: 11px 14px; border: 1px solid #d4d4d4; background: #fff; color: var(--ink); }
+.studio-field input:focus, .studio-field select:focus { outline: none; border-color: var(--gold-deep); }
+.studio-output-wrap { margin-top: 8px; }
+.studio-output-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #525252; margin-bottom: 8px; }
+.studio-output { white-space: pre-wrap; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: var(--ink); background: #fff; padding: 18px; border-left: 3px solid var(--gold); border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; min-height: 60px; }
+.studio-output .ph { background: #fff3d6; color: var(--gold-deep); padding: 0 3px; border-radius: 2px; font-weight: 600; }
+.studio-copy { margin-top: 16px; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; background: var(--black); color: var(--gold); border: none; cursor: pointer; transition: background 0.2s ease; }
+.studio-copy:hover { background: #262626; }
+.studio-copy.copied { background: var(--gold); color: var(--black); }
+.studio-hint { font-size: 12.5px; color: #737373; font-style: italic; margin-top: 12px; }
 
 /* ============ NAV ============ */
 .nav {
@@ -142,15 +165,24 @@ img { display: block; max-width: 100%; }
 .section.dark .lede { color: #a3a3a3; }
 
 /* Phase overview */
-.phase-overview { display: none; margin-bottom: 80px; position: relative; }
-@media (min-width: 768px) { .phase-overview { display: block; } }
-.phase-overview .track { position: absolute; top: 48px; left: 48px; right: 48px; height: 1px; background: #e5e5e0; }
-.phase-overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
-.phase-overview-item { text-align: left; cursor: pointer; }
-.po-num { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-.po-num > div { width: 96px; height: 96px; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 36px; }
-.phase-overview-item h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; margin-bottom: 4px; color: var(--black); }
-.phase-overview-item p { font-size: 14px; color: #737373; }
+.phase-overview { display: block; margin-bottom: 80px; position: relative; }
+.phase-overview .track { display: none; position: absolute; top: 48px; left: 48px; right: 48px; height: 1px; background: #e5e5e0; }
+@media (min-width: 768px) { .phase-overview .track { display: block; } }
+.phase-overview-grid { display: grid; grid-template-columns: 1fr; gap: 16px; position: relative; }
+@media (min-width: 768px) { .phase-overview-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+.phase-overview-item { text-align: left; cursor: pointer; display: flex; flex-direction: row; align-items: center; gap: 16px; padding: 8px 0; }
+@media (min-width: 768px) { .phase-overview-item { flex-direction: column; align-items: flex-start; gap: 0; padding: 0; } }
+.po-num { display: flex; align-items: center; gap: 16px; margin-bottom: 0; }
+@media (min-width: 768px) { .po-num { margin-bottom: 16px; } }
+.po-num > div { width: 56px; height: 56px; flex-shrink: 0; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 24px; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; }
+@media (min-width: 768px) { .po-num > div { width: 96px; height: 96px; font-size: 36px; } }
+.phase-overview-item h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; margin-bottom: 2px; color: var(--black); }
+@media (min-width: 768px) { .phase-overview-item h3 { font-size: 20px; margin-bottom: 4px; } }
+.phase-overview-item p { font-size: 13px; color: #737373; }
+@media (min-width: 768px) { .phase-overview-item p { font-size: 14px; } }
+.phase-overview-item .po-text { min-width: 0; }
+.phase-overview-item.active .po-num > div { background: var(--gold); color: var(--black); transform: scale(1.04); }
+.phase-overview-item.active h3 { color: var(--gold-deep); }
 
 /* Recent Win */
 .recent-win { display: grid; grid-template-columns: 1fr; gap: 0; margin-bottom: 80px; }
@@ -261,6 +293,19 @@ img { display: block; max-width: 100%; }
 .beyond-sub { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; color: var(--black); }
 .beyond-sub-lede { font-size: 16px; line-height: 1.6; color: #525252; max-width: 44rem; margin-top: 8px; }
 .beyond-group { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-deep); margin: 32px 0 12px; }
+/* Glossary */
+.gloss-search { width: 100%; max-width: 480px; margin: 32px 0 8px; padding: 14px 18px; font: inherit; font-size: 15px; border: 1px solid #d4d4d4; background: #fff; color: var(--ink); }
+.gloss-search:focus { outline: none; border-color: var(--gold-deep); }
+.gloss-count { font-size: 13px; color: #737373; margin-bottom: 24px; }
+.gloss-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
+@media (min-width: 760px) { .gloss-grid { grid-template-columns: 1fr 1fr; } }
+.gloss-term { background: var(--paper); padding: 22px 24px; }
+.gloss-term h4 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--black); display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.gloss-phase { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); white-space: nowrap; }
+.gloss-def { font-size: 14px; line-height: 1.6; color: #404040; margin-top: 8px; }
+.gloss-eg { font-size: 13px; line-height: 1.55; color: #737373; margin-top: 10px; }
+.gloss-eg strong { color: #525252; font-weight: 600; }
+.gloss-empty { display: none; padding: 32px 4px; color: #737373; font-style: italic; }
 
 /* Alumni */
 .alumni-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; }
@@ -287,6 +332,12 @@ img { display: block; max-width: 100%; }
 .contact-card.primary { border: 2px solid var(--black); }
 .ct-avatar { width: 48px; height: 48px; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 14px; flex-shrink: 0; }
 .contact-card.primary .ct-avatar { background: var(--gold); color: var(--black); }
+.intro-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; margin-bottom: 40px; background: var(--black); color: var(--paper); border-left: 4px solid var(--gold); }
+.intro-callout-text { max-width: 40rem; }
+.intro-callout-text h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: white; margin-bottom: 6px; }
+.intro-callout-text p { font-size: 14px; line-height: 1.6; color: #c4c4c4; }
+.intro-callout-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; background: var(--gold); color: var(--black); border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s ease, transform 0.2s ease; text-decoration: none; }
+.intro-callout-btn:hover { background: var(--gold-deep); transform: translateY(-2px); }
 .ct-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .ct-body h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; line-height: 1.2; color: var(--black); }
 .ct-badge { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding: 2px 6px; background: var(--black); color: var(--gold); }
@@ -397,6 +448,7 @@ html { scroll-behavior: smooth; }
       <button onclick="scrollToSection('ai')">AI</button>
       <button onclick="scrollToSection('resources')">Resources</button>
       <button onclick="scrollToSection('knowledge')">Knowledge</button>
+      <button onclick="scrollToSection('glossary')">Glossary</button>
       <button onclick="scrollToSection('beyond')">Beyond</button>
       <button onclick="scrollToSection('alumni')">Alumni</button>
       <button onclick="scrollToSection('contacts')">Contacts</button>
@@ -414,6 +466,7 @@ html { scroll-behavior: smooth; }
     <button onclick="mobileNav('ai')">AI</button>
     <button onclick="mobileNav('resources')">Resources</button>
     <button onclick="mobileNav('knowledge')">Knowledge</button>
+    <button onclick="mobileNav('glossary')">Glossary</button>
     <button onclick="mobileNav('beyond')">Beyond</button>
     <button onclick="mobileNav('alumni')">Alumni</button>
     <button onclick="mobileNav('contacts')">Contacts</button>
@@ -473,7 +526,7 @@ html { scroll-behavior: smooth; }
         <div class="stats-grid">
           <div class="stat"><div class="num">4</div><div class="lbl">Phases</div></div>
           <div class="stat"><div class="num" id="resourceCount">40</div><div class="lbl">Resources</div></div>
-          <div class="stat"><div class="num">12</div><div class="lbl">Alumni Stories</div></div>
+          <div class="stat"><div class="num">23</div><div class="lbl">Alumni Stories</div></div>
           <div class="stat"><div class="num" id="founderToolsCount">20</div><div class="lbl">Founder Tools</div></div>
         </div>
       </div>
@@ -495,26 +548,34 @@ html { scroll-behavior: smooth; }
       <div class="phase-overview-grid">
   <a href="#phase-1" class="phase-overview-item">
     <div class="po-num"><div>1</div></div>
+    <div class="po-text">
     <h3>Launch &amp; Validation</h3>
     <p>Test the idea against reality</p>
+    </div>
   </a>
 
   <a href="#phase-2" class="phase-overview-item">
     <div class="po-num"><div>2</div></div>
+    <div class="po-text">
     <h3>Network &amp; Connect</h3>
     <p>Build the relationships that compound</p>
+    </div>
   </a>
 
   <a href="#phase-3" class="phase-overview-item">
     <div class="po-num"><div>3</div></div>
+    <div class="po-text">
     <h3>Early Growth &amp; Funding</h3>
     <p>Turn traction into capital</p>
+    </div>
   </a>
 
   <a href="#phase-4" class="phase-overview-item">
     <div class="po-num"><div>4</div></div>
+    <div class="po-text">
     <h3>Scale &amp; Expansion</h3>
     <p>Compete on the national stage</p>
+    </div>
   </a>
 </div>
     </div>
@@ -1349,8 +1410,47 @@ html { scroll-behavior: smooth; }
 
     <div class="prompt-lib">
       <div class="section-label"><div class="line"></div><span class="lbl">Put It To Work</span></div>
-      <h3 class="prompt-lib-title">Starter prompt library for founders</h3>
-      <p class="prompt-lib-lede">Copy, paste, and edit the bracketed parts. These are starting points — the best results come from iterating and feeding the model your real context.</p>
+      <h3 class="prompt-lib-title">Founder prompt toolkit</h3>
+      <p class="prompt-lib-lede">Ten battle-tested prompts for the work founders actually do — customer discovery, pitch, pricing, hiring, and more. Use the <strong>Prompt Studio</strong> below to drop in your own details, or grab any raw template from the library and edit the bracketed parts yourself.</p>
+
+      <div class="studio">
+        <div class="studio-head">
+          <span class="studio-badge">Prompt Studio</span>
+        </div>
+        <h4>Customize a prompt with your details</h4>
+        <p class="studio-lede">Pick a prompt, fill in what you know, and we'll drop your details into the template. Leave fields blank to keep the placeholders. Then copy the result into your AI tool of choice.</p>
+        <div class="studio-fields">
+          <div class="studio-field full">
+            <label for="studioPrompt">Prompt</label>
+            <select id="studioPrompt" onchange="updateStudio()"></select>
+          </div>
+          <div class="studio-field">
+            <label for="studioProduct">Your product / idea</label>
+            <input type="text" id="studioProduct" placeholder="e.g. an app that books campus tutors" oninput="updateStudio()" />
+          </div>
+          <div class="studio-field">
+            <label for="studioCustomer">Target customer</label>
+            <input type="text" id="studioCustomer" placeholder="e.g. busy undergrad students" oninput="updateStudio()" />
+          </div>
+          <div class="studio-field">
+            <label for="studioStage">Current stage</label>
+            <input type="text" id="studioStage" placeholder="e.g. pre-launch, 20 beta users" oninput="updateStudio()" />
+          </div>
+          <div class="studio-field">
+            <label for="studioGoal">Specific goal / industry</label>
+            <input type="text" id="studioGoal" placeholder="e.g. get first 10 paying customers" oninput="updateStudio()" />
+          </div>
+        </div>
+        <div class="studio-output-wrap">
+          <div class="studio-output-label">Your customized prompt</div>
+          <div class="studio-output" id="studioOutput"></div>
+          <button class="studio-copy" id="studioCopy" onclick="copyStudio()">Copy customized prompt</button>
+          <p class="studio-hint">Highlighted spots are placeholders still waiting for your details — fill them in above or edit after pasting.</p>
+        </div>
+      </div>
+
+      <h4 class="prompt-grid-heading">The full library — all ten prompts</h4>
+      <p class="prompt-grid-sub">Prefer to work from the raw template? Copy any prompt and edit the bracketed parts yourself.</p>
       <div class="prompt-grid">
         <div class="prompt-card">
           <h4>Customer discovery interview script</h4>
@@ -1414,7 +1514,7 @@ html { scroll-behavior: smooth; }
     <div style="margin-bottom: 48px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
       <h2>Every resource, <span class="italic">searchable</span></h2>
-      <p class="lede">Filter by phase, type, or search by name. 37 resources across mid-Missouri and beyond.</p>
+      <p class="lede">Filter by phase, type, or search by name. Every resource across mid-Missouri and beyond, in one place.</p>
     </div>
 
     <div class="filter-row">
@@ -1430,7 +1530,7 @@ html { scroll-behavior: smooth; }
       <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
     </div>
 
-    <div class="results-count" id="resultsCount">37 resources</div>
+    <div class="results-count" id="resultsCount"></div>
     <div class="resource-grid" id="resourceGrid">
     <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card master" data-tag="Core" data-phase="1" data-search="center for entrepreneurship &amp; innovation (cei) trulaske&#x27;s home for entrepreneurial resources, mentorship, and programs. core">
       <div class="rc-top">
@@ -1867,9 +1967,175 @@ html { scroll-behavior: smooth; }
           <p class="kn-sub">Know the market</p>
         </div>
       </div>
-      <ul><li><a href="https://www.angellist.com/blog/the-state-of-u-s-early-stage-venture-and-startups-h1-25" target="_blank" rel="noopener">AngelList State of Startups<span class="arrow">→</span></a></li><li><a href="https://nvca.org/research/" target="_blank" rel="noopener">NVCA Research<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/news/reports" target="_blank" rel="noopener">PitchBook Reports<span class="arrow">→</span></a></li><li><a href="https://libraryguides.missouri.edu/entrepreneurshipalliance/intro" target="_blank" rel="noopener">Gwen&#x27;s Library Guide<span class="arrow">→</span></a></li><li><a href="https://www.crunchbase.com/" target="_blank" rel="noopener">Crunchbase<span class="arrow">→</span></a></li><li><a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme · Tech News<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/" target="_blank" rel="noopener">PitchBook<span class="arrow">→</span></a></li></ul>
+      <ul><li><a href="https://www.angellist.com/blog/the-state-of-u-s-early-stage-venture-and-startups-h1-25" target="_blank" rel="noopener">AngelList State of Startups<span class="arrow">→</span></a></li><li><a href="https://nvca.org/research/" target="_blank" rel="noopener">NVCA Research<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/news/reports" target="_blank" rel="noopener">PitchBook Reports<span class="arrow">→</span></a></li><li><a href="https://libraryguides.missouri.edu/entrepreneurshipalliance/intro" target="_blank" rel="noopener">Resources at the Mizzou Library<span class="arrow">→</span></a></li><li><a href="https://www.crunchbase.com/" target="_blank" rel="noopener">Crunchbase<span class="arrow">→</span></a></li><li><a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme · Tech News<span class="arrow">→</span></a></li><li><a href="https://pitchbook.com/" target="_blank" rel="noopener">PitchBook<span class="arrow">→</span></a></li></ul>
     </div>
     </div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section class="section lg" id="glossary">
+  <div class="section-inner">
+    <div style="margin-bottom: 8px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">The Language</span></div>
+      <h2>Speak <span class="italic">founder</span></h2>
+      <p class="lede">The vocabulary every entrepreneur is expected to know — defined plainly, with the phase it matters most and a real example. Search to find a term fast.</p>
+    </div>
+    <input type="text" class="gloss-search" id="glossSearch" placeholder="Search terms… (e.g. runway, equity, churn)" oninput="filterGlossary()" />
+    <div class="gloss-count" id="glossCount"></div>
+    <div class="gloss-grid" id="glossGrid">
+      <div class="gloss-term" data-search="mvp (minimum viable product) the simplest version of your product that lets you test your core assumption with real users and start learning. airbnb's first mvp was a basic site renting three air mattresses in the founders' apartment.">
+        <h4>MVP (Minimum Viable Product)<span class="gloss-phase">Phase 1</span></h4>
+        <p class="gloss-def">The simplest version of your product that lets you test your core assumption with real users and start learning.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Airbnb's first MVP was a basic site renting three air mattresses in the founders' apartment.</p>
+      </div>
+      <div class="gloss-term" data-search="product-market fit the point where you're in a good market with a product that satisfies it — demand pulls the product out of you. you feel it when customers buy faster than you can build and usage grows on its own.">
+        <h4>Product-Market Fit<span class="gloss-phase">Phase 1–2</span></h4>
+        <p class="gloss-def">The point where you're in a good market with a product that satisfies it — demand pulls the product out of you.</p>
+        <p class="gloss-eg"><strong>Example:</strong> You feel it when customers buy faster than you can build and usage grows on its own.</p>
+      </div>
+      <div class="gloss-term" data-search="customer discovery structured conversations with potential customers to validate the problem before building the solution. interviewing 20 small-business owners about how they currently handle payroll before writing any code.">
+        <h4>Customer Discovery<span class="gloss-phase">Phase 1</span></h4>
+        <p class="gloss-def">Structured conversations with potential customers to validate the problem before building the solution.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Interviewing 20 small-business owners about how they currently handle payroll before writing any code.</p>
+      </div>
+      <div class="gloss-term" data-search="value proposition a clear statement of the benefit you deliver, for whom, and why it's better than the alternative. bookkeeping software that files your taxes automatically, for freelancers who hate paperwork.">
+        <h4>Value Proposition<span class="gloss-phase">Phase 1</span></h4>
+        <p class="gloss-def">A clear statement of the benefit you deliver, for whom, and why it's better than the alternative.</p>
+        <p class="gloss-eg"><strong>Example:</strong> "Bookkeeping software that files your taxes automatically, for freelancers who hate paperwork."</p>
+      </div>
+      <div class="gloss-term" data-search="tam / sam / som total addressable, serviceable available, and serviceable obtainable market — nested estimates of market size from broadest to what you can realistically capture. tam: all us restaurants. sam: midwest independents. som: 200 you can reach in year one.">
+        <h4>TAM / SAM / SOM<span class="gloss-phase">Phase 1–3</span></h4>
+        <p class="gloss-def">Total Addressable, Serviceable Available, and Serviceable Obtainable Market — nested estimates of market size from broadest to what you can realistically capture.</p>
+        <p class="gloss-eg"><strong>Example:</strong> TAM: all US restaurants. SAM: Midwest independents. SOM: 200 you can reach in year one.</p>
+      </div>
+      <div class="gloss-term" data-search="pitch deck a short slide presentation (usually 10–12 slides) that tells your startup's story to investors or judges. problem, solution, market, traction, team, ask — the classic sequoia structure.">
+        <h4>Pitch Deck<span class="gloss-phase">Phase 1–3</span></h4>
+        <p class="gloss-def">A short slide presentation (usually 10–12 slides) that tells your startup's story to investors or judges.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Problem, solution, market, traction, team, ask — the classic Sequoia structure.</p>
+      </div>
+      <div class="gloss-term" data-search="traction measurable evidence that your venture is working — users, revenue, growth, or engagement. going from 0 to 1,000 weekly active users in three months is traction.">
+        <h4>Traction<span class="gloss-phase">Phase 1–3</span></h4>
+        <p class="gloss-def">Measurable evidence that your venture is working — users, revenue, growth, or engagement.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Going from 0 to 1,000 weekly active users in three months is traction.</p>
+      </div>
+      <div class="gloss-term" data-search="runway how many months your company can operate before it runs out of cash at its current burn rate. $120k in the bank and $10k/month net burn equals 12 months of runway.">
+        <h4>Runway<span class="gloss-phase">All phases</span></h4>
+        <p class="gloss-def">How many months your company can operate before it runs out of cash at its current burn rate.</p>
+        <p class="gloss-eg"><strong>Example:</strong> $120K in the bank and $10K/month net burn equals 12 months of runway.</p>
+      </div>
+      <div class="gloss-term" data-search="burn rate the rate at which a company spends its cash reserves, usually expressed per month. spending $30k and earning $10k in a month means a net burn rate of $20k.">
+        <h4>Burn Rate<span class="gloss-phase">Phase 3–4</span></h4>
+        <p class="gloss-def">The rate at which a company spends its cash reserves, usually expressed per month.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Spending $30K and earning $10K in a month means a net burn rate of $20K.</p>
+      </div>
+      <div class="gloss-term" data-search="default alive / default dead whether, on current growth and expenses, you'd reach profitability before running out of money (alive) or not (dead). paul graham urges every founder to know which one they are at all times.">
+        <h4>Default Alive / Default Dead<span class="gloss-phase">Phase 3</span></h4>
+        <p class="gloss-def">Whether, on current growth and expenses, you'd reach profitability before running out of money (alive) or not (dead).</p>
+        <p class="gloss-eg"><strong>Example:</strong> Paul Graham urges every founder to know which one they are at all times.</p>
+      </div>
+      <div class="gloss-term" data-search="bootstrapping building a company using personal savings and revenue rather than outside investment. mailchimp grew to a billion-dollar business without ever taking venture capital.">
+        <h4>Bootstrapping<span class="gloss-phase">All phases</span></h4>
+        <p class="gloss-def">Building a company using personal savings and revenue rather than outside investment.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Mailchimp grew to a billion-dollar business without ever taking venture capital.</p>
+      </div>
+      <div class="gloss-term" data-search="pre-seed / seed the earliest formal funding rounds — pre-seed gets you to a prototype, seed gets you to product-market fit. a $500k pre-seed round to build the product and hire two engineers.">
+        <h4>Pre-Seed / Seed<span class="gloss-phase">Phase 3</span></h4>
+        <p class="gloss-def">The earliest formal funding rounds — pre-seed gets you to a prototype, seed gets you to product-market fit.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A $500K pre-seed round to build the product and hire two engineers.</p>
+      </div>
+      <div class="gloss-term" data-search="series a / b / c progressively larger venture rounds that fund scaling after product-market fit is established. a $10m series a to expand sales and enter new markets.">
+        <h4>Series A / B / C<span class="gloss-phase">Phase 4</span></h4>
+        <p class="gloss-def">Progressively larger venture rounds that fund scaling after product-market fit is established.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A $10M Series A to expand sales and enter new markets.</p>
+      </div>
+      <div class="gloss-term" data-search="angel investor an individual who invests their own money in early-stage startups, often the first outside check. a successful local founder writing a $25k angel check into a student venture.">
+        <h4>Angel Investor<span class="gloss-phase">Phase 3</span></h4>
+        <p class="gloss-def">An individual who invests their own money in early-stage startups, often the first outside check.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A successful local founder writing a $25K angel check into a student venture.</p>
+      </div>
+      <div class="gloss-term" data-search="venture capital (vc) professionally managed funds that invest in high-growth startups in exchange for equity. redbud vc investing in a pre-seed missouri startup.">
+        <h4>Venture Capital (VC)<span class="gloss-phase">Phase 3–4</span></h4>
+        <p class="gloss-def">Professionally managed funds that invest in high-growth startups in exchange for equity.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Redbud VC investing in a pre-seed Missouri startup.</p>
+      </div>
+      <div class="gloss-term" data-search="equity ownership in a company, expressed as shares or a percentage. giving a co-founder 50% equity means they own half the company.">
+        <h4>Equity<span class="gloss-phase">All phases</span></h4>
+        <p class="gloss-def">Ownership in a company, expressed as shares or a percentage.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Giving a co-founder 50% equity means they own half the company.</p>
+      </div>
+      <div class="gloss-term" data-search="dilution the reduction in existing owners' percentage stake when new shares are issued, typically during fundraising. raising a round that issues 20% new shares dilutes every prior owner proportionally.">
+        <h4>Dilution<span class="gloss-phase">Phase 3–4</span></h4>
+        <p class="gloss-def">The reduction in existing owners' percentage stake when new shares are issued, typically during fundraising.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Raising a round that issues 20% new shares dilutes every prior owner proportionally.</p>
+      </div>
+      <div class="gloss-term" data-search="cap table a record of who owns what in the company — founders, investors, and option holders. after a seed round, the cap table shows founders at 70%, investors at 20%, option pool at 10%.">
+        <h4>Cap Table<span class="gloss-phase">Phase 3–4</span></h4>
+        <p class="gloss-def">A record of who owns what in the company — founders, investors, and option holders.</p>
+        <p class="gloss-eg"><strong>Example:</strong> After a seed round, the cap table shows founders at 70%, investors at 20%, option pool at 10%.</p>
+      </div>
+      <div class="gloss-term" data-search="safe simple agreement for future equity — a common instrument to raise early money that converts to shares in a later round. y combinator companies often raise on a safe before a priced round.">
+        <h4>SAFE<span class="gloss-phase">Phase 3</span></h4>
+        <p class="gloss-def">Simple Agreement for Future Equity — a common instrument to raise early money that converts to shares in a later round.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Y Combinator companies often raise on a SAFE before a priced round.</p>
+      </div>
+      <div class="gloss-term" data-search="convertible note short-term debt that converts into equity at a later financing, often with a discount or valuation cap. a $100k note converting to equity at the next round with a 20% discount.">
+        <h4>Convertible Note<span class="gloss-phase">Phase 3</span></h4>
+        <p class="gloss-def">Short-term debt that converts into equity at a later financing, often with a discount or valuation cap.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A $100K note converting to equity at the next round with a 20% discount.</p>
+      </div>
+      <div class="gloss-term" data-search="valuation the estimated worth of a company, used to determine how much equity an investment buys. a $1m investment at a $5m pre-money valuation buys roughly 17%.">
+        <h4>Valuation<span class="gloss-phase">Phase 3–4</span></h4>
+        <p class="gloss-def">The estimated worth of a company, used to determine how much equity an investment buys.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A $1M investment at a $5M pre-money valuation buys roughly 17%.</p>
+      </div>
+      <div class="gloss-term" data-search="term sheet a non-binding document outlining the key terms of an investment before formal contracts. a term sheet specifying amount, valuation, board seats, and investor rights.">
+        <h4>Term Sheet<span class="gloss-phase">Phase 3–4</span></h4>
+        <p class="gloss-def">A non-binding document outlining the key terms of an investment before formal contracts.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A term sheet specifying amount, valuation, board seats, and investor rights.</p>
+      </div>
+      <div class="gloss-term" data-search="unit economics the direct revenues and costs associated with a single unit — one customer or one sale. if a customer pays $100 and costs $40 to serve, your contribution margin is $60.">
+        <h4>Unit Economics<span class="gloss-phase">Phase 2–4</span></h4>
+        <p class="gloss-def">The direct revenues and costs associated with a single unit — one customer or one sale.</p>
+        <p class="gloss-eg"><strong>Example:</strong> If a customer pays $100 and costs $40 to serve, your contribution margin is $60.</p>
+      </div>
+      <div class="gloss-term" data-search="ltv / cac lifetime value of a customer versus customer acquisition cost — a core measure of business health. an ltv of $900 against a cac of $300 is a healthy 3:1 ratio.">
+        <h4>LTV / CAC<span class="gloss-phase">Phase 2–4</span></h4>
+        <p class="gloss-def">Lifetime Value of a customer versus Customer Acquisition Cost — a core measure of business health.</p>
+        <p class="gloss-eg"><strong>Example:</strong> An LTV of $900 against a CAC of $300 is a healthy 3:1 ratio.</p>
+      </div>
+      <div class="gloss-term" data-search="churn the rate at which customers stop using or paying for your product over a period. losing 5 of 100 subscribers in a month is 5% monthly churn.">
+        <h4>Churn<span class="gloss-phase">Phase 2–4</span></h4>
+        <p class="gloss-def">The rate at which customers stop using or paying for your product over a period.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Losing 5 of 100 subscribers in a month is 5% monthly churn.</p>
+      </div>
+      <div class="gloss-term" data-search="go-to-market (gtm) the strategy for reaching customers and delivering your product — channels, pricing, and positioning. a gtm plan that targets campus clubs first, then expands to other universities.">
+        <h4>Go-to-Market (GTM)<span class="gloss-phase">Phase 2–3</span></h4>
+        <p class="gloss-def">The strategy for reaching customers and delivering your product — channels, pricing, and positioning.</p>
+        <p class="gloss-eg"><strong>Example:</strong> A GTM plan that targets campus clubs first, then expands to other universities.</p>
+      </div>
+      <div class="gloss-term" data-search="pivot a structured change in strategy to test a new fundamental hypothesis while keeping what you've learned. slack began as a gaming company before pivoting to its internal chat tool.">
+        <h4>Pivot<span class="gloss-phase">Phase 1–2</span></h4>
+        <p class="gloss-def">A structured change in strategy to test a new fundamental hypothesis while keeping what you've learned.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Slack began as a gaming company before pivoting to its internal chat tool.</p>
+      </div>
+      <div class="gloss-term" data-search="cohort a group of users or companies grouped by a shared start point, used to analyze behavior over time — also a single class in an accelerator. tracking whether january's signups retain better than december's.">
+        <h4>Cohort<span class="gloss-phase">All phases</span></h4>
+        <p class="gloss-def">A group of users or companies grouped by a shared start point, used to analyze behavior over time — also a single class in an accelerator.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Tracking whether January's signups retain better than December's.</p>
+      </div>
+      <div class="gloss-term" data-search="accelerator a fixed-term, cohort-based program offering mentorship, resources, and often capital to speed up startups. y combinator's three-month program ending in a demo day.">
+        <h4>Accelerator<span class="gloss-phase">Phase 1–3</span></h4>
+        <p class="gloss-def">A fixed-term, cohort-based program offering mentorship, resources, and often capital to speed up startups.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Y Combinator's three-month program ending in a demo day.</p>
+      </div>
+      <div class="gloss-term" data-search="demo day the event ending an accelerator where startups pitch to a room of investors. presenting your traction to 200 investors at the end of the program.">
+        <h4>Demo Day<span class="gloss-phase">Phase 3</span></h4>
+        <p class="gloss-def">The event ending an accelerator where startups pitch to a room of investors.</p>
+        <p class="gloss-eg"><strong>Example:</strong> Presenting your traction to 200 investors at the end of the program.</p>
+      </div>
+    </div>
+    <p class="gloss-empty" id="glossEmpty">No terms match your search.</p>
   </div>
 </section>
 
@@ -2105,6 +2371,17 @@ html { scroll-behavior: smooth; }
     
     <div class="alum-card">
       <div class="alum-top">
+        <div class="alum-avatar">AC</div>
+        <div>
+          <h3>Andrew Cherng</h3>
+          <p class="alum-degree">MS Applied Mathematics 1972</p>
+        </div>
+      </div>
+      <p>Founder and chairman of Panda Restaurant Group. Built Panda Express into one of the largest and most successful fast-casual Asian dining chains in the United States.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
         <div class="alum-avatar">WF</div>
         <div>
           <h3>Wade Foster</h3>
@@ -2112,6 +2389,17 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <p>Co-founder and CEO of Zapier, a web automation platform connecting over 5,000 apps. Y Combinator alum and remote-work pioneer.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
+        <div class="alum-avatar">AG</div>
+        <div>
+          <h3>Alan C. Greenberg</h3>
+          <p class="alum-degree">BA Business 1949</p>
+        </div>
+      </div>
+      <p>Longtime CEO and chairman of Bear Stearns. Played a central role in building the firm into a major Wall Street investment bank known for its trading and client-focused culture.</p>
     </div>
     
     <div class="alum-card">
@@ -2127,6 +2415,17 @@ html { scroll-behavior: smooth; }
     
     <div class="alum-card">
       <div class="alum-top">
+        <div class="alum-avatar">BH</div>
+        <div>
+          <h3>Bryan Helmig</h3>
+          <p class="alum-degree">Finance, attended 2005–2011</p>
+        </div>
+      </div>
+      <p>Co-founder and CTO of Zapier, the pioneering no-code automation platform connecting thousands of apps for millions of users. Helped scale the company from a Columbia Startup Weekend project into a multi-billion-dollar global leader.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
         <div class="alum-avatar">DJ</div>
         <div>
           <h3>Dave Johnson</h3>
@@ -2134,6 +2433,28 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <p>Co-founder of Chicken N Pickle, a fast-growing entertainment and dining concept combining restaurant, sports, and social activities.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
+        <div class="alum-avatar">RK</div>
+        <div>
+          <h3>Richard Kinder</h3>
+          <p class="alum-degree">BA 1966, JD 1968</p>
+        </div>
+      </div>
+      <p>Co-founder and executive chairman of Kinder Morgan, one of North America&#x27;s largest energy infrastructure companies, with an extensive network of pipelines and terminals. A billionaire energy entrepreneur.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
+        <div class="alum-avatar">ES</div>
+        <div>
+          <h3>E. Stanley Kroenke</h3>
+          <p class="alum-degree">BSBA 1971, MBA 1973</p>
+        </div>
+      </div>
+      <p>Founder of THF Realty. Owner of the LA Rams, Denver Nuggets, Colorado Avalanche, and Arsenal Football Club.</p>
     </div>
     
     <div class="alum-card">
@@ -2149,13 +2470,13 @@ html { scroll-behavior: smooth; }
     
     <div class="alum-card">
       <div class="alum-top">
-        <div class="alum-avatar">ES</div>
+        <div class="alum-avatar">HL</div>
         <div>
-          <h3>E. Stanley Kroenke</h3>
-          <p class="alum-degree">BSBA 1971, MBA 1973</p>
+          <h3>Harry J. Lloyd</h3>
+          <p class="alum-degree">BJ 1950</p>
         </div>
       </div>
-      <p>Founder of THF Realty. Owner of the LA Rams, Denver Nuggets, Colorado Avalanche, and Arsenal Football Club.</p>
+      <p>Founder of House of Lloyd, a successful direct-sales gift company that served millions of customers. Also developed the upscale Loch Lloyd residential community and country club near Kansas City.</p>
     </div>
     
     <div class="alum-card">
@@ -2215,6 +2536,17 @@ html { scroll-behavior: smooth; }
     
     <div class="alum-card">
       <div class="alum-top">
+        <div class="alum-avatar">MR</div>
+        <div>
+          <h3>Matthew K. Rose</h3>
+          <p class="alum-degree">BS Marketing 1981</p>
+        </div>
+      </div>
+      <p>Longtime chairman, CEO, and president of Burlington Northern Santa Fe (BNSF), one of North America&#x27;s largest freight railroads. Led significant operational growth and strategic development over more than two decades.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
         <div class="alum-avatar">JS</div>
         <div>
           <h3>Jeffrey E. Smith</h3>
@@ -2226,6 +2558,17 @@ html { scroll-behavior: smooth; }
     
     <div class="alum-card">
       <div class="alum-top">
+        <div class="alum-avatar">RS</div>
+        <div>
+          <h3>Roger W. Straus Jr.</h3>
+          <p class="alum-degree">BJ 1939</p>
+        </div>
+      </div>
+      <p>Co-founder and longtime chairman of Farrar, Straus and Giroux, the influential independent publishing house celebrated for literary excellence and a distinguished roster of authors, including many Nobel laureates.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
         <div class="alum-avatar">ST</div>
         <div>
           <h3>Steve Trampe</h3>
@@ -2233,6 +2576,17 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <p>Founder or co-founder of seven companies across five industries. Former Chairman of Sequoia Sciences (plant-based drug discovery), former Chairman of the Building Arts Foundation, former Vice Chairman of Opera America, and founder of Owen Development. Co-founder of Arch Angels. Active mentor and pitch competition judge.</p>
+    </div>
+    
+    <div class="alum-card">
+      <div class="alum-top">
+        <div class="alum-avatar">CT</div>
+        <div>
+          <h3>Chad Troutwine</h3>
+          <p class="alum-degree">JD 1996 (Mizzou Law)</p>
+        </div>
+      </div>
+      <p>Co-founder of Veritas Prep and Freakonomics Media. A serial entrepreneur who has produced more than 15 films and owns Torn Label Brewing Company, building ventures across education, media, and consumer products.</p>
     </div>
     
     <div class="alum-card">
@@ -2275,6 +2629,15 @@ html { scroll-behavior: smooth; }
       <h2>The <span class="italic">support network</span></h2>
       <p class="lede">The faculty, directors, and staff who make Trulaske's entrepreneurship ecosystem run. Reach out — they're here for you.</p>
     </div>
+
+    <div class="intro-callout">
+      <div class="intro-callout-text">
+        <h3>Want an introduction?</h3>
+        <p>Not sure who to talk to, or want a warm hand-off to someone on this list? Email the CEI and we'll connect you with the right person.</p>
+      </div>
+      <a href="mailto:cei@missouri.edu?subject=Request%20for%20an%20introduction%20%E2%80%94%20CEI%20Guidebook" class="intro-callout-btn">✦ Email the CEI</a>
+    </div>
+
     <div class="contacts-grid">
     <a href="https://www.linkedin.com/in/drewreeves/" target="_blank" rel="noopener" class="contact-card">
       <div class="ct-avatar">A(</div>
@@ -2568,7 +2931,7 @@ function copyPrompt(btn) {
 }
 
 // Nav scroll behavior + scrollspy active-section highlighting
-const NAV_SECTION_IDS = ['phases', 'howto', 'ai', 'resources', 'knowledge', 'beyond', 'alumni', 'contacts'];
+const NAV_SECTION_IDS = ['phases', 'howto', 'ai', 'resources', 'knowledge', 'glossary', 'beyond', 'alumni', 'contacts'];
 function updateActiveNav() {
   const trigger = window.innerHeight / 3;
   let activeId = null;
@@ -2583,14 +2946,28 @@ function updateActiveNav() {
     btn.classList.toggle('active', matches);
   });
 }
+function updatePhaseTimeline() {
+  const trigger = window.innerHeight / 2;
+  let active = 0;
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById('phase-' + i);
+    if (!el) continue;
+    if (el.getBoundingClientRect().top <= trigger) active = i;
+  }
+  document.querySelectorAll('.phase-overview-item').forEach((item, idx) => {
+    item.classList.toggle('active', idx + 1 === active);
+  });
+}
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('nav');
   if (window.scrollY > 80) nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
   updateActiveNav();
+  updatePhaseTimeline();
 });
 window.addEventListener('resize', updateActiveNav);
 window.addEventListener('load', updateActiveNav);
+window.addEventListener('load', updatePhaseTimeline);
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     const modal = document.getElementById('assessmentModal');
@@ -2692,6 +3069,83 @@ function answerAssessment(phase) {
   var count = document.querySelectorAll('#resources .resource-card.master').length;
   if (count > 0) el.textContent = count;
 })();
+
+// Initialize the Index results count on load
+if (document.getElementById('resultsCount')) { filterResources(); }
+
+function filterGlossary() {
+  const q = document.getElementById('glossSearch').value.toLowerCase().trim();
+  const terms = document.querySelectorAll('#glossGrid .gloss-term');
+  let visible = 0;
+  terms.forEach(t => {
+    const show = !q || t.dataset.search.includes(q);
+    t.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  const grid = document.getElementById('glossGrid');
+  const empty = document.getElementById('glossEmpty');
+  const count = document.getElementById('glossCount');
+  grid.style.display = visible === 0 ? 'none' : '';
+  empty.style.display = visible === 0 ? 'block' : 'none';
+  count.textContent = visible + (visible === 1 ? ' term' : ' terms');
+}
+if (document.getElementById('glossGrid')) { filterGlossary(); }
+
+const STUDIO_PROMPTS = [{"title": "Customer discovery interview script", "text": "I'm building [product] for [target customer]. Write a 12-question customer discovery interview script following The Mom Test principles: ask about past behavior and specific problems, never pitch my idea or ask if they'd buy. Group questions from broad context to specific pain points."}, {"title": "Competitor analysis brief", "text": "Act as a market analyst. For the [industry] space, identify the top 5 competitors to [my product]. For each, summarize their positioning, pricing model, target segment, and one clear weakness I could exploit. Present as a comparison table, then give me the single biggest gap in the market."}, {"title": "Pitch narrative refiner", "text": "Here is my current pitch: [paste]. Rewrite it using the problem-solution-why-now-why-us structure. Make the problem visceral and specific, cut jargon, and lead with the single most compelling number I have. Then flag the weakest claim an investor would challenge."}, {"title": "Go-to-market positioning statement", "text": "Using April Dunford's positioning framework, draft a positioning statement for [product]. Cover: competitive alternatives, unique attributes, the value those enable, the best-fit customer segment, and the market category I should frame myself in. Then suggest one alternative category framing."}, {"title": "Financial model starter", "text": "Act as a startup CFO. Help me build a simple 3-year monthly financial model for [business]. Walk me through the core assumptions to set first (pricing, units sold, CAC, churn, headcount, COGS), then lay out the revenue, expense, and cash-flow sections. Flag the 3 assumptions my outcome is most sensitive to."}, {"title": "Unit economics check", "text": "Here are my numbers: [price, gross margin, CAC, average customer lifespan, monthly churn]. Calculate my LTV, LTV:CAC ratio, and CAC payback period. Tell me whether these are healthy for a [type] business, which lever would improve them most, and what a realistic target for each would be."}, {"title": "First hire job description", "text": "I'm a founder making my first [role] hire for my [stage] startup. Write a job description that's honest about the ambiguity and scrappiness of early-stage work, screens for ownership and adaptability over pedigree, and avoids generic corporate filler. Include 5 interview questions that reveal whether someone thrives without structure."}, {"title": "Customer acquisition channel plan", "text": "My product is [product] for [customer], with a price point of [price]. Brainstorm 8 acquisition channels ranked by fit for my stage and budget. For the top 3, give me a concrete first experiment I could run this week for under [budget], the metric to watch, and what result would tell me to double down or kill it."}, {"title": "Cold outreach email", "text": "Write a cold email to [target persona] to get a [first meeting / pilot / intro]. Keep it under 90 words, lead with a specific observation about their world (not about me), make one clear ask, and sound like a human, not a sales sequence. Then give me two subject-line options and one short follow-up to send if they don't reply."}, {"title": "Weekly priorities planner", "text": "I'm a solo founder juggling [list current responsibilities/projects]. My single most important goal this quarter is [goal]. Help me cut the list down: tell me what to focus on this week, what to deliberately ignore for now, and the one task that would most move me toward the goal. Be opinionated."}];
+const STUDIO_MAP = {"product": "product", "my product": "product", "business": "product", "target customer": "customer", "customer": "customer", "target persona": "customer", "stage": "stage", "industry": "goal", "goal": "goal"};
+
+(function initStudio() {
+  const sel = document.getElementById('studioPrompt');
+  if (!sel) return;
+  STUDIO_PROMPTS.forEach((p, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = p.title;
+    sel.appendChild(opt);
+  });
+  updateStudio();
+})();
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function buildStudioText() {
+  const idx = parseInt(document.getElementById('studioPrompt').value, 10) || 0;
+  const vals = {
+    product: document.getElementById('studioProduct').value.trim(),
+    customer: document.getElementById('studioCustomer').value.trim(),
+    stage: document.getElementById('studioStage').value.trim(),
+    goal: document.getElementById('studioGoal').value.trim()
+  };
+  const tmpl = STUDIO_PROMPTS[idx].text;
+  // Replace [label] with the mapped value if the user provided one; otherwise leave [label]
+  return tmpl.replace(/\[([^\]]+)\]/g, function(match, label) {
+    const field = STUDIO_MAP[label];
+    if (field && vals[field]) return vals[field];
+    return match; // keep placeholder
+  });
+}
+
+function updateStudio() {
+  const out = document.getElementById('studioOutput');
+  const text = buildStudioText();
+  // escape, then wrap any remaining [placeholders] in a highlight span
+  const html = escapeHtml(text).replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
+  out.innerHTML = html;
+}
+
+function copyStudio() {
+  const text = buildStudioText();
+  const btn = document.getElementById('studioCopy');
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
 </script>
 
 </body>
