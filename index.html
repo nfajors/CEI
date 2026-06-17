@@ -7,18 +7,48 @@
 <meta name="description" content="Center for Entrepreneurship & Innovation at the Robert J. Trulaske, Sr. College of Business — your complete roadmap from idea to IPO at Mizzou and beyond." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --gold: #FDB719;
+  /* Mizzou brand colors — primary */
+  --gold: #FDB719;        /* Mizzou Gold */
+  --black: #000000;       /* Tiger Paw Black */
+  /* Black tints (official) */
+  --black-tint-1: #333333;
+  --black-tint-2: #989898;
+  --black-tint-3: #D4D4D4;
+  /* Gold tints (official) */
+  --gold-tint-1: #FFD17D;
+  --gold-tint-2: #FFDFA5;
+  --gold-tint-3: #FFEDCF;
+  /* Neutrals */
+  --paper: #FFFFFF;       /* white background */
+  --ink: #000000;         /* body text — black on white (approved AAA combo) */
+  /* gold-deep retained ONLY for gold-on-black hover fills, never as text on white */
   --gold-deep: #C8951C;
-  --black: #000000;
-  --paper: #fafaf7;
-  --ink: #171717;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); background: var(--paper); }
-.display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.02em; }
+/* WCAG 2.4.7 — visible keyboard focus indicator for all interactive elements */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--gold-deep);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+/* On dark backgrounds, use gold for sufficient contrast */
+.section.dark a:focus-visible, .section.dark button:focus-visible, .nav a:focus-visible, .nav button:focus-visible, .footer a:focus-visible, .footer button:focus-visible, .hero button:focus-visible, .modal-overlay button:focus-visible {
+  outline-color: var(--gold);
+}
+/* WCAG 2.3.3 — respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html, body { font-family: 'Open Sans', system-ui, sans-serif; color: var(--ink); background: var(--paper); }
+.display { font-family: 'STIX Two Text', Georgia, serif; font-optical-sizing: auto; letter-spacing: -0.02em; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 200; background: var(--black); color: var(--gold); padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -26,24 +56,24 @@ img { display: block; max-width: 100%; }
 .print-btn { background: none; border: 1px solid var(--gold); color: var(--gold); cursor: pointer; font: inherit; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 14px; margin-right: 16px; transition: background 0.2s, color 0.2s; }
 .print-btn:hover { background: var(--gold); color: var(--black); }
 .prompt-lib { margin-top: 64px; padding-top: 48px; border-top: 1px solid #e5e5e0; }
-.prompt-lib-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(24px, 3vw, 36px); margin: 12px 0 8px; }
+.prompt-lib-title { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: clamp(24px, 3vw, 36px); margin: 12px 0 8px; }
 .prompt-lib-lede { font-size: 16px; color: #525252; max-width: 48rem; margin-bottom: 32px; }
 .prompt-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 768px) { .prompt-grid { grid-template-columns: 1fr 1fr; } }
 .prompt-card { border: 1px solid #e5e5e0; background: white; padding: 24px; display: flex; flex-direction: column; }
 .prompt-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-.prompt-card pre { white-space: pre-wrap; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #404040; background: #fafaf7; padding: 16px; border-left: 2px solid var(--gold); margin-bottom: 16px; flex-grow: 1; }
+.prompt-card pre { white-space: pre-wrap; font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #404040; background: #fafaf7; padding: 16px; border-left: 2px solid var(--gold); margin-bottom: 16px; flex-grow: 1; }
 .prompt-copy { align-self: flex-start; background: var(--black); color: var(--gold); border: none; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 8px 18px; transition: background 0.2s; }
 .prompt-copy:hover { background: var(--gold-deep); color: var(--black); }
 .prompt-copy.copied { background: var(--gold); color: var(--black); }
 .prompt-lib-note { font-size: 14px; color: #525252; font-style: italic; margin-top: 24px; }
-.prompt-grid-heading { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--black); margin-bottom: 4px; }
+.prompt-grid-heading { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--black); margin-bottom: 4px; }
 .prompt-grid-sub { font-size: 14px; color: #525252; margin-bottom: 24px; }
 /* Prompt Studio */
 .studio { border: 1px solid var(--gold); background: #fffdf7; padding: 28px; margin-bottom: 40px; }
 .studio-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
 .studio-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--black); background: var(--gold); padding: 4px 10px; }
-.studio h4 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--black); margin: 0; }
+.studio h4 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--black); margin: 0; }
 .studio-lede { font-size: 14px; color: #525252; margin: 8px 0 24px; max-width: 46rem; }
 .studio-fields { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
 @media (min-width: 680px) { .studio-fields { grid-template-columns: 1fr 1fr; } }
@@ -54,12 +84,12 @@ img { display: block; max-width: 100%; }
 .studio-field input:focus, .studio-field select:focus { outline: none; border-color: var(--gold-deep); }
 .studio-output-wrap { margin-top: 8px; }
 .studio-output-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #525252; margin-bottom: 8px; }
-.studio-output { white-space: pre-wrap; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: var(--ink); background: #fff; padding: 18px; border-left: 3px solid var(--gold); border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; min-height: 60px; }
-.studio-output .ph { background: #fff3d6; color: var(--gold-deep); padding: 0 3px; border-radius: 2px; font-weight: 600; }
+.studio-output { white-space: pre-wrap; font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 1.6; color: var(--ink); background: #fff; padding: 18px; border-left: 3px solid var(--gold); border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; min-height: 60px; }
+.studio-output .ph { background: var(--gold-tint-3); color: var(--black); padding: 0 3px; border-radius: 2px; font-weight: 600; }
 .studio-copy { margin-top: 16px; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; background: var(--black); color: var(--gold); border: none; cursor: pointer; transition: background 0.2s ease; }
 .studio-copy:hover { background: #262626; }
 .studio-copy.copied { background: var(--gold); color: var(--black); }
-.studio-hint { font-size: 12.5px; color: #737373; font-style: italic; margin-top: 12px; }
+.studio-hint { font-size: 12.5px; color: #666666; font-style: italic; margin-top: 12px; }
 
 /* ============ NAV ============ */
 .nav {
@@ -70,14 +100,14 @@ img { display: block; max-width: 100%; }
 }
 .nav.scrolled { background: rgba(250, 250, 247, 0.95); backdrop-filter: blur(12px); border-bottom-color: #e5e5e0; }
 .nav-inner { max-width: 1280px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
-.logo-text { font-family: 'Fraunces', serif; font-weight: 900; font-size: 16px; letter-spacing: -0.02em; cursor: pointer; transition: opacity 0.2s; background: none; border: none; }
+.logo-text { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 16px; letter-spacing: -0.02em; cursor: pointer; transition: opacity 0.2s; background: none; border: none; }
 .logo-text:hover { opacity: 0.7; }
-.logo-text .dot { color: var(--gold-deep); }
+.logo-text .dot { color: var(--black); }
 .nav-links { display: none; gap: 32px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; }
 .nav-links a, .nav-links button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; padding: 0; position: relative; }
 .nav-links a::after, .nav-links button::after { content: ''; display: block; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; position: absolute; bottom: -4px; left: 0; }
 .nav-links a:hover::after, .nav-links button:hover::after { width: 100%; }
-.nav-links button.active { color: var(--gold-deep); font-weight: 700; }
+.nav-links button.active { color: var(--black); font-weight: 700; }
 .nav-links button.active::after { width: 100%; background: var(--gold-deep); }
 .nav-cta { display: none; align-items: center; gap: 6px; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; background: var(--black); color: var(--gold); border: none; cursor: pointer; }
 @media (min-width: 768px) { .nav-links { display: flex; } .nav-cta { display: inline-flex; } }
@@ -90,7 +120,7 @@ img { display: block; max-width: 100%; }
 .mobile-menu { display: none; flex-direction: column; background: var(--paper); border-top: 1px solid #e5e5e0; padding: 8px 24px 20px; }
 .mobile-menu.open { display: flex; }
 .mobile-menu button { background: none; border: none; cursor: pointer; font: inherit; text-align: left; padding: 14px 0; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); border-bottom: 1px solid #ededea; }
-.mobile-menu button.active { color: var(--gold-deep); }
+.mobile-menu button.active { color: var(--black); }
 .mobile-menu .mobile-menu-cta { margin-top: 16px; background: var(--black); color: var(--gold); border: none; text-align: center; padding: 16px; letter-spacing: 0.15em; border-bottom: none; }
 @media (min-width: 768px) { .nav-toggle { display: none; } .mobile-menu { display: none !important; } }
 
@@ -108,7 +138,7 @@ img { display: block; max-width: 100%; }
 .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .eyebrow .line { height: 1px; width: 48px; background: var(--gold); }
 .eyebrow .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 500; color: var(--gold); }
-.hero h1 { font-family: 'Fraunces', serif; font-weight: 900; font-size: clamp(2.75rem, 7vw, 6rem); line-height: 0.95; letter-spacing: -0.02em; color: var(--paper); margin-bottom: 24px; }
+.hero h1 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: clamp(2.75rem, 7vw, 6rem); line-height: 0.95; letter-spacing: -0.02em; color: var(--paper); margin-bottom: 24px; }
 .hero h1 .italic { font-style: italic; font-weight: 300; color: var(--gold); }
 .hero-sub { font-size: 20px; font-weight: 300; line-height: 1.6; max-width: 36rem; color: #d4d4d4; margin-bottom: 40px; }
 .hero-actions { display: flex; flex-direction: column; gap: 12px; }
@@ -136,8 +166,8 @@ img { display: block; max-width: 100%; }
 @media (min-width: 768px) { .quote-grid { grid-template-columns: 8fr 4fr; align-items: stretch; } }
 .quote-card { position: relative; padding: 32px; background: #0d0d0d; border-left: 3px solid var(--gold); }
 @media (min-width: 1024px) { .quote-card { padding: 40px; } }
-.quote-card .openquote { position: absolute; top: 16px; left: 24px; font-family: 'Fraunces', serif; font-weight: 900; font-size: 60px; line-height: 1; color: var(--gold); opacity: 0.3; pointer-events: none; }
-.quote-card p { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; margin-top: 24px; color: #f0f0f0; position: relative; }
+.quote-card .openquote { position: absolute; top: 16px; left: 24px; font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 60px; line-height: 1; color: var(--gold); opacity: 0.3; pointer-events: none; }
+.quote-card p { font-family: 'STIX Two Text', Georgia, serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; margin-top: 24px; color: #f0f0f0; position: relative; }
 @media (min-width: 768px) { .quote-card p { font-size: 20px; } }
 @media (min-width: 1024px) { .quote-card p { font-size: 22px; } }
 .quote-attr { margin-top: 24px; display: flex; align-items: center; gap: 12px; position: relative; }
@@ -146,7 +176,7 @@ img { display: block; max-width: 100%; }
 .quote-attr .role { font-size: 12px; color: #a3a3a3; margin-top: 2px; }
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; height: 100%; }
 .stat { padding: 16px; background: rgba(253, 183, 25, 0.08); border-left: 2px solid var(--gold); }
-.stat .num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 30px; color: var(--gold); margin-bottom: 2px; line-height: 1; }
+.stat .num { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 30px; color: var(--gold); margin-bottom: 2px; line-height: 1; }
 .stat .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500; color: #a3a3a3; }
 
 /* ============ SECTIONS ============ */
@@ -158,8 +188,8 @@ img { display: block; max-width: 100%; }
 .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .section-label .line { height: 1px; width: 32px; background: currentColor; }
 .section-label .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; }
-.section h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
-.section h2 .italic { font-style: italic; font-weight: 500; color: var(--gold-deep); }
+.section h2 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.section h2 .italic { font-style: italic; font-weight: 500; color: var(--black); }
 .section.dark h2 .italic { color: var(--gold); }
 .section .lede { font-size: 18px; line-height: 1.6; color: #525252; max-width: 48rem; }
 .section.dark .lede { color: #a3a3a3; }
@@ -174,15 +204,15 @@ img { display: block; max-width: 100%; }
 @media (min-width: 768px) { .phase-overview-item { flex-direction: column; align-items: flex-start; gap: 0; padding: 0; } }
 .po-num { display: flex; align-items: center; gap: 16px; margin-bottom: 0; }
 @media (min-width: 768px) { .po-num { margin-bottom: 16px; } }
-.po-num > div { width: 56px; height: 56px; flex-shrink: 0; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 24px; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; }
+.po-num > div { width: 56px; height: 56px; flex-shrink: 0; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 24px; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; }
 @media (min-width: 768px) { .po-num > div { width: 96px; height: 96px; font-size: 36px; } }
-.phase-overview-item h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; margin-bottom: 2px; color: var(--black); }
+.phase-overview-item h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 18px; margin-bottom: 2px; color: var(--black); }
 @media (min-width: 768px) { .phase-overview-item h3 { font-size: 20px; margin-bottom: 4px; } }
-.phase-overview-item p { font-size: 13px; color: #737373; }
+.phase-overview-item p { font-size: 13px; color: #666666; }
 @media (min-width: 768px) { .phase-overview-item p { font-size: 14px; } }
 .phase-overview-item .po-text { min-width: 0; }
 .phase-overview-item.active .po-num > div { background: var(--gold); color: var(--black); transform: scale(1.04); }
-.phase-overview-item.active h3 { color: var(--gold-deep); }
+.phase-overview-item.active h3 { color: var(--black); }
 
 /* Recent Win */
 .recent-win { display: grid; grid-template-columns: 1fr; gap: 0; margin-bottom: 80px; }
@@ -195,12 +225,12 @@ img { display: block; max-width: 100%; }
 .rw-badge span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; }
 .rw-text { padding: 32px; background: var(--black); color: var(--paper); display: flex; flex-direction: column; justify-content: center; min-height: 200px; }
 @media (min-width: 1024px) { .rw-text { padding: 40px; } }
-.rw-text .eb { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; color: var(--gold); margin-bottom: 16px; }
-.rw-text h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 16px; }
+.rw-text .eb { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; color: var(--black); margin-bottom: 16px; }
+.rw-text h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 16px; }
 @media (min-width: 1024px) { .rw-text h3 { font-size: 36px; } }
-.rw-text h3 .gold { color: var(--gold); }
+.rw-text h3 .gold { color: var(--black); }
 .rw-text p { font-size: 14px; line-height: 1.6; margin-bottom: 24px; color: #d4d4d4; }
-.rw-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); cursor: pointer; background: none; border: none; align-self: flex-start; }
+.rw-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--black); cursor: pointer; background: none; border: none; align-self: flex-start; }
 
 /* Phase blocks */
 .phases-stack { display: flex; flex-direction: column; gap: 96px; }
@@ -208,11 +238,11 @@ img { display: block; max-width: 100%; }
 @media (min-width: 1024px) { .phase-block { grid-template-columns: 4fr 8fr; gap: 48px; } .phase-block.reverse .phase-side { order: 2; } .phase-block.reverse .phase-right { order: 1; } }
 .phase-side-inner { position: sticky; top: 128px; }
 .phase-num-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-.phase-num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 72px; line-height: 1; color: var(--gold-deep); }
+.phase-num { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 72px; line-height: 1; color: var(--black); }
 .vrule { height: 48px; width: 1px; background: #d4d4d4; }
-.phase-side h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 12px; color: var(--black); }
+.phase-side h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 12px; color: var(--black); }
 @media (min-width: 768px) { .phase-side h3 { font-size: 36px; } }
-.phase-sub { font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--gold-deep); margin-bottom: 20px; }
+.phase-sub { font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--black); margin-bottom: 20px; }
 .phase-desc { font-size: 16px; line-height: 1.6; color: #525252; margin-bottom: 24px; }
 .next-steps { padding: 20px; background: var(--black); color: var(--paper); }
 .next-steps-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
@@ -240,7 +270,7 @@ img { display: block; max-width: 100%; }
 .phase-pill { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #a3a3a3; }
 .ext { opacity: 0.3; transition: opacity 0.2s; color: var(--black); }
 .resource-card:hover .ext { opacity: 1; }
-.resource-card h4, .resource-card h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; line-height: 1.2; margin-bottom: 6px; color: var(--black); }
+.resource-card h4, .resource-card h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 16px; line-height: 1.2; margin-bottom: 6px; color: var(--black); }
 .resource-card.master h3 { font-size: 18px; margin-bottom: 8px; }
 .resource-card p { font-size: 12px; line-height: 1.6; color: #525252; }
 .resource-card.master p { font-size: 14px; }
@@ -251,16 +281,17 @@ img { display: block; max-width: 100%; }
 .search-wrap { position: relative; flex: 1; max-width: 28rem; }
 .search-wrap input { width: 100%; padding: 12px 12px 12px 44px; font-size: 14px; background: white; border: 1px solid #e5e5e0; outline: none; font-family: inherit; transition: border-color 0.2s; }
 .search-wrap input:focus { border-color: var(--black); }
-.search-wrap::before { content: '⌕'; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #737373; font-size: 16px; }
+.search-wrap::before { content: '⌕'; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #666666; font-size: 16px; }
 .filter-select { padding: 12px 16px; font-size: 14px; background: white; border: 1px solid #e5e5e0; cursor: pointer; outline: none; font-family: inherit; }
-.clear-btn { padding: 12px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); background: none; border: none; cursor: pointer; font-family: inherit; }
-.results-count { margin-bottom: 24px; font-size: 14px; color: #737373; }
+.filter-select:focus { border-color: var(--black); }
+.clear-btn { padding: 12px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); background: none; border: none; cursor: pointer; font-family: inherit; }
+.results-count { margin-bottom: 24px; font-size: 14px; color: #666666; }
 .resource-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; }
 @media (min-width: 768px) { .resource-grid { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) { .resource-grid { grid-template-columns: 1fr 1fr 1fr; } }
 .no-results { padding: 80px; background: white; border: 1px solid #e5e5e0; text-align: center; }
-.no-results h3 { font-family: 'Fraunces', serif; font-size: 24px; color: var(--black); margin-bottom: 8px; }
-.no-results p { font-size: 14px; color: #737373; }
+.no-results h3 { font-family: 'STIX Two Text', Georgia, serif; font-size: 24px; color: var(--black); margin-bottom: 8px; }
+.no-results p { font-size: 14px; color: #666666; }
 
 /* Knowledge */
 .section.dark .lines-bg { position: absolute; inset: 0; opacity: 0.05; pointer-events: none;
@@ -270,42 +301,51 @@ img { display: block; max-width: 100%; }
 .kn-card { padding: 32px; background: #171717; border: 1px solid #262626; }
 .kn-head { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #262626; }
 .kn-icon { width: 48px; height: 48px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--black); font-weight: 700; }
-.kn-card h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; }
-.kn-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); }
+.kn-card h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 20px; }
+.kn-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); }
 .kn-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .kn-card a { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; padding: 4px 0; color: #d4d4d4; transition: color 0.2s; }
 .kn-card a .arrow { opacity: 0; transition: opacity 0.2s; color: var(--gold); }
 .kn-card a:hover .arrow { opacity: 1; }
 .kn-card a:hover { color: white; }
 /* Pitch Competitions */
-.comp-note { font-size: 13px; color: #737373; margin-top: 8px; font-style: italic; }
+.comp-note { font-size: 13px; color: #666666; margin-top: 8px; font-style: italic; }
 .comp-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; margin-top: 40px; border: 1px solid #e5e5e0; }
 @media (min-width: 700px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
 .comp-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px 20px; background: var(--paper); transition: background 0.2s; }
 .comp-row:hover { background: #fff; }
 .comp-main { min-width: 0; }
-.comp-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; color: var(--black); display: inline-flex; align-items: center; gap: 8px; }
-.comp-name .ext { color: var(--gold-deep); font-size: 13px; opacity: 0; transition: opacity 0.2s; }
+.comp-name { font-family: 'STIX Two Text', Georgia, serif; font-weight: 600; font-size: 16px; color: var(--black); display: inline-flex; align-items: center; gap: 8px; }
+.comp-name .ext { color: var(--black); font-size: 13px; opacity: 0; transition: opacity 0.2s; }
 .comp-row:hover .comp-name .ext { opacity: 1; }
-.comp-host { font-size: 13px; color: #737373; margin-top: 3px; }
+.comp-host { font-size: 13px; color: #666666; margin-top: 3px; }
 .comp-host .comp-focus { color: #525252; }
 .beyond-block + .beyond-block { margin-top: 56px; }
-.beyond-sub { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; color: var(--black); }
+.beyond-sub { font-family: 'STIX Two Text', Georgia, serif; font-weight: 600; font-size: 24px; color: var(--black); }
 .beyond-sub-lede { font-size: 16px; line-height: 1.6; color: #525252; max-width: 44rem; margin-top: 8px; }
-.beyond-group { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-deep); margin: 32px 0 12px; }
+.beyond-group { font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--black); margin: 32px 0 12px; }
 /* Glossary */
-.gloss-search { width: 100%; max-width: 480px; margin: 32px 0 8px; padding: 14px 18px; font: inherit; font-size: 15px; border: 1px solid #d4d4d4; background: #fff; color: var(--ink); }
+.gloss-search { width: 100%; max-width: 480px; margin: 32px 0 16px; padding: 14px 18px; font: inherit; font-size: 15px; border: 1px solid #d4d4d4; background: #fff; color: var(--ink); }
 .gloss-search:focus { outline: none; border-color: var(--gold-deep); }
-.gloss-count { font-size: 13px; color: #737373; margin-bottom: 24px; }
+.gloss-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.gloss-chip { font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: 600; padding: 7px 14px; border: 1px solid #d4d4d4; background: #fff; color: var(--black); cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.gloss-chip:hover { border-color: var(--black); }
+.gloss-chip.active { background: var(--black); color: var(--gold); border-color: var(--black); }
+.gloss-count { font-size: 13px; color: #666666; margin-bottom: 16px; }
 .gloss-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
 @media (min-width: 760px) { .gloss-grid { grid-template-columns: 1fr 1fr; } }
-.gloss-term { background: var(--paper); padding: 22px 24px; }
-.gloss-term h4 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--black); display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.gloss-phase { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); white-space: nowrap; }
-.gloss-def { font-size: 14px; line-height: 1.6; color: #404040; margin-top: 8px; }
-.gloss-eg { font-size: 13px; line-height: 1.55; color: #737373; margin-top: 10px; }
+.gloss-term { background: var(--paper); }
+.gloss-q { width: 100%; display: flex; align-items: center; gap: 12px; padding: 18px 24px; background: none; border: none; cursor: pointer; font-family: inherit; text-align: left; }
+.gloss-q:hover { background: #faf9f6; }
+.gloss-name { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 18px; color: var(--black); flex: 1; }
+.gloss-phase { font-family: 'Open Sans', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); white-space: nowrap; }
+.gloss-chev { font-size: 22px; font-weight: 300; color: var(--black); line-height: 1; transition: transform 0.2s; flex-shrink: 0; }
+.gloss-q[aria-expanded="true"] .gloss-chev { transform: rotate(45deg); }
+.gloss-a { padding: 0 24px 20px; }
+.gloss-def { font-size: 14px; line-height: 1.6; color: #404040; }
+.gloss-eg { font-size: 13px; line-height: 1.55; color: #666666; margin-top: 10px; }
 .gloss-eg strong { color: #525252; font-weight: 600; }
-.gloss-empty { display: none; padding: 32px 4px; color: #737373; font-style: italic; }
+.gloss-empty { display: none; padding: 32px 4px; color: #666666; font-style: italic; }
 
 /* Alumni */
 .alumni-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; }
@@ -313,13 +353,13 @@ img { display: block; max-width: 100%; }
 @media (min-width: 1024px) { .alumni-grid { grid-template-columns: 1fr 1fr 1fr; } }
 .alum-card { padding: 24px; background: white; }
 .alum-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
-.alum-avatar { width: 56px; height: 56px; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 20px; flex-shrink: 0; }
-.alum-card h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; line-height: 1.2; margin-bottom: 4px; color: var(--black); }
-.alum-degree { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); }
+.alum-avatar { width: 56px; height: 56px; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 20px; flex-shrink: 0; }
+.alum-card h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 18px; line-height: 1.2; margin-bottom: 4px; color: var(--black); }
+.alum-degree { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); }
 .alum-card > p { font-size: 14px; line-height: 1.6; color: #525252; }
 .alum-cta { padding: 32px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background: var(--black); color: var(--paper); }
 .alum-cta .iconbox { width: 56px; height: 56px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 24px; color: var(--black); }
-.alum-cta h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; line-height: 1.2; margin-bottom: 12px; }
+.alum-cta h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 24px; line-height: 1.2; margin-bottom: 12px; }
 .alum-cta p { font-size: 14px; color: #a3a3a3; margin-bottom: 24px; }
 .alum-cta button { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); background: none; border: none; cursor: pointer; }
 
@@ -330,18 +370,18 @@ img { display: block; max-width: 100%; }
 .contact-card { display: flex; gap: 16px; padding: 20px; background: white; border: 1px solid #e5e5e0; transition: border-color 0.2s; align-items: flex-start; }
 .contact-card:hover { border-color: var(--black); }
 .contact-card.primary { border: 2px solid var(--black); }
-.ct-avatar { width: 48px; height: 48px; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+.ct-avatar { width: 48px; height: 48px; background: var(--black); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 14px; flex-shrink: 0; }
 .contact-card.primary .ct-avatar { background: var(--gold); color: var(--black); }
 .intro-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; margin-bottom: 40px; background: var(--black); color: var(--paper); border-left: 4px solid var(--gold); }
 .intro-callout-text { max-width: 40rem; }
-.intro-callout-text h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: white; margin-bottom: 6px; }
+.intro-callout-text h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 20px; color: white; margin-bottom: 6px; }
 .intro-callout-text p { font-size: 14px; line-height: 1.6; color: #c4c4c4; }
 .intro-callout-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; background: var(--gold); color: var(--black); border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s ease, transform 0.2s ease; text-decoration: none; }
 .intro-callout-btn:hover { background: var(--gold-deep); transform: translateY(-2px); }
 .ct-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.ct-body h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; line-height: 1.2; color: var(--black); }
+.ct-body h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 16px; line-height: 1.2; color: var(--black); }
 .ct-badge { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding: 2px 6px; background: var(--black); color: var(--gold); }
-.ct-title { font-size: 12px; line-height: 1.4; color: #737373; margin-top: 4px; }
+.ct-title { font-size: 12px; line-height: 1.4; color: #666666; margin-top: 4px; }
 .ct-linkedin { display: block; width: 18px; height: 18px; opacity: 0.5; margin-top: 10px; color: #0a66c2; transition: opacity 0.2s; }
 .contact-card:hover .ct-linkedin { opacity: 1; }
 
@@ -357,7 +397,13 @@ img { display: block; max-width: 100%; }
 .footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .footer ul a, .footer ul button { font-size: 14px; color: #d4d4d4; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; text-align: left; }
 .footer ul a:hover, .footer ul button:hover { color: white; }
-.footer-bottom { display: flex; flex-direction: column; gap: 12px; font-size: 12px; color: #737373; }
+.footer-bottom { display: flex; flex-direction: column; gap: 12px; font-size: 12px; color: #a3a3a3; }
+.footer-legal { display: flex; flex-direction: column; gap: 8px; max-width: 60rem; }
+.footer-legal .footer-contact { color: #d4d4d4; line-height: 1.6; }
+.footer-legal .footer-eeo { color: #a3a3a3; }
+.footer-legal .footer-copyright { color: #a3a3a3; line-height: 1.6; }
+.footer-legal a { color: #d4d4d4; text-decoration: underline; }
+.footer-legal a:hover { color: #fff; }
 @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
 .footer-bottom .right { text-transform: uppercase; letter-spacing: 0.2em; }
 .footer-updated { display: block; margin-top: 6px; font-size: 11px; color: var(--gold-deep); text-transform: uppercase; letter-spacing: 0.15em; }
@@ -367,18 +413,18 @@ img { display: block; max-width: 100%; }
 .modal-overlay.open { display: flex; }
 .modal { width: 100%; max-width: 36rem; background: white; position: relative; border: 2px solid var(--gold); padding: 40px; }
 .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; font-size: 18px; color: var(--black); padding: 4px; }
-.modal h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 24px; }
-.modal-instruction { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--gold-deep); margin-top: -12px; margin-bottom: 20px; }
+.modal h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 30px; line-height: 1.2; margin-bottom: 24px; }
+.modal-instruction { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--black); margin-top: -12px; margin-bottom: 20px; }
 .modal-options { display: flex; flex-direction: column; gap: 8px; }
 .modal-option { width: 100%; text-align: left; padding: 16px; border: 1px solid #e5e5e0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.2s; font-family: inherit; font-size: 14px; }
 .modal-option:hover { border-color: var(--black); background: #fafaf7; }
-.modal-option .arrow { opacity: 0; color: var(--gold-deep); transition: opacity 0.2s; }
+.modal-option .arrow { opacity: 0; color: var(--black); transition: opacity 0.2s; }
 .modal-option:hover .arrow { opacity: 1; }
 .modal-result { text-align: center; }
-.modal-result .num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 80px; color: var(--gold-deep); margin-bottom: 16px; line-height: 1; }
+.modal-result .num { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 80px; color: var(--black); margin-bottom: 16px; line-height: 1; }
 .modal-result h3 { margin-bottom: 12px; }
 .modal-result p { font-size: 16px; color: #525252; margin-bottom: 24px; }
-.modal-result .going { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-deep); }
+.modal-result .going { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--black); }
 
 
 /* How-To */
@@ -386,25 +432,25 @@ img { display: block; max-width: 100%; }
 .howto-card { background: white; }
 .howto-q { width: 100%; display: flex; align-items: center; gap: 20px; padding: 28px 32px; background: white; border: none; cursor: pointer; font-family: inherit; text-align: left; transition: background 0.2s; }
 .howto-q:hover { background: #fafaf7; }
-.howto-num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 28px; color: var(--gold-deep); flex-shrink: 0; }
-.howto-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--black); flex: 1; line-height: 1.2; }
-.howto-chev { font-size: 28px; font-weight: 300; color: var(--gold-deep); flex-shrink: 0; transition: transform 0.3s; line-height: 1; }
+.howto-num { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 28px; color: var(--black); flex-shrink: 0; }
+.howto-title { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--black); flex: 1; line-height: 1.2; }
+.howto-chev { font-size: 28px; font-weight: 300; color: var(--black); flex-shrink: 0; transition: transform 0.3s; line-height: 1; }
 .howto-q[aria-expanded="true"] .howto-chev { transform: rotate(45deg); }
 .howto-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 32px; }
 .howto-a.open { max-height: 2000px; padding: 0 32px 32px 32px; }
 .howto-a > * { margin-left: 48px; }
-.howto-source { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--gold-deep); margin-bottom: 16px; }
+.howto-source { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--black); margin-bottom: 16px; }
 .howto-a p { font-size: 15px; line-height: 1.65; color: #404040; margin-bottom: 16px; }
 .howto-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
 .howto-steps li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.6; color: #404040; counter-increment: step; }
-.howto-steps li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 18px; height: 18px; background: var(--black); color: var(--gold); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; }
+.howto-steps li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 18px; height: 18px; background: var(--black); color: var(--gold); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Open Sans', sans-serif; }
 .howto-steps li strong { color: var(--black); }
 .howto-note { font-style: italic; font-size: 14px !important; color: #525252 !important; border-left: 2px solid var(--gold); padding-left: 16px; }
 .howto-review { display: block; font-size: 13px; line-height: 1.5; color: #525252; background: rgba(253, 183, 25, 0.08); border: 1px solid rgba(253, 183, 25, 0.4); border-radius: 4px; padding: 12px 16px; margin-bottom: 20px; }
 .howto-review strong { color: var(--ink); font-weight: 700; }
-.howto-link { display: inline-block; margin-right: 24px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+.howto-link { display: inline-block; margin-right: 24px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
 .howto-link:hover { color: var(--black); }
-.howto-steps a, .howto-a p a { color: var(--gold-deep); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 2px; font-weight: 600; transition: color 0.15s ease; }
+.howto-steps a, .howto-a p a { color: var(--black); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 2px; font-weight: 600; transition: color 0.15s ease; }
 .howto-steps a:hover, .howto-a p a:hover { color: var(--black); text-decoration-color: var(--black); }
 .feedback-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; background: var(--gold); color: var(--black); border: none; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
 .feedback-cta:hover { background: var(--gold-deep); transform: translateY(-2px); }
@@ -1528,12 +1574,12 @@ html { scroll-behavior: smooth; }
 
     <div class="filter-row">
       <div class="search-wrap">
-        <input type="text" id="searchInput" placeholder="Search resources…" oninput="filterResources()" />
+        <input type="text" id="searchInput" aria-label="Search resources by name" placeholder="Search resources…" oninput="filterResources()" />
       </div>
-      <select class="filter-select" id="phaseFilter" onchange="filterResources()">
+      <select class="filter-select" id="phaseFilter" aria-label="Filter resources by phase" onchange="filterResources()">
         <option value="all">All Phases</option><option value="1">Phase 1 · Launch &amp; Validation</option><option value="2">Phase 2 · Network &amp; Connect</option><option value="3">Phase 3 · Early Growth &amp; Funding</option><option value="4">Phase 4 · Scale &amp; Expansion</option>
       </select>
-      <select class="filter-select" id="tagFilter" onchange="filterResources()">
+      <select class="filter-select" id="tagFilter" aria-label="Filter resources by type" onchange="filterResources()">
         <option value="all">All Types</option><option value="Accelerator">Accelerator</option><option value="Angel">Angel</option><option value="Community">Community</option><option value="Competition">Competition</option><option value="Core">Core</option><option value="Event">Event</option><option value="Federal">Federal</option><option value="Grant">Grant</option><option value="Funding">Funding</option><option value="Incubator">Incubator</option><option value="Investment">Investment</option><option value="Mentorship">Mentorship</option><option value="Networking">Networking</option><option value="Platform">Platform</option><option value="Program">Program</option><option value="Reading">Reading</option><option value="Research">Research</option><option value="Retail">Retail</option><option value="State">State</option><option value="Student Org">Student Org</option><option value="Student Fund">Student Fund</option><option value="Support">Support</option><option value="VC">VC</option>
       </select>
       <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
@@ -1997,162 +2043,351 @@ html { scroll-behavior: smooth; }
     <div style="margin-bottom: 8px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The Language</span></div>
       <h2>Speak <span class="italic">founder</span></h2>
-      <p class="lede">The vocabulary every entrepreneur is expected to know — defined plainly, with the phase it matters most and a real example. Search to find a term fast.</p>
+      <p class="lede">The vocabulary every entrepreneur is expected to know — defined plainly, with the phase it matters most and a real example. Browse by category, search for a term, or tap any term to expand it.</p>
     </div>
-    <input type="text" class="gloss-search" id="glossSearch" placeholder="Search terms… (e.g. runway, equity, churn)" oninput="filterGlossary()" />
+    <input type="text" class="gloss-search" id="glossSearch" aria-label="Search glossary terms" placeholder="Search terms… (e.g. runway, equity, churn)" oninput="filterGlossary()" />
+    <div class="gloss-chips" role="group" aria-label="Filter glossary by category">
+      <button class="gloss-chip active" data-cat="all" onclick="filterGlossCat(this)">All</button>
+      <button class="gloss-chip" data-cat="Product & Market" onclick="filterGlossCat(this)">Product & Market</button>
+      <button class="gloss-chip" data-cat="Funding & Investors" onclick="filterGlossCat(this)">Funding & Investors</button>
+      <button class="gloss-chip" data-cat="Equity & Deal Terms" onclick="filterGlossCat(this)">Equity & Deal Terms</button>
+      <button class="gloss-chip" data-cat="Metrics & Money" onclick="filterGlossCat(this)">Metrics & Money</button>
+      <button class="gloss-chip" data-cat="Growth & Strategy" onclick="filterGlossCat(this)">Growth & Strategy</button>
+    </div>
     <div class="gloss-count" id="glossCount"></div>
     <div class="gloss-grid" id="glossGrid">
-      <div class="gloss-term" data-search="mvp (minimum viable product) the simplest version of your product that lets you test your core assumption with real users and start learning. airbnb's first mvp was a basic site renting three air mattresses in the founders' apartment.">
-        <h4>MVP (Minimum Viable Product)<span class="gloss-phase">Phase 1</span></h4>
-        <p class="gloss-def">The simplest version of your product that lets you test your core assumption with real users and start learning.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Airbnb's first MVP was a basic site renting three air mattresses in the founders' apartment.</p>
+      <div class="gloss-term" data-search="mvp (minimum viable product) the simplest version of your product that lets you test your core assumption with real users and start learning. airbnb's first mvp was a basic site renting three air mattresses in the founders' apartment." data-cat="Product & Market">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-0" onclick="toggleGloss(this)">
+          <span class="gloss-name">MVP (Minimum Viable Product)</span>
+          <span class="gloss-phase">Phase 1</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-0" hidden>
+          <p class="gloss-def">The simplest version of your product that lets you test your core assumption with real users and start learning.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Airbnb's first MVP was a basic site renting three air mattresses in the founders' apartment.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="product-market fit the point where you're in a good market with a product that satisfies it — demand pulls the product out of you. you feel it when customers buy faster than you can build and usage grows on its own.">
-        <h4>Product-Market Fit<span class="gloss-phase">Phase 1–2</span></h4>
-        <p class="gloss-def">The point where you're in a good market with a product that satisfies it — demand pulls the product out of you.</p>
-        <p class="gloss-eg"><strong>Example:</strong> You feel it when customers buy faster than you can build and usage grows on its own.</p>
+      <div class="gloss-term" data-search="product-market fit the point where you're in a good market with a product that satisfies it — demand pulls the product out of you. you feel it when customers buy faster than you can build and usage grows on its own." data-cat="Product & Market">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-1" onclick="toggleGloss(this)">
+          <span class="gloss-name">Product-Market Fit</span>
+          <span class="gloss-phase">Phase 1–2</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-1" hidden>
+          <p class="gloss-def">The point where you're in a good market with a product that satisfies it — demand pulls the product out of you.</p>
+          <p class="gloss-eg"><strong>Example:</strong> You feel it when customers buy faster than you can build and usage grows on its own.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="customer discovery structured conversations with potential customers to validate the problem before building the solution. interviewing 20 small-business owners about how they currently handle payroll before writing any code.">
-        <h4>Customer Discovery<span class="gloss-phase">Phase 1</span></h4>
-        <p class="gloss-def">Structured conversations with potential customers to validate the problem before building the solution.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Interviewing 20 small-business owners about how they currently handle payroll before writing any code.</p>
+      <div class="gloss-term" data-search="customer discovery structured conversations with potential customers to validate the problem before building the solution. interviewing 20 small-business owners about how they currently handle payroll before writing any code." data-cat="Product & Market">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-2" onclick="toggleGloss(this)">
+          <span class="gloss-name">Customer Discovery</span>
+          <span class="gloss-phase">Phase 1</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-2" hidden>
+          <p class="gloss-def">Structured conversations with potential customers to validate the problem before building the solution.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Interviewing 20 small-business owners about how they currently handle payroll before writing any code.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="value proposition a clear statement of the benefit you deliver, for whom, and why it's better than the alternative. bookkeeping software that files your taxes automatically, for freelancers who hate paperwork.">
-        <h4>Value Proposition<span class="gloss-phase">Phase 1</span></h4>
-        <p class="gloss-def">A clear statement of the benefit you deliver, for whom, and why it's better than the alternative.</p>
-        <p class="gloss-eg"><strong>Example:</strong> "Bookkeeping software that files your taxes automatically, for freelancers who hate paperwork."</p>
+      <div class="gloss-term" data-search="value proposition a clear statement of the benefit you deliver, for whom, and why it's better than the alternative. bookkeeping software that files your taxes automatically, for freelancers who hate paperwork." data-cat="Product & Market">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-3" onclick="toggleGloss(this)">
+          <span class="gloss-name">Value Proposition</span>
+          <span class="gloss-phase">Phase 1</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-3" hidden>
+          <p class="gloss-def">A clear statement of the benefit you deliver, for whom, and why it's better than the alternative.</p>
+          <p class="gloss-eg"><strong>Example:</strong> "Bookkeeping software that files your taxes automatically, for freelancers who hate paperwork."</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="tam / sam / som total addressable, serviceable available, and serviceable obtainable market — nested estimates of market size from broadest to what you can realistically capture. tam: all us restaurants. sam: midwest independents. som: 200 you can reach in year one.">
-        <h4>TAM / SAM / SOM<span class="gloss-phase">Phase 1–3</span></h4>
-        <p class="gloss-def">Total Addressable, Serviceable Available, and Serviceable Obtainable Market — nested estimates of market size from broadest to what you can realistically capture.</p>
-        <p class="gloss-eg"><strong>Example:</strong> TAM: all US restaurants. SAM: Midwest independents. SOM: 200 you can reach in year one.</p>
+      <div class="gloss-term" data-search="tam / sam / som total addressable, serviceable available, and serviceable obtainable market — nested estimates of market size from broadest to what you can realistically capture. tam: all us restaurants. sam: midwest independents. som: 200 you can reach in year one." data-cat="Product & Market">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-4" onclick="toggleGloss(this)">
+          <span class="gloss-name">TAM / SAM / SOM</span>
+          <span class="gloss-phase">Phase 1–3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-4" hidden>
+          <p class="gloss-def">Total Addressable, Serviceable Available, and Serviceable Obtainable Market — nested estimates of market size from broadest to what you can realistically capture.</p>
+          <p class="gloss-eg"><strong>Example:</strong> TAM: all US restaurants. SAM: Midwest independents. SOM: 200 you can reach in year one.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="pitch deck a short slide presentation (usually 10–12 slides) that tells your startup's story to investors or judges. problem, solution, market, traction, team, ask — the classic sequoia structure.">
-        <h4>Pitch Deck<span class="gloss-phase">Phase 1–3</span></h4>
-        <p class="gloss-def">A short slide presentation (usually 10–12 slides) that tells your startup's story to investors or judges.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Problem, solution, market, traction, team, ask — the classic Sequoia structure.</p>
+      <div class="gloss-term" data-search="pitch deck a short slide presentation (usually 10–12 slides) that tells your startup's story to investors or judges. problem, solution, market, traction, team, ask — the classic sequoia structure." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-5" onclick="toggleGloss(this)">
+          <span class="gloss-name">Pitch Deck</span>
+          <span class="gloss-phase">Phase 1–3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-5" hidden>
+          <p class="gloss-def">A short slide presentation (usually 10–12 slides) that tells your startup's story to investors or judges.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Problem, solution, market, traction, team, ask — the classic Sequoia structure.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="traction measurable evidence that your venture is working — users, revenue, growth, or engagement. going from 0 to 1,000 weekly active users in three months is traction.">
-        <h4>Traction<span class="gloss-phase">Phase 1–3</span></h4>
-        <p class="gloss-def">Measurable evidence that your venture is working — users, revenue, growth, or engagement.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Going from 0 to 1,000 weekly active users in three months is traction.</p>
+      <div class="gloss-term" data-search="traction measurable evidence that your venture is working — users, revenue, growth, or engagement. going from 0 to 1,000 weekly active users in three months is traction." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-6" onclick="toggleGloss(this)">
+          <span class="gloss-name">Traction</span>
+          <span class="gloss-phase">Phase 1–3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-6" hidden>
+          <p class="gloss-def">Measurable evidence that your venture is working — users, revenue, growth, or engagement.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Going from 0 to 1,000 weekly active users in three months is traction.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="runway how many months your company can operate before it runs out of cash at its current burn rate. $120k in the bank and $10k/month net burn equals 12 months of runway.">
-        <h4>Runway<span class="gloss-phase">All phases</span></h4>
-        <p class="gloss-def">How many months your company can operate before it runs out of cash at its current burn rate.</p>
-        <p class="gloss-eg"><strong>Example:</strong> $120K in the bank and $10K/month net burn equals 12 months of runway.</p>
+      <div class="gloss-term" data-search="runway how many months your company can operate before it runs out of cash at its current burn rate. $120k in the bank and $10k/month net burn equals 12 months of runway." data-cat="Metrics & Money">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-7" onclick="toggleGloss(this)">
+          <span class="gloss-name">Runway</span>
+          <span class="gloss-phase">All phases</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-7" hidden>
+          <p class="gloss-def">How many months your company can operate before it runs out of cash at its current burn rate.</p>
+          <p class="gloss-eg"><strong>Example:</strong> $120K in the bank and $10K/month net burn equals 12 months of runway.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="burn rate the rate at which a company spends its cash reserves, usually expressed per month. spending $30k and earning $10k in a month means a net burn rate of $20k.">
-        <h4>Burn Rate<span class="gloss-phase">Phase 3–4</span></h4>
-        <p class="gloss-def">The rate at which a company spends its cash reserves, usually expressed per month.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Spending $30K and earning $10K in a month means a net burn rate of $20K.</p>
+      <div class="gloss-term" data-search="burn rate the rate at which a company spends its cash reserves, usually expressed per month. spending $30k and earning $10k in a month means a net burn rate of $20k." data-cat="Metrics & Money">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-8" onclick="toggleGloss(this)">
+          <span class="gloss-name">Burn Rate</span>
+          <span class="gloss-phase">Phase 3–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-8" hidden>
+          <p class="gloss-def">The rate at which a company spends its cash reserves, usually expressed per month.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Spending $30K and earning $10K in a month means a net burn rate of $20K.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="default alive / default dead whether, on current growth and expenses, you'd reach profitability before running out of money (alive) or not (dead). paul graham urges every founder to know which one they are at all times.">
-        <h4>Default Alive / Default Dead<span class="gloss-phase">Phase 3</span></h4>
-        <p class="gloss-def">Whether, on current growth and expenses, you'd reach profitability before running out of money (alive) or not (dead).</p>
-        <p class="gloss-eg"><strong>Example:</strong> Paul Graham urges every founder to know which one they are at all times.</p>
+      <div class="gloss-term" data-search="default alive / default dead whether, on current growth and expenses, you'd reach profitability before running out of money (alive) or not (dead). paul graham urges every founder to know which one they are at all times." data-cat="Metrics & Money">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-9" onclick="toggleGloss(this)">
+          <span class="gloss-name">Default Alive / Default Dead</span>
+          <span class="gloss-phase">Phase 3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-9" hidden>
+          <p class="gloss-def">Whether, on current growth and expenses, you'd reach profitability before running out of money (alive) or not (dead).</p>
+          <p class="gloss-eg"><strong>Example:</strong> Paul Graham urges every founder to know which one they are at all times.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="bootstrapping building a company using personal savings and revenue rather than outside investment. mailchimp grew to a billion-dollar business without ever taking venture capital.">
-        <h4>Bootstrapping<span class="gloss-phase">All phases</span></h4>
-        <p class="gloss-def">Building a company using personal savings and revenue rather than outside investment.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Mailchimp grew to a billion-dollar business without ever taking venture capital.</p>
+      <div class="gloss-term" data-search="bootstrapping building a company using personal savings and revenue rather than outside investment. mailchimp grew to a billion-dollar business without ever taking venture capital." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-10" onclick="toggleGloss(this)">
+          <span class="gloss-name">Bootstrapping</span>
+          <span class="gloss-phase">All phases</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-10" hidden>
+          <p class="gloss-def">Building a company using personal savings and revenue rather than outside investment.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Mailchimp grew to a billion-dollar business without ever taking venture capital.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="pre-seed / seed the earliest formal funding rounds — pre-seed gets you to a prototype, seed gets you to product-market fit. a $500k pre-seed round to build the product and hire two engineers.">
-        <h4>Pre-Seed / Seed<span class="gloss-phase">Phase 3</span></h4>
-        <p class="gloss-def">The earliest formal funding rounds — pre-seed gets you to a prototype, seed gets you to product-market fit.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A $500K pre-seed round to build the product and hire two engineers.</p>
+      <div class="gloss-term" data-search="pre-seed / seed the earliest formal funding rounds — pre-seed gets you to a prototype, seed gets you to product-market fit. a $500k pre-seed round to build the product and hire two engineers." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-11" onclick="toggleGloss(this)">
+          <span class="gloss-name">Pre-Seed / Seed</span>
+          <span class="gloss-phase">Phase 3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-11" hidden>
+          <p class="gloss-def">The earliest formal funding rounds — pre-seed gets you to a prototype, seed gets you to product-market fit.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A $500K pre-seed round to build the product and hire two engineers.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="series a / b / c progressively larger venture rounds that fund scaling after product-market fit is established. a $10m series a to expand sales and enter new markets.">
-        <h4>Series A / B / C<span class="gloss-phase">Phase 4</span></h4>
-        <p class="gloss-def">Progressively larger venture rounds that fund scaling after product-market fit is established.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A $10M Series A to expand sales and enter new markets.</p>
+      <div class="gloss-term" data-search="series a / b / c progressively larger venture rounds that fund scaling after product-market fit is established. a $10m series a to expand sales and enter new markets." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-12" onclick="toggleGloss(this)">
+          <span class="gloss-name">Series A / B / C</span>
+          <span class="gloss-phase">Phase 4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-12" hidden>
+          <p class="gloss-def">Progressively larger venture rounds that fund scaling after product-market fit is established.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A $10M Series A to expand sales and enter new markets.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="angel investor an individual who invests their own money in early-stage startups, often the first outside check. a successful local founder writing a $25k angel check into a student venture.">
-        <h4>Angel Investor<span class="gloss-phase">Phase 3</span></h4>
-        <p class="gloss-def">An individual who invests their own money in early-stage startups, often the first outside check.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A successful local founder writing a $25K angel check into a student venture.</p>
+      <div class="gloss-term" data-search="angel investor an individual who invests their own money in early-stage startups, often the first outside check. a successful local founder writing a $25k angel check into a student venture." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-13" onclick="toggleGloss(this)">
+          <span class="gloss-name">Angel Investor</span>
+          <span class="gloss-phase">Phase 3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-13" hidden>
+          <p class="gloss-def">An individual who invests their own money in early-stage startups, often the first outside check.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A successful local founder writing a $25K angel check into a student venture.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="venture capital (vc) professionally managed funds that invest in high-growth startups in exchange for equity. redbud vc investing in a pre-seed missouri startup.">
-        <h4>Venture Capital (VC)<span class="gloss-phase">Phase 3–4</span></h4>
-        <p class="gloss-def">Professionally managed funds that invest in high-growth startups in exchange for equity.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Redbud VC investing in a pre-seed Missouri startup.</p>
+      <div class="gloss-term" data-search="venture capital (vc) professionally managed funds that invest in high-growth startups in exchange for equity. redbud vc investing in a pre-seed missouri startup." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-14" onclick="toggleGloss(this)">
+          <span class="gloss-name">Venture Capital (VC)</span>
+          <span class="gloss-phase">Phase 3–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-14" hidden>
+          <p class="gloss-def">Professionally managed funds that invest in high-growth startups in exchange for equity.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Redbud VC investing in a pre-seed Missouri startup.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="equity ownership in a company, expressed as shares or a percentage. giving a co-founder 50% equity means they own half the company.">
-        <h4>Equity<span class="gloss-phase">All phases</span></h4>
-        <p class="gloss-def">Ownership in a company, expressed as shares or a percentage.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Giving a co-founder 50% equity means they own half the company.</p>
+      <div class="gloss-term" data-search="equity ownership in a company, expressed as shares or a percentage. giving a co-founder 50% equity means they own half the company." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-15" onclick="toggleGloss(this)">
+          <span class="gloss-name">Equity</span>
+          <span class="gloss-phase">All phases</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-15" hidden>
+          <p class="gloss-def">Ownership in a company, expressed as shares or a percentage.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Giving a co-founder 50% equity means they own half the company.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="dilution the reduction in existing owners' percentage stake when new shares are issued, typically during fundraising. raising a round that issues 20% new shares dilutes every prior owner proportionally.">
-        <h4>Dilution<span class="gloss-phase">Phase 3–4</span></h4>
-        <p class="gloss-def">The reduction in existing owners' percentage stake when new shares are issued, typically during fundraising.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Raising a round that issues 20% new shares dilutes every prior owner proportionally.</p>
+      <div class="gloss-term" data-search="dilution the reduction in existing owners' percentage stake when new shares are issued, typically during fundraising. raising a round that issues 20% new shares dilutes every prior owner proportionally." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-16" onclick="toggleGloss(this)">
+          <span class="gloss-name">Dilution</span>
+          <span class="gloss-phase">Phase 3–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-16" hidden>
+          <p class="gloss-def">The reduction in existing owners' percentage stake when new shares are issued, typically during fundraising.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Raising a round that issues 20% new shares dilutes every prior owner proportionally.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="cap table a record of who owns what in the company — founders, investors, and option holders. after a seed round, the cap table shows founders at 70%, investors at 20%, option pool at 10%.">
-        <h4>Cap Table<span class="gloss-phase">Phase 3–4</span></h4>
-        <p class="gloss-def">A record of who owns what in the company — founders, investors, and option holders.</p>
-        <p class="gloss-eg"><strong>Example:</strong> After a seed round, the cap table shows founders at 70%, investors at 20%, option pool at 10%.</p>
+      <div class="gloss-term" data-search="cap table a record of who owns what in the company — founders, investors, and option holders. after a seed round, the cap table shows founders at 70%, investors at 20%, option pool at 10%." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-17" onclick="toggleGloss(this)">
+          <span class="gloss-name">Cap Table</span>
+          <span class="gloss-phase">Phase 3–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-17" hidden>
+          <p class="gloss-def">A record of who owns what in the company — founders, investors, and option holders.</p>
+          <p class="gloss-eg"><strong>Example:</strong> After a seed round, the cap table shows founders at 70%, investors at 20%, option pool at 10%.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="safe simple agreement for future equity — a common instrument to raise early money that converts to shares in a later round. y combinator companies often raise on a safe before a priced round.">
-        <h4>SAFE<span class="gloss-phase">Phase 3</span></h4>
-        <p class="gloss-def">Simple Agreement for Future Equity — a common instrument to raise early money that converts to shares in a later round.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Y Combinator companies often raise on a SAFE before a priced round.</p>
+      <div class="gloss-term" data-search="safe simple agreement for future equity — a common instrument to raise early money that converts to shares in a later round. y combinator companies often raise on a safe before a priced round." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-18" onclick="toggleGloss(this)">
+          <span class="gloss-name">SAFE</span>
+          <span class="gloss-phase">Phase 3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-18" hidden>
+          <p class="gloss-def">Simple Agreement for Future Equity — a common instrument to raise early money that converts to shares in a later round.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Y Combinator companies often raise on a SAFE before a priced round.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="convertible note short-term debt that converts into equity at a later financing, often with a discount or valuation cap. a $100k note converting to equity at the next round with a 20% discount.">
-        <h4>Convertible Note<span class="gloss-phase">Phase 3</span></h4>
-        <p class="gloss-def">Short-term debt that converts into equity at a later financing, often with a discount or valuation cap.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A $100K note converting to equity at the next round with a 20% discount.</p>
+      <div class="gloss-term" data-search="convertible note short-term debt that converts into equity at a later financing, often with a discount or valuation cap. a $100k note converting to equity at the next round with a 20% discount." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-19" onclick="toggleGloss(this)">
+          <span class="gloss-name">Convertible Note</span>
+          <span class="gloss-phase">Phase 3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-19" hidden>
+          <p class="gloss-def">Short-term debt that converts into equity at a later financing, often with a discount or valuation cap.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A $100K note converting to equity at the next round with a 20% discount.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="valuation the estimated worth of a company, used to determine how much equity an investment buys. a $1m investment at a $5m pre-money valuation buys roughly 17%.">
-        <h4>Valuation<span class="gloss-phase">Phase 3–4</span></h4>
-        <p class="gloss-def">The estimated worth of a company, used to determine how much equity an investment buys.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A $1M investment at a $5M pre-money valuation buys roughly 17%.</p>
+      <div class="gloss-term" data-search="valuation the estimated worth of a company, used to determine how much equity an investment buys. a $1m investment at a $5m pre-money valuation buys roughly 17%." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-20" onclick="toggleGloss(this)">
+          <span class="gloss-name">Valuation</span>
+          <span class="gloss-phase">Phase 3–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-20" hidden>
+          <p class="gloss-def">The estimated worth of a company, used to determine how much equity an investment buys.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A $1M investment at a $5M pre-money valuation buys roughly 17%.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="term sheet a non-binding document outlining the key terms of an investment before formal contracts. a term sheet specifying amount, valuation, board seats, and investor rights.">
-        <h4>Term Sheet<span class="gloss-phase">Phase 3–4</span></h4>
-        <p class="gloss-def">A non-binding document outlining the key terms of an investment before formal contracts.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A term sheet specifying amount, valuation, board seats, and investor rights.</p>
+      <div class="gloss-term" data-search="term sheet a non-binding document outlining the key terms of an investment before formal contracts. a term sheet specifying amount, valuation, board seats, and investor rights." data-cat="Equity & Deal Terms">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-21" onclick="toggleGloss(this)">
+          <span class="gloss-name">Term Sheet</span>
+          <span class="gloss-phase">Phase 3–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-21" hidden>
+          <p class="gloss-def">A non-binding document outlining the key terms of an investment before formal contracts.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A term sheet specifying amount, valuation, board seats, and investor rights.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="unit economics the direct revenues and costs associated with a single unit — one customer or one sale. if a customer pays $100 and costs $40 to serve, your contribution margin is $60.">
-        <h4>Unit Economics<span class="gloss-phase">Phase 2–4</span></h4>
-        <p class="gloss-def">The direct revenues and costs associated with a single unit — one customer or one sale.</p>
-        <p class="gloss-eg"><strong>Example:</strong> If a customer pays $100 and costs $40 to serve, your contribution margin is $60.</p>
+      <div class="gloss-term" data-search="unit economics the direct revenues and costs associated with a single unit — one customer or one sale. if a customer pays $100 and costs $40 to serve, your contribution margin is $60." data-cat="Metrics & Money">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-22" onclick="toggleGloss(this)">
+          <span class="gloss-name">Unit Economics</span>
+          <span class="gloss-phase">Phase 2–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-22" hidden>
+          <p class="gloss-def">The direct revenues and costs associated with a single unit — one customer or one sale.</p>
+          <p class="gloss-eg"><strong>Example:</strong> If a customer pays $100 and costs $40 to serve, your contribution margin is $60.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="ltv / cac lifetime value of a customer versus customer acquisition cost — a core measure of business health. an ltv of $900 against a cac of $300 is a healthy 3:1 ratio.">
-        <h4>LTV / CAC<span class="gloss-phase">Phase 2–4</span></h4>
-        <p class="gloss-def">Lifetime Value of a customer versus Customer Acquisition Cost — a core measure of business health.</p>
-        <p class="gloss-eg"><strong>Example:</strong> An LTV of $900 against a CAC of $300 is a healthy 3:1 ratio.</p>
+      <div class="gloss-term" data-search="ltv / cac lifetime value of a customer versus customer acquisition cost — a core measure of business health. an ltv of $900 against a cac of $300 is a healthy 3:1 ratio." data-cat="Metrics & Money">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-23" onclick="toggleGloss(this)">
+          <span class="gloss-name">LTV / CAC</span>
+          <span class="gloss-phase">Phase 2–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-23" hidden>
+          <p class="gloss-def">Lifetime Value of a customer versus Customer Acquisition Cost — a core measure of business health.</p>
+          <p class="gloss-eg"><strong>Example:</strong> An LTV of $900 against a CAC of $300 is a healthy 3:1 ratio.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="churn the rate at which customers stop using or paying for your product over a period. losing 5 of 100 subscribers in a month is 5% monthly churn.">
-        <h4>Churn<span class="gloss-phase">Phase 2–4</span></h4>
-        <p class="gloss-def">The rate at which customers stop using or paying for your product over a period.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Losing 5 of 100 subscribers in a month is 5% monthly churn.</p>
+      <div class="gloss-term" data-search="churn the rate at which customers stop using or paying for your product over a period. losing 5 of 100 subscribers in a month is 5% monthly churn." data-cat="Metrics & Money">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-24" onclick="toggleGloss(this)">
+          <span class="gloss-name">Churn</span>
+          <span class="gloss-phase">Phase 2–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-24" hidden>
+          <p class="gloss-def">The rate at which customers stop using or paying for your product over a period.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Losing 5 of 100 subscribers in a month is 5% monthly churn.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="go-to-market (gtm) the strategy for reaching customers and delivering your product — channels, pricing, and positioning. a gtm plan that targets campus clubs first, then expands to other universities.">
-        <h4>Go-to-Market (GTM)<span class="gloss-phase">Phase 2–3</span></h4>
-        <p class="gloss-def">The strategy for reaching customers and delivering your product — channels, pricing, and positioning.</p>
-        <p class="gloss-eg"><strong>Example:</strong> A GTM plan that targets campus clubs first, then expands to other universities.</p>
+      <div class="gloss-term" data-search="go-to-market (gtm) the strategy for reaching customers and delivering your product — channels, pricing, and positioning. a gtm plan that targets campus clubs first, then expands to other universities." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-25" onclick="toggleGloss(this)">
+          <span class="gloss-name">Go-to-Market (GTM)</span>
+          <span class="gloss-phase">Phase 2–3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-25" hidden>
+          <p class="gloss-def">The strategy for reaching customers and delivering your product — channels, pricing, and positioning.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A GTM plan that targets campus clubs first, then expands to other universities.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="pivot a structured change in strategy to test a new fundamental hypothesis while keeping what you've learned. slack began as a gaming company before pivoting to its internal chat tool.">
-        <h4>Pivot<span class="gloss-phase">Phase 1–2</span></h4>
-        <p class="gloss-def">A structured change in strategy to test a new fundamental hypothesis while keeping what you've learned.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Slack began as a gaming company before pivoting to its internal chat tool.</p>
+      <div class="gloss-term" data-search="pivot a structured change in strategy to test a new fundamental hypothesis while keeping what you've learned. slack began as a gaming company before pivoting to its internal chat tool." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-26" onclick="toggleGloss(this)">
+          <span class="gloss-name">Pivot</span>
+          <span class="gloss-phase">Phase 1–2</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-26" hidden>
+          <p class="gloss-def">A structured change in strategy to test a new fundamental hypothesis while keeping what you've learned.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Slack began as a gaming company before pivoting to its internal chat tool.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="cohort a group of users or companies grouped by a shared start point, used to analyze behavior over time — also a single class in an accelerator. tracking whether january's signups retain better than december's.">
-        <h4>Cohort<span class="gloss-phase">All phases</span></h4>
-        <p class="gloss-def">A group of users or companies grouped by a shared start point, used to analyze behavior over time — also a single class in an accelerator.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Tracking whether January's signups retain better than December's.</p>
+      <div class="gloss-term" data-search="cohort a group of users or companies grouped by a shared start point, used to analyze behavior over time — also a single class in an accelerator. tracking whether january's signups retain better than december's." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-27" onclick="toggleGloss(this)">
+          <span class="gloss-name">Cohort</span>
+          <span class="gloss-phase">All phases</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-27" hidden>
+          <p class="gloss-def">A group of users or companies grouped by a shared start point, used to analyze behavior over time — also a single class in an accelerator.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Tracking whether January's signups retain better than December's.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="accelerator a fixed-term, cohort-based program offering mentorship, resources, and often capital to speed up startups. y combinator's three-month program ending in a demo day.">
-        <h4>Accelerator<span class="gloss-phase">Phase 1–3</span></h4>
-        <p class="gloss-def">A fixed-term, cohort-based program offering mentorship, resources, and often capital to speed up startups.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Y Combinator's three-month program ending in a demo day.</p>
+      <div class="gloss-term" data-search="accelerator a fixed-term, cohort-based program offering mentorship, resources, and often capital to speed up startups. y combinator's three-month program ending in a demo day." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-28" onclick="toggleGloss(this)">
+          <span class="gloss-name">Accelerator</span>
+          <span class="gloss-phase">Phase 1–3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-28" hidden>
+          <p class="gloss-def">A fixed-term, cohort-based program offering mentorship, resources, and often capital to speed up startups.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Y Combinator's three-month program ending in a demo day.</p>
+        </div>
       </div>
-      <div class="gloss-term" data-search="demo day the event ending an accelerator where startups pitch to a room of investors. presenting your traction to 200 investors at the end of the program.">
-        <h4>Demo Day<span class="gloss-phase">Phase 3</span></h4>
-        <p class="gloss-def">The event ending an accelerator where startups pitch to a room of investors.</p>
-        <p class="gloss-eg"><strong>Example:</strong> Presenting your traction to 200 investors at the end of the program.</p>
+      <div class="gloss-term" data-search="demo day the event ending an accelerator where startups pitch to a room of investors. presenting your traction to 200 investors at the end of the program." data-cat="Funding & Investors">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-29" onclick="toggleGloss(this)">
+          <span class="gloss-name">Demo Day</span>
+          <span class="gloss-phase">Phase 3</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-29" hidden>
+          <p class="gloss-def">The event ending an accelerator where startups pitch to a room of investors.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Presenting your traction to 200 investors at the end of the program.</p>
+        </div>
       </div>
     </div>
+
     <p class="gloss-empty" id="glossEmpty">No terms match your search.</p>
   </div>
 </section>
@@ -2846,7 +3081,12 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© Trulaske College of Business · University of Missouri<span class="footer-updated">Last updated 9 Jun 2026</span></div>
+      <div class="footer-legal">
+        <div class="footer-contact">Center for Entrepreneurship &amp; Innovation · Robert J. Trulaske, Sr. College of Business · University of Missouri · Columbia, MO 65211 · <a href="mailto:cei@missouri.edu">cei@missouri.edu</a> · <a href="tel:+15738826688">573-882-6688</a></div>
+        <div class="footer-eeo">MU is an equal opportunity employer.</div>
+        <div class="footer-copyright">© 2026 Curators of the University of Missouri. All rights reserved. <a href="https://missouri.edu/copyright/" target="_blank" rel="noopener">DMCA and other copyright information</a>. <a href="https://missouri.edu/privacy/" target="_blank" rel="noopener">Privacy policy</a>.</div>
+        <span class="footer-updated">Last updated 17 Jun 2026</span>
+      </div>
       <div class="right">
         <button class="print-btn" onclick="window.print()">⎙ Download / Print Guidebook</button>
         <span>Black &amp; Gold Standard</span>
@@ -3091,12 +3331,16 @@ function answerAssessment(phase) {
 // Initialize the Index results count on load
 if (document.getElementById('resultsCount')) { filterResources(); }
 
+let glossActiveCat = 'all';
+
 function filterGlossary() {
   const q = document.getElementById('glossSearch').value.toLowerCase().trim();
   const terms = document.querySelectorAll('#glossGrid .gloss-term');
   let visible = 0;
   terms.forEach(t => {
-    const show = !q || t.dataset.search.includes(q);
+    const matchText = !q || t.dataset.search.includes(q);
+    const matchCat = glossActiveCat === 'all' || t.dataset.cat === glossActiveCat;
+    const show = matchText && matchCat;
     t.style.display = show ? '' : 'none';
     if (show) visible++;
   });
@@ -3107,6 +3351,24 @@ function filterGlossary() {
   empty.style.display = visible === 0 ? 'block' : 'none';
   count.textContent = visible + (visible === 1 ? ' term' : ' terms');
 }
+
+function filterGlossCat(btn) {
+  glossActiveCat = btn.dataset.cat;
+  document.querySelectorAll('.gloss-chip').forEach(c => {
+    const on = c === btn;
+    c.classList.toggle('active', on);
+    c.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  filterGlossary();
+}
+
+function toggleGloss(btn) {
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+  const panel = document.getElementById(btn.getAttribute('aria-controls'));
+  if (panel) panel.hidden = open;
+}
+
 if (document.getElementById('glossGrid')) { filterGlossary(); }
 
 const STUDIO_PROMPTS = [{"title": "Customer discovery interview script", "text": "I'm building [product] for [target customer]. Write a 12-question customer discovery interview script following The Mom Test principles: ask about past behavior and specific problems, never pitch my idea or ask if they'd buy. Group questions from broad context to specific pain points."}, {"title": "Competitor analysis brief", "text": "Act as a market analyst. For the [industry] space, identify the top 5 competitors to [my product]. For each, summarize their positioning, pricing model, target segment, and one clear weakness I could exploit. Present as a comparison table, then give me the single biggest gap in the market."}, {"title": "Pitch narrative refiner", "text": "Here is my current pitch: [paste]. Rewrite it using the problem-solution-why-now-why-us structure. Make the problem visceral and specific, cut jargon, and lead with the single most compelling number I have. Then flag the weakest claim an investor would challenge."}, {"title": "Go-to-market positioning statement", "text": "Using April Dunford's positioning framework, draft a positioning statement for [product]. Cover: competitive alternatives, unique attributes, the value those enable, the best-fit customer segment, and the market category I should frame myself in. Then suggest one alternative category framing."}, {"title": "Financial model starter", "text": "Act as a startup CFO. Help me build a simple 3-year monthly financial model for [business]. Walk me through the core assumptions to set first (pricing, units sold, CAC, churn, headcount, COGS), then lay out the revenue, expense, and cash-flow sections. Flag the 3 assumptions my outcome is most sensitive to."}, {"title": "Unit economics check", "text": "Here are my numbers: [price, gross margin, CAC, average customer lifespan, monthly churn]. Calculate my LTV, LTV:CAC ratio, and CAC payback period. Tell me whether these are healthy for a [type] business, which lever would improve them most, and what a realistic target for each would be."}, {"title": "First hire job description", "text": "I'm a founder making my first [role] hire for my [stage] startup. Write a job description that's honest about the ambiguity and scrappiness of early-stage work, screens for ownership and adaptability over pedigree, and avoids generic corporate filler. Include 5 interview questions that reveal whether someone thrives without structure."}, {"title": "Customer acquisition channel plan", "text": "My product is [product] for [customer], with a price point of [price]. Brainstorm 8 acquisition channels ranked by fit for my stage and budget. For the top 3, give me a concrete first experiment I could run this week for under [budget], the metric to watch, and what result would tell me to double down or kill it."}, {"title": "Cold outreach email", "text": "Write a cold email to [target persona] to get a [first meeting / pilot / intro]. Keep it under 90 words, lead with a specific observation about their world (not about me), make one clear ask, and sound like a human, not a sales sequence. Then give me two subject-line options and one short follow-up to send if they don't reply."}, {"title": "Weekly priorities planner", "text": "I'm a solo founder juggling [list current responsibilities/projects]. My single most important goal this quarter is [goal]. Help me cut the list down: tell me what to focus on this week, what to deliberately ignore for now, and the one task that would most move me toward the goal. Be opinionated."}];
