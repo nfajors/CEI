@@ -9,6 +9,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-YLCMBLMEYF');
+  // Safe event helper — no-ops if gtag is blocked or unavailable
+  function track(name, params) {
+    try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {}
+  }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Entrepreneur's Guidebook · Trulaske CEI</title>
@@ -3365,6 +3369,11 @@ const PHASE_TITLES = {
 function toggleHowto(btn) {
   const expanded = btn.getAttribute('aria-expanded') === 'true';
   const answer = btn.nextElementSibling;
+  if (!expanded) {
+    const section = btn.closest('section');
+    const q = (btn.querySelector('.howto-title') || btn).textContent.replace(/\s+/g, ' ').trim().slice(0, 80);
+    track('playbook_open', { area: section ? section.id : 'unknown', question: q });
+  }
   btn.setAttribute('aria-expanded', String(!expanded));
   if (expanded) {
     answer.classList.remove('open');
@@ -3374,6 +3383,7 @@ function toggleHowto(btn) {
 }
 
 function scrollToSection(id) {
+  track('nav_section', { section: id });
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -3408,6 +3418,8 @@ function mobileFindPhase() {
 
 function copyPrompt(btn) {
   const text = btn.parentElement.querySelector('pre').textContent;
+  const title = btn.parentElement.querySelector('h4');
+  track('prompt_copy', { source: 'library', prompt: title ? title.textContent.trim() : 'unknown' });
   navigator.clipboard.writeText(text).then(() => {
     const original = btn.textContent;
     btn.textContent = 'Copied ✓';
@@ -3495,6 +3507,7 @@ function clearFilters() {
 
 // Modal
 function openAssessment() {
+  track('find_my_phase_open');
   const modal = document.getElementById('assessmentModal');
   modal.classList.add('open');
   const closeBtn = modal.querySelector('.modal-close');
@@ -3518,6 +3531,7 @@ function closeAssessment(e) {
   }, 300);
 }
 function answerAssessment(phase) {
+  track('find_my_phase_result', { phase: 'Phase ' + phase });
   const t = PHASE_TITLES[phase];
   document.getElementById('modalContent').innerHTML = `
     <div class="modal-result">
@@ -3559,6 +3573,37 @@ function answerAssessment(phase) {
 // Initialize the Index results count on load
 if (document.getElementById('resultsCount')) { filterResources(); }
 
+// Resource Index — track filters (on change) and search (debounced)
+(function initResourceTracking() {
+  const phase = document.getElementById('phaseFilter');
+  const tag = document.getElementById('tagFilter');
+  const search = document.getElementById('searchInput');
+  if (phase) phase.addEventListener('change', () => { if (phase.value !== 'all') track('resource_filter', { type: 'phase', value: phase.value }); });
+  if (tag) tag.addEventListener('change', () => { if (tag.value !== 'all') track('resource_filter', { type: 'tag', value: tag.value }); });
+  if (search) {
+    let t;
+    search.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const q = search.value.trim();
+        if (q.length >= 2) track('resource_search', { query: q.toLowerCase().slice(0, 60) });
+      }, 1000);
+    });
+  }
+})();
+
+// Outbound resource link clicks — capture which external resources students pursue
+(function initOutboundTracking() {
+  document.querySelectorAll('a[href^="http"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const label = (a.querySelector('h3, h4, .comp-name, .rw-text h3') || a).textContent.trim().slice(0, 80);
+      let host = '';
+      try { host = new URL(a.href).hostname.replace('www.', ''); } catch (e) {}
+      track('outbound_click', { link_text: label || host, domain: host });
+    });
+  });
+})();
+
 let glossActiveCat = 'all';
 
 function filterGlossary() {
@@ -3582,6 +3627,7 @@ function filterGlossary() {
 
 function filterGlossCat(btn) {
   glossActiveCat = btn.dataset.cat;
+  track('glossary_filter', { category: btn.dataset.cat });
   document.querySelectorAll('.gloss-chip').forEach(c => {
     const on = c === btn;
     c.classList.toggle('active', on);
@@ -3590,8 +3636,26 @@ function filterGlossCat(btn) {
   filterGlossary();
 }
 
+// Debounced glossary search tracking — fires after typing pauses, only for real queries
+let glossSearchTimer;
+(function initGlossSearchTracking() {
+  const input = document.getElementById('glossSearch');
+  if (!input) return;
+  input.addEventListener('input', () => {
+    clearTimeout(glossSearchTimer);
+    glossSearchTimer = setTimeout(() => {
+      const q = input.value.trim();
+      if (q.length >= 2) track('glossary_search', { query: q.toLowerCase().slice(0, 60) });
+    }, 1000);
+  });
+})();
+
 function toggleGloss(btn) {
   const open = btn.getAttribute('aria-expanded') === 'true';
+  if (!open) {
+    const name = btn.querySelector('.gloss-name');
+    track('glossary_term_open', { term: name ? name.textContent.trim() : 'unknown' });
+  }
   btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   const panel = document.getElementById(btn.getAttribute('aria-controls'));
   if (panel) panel.hidden = open;
@@ -3646,6 +3710,9 @@ function updateStudio() {
 function copyStudio() {
   const text = buildStudioText();
   const btn = document.getElementById('studioCopy');
+  const sel = document.getElementById('studioPrompt');
+  const promptName = (sel && STUDIO_PROMPTS[sel.value]) ? STUDIO_PROMPTS[sel.value].title : 'unknown';
+  track('prompt_copy', { source: 'studio', prompt: promptName });
   navigator.clipboard.writeText(text).then(() => {
     const orig = btn.textContent;
     btn.textContent = 'Copied ✓';
