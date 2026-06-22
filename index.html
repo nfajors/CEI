@@ -212,6 +212,12 @@ img { display: block; max-width: 100%; }
 @media (min-width: 768px) { .phase-overview .track { display: block; } }
 .phase-overview-grid { display: grid; grid-template-columns: 1fr; gap: 16px; position: relative; }
 @media (min-width: 768px) { .phase-overview-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+/* Cross-cutting "throughout the journey" band */
+.crosscut { margin: 48px 0 0; padding: 24px 28px; background: var(--black); border-left: 4px solid var(--gold); }
+.crosscut-label { font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+.crosscut-lede { font-size: 14px; line-height: 1.6; color: #d4d4d4; max-width: 46rem; margin-bottom: 16px; }
+.crosscut-items { display: flex; flex-wrap: wrap; gap: 10px; }
+.crosscut-item { font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--black); background: var(--gold); padding: 6px 14px; }
 .phase-overview-item { text-align: left; cursor: pointer; display: flex; flex-direction: row; align-items: center; gap: 16px; padding: 8px 0; }
 @media (min-width: 768px) { .phase-overview-item { flex-direction: column; align-items: flex-start; gap: 0; padding: 0; } }
 .po-num { display: flex; align-items: center; gap: 16px; margin-bottom: 0; }
@@ -607,35 +613,47 @@ html { scroll-behavior: smooth; }
   <a href="#phase-1" class="phase-overview-item">
     <div class="po-num"><div>1</div></div>
     <div class="po-text">
-    <h3>Launch &amp; Validation</h3>
-    <p>Test the idea against reality</p>
+    <h3>Opportunity Discovery</h3>
+    <p>Find a problem worth solving</p>
     </div>
   </a>
 
   <a href="#phase-2" class="phase-overview-item">
     <div class="po-num"><div>2</div></div>
     <div class="po-text">
-    <h3>Network &amp; Connect</h3>
-    <p>Build the relationships that compound</p>
+    <h3>Customer &amp; Model Validation</h3>
+    <p>Prove people want it and will pay</p>
     </div>
   </a>
 
   <a href="#phase-3" class="phase-overview-item">
     <div class="po-num"><div>3</div></div>
     <div class="po-text">
-    <h3>Early Growth &amp; Funding</h3>
-    <p>Turn traction into capital</p>
+    <h3>Venture Launch</h3>
+    <p>Stand it up legally and operationally</p>
     </div>
   </a>
 
   <a href="#phase-4" class="phase-overview-item">
     <div class="po-num"><div>4</div></div>
     <div class="po-text">
-    <h3>Scale &amp; Expansion</h3>
-    <p>Compete on the national stage</p>
+    <h3>Growth &amp; Scaling</h3>
+    <p>Grow responsibly and sustainably</p>
     </div>
   </a>
 </div>
+    </div>
+
+    <div class="crosscut">
+      <div class="crosscut-label">Throughout the journey</div>
+      <p class="crosscut-lede">Some work isn't a phase you finish — it runs across all four. Keep these going from day one:</p>
+      <div class="crosscut-items">
+        <span class="crosscut-item">Networking</span>
+        <span class="crosscut-item">Mentoring</span>
+        <span class="crosscut-item">AI as a force multiplier</span>
+        <span class="crosscut-item">Ethics &amp; responsibility</span>
+        <span class="crosscut-item">Reflection</span>
+      </div>
     </div>
 
     <div class="recent-win">
@@ -660,12 +678,12 @@ html { scroll-behavior: smooth; }
             <div class="phase-num">01</div>
             <div class="vrule"></div>
           </div>
-          <h3>Launch &amp; Validation</h3>
-          <p class="phase-sub">Test the idea against reality</p>
-          <p class="phase-desc">Begin with the campus resources designed to help you pressure-test your concept, find your first users, and turn an idea into something investable.</p>
+          <h3>Opportunity Discovery</h3>
+          <p class="phase-sub">Find a problem worth solving</p>
+          <p class="phase-desc">Every venture starts with a problem worth pursuing. Use Mizzou's earliest-stage resources to explore ideas, talk to people, and pressure-test whether the opportunity is real before you build anything.</p>
           <div class="next-steps">
             <div class="next-steps-label">Next Steps</div>
-            <ul><li><span class="chev">›</span>Visit the Griggs Innovators Nexus in person</li><li><span class="chev">›</span>Apply to Entrepreneurship Quest (EQ)</li><li><span class="chev">›</span>Submit your idea to a campus pitch competition</li></ul>
+            <ul><li><span class="chev">›</span>Visit the Griggs Innovators Nexus in person</li><li><span class="chev">›</span>Apply to Entrepreneurship Quest (EQ)</li><li><span class="chev">›</span>Start the Founder's Reading List</li></ul>
           </div>
         </div>
       </div>
@@ -791,7 +809,7 @@ html { scroll-behavior: smooth; }
           <span class="ext">↗</span>
         </div>
         <h4>The Founder&#x27;s Reading List</h4>
-        <p>For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander, former MU entrepreneurship professor and NYT bestselling author. Then: Disciplined Entrepreneurship (Aulet), The Lean Startup (Ries), Zero to One (Thiel), Founders at Work (Livingston), The Hard Thing About Hard Things (Horowitz), Crossing the Chasm (Moore), Hooked (Eyal).</p>
+        <p>For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander, former MU entrepreneurship professor and NYT bestselling author. Then: Talking to Humans (Constable) for customer discovery, Business Model Generation (Osterwalder &amp; Pigneur) for designing the model, Disciplined Entrepreneurship (Aulet), The Lean Startup (Ries), Zero to One (Thiel), Founders at Work (Livingston), The Hard Thing About Hard Things (Horowitz), Crossing the Chasm (Moore), Hooked (Eyal).</p>
       </a>
     </div>
       </div>
@@ -804,12 +822,12 @@ html { scroll-behavior: smooth; }
             <div class="phase-num">02</div>
             <div class="vrule"></div>
           </div>
-          <h3>Network &amp; Connect</h3>
-          <p class="phase-sub">Build the relationships that compound</p>
-          <p class="phase-desc">Successful founders are built by the people around them. This phase is about getting in the room — with mentors, peers, alumni, and the local ecosystem that will carry your venture forward.</p>
+          <h3>Customer &amp; Model Validation</h3>
+          <p class="phase-sub">Prove people want it and will pay</p>
+          <p class="phase-desc">Before you build, prove the problem is real and the business can work. Test demand with real customers, sharpen your model, and use the programs designed to validate — not just cheerlead — your idea.</p>
           <div class="next-steps">
             <div class="next-steps-label">Next Steps</div>
-            <ul><li><span class="chev">›</span>Join the Collegiate Entrepreneurs&#x27; Organization (CEO)</li><li><span class="chev">›</span>Attend 1 Million Cups every Wednesday morning</li><li><span class="chev">›</span>Schedule three coffees with Trulaske alumni founders</li></ul>
+            <ul><li><span class="chev">›</span>Run customer-discovery interviews (NSF I-Corps teaches the method)</li><li><span class="chev">›</span>Join the Entrepreneurship Alliance</li><li><span class="chev">›</span>Enter a pitch competition to test your story</li></ul>
           </div>
         </div>
       </div>
@@ -912,12 +930,12 @@ html { scroll-behavior: smooth; }
             <div class="phase-num">03</div>
             <div class="vrule"></div>
           </div>
-          <h3>Early Growth &amp; Funding</h3>
-          <p class="phase-sub">Turn traction into capital</p>
-          <p class="phase-desc">Once you have evidence the market wants what you&#x27;re building, the next phase is securing the capital and structure to grow with it. Mid-Missouri has a deeper funding stack than most assume.</p>
+          <h3>Venture Launch</h3>
+          <p class="phase-sub">Stand it up legally and operationally</p>
+          <p class="phase-desc">With demand validated, it's time to formally launch — form the entity, secure early capital, and put the operational foundation in place. Mid-Missouri has a deeper funding and support stack than most assume.</p>
           <div class="next-steps">
             <div class="next-steps-label">Next Steps</div>
-            <ul><li><span class="chev">›</span>Pitch to Allen Angel Fund or Centennial Investors</li><li><span class="chev">›</span>Apply for an MTC investment</li><li><span class="chev">›</span>Move into the Missouri Innovation Center</li></ul>
+            <ul><li><span class="chev">›</span>Pitch to Allen Angel Fund or Centennial Investors</li><li><span class="chev">›</span>Apply for an MTC investment or a grant</li><li><span class="chev">›</span>Move into the Missouri Innovation Center</li></ul>
           </div>
         </div>
       </div>
@@ -1037,9 +1055,9 @@ html { scroll-behavior: smooth; }
             <div class="phase-num">04</div>
             <div class="vrule"></div>
           </div>
-          <h3>Scale &amp; Expansion</h3>
-          <p class="phase-sub">Compete on the national stage</p>
-          <p class="phase-desc">When the local resources have done their job, the question becomes: where do you go next? National accelerators, growth-stage capital, and the platforms that put your venture in front of global investors.</p>
+          <h3>Growth &amp; Scaling</h3>
+          <p class="phase-sub">Grow responsibly and sustainably</p>
+          <p class="phase-desc">With a working venture, the question becomes how to grow it well. National accelerators, growth-stage capital, and the platforms that put your venture in front of global investors — pursued at a pace your business can sustain.</p>
           <div class="next-steps">
             <div class="next-steps-label">Next Steps</div>
             <ul><li><span class="chev">›</span>Apply to Y Combinator or Techstars</li><li><span class="chev">›</span>List your raise on AngelList</li><li><span class="chev">›</span>Begin conversations with growth-stage funds</li></ul>
@@ -1589,7 +1607,7 @@ html { scroll-behavior: smooth; }
         <input type="text" id="searchInput" aria-label="Search resources by name" placeholder="Search resources…" oninput="filterResources()" />
       </div>
       <select class="filter-select" id="phaseFilter" aria-label="Filter resources by phase" onchange="filterResources()">
-        <option value="all">All Phases</option><option value="1">Phase 1 · Launch &amp; Validation</option><option value="2">Phase 2 · Network &amp; Connect</option><option value="3">Phase 3 · Early Growth &amp; Funding</option><option value="4">Phase 4 · Scale &amp; Expansion</option>
+        <option value="all">All Phases</option><option value="1">Phase 1 · Opportunity Discovery</option><option value="2">Phase 2 · Customer &amp; Model Validation</option><option value="3">Phase 3 · Venture Launch</option><option value="4">Phase 4 · Growth &amp; Scaling</option><option value="throughout">Throughout the Journey</option>
       </select>
       <select class="filter-select" id="tagFilter" aria-label="Filter resources by type" onchange="filterResources()">
         <option value="all">All Types</option><option value="Accelerator">Accelerator</option><option value="Angel">Angel</option><option value="Community">Community</option><option value="Competition">Competition</option><option value="Core">Core</option><option value="Event">Event</option><option value="Federal">Federal</option><option value="Grant">Grant</option><option value="Funding">Funding</option><option value="Incubator">Incubator</option><option value="Investment">Investment</option><option value="Mentorship">Mentorship</option><option value="Networking">Networking</option><option value="Platform">Platform</option><option value="Program">Program</option><option value="Reading">Reading</option><option value="Research">Research</option><option value="Retail">Retail</option><option value="State">State</option><option value="Student Org">Student Org</option><option value="Student Fund">Student Fund</option><option value="Support">Support</option><option value="VC">VC</option>
@@ -1626,19 +1644,19 @@ html { scroll-behavior: smooth; }
       <p>Intensive accelerator program offering courses, mentorship, networking, and $40,000 in prize money for student-led ventures.</p>
     </a>
     
-    <a href="https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance" target="_blank" rel="noopener" class="resource-card master" data-tag="Accelerator" data-phase="1" data-search="entrepreneurship alliance cei flagship eight-week accelerator student founders idea to launch mentorship seed funding pitch ea accelerator">
+    <a href="https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance" target="_blank" rel="noopener" class="resource-card master" data-tag="Accelerator" data-phase="2" data-search="entrepreneurship alliance cei flagship eight-week accelerator student founders idea to launch mentorship seed funding pitch ea accelerator">
       <div class="rc-top">
         <span class="tag">Accelerator</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>Entrepreneurship Alliance</h3>
       <p>CEI's flagship eight-week accelerator taking student founders from idea to launch with mentorship and a chance to pitch for seed funding.</p>
     </a>
     
-    <a href="https://research.missouri.edu/griggs-innovators-nexus/technology-venture-studio-redbud-vc" target="_blank" rel="noopener" class="resource-card master" data-tag="Accelerator" data-phase="1" data-search="technology venture studio redbud vc griggs innovators nexus develops student entrepreneurs into tech founders with knowledge networks and capital from world-class mentors education mentorship financing equipmentshare scale vc kelsey raymond accelerator studio">
+    <a href="https://research.missouri.edu/griggs-innovators-nexus/technology-venture-studio-redbud-vc" target="_blank" rel="noopener" class="resource-card master" data-tag="Accelerator" data-phase="2" data-search="technology venture studio redbud vc griggs innovators nexus develops student entrepreneurs into tech founders with knowledge networks and capital from world-class mentors education mentorship financing equipmentshare scale vc kelsey raymond accelerator studio">
       <div class="rc-top">
         <span class="tag">Accelerator</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>Technology Venture Studio by Redbud VC</h3>
       <p>Griggs Innovators Nexus studio developing student founders with mentorship, networks, and capital. Sponsored by Redbud VC and EquipmentShare.</p>
@@ -1653,55 +1671,55 @@ html { scroll-behavior: smooth; }
       <p>Free legal services for student startups — incorporation, IP, and contracts.</p>
     </a>
     
-    <a href="https://columbiaredi.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Research" data-phase="1" data-search="redi regional economic development inc. — research, economic development, and innovation support for columbia entrepreneurs. research">
+    <a href="https://columbiaredi.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Research" data-phase="all" data-search="redi regional economic development inc. — research, economic development, and innovation support for columbia entrepreneurs. research">
       <div class="rc-top">
         <span class="tag">Research</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>REDI</h3>
       <p>Regional Economic Development Inc. — research, economic development, and innovation support for Columbia entrepreneurs.</p>
     </a>
     
-    <a href="https://www.missouriinnovation.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Incubator" data-phase="1" data-search="missouri innovation center (mic) business incubator supporting high-growth startups in mid-missouri. incubator">
+    <a href="https://www.missouriinnovation.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Incubator" data-phase="3" data-search="missouri innovation center (mic) business incubator supporting high-growth startups in mid-missouri. incubator">
       <div class="rc-top">
         <span class="tag">Incubator</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 3</span>
       </div>
       <h3>Missouri Innovation Center (MIC)</h3>
       <p>Business incubator supporting high-growth startups in mid-Missouri.</p>
     </a>
     
-    <a href="https://sbdc.missouri.edu/" target="_blank" rel="noopener" class="resource-card master" data-tag="Support" data-phase="1" data-search="missouri sbdc free consulting, training, and resources for small businesses and startups across missouri. support">
+    <a href="https://sbdc.missouri.edu/" target="_blank" rel="noopener" class="resource-card master" data-tag="Support" data-phase="2" data-search="missouri sbdc free consulting, training, and resources for small businesses and startups across missouri. support">
       <div class="rc-top">
         <span class="tag">Support</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>Missouri SBDC</h3>
       <p>Free consulting, training, and resources for small businesses and startups across Missouri.</p>
     </a>
     
-    <a href="https://codefiworks.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Support" data-phase="1" data-search="codefi codefiworks missouri nonprofit foundation rural innovation startup resources ai training software development grant funding legal services startup weekend partner not mizzou affiliated support">
+    <a href="https://codefiworks.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Support" data-phase="2" data-search="codefi codefiworks missouri nonprofit foundation rural innovation startup resources ai training software development grant funding legal services startup weekend partner not mizzou affiliated support">
       <div class="rc-top">
         <span class="tag">Support</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>Codefi</h3>
       <p>Missouri nonprofit supporting founders with startup resources, AI training, software development, and grant funding.</p>
     </a>
     
-    <a href="https://www.mosw.io/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="1" data-search="missouri startup weekend 54-hour event where developers, designers, and business builders form teams and launch startups in a weekend. event">
+    <a href="https://www.mosw.io/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="all" data-search="missouri startup weekend 54-hour event where developers, designers, and business builders form teams and launch startups in a weekend. event">
       <div class="rc-top">
         <span class="tag">Event</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Missouri Startup Weekend</h3>
       <p>54-hour event where developers, designers, and business builders form teams and launch startups in a weekend.</p>
     </a>
     
-    <a href="https://airtable.com/appKJ8iWWwDoskkYY/shrh76kDXji6efx3r" target="_blank" rel="noopener" class="resource-card master" data-tag="Competition" data-phase="1" data-search="pitch competitions active calendar of mizzou and regional pitch competitions with cash prizes and funding opportunities. competition">
+    <a href="https://airtable.com/appKJ8iWWwDoskkYY/shrh76kDXji6efx3r" target="_blank" rel="noopener" class="resource-card master" data-tag="Competition" data-phase="2" data-search="pitch competitions active calendar of mizzou and regional pitch competitions with cash prizes and funding opportunities. competition">
       <div class="rc-top">
         <span class="tag">Competition</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>Pitch Competitions</h3>
       <p>Active calendar of Mizzou and regional pitch competitions with cash prizes and funding opportunities.</p>
@@ -1712,93 +1730,93 @@ html { scroll-behavior: smooth; }
         <span class="phase-pill">Phase 1</span>
       </div>
       <h3>The Founder&#x27;s Reading List</h3>
-      <p>For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander, former MU entrepreneurship professor and NYT bestselling author. Then: Disciplined Entrepreneurship (Aulet), The Lean Startup (Ries), Zero to One (Thiel), Founders at Work (Livingston), The Hard Thing About Hard Things (Horowitz), Crossing the Chasm (Moore), Hooked (Eyal).</p>
+      <p>For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander, former MU entrepreneurship professor and NYT bestselling author. Then: Talking to Humans (Constable) for customer discovery, Business Model Generation (Osterwalder &amp; Pigneur) for designing the model, Disciplined Entrepreneurship (Aulet), The Lean Startup (Ries), Zero to One (Thiel), Founders at Work (Livingston), The Hard Thing About Hard Things (Horowitz), Crossing the Chasm (Moore), Hooked (Eyal).</p>
     </a>
     
-    <a href="https://www.mizzoustartups.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Community" data-phase="2" data-search="mizzou startup community online platform connecting mizzou entrepreneurs, alumni, and mentors. community">
+    <a href="https://www.mizzoustartups.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Community" data-phase="all" data-search="mizzou startup community online platform connecting mizzou entrepreneurs, alumni, and mentors. community">
       <div class="rc-top">
         <span class="tag">Community</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Mizzou Startup Community</h3>
       <p>Online platform connecting Mizzou entrepreneurs, alumni, and mentors.</p>
     </a>
-    <a href="https://engage.missouri.edu/feeds?type=club&type_id=35576&tab=about" target="_blank" rel="noopener" class="resource-card master" data-tag="Student Org" data-phase="2" data-search="collegiate entrepreneurs organization ceo only student organization on campus dedicated to entrepreneurs first stop peer network mizzou student org">
+    <a href="https://engage.missouri.edu/feeds?type=club&type_id=35576&tab=about" target="_blank" rel="noopener" class="resource-card master" data-tag="Student Org" data-phase="all" data-search="collegiate entrepreneurs organization ceo only student organization on campus dedicated to entrepreneurs first stop peer network mizzou student org">
       <div class="rc-top">
         <span class="tag">Student Org</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Collegiate Entrepreneurs&#x27; Organization (CEO)</h3>
       <p>The only student organization on campus dedicated to entrepreneurs. The first stop for building your peer network at Mizzou.</p>
     </a>
     
-    <a href="https://creativemornings.com/cities/COU" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="2" data-search="creative mornings columbia monthly breakfast lecture series for columbia&#x27;s creative and entrepreneurial community. event">
+    <a href="https://creativemornings.com/cities/COU" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="all" data-search="creative mornings columbia monthly breakfast lecture series for columbia&#x27;s creative and entrepreneurial community. event">
       <div class="rc-top">
         <span class="tag">Event</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Creative Mornings Columbia</h3>
       <p>Monthly breakfast lecture series for Columbia&#x27;s creative and entrepreneurial community.</p>
     </a>
     
-    <a href="https://www.1millioncups.com/s/account/0014W00002AqQdfQAF/columbia-mo" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="2" data-search="1 million cups columbia weekly gathering where local entrepreneurs present their work to the community and receive feedback. event">
+    <a href="https://www.1millioncups.com/s/account/0014W00002AqQdfQAF/columbia-mo" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="all" data-search="1 million cups columbia weekly gathering where local entrepreneurs present their work to the community and receive feedback. event">
       <div class="rc-top">
         <span class="tag">Event</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>1 Million Cups Columbia</h3>
       <p>Weekly gathering where local entrepreneurs present their work to the community and receive feedback.</p>
     </a>
     
-    <a href="https://www.mosw.io/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="2" data-search="missouri startup weekend 54-hour weekend event where teams form, build, and launch startups in front of judges. event">
+    <a href="https://www.mosw.io/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="all" data-search="missouri startup weekend 54-hour weekend event where teams form, build, and launch startups in front of judges. event">
       <div class="rc-top">
         <span class="tag">Event</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Missouri Startup Weekend</h3>
       <p>54-hour weekend event where teams form, build, and launch startups in front of judges.</p>
     </a>
     
-    <a href="https://columbiaredi.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="2" data-search="redi regional economic development inc. — connects entrepreneurs with the broader columbia business ecosystem. networking">
+    <a href="https://columbiaredi.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="all" data-search="redi regional economic development inc. — connects entrepreneurs with the broader columbia business ecosystem. networking">
       <div class="rc-top">
         <span class="tag">Networking</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>REDI</h3>
       <p>Regional Economic Development Inc. — connects entrepreneurs with the broader Columbia business ecosystem.</p>
     </a>
     
-    <a href="https://www.mosourcelink.com" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="2" data-search="mosourcelink connection to missouri's entire small business support network statewide resource navigator partners networking">
+    <a href="https://www.mosourcelink.com" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="all" data-search="mosourcelink connection to missouri's entire small business support network statewide resource navigator partners networking">
       <div class="rc-top">
         <span class="tag">Networking</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>MOSourceLink</h3>
       <p>Connection to Missouri's entire small business support network across the state.</p>
     </a>
     
-    <a href="https://comochamber.com" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="2" data-search="columbia chamber of commerce local business community and networking hub for columbia-based ventures. networking">
+    <a href="https://comochamber.com" target="_blank" rel="noopener" class="resource-card master" data-tag="Networking" data-phase="all" data-search="columbia chamber of commerce local business community and networking hub for columbia-based ventures. networking">
       <div class="rc-top">
         <span class="tag">Networking</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Columbia Chamber of Commerce</h3>
       <p>Local business community and networking hub for Columbia-based ventures.</p>
     </a>
     
-    <a href="https://www.mainstreetsummit.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="2" data-search="main street summit annual entrepreneurship conference in columbia featuring speakers, panels, and networking. event">
+    <a href="https://www.mainstreetsummit.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="all" data-search="main street summit annual entrepreneurship conference in columbia featuring speakers, panels, and networking. event">
       <div class="rc-top">
         <span class="tag">Event</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Main Street Summit</h3>
       <p>Annual entrepreneurship conference in Columbia featuring speakers, panels, and networking.</p>
     </a>
     
-    <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card master" data-tag="Mentorship" data-phase="2" data-search="trulaske alumni entrepreneurs connect with trulaske alumni founders and operators for mentorship and introductions. mentorship">
+    <a href="https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation" target="_blank" rel="noopener" class="resource-card master" data-tag="Mentorship" data-phase="all" data-search="trulaske alumni entrepreneurs connect with trulaske alumni founders and operators for mentorship and introductions. mentorship">
       <div class="rc-top">
         <span class="tag">Mentorship</span>
-        <span class="phase-pill">Phase 2</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Trulaske Alumni Entrepreneurs</h3>
       <p>Connect with Trulaske alumni founders and operators for mentorship and introductions.</p>
@@ -1858,10 +1876,10 @@ html { scroll-behavior: smooth; }
       <p>Griggs Innovators Nexus retail program for student consumer-product ventures.</p>
     </a>
     
-    <a href="https://research.missouri.edu/griggs-innovators-nexus/incubator-office-space-for-students" target="_blank" rel="noopener" class="resource-card master" data-tag="Incubator" data-phase="1" data-search="gin incubator office space griggs innovators nexus 100 square foot rent-free office mu student center academic year competitive ecommerce software ventures incubator">
+    <a href="https://research.missouri.edu/griggs-innovators-nexus/incubator-office-space-for-students" target="_blank" rel="noopener" class="resource-card master" data-tag="Incubator" data-phase="3" data-search="gin incubator office space griggs innovators nexus 100 square foot rent-free office mu student center academic year competitive ecommerce software ventures incubator">
       <div class="rc-top">
         <span class="tag">Incubator</span>
-        <span class="phase-pill">Phase 1</span>
+        <span class="phase-pill">Phase 3</span>
       </div>
       <h3>GIN Incubator Office Space</h3>
       <p>Rent-free 100-sq-ft office space in the MU Student Center, awarded competitively for an academic year — ideal for e-commerce and software ventures.</p>
@@ -1901,10 +1919,10 @@ html { scroll-behavior: smooth; }
       <p>Equity-free grants — a $50,000 pool split among eight entrepreneurs (two $10,000, six $5,000). Open to any entrepreneur with a City of Columbia business license. Funded by the City, administered by REDI. Next cycle: spring 2027.</p>
     </a>
     
-    <a href="https://www.mainstreetsummit.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="3" data-search="main street summit annual entrepreneurship conference — strong investor presence each year. event">
+    <a href="https://www.mainstreetsummit.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Event" data-phase="all" data-search="main street summit annual entrepreneurship conference — strong investor presence each year. event">
       <div class="rc-top">
         <span class="tag">Event</span>
-        <span class="phase-pill">Phase 3</span>
+        <span class="phase-pill">Throughout</span>
       </div>
       <h3>Main Street Summit</h3>
       <p>Annual entrepreneurship conference — strong investor presence each year.</p>
@@ -1945,10 +1963,10 @@ html { scroll-behavior: smooth; }
       <h3>AngelList</h3>
       <p>Platform connecting startups with investors, syndicates, and operating talent.</p>
     </a>
-    <a href="https://new.nsf.gov/funding/initiatives/i-corps" target="_blank" rel="noopener" class="resource-card master" data-tag="Federal" data-phase="4" data-search="nsf i-corps national science foundation program teaching academic founders to commercialize research mu great lakes regional hub federal">
+    <a href="https://new.nsf.gov/funding/initiatives/i-corps" target="_blank" rel="noopener" class="resource-card master" data-tag="Federal" data-phase="2" data-search="nsf i-corps national science foundation program teaching academic founders to commercialize research mu great lakes regional hub federal">
       <div class="rc-top">
         <span class="tag">Federal</span>
-        <span class="phase-pill">Phase 4</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>NSF I-Corps</h3>
       <p>National Science Foundation program teaching academic founders to commercialize research. MU is part of the Great Lakes regional hub.</p>
@@ -1977,10 +1995,10 @@ html { scroll-behavior: smooth; }
       <h3>Founder Institute</h3>
       <p>Pre-seed accelerator with chapters globally. Structured 4-month curriculum for first-time founders building from scratch.</p>
     </a>
-    <a href="https://www.mit100k.org/" target="_blank" rel="noopener" class="resource-card master" data-tag="Competition" data-phase="4" data-search="mit 100k competition one of the world's largest student business plan competitions teams at least one mit-affiliated member benchmark cross-institutional ambition competition">
+    <a href="https://www.mit100k.org/" target="_blank" rel="noopener" class="resource-card master" data-tag="Competition" data-phase="2" data-search="mit 100k competition one of the world's largest student business plan competitions teams at least one mit-affiliated member benchmark cross-institutional ambition competition">
       <div class="rc-top">
         <span class="tag">Competition</span>
-        <span class="phase-pill">Phase 4</span>
+        <span class="phase-pill">Phase 2</span>
       </div>
       <h3>MIT $100K Competition</h3>
       <p>One of the world&#x27;s largest student business plan competitions. Open to teams with at least one MIT-affiliated member — a benchmark for what cross-institutional ambition looks like.</p>
@@ -2616,6 +2634,39 @@ html { scroll-behavior: smooth; }
         <div class="gloss-a" id="gloss-49" hidden>
           <p class="gloss-def">A program that helps very early founders develop an idea, often with workspace and mentorship but little or no capital.</p>
           <p class="gloss-eg"><strong>Example:</strong> An incubator gives a student team desk space and advisors while they build a prototype.</p>
+        </div>
+      </div>
+      <div class="gloss-term" data-search="swot analysis a simple framework for assessing a venture's internal strengths and weaknesses and external opportunities and threats. a founder maps swot before a pivot to see where they're strong and exposed." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-50" onclick="toggleGloss(this)">
+          <span class="gloss-name">SWOT Analysis</span>
+          <span class="gloss-phase">Phase 1–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-50" hidden>
+          <p class="gloss-def">A simple framework for assessing a venture's internal Strengths and Weaknesses and external Opportunities and Threats.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A founder maps SWOT before a pivot to see where they're strong and exposed.</p>
+        </div>
+      </div>
+      <div class="gloss-term" data-search="pestle analysis a scan of the macro forces shaping a market: political, economic, social, technological, legal, and environmental. a health-tech startup runs a pestle to anticipate regulatory and demographic shifts." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-51" onclick="toggleGloss(this)">
+          <span class="gloss-name">PESTLE Analysis</span>
+          <span class="gloss-phase">Phase 1–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-51" hidden>
+          <p class="gloss-def">A scan of the macro forces shaping a market: Political, Economic, Social, Technological, Legal, and Environmental.</p>
+          <p class="gloss-eg"><strong>Example:</strong> A health-tech startup runs a PESTLE to anticipate regulatory and demographic shifts.</p>
+        </div>
+      </div>
+      <div class="gloss-term" data-search="porter's five forces a framework for judging an industry's attractiveness via five forces: rivalry, new entrants, substitutes, supplier power, and buyer power. strong supplier power and easy substitutes signal a tough industry to enter." data-cat="Growth & Strategy">
+        <button class="gloss-q" aria-expanded="false" aria-controls="gloss-52" onclick="toggleGloss(this)">
+          <span class="gloss-name">Porter's Five Forces</span>
+          <span class="gloss-phase">Phase 1–4</span>
+          <span class="gloss-chev" aria-hidden="true">+</span>
+        </button>
+        <div class="gloss-a" id="gloss-52" hidden>
+          <p class="gloss-def">A framework for judging an industry's attractiveness via five forces: rivalry, new entrants, substitutes, supplier power, and buyer power.</p>
+          <p class="gloss-eg"><strong>Example:</strong> Strong supplier power and easy substitutes signal a tough industry to enter.</p>
         </div>
       </div>
     </div>
@@ -3337,19 +3388,19 @@ html { scroll-behavior: smooth; }
       <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
         <button class="modal-option" onclick="answerAssessment(1)">
-          <span>I have an idea that has not yet been tested with potential users.</span>
+          <span>I have an idea or see a problem, but haven't tested it with anyone yet.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(2)">
-          <span>I have validated demand and developed a prototype or MVP.</span>
+          <span>I've talked to potential customers and am testing whether they'll pay.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(3)">
-          <span>I have customers or paying users and require capital.</span>
+          <span>I'm ready to formally launch — entity, funding, and first operations.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(4)">
-          <span>I have raised a seed round and need to scale.</span>
+          <span>I have a working venture and want to grow it responsibly.</span>
           <span class="arrow">→</span>
         </button>
       </div>
@@ -3359,10 +3410,10 @@ html { scroll-behavior: smooth; }
 
 <script>
 const PHASE_TITLES = {
-  1: { title: 'Launch & Validation', sub: 'Test the idea against reality' },
-  2: { title: 'Network & Connect', sub: 'Build the relationships that compound' },
-  3: { title: 'Early Growth & Funding', sub: 'Turn traction into capital' },
-  4: { title: 'Scale & Expansion', sub: 'Compete on the national stage' },
+  1: { title: 'Opportunity Discovery', sub: 'Find a problem worth solving' },
+  2: { title: 'Customer & Model Validation', sub: 'Prove people want it and will pay' },
+  3: { title: 'Venture Launch', sub: 'Stand it up legally and operationally' },
+  4: { title: 'Growth & Scaling', sub: 'Grow responsibly and sustainably' },
 };
 
 
@@ -3485,7 +3536,13 @@ function filterResources() {
     const tag = card.dataset.tag;
     const searchText = card.dataset.search;
     let show = true;
-    if (phaseFilter !== 'all' && phase !== phaseFilter) show = false;
+    // Phase filtering: cross-cutting ("all") items appear under every specific phase;
+    // "throughout" shows only cross-cutting items.
+    if (phaseFilter === 'throughout') {
+      if (phase !== 'all') show = false;
+    } else if (phaseFilter !== 'all') {
+      if (phase !== phaseFilter && phase !== 'all') show = false;
+    }
     if (tagFilter !== 'all' && tag !== tagFilter) show = false;
     if (search && !searchText.includes(search)) show = false;
     card.style.display = show ? '' : 'none';
@@ -3523,10 +3580,10 @@ function closeAssessment(e) {
       <h3>Select the statement that best describes your current stage.</h3>
       <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
-        <button class="modal-option" onclick="answerAssessment(1)"><span>I have an idea that has not yet been tested with potential users.</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(2)"><span>I have validated demand and developed a prototype or MVP.</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(3)"><span>I have customers or paying users and require capital.</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(4)"><span>I have raised a seed round and need to scale.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(1)"><span>I have an idea or see a problem, but haven't tested it with anyone yet.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(2)"><span>I've talked to potential customers and am testing whether they'll pay.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(3)"><span>I'm ready to formally launch — entity, funding, and first operations.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(4)"><span>I have a working venture and want to grow it responsibly.</span><span class="arrow">→</span></button>
       </div>`;
   }, 300);
 }
