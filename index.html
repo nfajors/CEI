@@ -320,7 +320,11 @@ img { display: block; max-width: 100%; }
 .kn-head { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #262626; }
 .kn-icon { width: 48px; height: 48px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--black); font-weight: 700; }
 .kn-card h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 20px; }
-.kn-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); }
+.kn-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); }
+.kn-note { font-size: 13px; line-height: 1.6; color: #d4d4d4; margin-bottom: 20px; }
+.kn-note strong { color: white; }
+.kn-book { font-size: 14px; padding: 4px 0; color: #d4d4d4; }
+.kn-book-note { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-left: 4px; }
 .kn-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .kn-card a { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; padding: 4px 0; color: #d4d4d4; transition: color 0.2s; }
 .kn-card a .arrow { opacity: 0; transition: opacity 0.2s; color: var(--gold); }
@@ -683,7 +687,7 @@ html { scroll-behavior: smooth; }
           <p class="phase-desc">Every venture starts with a problem worth pursuing. Use Mizzou's earliest-stage resources to explore ideas, talk to people, and pressure-test whether the opportunity is real before you build anything.</p>
           <div class="next-steps">
             <div class="next-steps-label">Next Steps</div>
-            <ul><li><span class="chev">›</span>Visit the Griggs Innovators Nexus in person</li><li><span class="chev">›</span>Apply to Entrepreneurship Quest (EQ)</li><li><span class="chev">›</span>Start the Founder's Reading List</li></ul>
+            <ul><li><span class="chev">›</span>Visit the Griggs Innovators Nexus in person</li><li><span class="chev">›</span>Apply to Entrepreneurship Quest (EQ)</li><li><span class="chev">›</span>Start the Founder's Bookshelf in the Knowledge Hub</li></ul>
           </div>
         </div>
       </div>
@@ -802,14 +806,6 @@ html { scroll-behavior: smooth; }
         </div>
         <h4>Pitch Competitions</h4>
         <p>Active calendar of Mizzou and regional pitch competitions with cash prizes and funding opportunities.</p>
-      </a>
-      <a href="https://dianakander.com/books/" target="_blank" rel="noopener" class="resource-card">
-        <div class="rc-top">
-          <span class="tag">Reading</span>
-          <span class="ext">↗</span>
-        </div>
-        <h4>The Founder&#x27;s Reading List</h4>
-        <p>For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander, former MU entrepreneurship professor and NYT bestselling author. Then: Talking to Humans (Constable) for customer discovery, Business Model Generation (Osterwalder &amp; Pigneur) for designing the model, Disciplined Entrepreneurship (Aulet), The Lean Startup (Ries), Zero to One (Thiel), Founders at Work (Livingston), The Hard Thing About Hard Things (Horowitz), Crossing the Chasm (Moore), Hooked (Eyal).</p>
       </a>
     </div>
       </div>
@@ -1724,15 +1720,6 @@ html { scroll-behavior: smooth; }
       <h3>Pitch Competitions</h3>
       <p>Active calendar of Mizzou and regional pitch competitions with cash prizes and funding opportunities.</p>
     </a>
-    <a href="https://dianakander.com/books/" target="_blank" rel="noopener" class="resource-card master" data-tag="Reading" data-phase="1" data-search="the founder's reading list all in startup diana kander mu entrepreneurship professor disciplined entrepreneurship aulet lean startup ries zero to one thiel founders at work livingston hard thing about hard things horowitz crossing the chasm moore hooked eyal reading">
-      <div class="rc-top">
-        <span class="tag">Reading</span>
-        <span class="phase-pill">Phase 1</span>
-      </div>
-      <h3>The Founder&#x27;s Reading List</h3>
-      <p>For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander, former MU entrepreneurship professor and NYT bestselling author. Then: Talking to Humans (Constable) for customer discovery, Business Model Generation (Osterwalder &amp; Pigneur) for designing the model, Disciplined Entrepreneurship (Aulet), The Lean Startup (Ries), Zero to One (Thiel), Founders at Work (Livingston), The Hard Thing About Hard Things (Horowitz), Crossing the Chasm (Moore), Hooked (Eyal).</p>
-    </a>
-    
     <a href="https://www.mizzoustartups.com/" target="_blank" rel="noopener" class="resource-card master" data-tag="Community" data-phase="all" data-search="mizzou startup community online platform connecting mizzou entrepreneurs, alumni, and mentors. community">
       <div class="rc-top">
         <span class="tag">Community</span>
@@ -2021,6 +2008,28 @@ html { scroll-behavior: smooth; }
       <p class="lede">Curated reading and watching — the minimum-viable diet for a serious early-stage founder. The principle we anchor to: <em>embrace adversity, follow the discipline, ship the product.</em></p>
     </div>
     <div class="kn-grid">
+    <div class="kn-card">
+      <div class="kn-head">
+        <div class="kn-icon">❖</div>
+        <div>
+          <h3>Founder&#x27;s Bookshelf</h3>
+          <p class="kn-sub">Start here</p>
+        </div>
+      </div>
+      <p class="kn-note">For earliest-stage idea generation, start with <strong>All In Startup</strong> by Diana Kander — former MU entrepreneurship professor and NYT bestselling author.</p>
+      <ul>
+        <li><a href="https://dianakander.com/books/" target="_blank" rel="noopener">All In Startup · Diana Kander<span class="arrow">→</span></a></li>
+        <li class="kn-book">Talking to Humans · Constable <span class="kn-book-note">customer discovery</span></li>
+        <li class="kn-book">Business Model Generation · Osterwalder &amp; Pigneur <span class="kn-book-note">design the model</span></li>
+        <li class="kn-book">Disciplined Entrepreneurship · Aulet</li>
+        <li class="kn-book">The Lean Startup · Ries</li>
+        <li class="kn-book">Zero to One · Thiel</li>
+        <li class="kn-book">Founders at Work · Livingston</li>
+        <li class="kn-book">The Hard Thing About Hard Things · Horowitz</li>
+        <li class="kn-book">Crossing the Chasm · Moore</li>
+        <li class="kn-book">Hooked · Eyal</li>
+      </ul>
+    </div>
     <div class="kn-card">
       <div class="kn-head">
         <div class="kn-icon">◆</div>
@@ -3388,19 +3397,19 @@ html { scroll-behavior: smooth; }
       <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
         <button class="modal-option" onclick="answerAssessment(1)">
-          <span>I have an idea or see a problem, but haven't tested it with anyone yet.</span>
+          <span>I'm exploring a problem or idea, but haven't validated it with anyone yet.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(2)">
-          <span>I've talked to potential customers and am testing whether they'll pay.</span>
+          <span>I'm testing demand — talking to customers to see if they'll actually pay.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(3)">
-          <span>I'm ready to formally launch — entity, funding, and first operations.</span>
+          <span>Demand is validated. I'm ready to formally launch — entity, funding, operations.</span>
           <span class="arrow">→</span>
         </button>
         <button class="modal-option" onclick="answerAssessment(4)">
-          <span>I have a working venture and want to grow it responsibly.</span>
+          <span>I have a working, operating venture and want to grow it responsibly.</span>
           <span class="arrow">→</span>
         </button>
       </div>
@@ -3580,10 +3589,10 @@ function closeAssessment(e) {
       <h3>Select the statement that best describes your current stage.</h3>
       <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
-        <button class="modal-option" onclick="answerAssessment(1)"><span>I have an idea or see a problem, but haven't tested it with anyone yet.</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(2)"><span>I've talked to potential customers and am testing whether they'll pay.</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(3)"><span>I'm ready to formally launch — entity, funding, and first operations.</span><span class="arrow">→</span></button>
-        <button class="modal-option" onclick="answerAssessment(4)"><span>I have a working venture and want to grow it responsibly.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(1)"><span>I'm exploring a problem or idea, but haven't validated it with anyone yet.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(2)"><span>I'm testing demand — talking to customers to see if they'll actually pay.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(3)"><span>Demand is validated. I'm ready to formally launch — entity, funding, operations.</span><span class="arrow">→</span></button>
+        <button class="modal-option" onclick="answerAssessment(4)"><span>I have a working, operating venture and want to grow it responsibly.</span><span class="arrow">→</span></button>
       </div>`;
   }, 300);
 }
