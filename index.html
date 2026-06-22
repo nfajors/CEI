@@ -496,7 +496,40 @@ html { scroll-behavior: smooth; }
   h1, h2, h3, h4 { break-after: avoid; }
   a { color: #000 !important; text-decoration: underline; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; word-break: break-all; }
+  /* --- Print layout fixes: neutralize sticky/absolute positioning & multi-column grids --- */
+  .phase-side-inner { position: static !important; top: auto !important; }
+  .phase-block { display: block !important; grid-template-columns: none !important; break-inside: avoid; page-break-inside: avoid; margin-bottom: 24px !important; }
+  .phase-block.reverse .phase-side, .phase-block.reverse .phase-right { order: initial !important; }
+  .phase-side { margin-bottom: 16px; }
+  .phase-overview { position: static !important; margin-bottom: 32px !important; break-inside: avoid; }
+  .phase-overview .track { display: none !important; }
+  .phase-overview-grid { display: block !important; grid-template-columns: none !important; }
+  .phase-overview-item { display: block !important; break-inside: avoid; margin-bottom: 8px; page-break-inside: avoid; }
+  .phase-overview-item .po-num { display: inline-flex !important; margin-bottom: 4px !important; }
+  .phase-overview-item .po-num > div { width: 36px !important; height: 36px !important; font-size: 18px !important; }
+  .recent-win, .resources-grid, .phase-right, .comp-grid, .gloss-grid, .alumni-grid, .contacts-grid, .kn-grid, .prompt-grid, .stats-grid, .studio-fields { display: block !important; grid-template-columns: none !important; }
+  .resource-card, .gloss-term, .alum-card, .contact-card, .kn-card, .comp-row, .prompt-card, .beyond-block { break-inside: avoid; page-break-inside: avoid; }
+  .gloss-a { display: block !important; }
+  .gloss-a[hidden] { display: block !important; }
+  .crosscut { background: #fff !important; border-left: 3px solid #000 !important; }
+  .crosscut-label { color: #000 !important; }
+  .crosscut-lede { color: #333 !important; }
+  .crosscut-item { background: #eee !important; color: #000 !important; border: 1px solid #999; }
+  section { break-inside: auto; }
+  /* Scoped single-section printing */
+  body.printing-section nav,
+  body.printing-section footer,
+  body.printing-section .skip-link,
+  body.printing-section #main-content > *:not(.print-target) { display: none !important; }
+  body.printing-section .print-target { display: block !important; }
+  body.printing-section .print-target .gloss-a[hidden] { display: block !important; }
 }
+/* Per-section print button */
+.section-print-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 7px 14px; font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; background: none; border: 1px solid var(--black); color: var(--black); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.section-print-btn:hover { background: var(--black); color: #fff; }
+.section.dark .section-print-btn { border-color: var(--gold); color: var(--gold); }
+.section.dark .section-print-btn:hover { background: var(--gold); color: var(--black); }
+@media print { .section-print-btn { display: none !important; } }
 </style>
 </head>
 
@@ -609,6 +642,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The Path</span></div>
       <h2>Four phases to <span class="italic">build something real</span></h2>
       <p class="lede">Every founder's path is different, but the underlying structure is consistent. We've organized Mizzou's entrepreneurship resources around the four phases of building a venture — so you can find what you need at the moment you need it.</p>
+      <button class="section-print-btn" onclick="printSection('phases')">⎙ Print this section</button>
     </div>
 
     <div class="phase-overview">
@@ -1159,6 +1193,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The Playbook</span></div>
       <h2>How to <span class="italic">do the hard things</span></h2>
       <p class="lede">Ten questions every first-time founder faces. The answers below are distilled from the most authoritative voices in venture — Sequoia Capital, Y Combinator, Paul Graham, Marc Andreessen, and the founders who built Airbnb, Stripe, and Facebook — into a starting point. Follow the links for the full frameworks.</p>
+      <button class="section-print-btn" onclick="printSection('howto')">⎙ Print this section</button>
     </div>
 
     <div class="howto-list">
@@ -1401,6 +1436,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The Unfair Advantage</span></div>
       <h2>AI is your <span class="italic">superpower</span></h2>
       <p class="lede">A first-time founder in 2026 can do what a funded team did five years ago. AI compresses research, prototyping, drafting, and analysis into hours — letting one person test more ideas, ship faster, and punch far above their headcount. Below: where the technology came from, what is current, what to listen to, and where it is headed.</p>
+      <button class="section-print-btn" onclick="printSection('ai')">⎙ Print this section</button>
     </div>
 
     <div class="howto-list">
@@ -1596,6 +1632,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
       <h2>Every resource, <span class="italic">searchable</span></h2>
       <p class="lede">Filter by phase, type, or search by name. Every resource across mid-Missouri and beyond, in one place.</p>
+      <button class="section-print-btn" onclick="printSection('resources')">⎙ Print this section</button>
     </div>
 
     <div class="filter-row">
@@ -2006,6 +2043,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label" style="color: var(--gold)"><div class="line"></div><span class="lbl">Self-Education</span></div>
       <h2 style="color: var(--paper)">The <span class="italic">knowledge hub</span></h2>
       <p class="lede">Curated reading and watching — the minimum-viable diet for a serious early-stage founder. The principle we anchor to: <em>embrace adversity, follow the discipline, ship the product.</em></p>
+      <button class="section-print-btn" onclick="printSection('knowledge')">⎙ Print this section</button>
     </div>
     <div class="kn-grid">
     <div class="kn-card">
@@ -2083,6 +2121,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The Language</span></div>
       <h2>Speak <span class="italic">founder</span></h2>
       <p class="lede">The vocabulary every entrepreneur is expected to know — defined plainly, with the phase it matters most and a real example. Browse by category, search for a term, or tap any term to expand it.</p>
+      <button class="section-print-btn" onclick="printSection('glossary')">⎙ Print this section</button>
     </div>
     <input type="text" class="gloss-search" id="glossSearch" aria-label="Search glossary terms" placeholder="Search terms… (e.g. runway, equity, churn)" oninput="filterGlossary()" />
     <div class="gloss-chips" role="group" aria-label="Filter glossary by category">
@@ -2691,6 +2730,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">Beyond the Guidebook</span></div>
       <h2>Get in the <span class="italic">arena</span></h2>
       <p class="lede">Not everyone starts a company on day one. Compete to sharpen your idea and win capital — or go work at a startup to learn how it's really done.</p>
+      <button class="section-print-btn" onclick="printSection('beyond')">⎙ Print this section</button>
     </div>
 
     <div class="beyond-block">
@@ -2900,6 +2940,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The Predecessors</span></div>
       <h2>They started <span class="italic">where you are</span></h2>
       <p class="lede">From the founder of Walmart to the CEO of Zapier, Trulaske has produced builders for over a century. You're walking in their footsteps.</p>
+      <button class="section-print-btn" onclick="printSection('alumni')">⎙ Print this section</button>
     </div>
     <div class="alumni-grid">
       
@@ -3173,6 +3214,7 @@ html { scroll-behavior: smooth; }
       <div class="section-label"><div class="line"></div><span class="lbl">The People</span></div>
       <h2>The <span class="italic">support network</span></h2>
       <p class="lede">The faculty, directors, and staff who make Trulaske's entrepreneurship ecosystem run. Reach out — they're here for you.</p>
+      <button class="section-print-btn" onclick="printSection('contacts')">⎙ Print this section</button>
     </div>
 
     <div class="intro-callout">
@@ -3446,6 +3488,31 @@ function scrollToSection(id) {
   track('nav_section', { section: id });
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Print a single section: scope the print to just that section, then restore.
+function printSection(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  track('print_section', { section: id });
+  // Expand any collapsed accordions inside the target so content prints fully
+  const collapsibles = target.querySelectorAll('.howto-q[aria-expanded="false"], .gloss-q[aria-expanded="false"]');
+  const reExpand = [];
+  collapsibles.forEach(btn => {
+    btn.setAttribute('data-print-collapsed', 'true');
+  });
+  document.body.classList.add('printing-section');
+  target.classList.add('print-target');
+  const cleanup = () => {
+    document.body.classList.remove('printing-section');
+    target.classList.remove('print-target');
+    target.querySelectorAll('[data-print-collapsed]').forEach(btn => btn.removeAttribute('data-print-collapsed'));
+    window.removeEventListener('afterprint', cleanup);
+  };
+  window.addEventListener('afterprint', cleanup);
+  window.print();
+  // Fallback cleanup in case afterprint doesn't fire
+  setTimeout(cleanup, 1000);
 }
 
 function toggleMobileMenu() {
