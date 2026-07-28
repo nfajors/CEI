@@ -1420,9 +1420,9 @@ html { scroll-behavior: smooth; }
         </div>
 
         <div class="path-actions">
-          <button class="path-btn primary" onclick="openAssessment()">⌖ Find my phase</button>
-          <button class="path-btn" id="pathJump" onclick="pathGoToPhase()">Go to my phase</button>
-          <button class="path-btn quiet" onclick="pathReset()">Reset</button>
+          <button class="path-btn primary" id="pathFind" onclick="openAssessment()">⌖ Find my phase</button>
+          <button class="path-btn" id="pathJump" onclick="pathGoToPhase()" hidden>Go to my phase</button>
+          <button class="path-btn quiet" id="pathResetBtn" onclick="pathReset()" hidden>Reset</button>
         </div>
         <p class="cei-note" id="pathSaved"></p>
       </div>
@@ -3353,7 +3353,7 @@ html { scroll-behavior: smooth; }
     <div class="cei-empty" id="vtEmpty">
       <strong>This board is just opening.</strong>
       If you're a Mizzou student with a venture underway — an idea you're testing, a storefront, an LLC, anything real — put it on the board and let the next founder find you.
-      <div style="margin-top:20px"><a class="path-btn primary" style="display:inline-block;text-decoration:none" href="https://forms.gle/GhbcUXu9vD3FwZgL7" target="_blank" rel="noopener">Add your venture →</a></div>
+      <div style="margin-top:20px"><a class="path-btn primary" id="vtAddEmpty" style="display:inline-block;text-decoration:none" href="#ventures">Add your venture →</a></div>
     </div>
 
     <div style="margin-top:32px" id="vtCta"></div>
@@ -4438,6 +4438,8 @@ function renderPath() {
   const name = document.getElementById('pathName');
   const sub = document.getElementById('pathSub');
   const jump = document.getElementById('pathJump');
+  const find = document.getElementById('pathFind');
+  const resetBtn = document.getElementById('pathResetBtn');
   const saved = document.getElementById('pathSaved');
 
   if (!s.phase) {
@@ -4448,7 +4450,13 @@ function renderPath() {
     document.getElementById('pathDone').textContent = '0';
     document.getElementById('pathLeft').textContent = '—';
     document.getElementById('pathPct').textContent = '0%';
-    jump.textContent = 'Find my phase';
+    // Nothing chosen yet: the only sensible action is the assessment,
+    // so the jump and reset buttons stay out of the way.
+    find.textContent = '⌖ Find my phase';
+    find.classList.add('primary');
+    jump.classList.remove('primary');
+    jump.hidden = true;
+    resetBtn.hidden = true;
     saved.textContent = '';
     list.innerHTML = '<li><div class="cei-empty" style="border:none;padding:28px 0;text-align:left">'
       + '<strong>Your checklist appears here.</strong>Choose a phase and you\'ll get the six moves that matter most at that stage.</div></li>';
@@ -4464,10 +4472,17 @@ function renderPath() {
   name.textContent = t.title || ('Phase ' + s.phase);
   sub.textContent = t.sub || '';
   document.getElementById('pathBar').style.width = pct + '%';
-  document.getElementById('pathDone').textContent = done.length;
-  document.getElementById('pathLeft').textContent = steps.length - done.length;
+  document.getElementById('pathDone').textContent = String(done.length);
+  document.getElementById('pathLeft').textContent = String(steps.length - done.length);
   document.getElementById('pathPct').textContent = pct + '%';
+  // Phase chosen: going to it is the primary move, and the assessment
+  // becomes a secondary "my stage changed" action.
+  jump.hidden = false;
+  resetBtn.hidden = false;
   jump.textContent = 'Go to Phase ' + s.phase;
+  jump.classList.add('primary');
+  find.textContent = 'Retake assessment';
+  find.classList.remove('primary');
 
   if (s.updated) {
     const d = new Date(s.updated);
@@ -4918,6 +4933,46 @@ function calcEquity() {
    to submit instead of a thin, half-empty grid.
      { name, founder, grad, phase (1-4), blurb, url (optional) }
    ============================================================ */
+/* Where "Add your venture" points.
+   Leave this null and both buttons open a prefilled email to the CEI
+   asking for exactly the fields the board needs — which works today,
+   with nothing to set up. Create a dedicated intake form, paste its
+   URL here, and both buttons switch over on their own.
+   Do NOT point this at the general feedback form: a student who clicks
+   "Add your venture" and lands on "What's missing?" assumes they hit
+   the wrong link. */
+const VENTURE_FORM_URL = null;
+
+function ventureSubmitHref() {
+  if (VENTURE_FORM_URL) return VENTURE_FORM_URL;
+  const body = [
+    'Venture name:',
+    'Founder name(s) and class year:',
+    'One sentence on what it does:',
+    'Phase (1 Discovery / 2 Validation / 3 Launch / 4 Growth):',
+    'Website or social link (optional):',
+    '',
+    'I am a Mizzou student and I am happy to be listed publicly in the guidebook.'
+  ].join('\n');
+  return 'mailto:cei@missouri.edu'
+    + '?subject=' + encodeURIComponent('Add my venture — CEI Guidebook')
+    + '&body=' + encodeURIComponent(body);
+}
+
+function wireVentureCta(el) {
+  if (!el) return;
+  const href = ventureSubmitHref();
+  el.setAttribute('href', href);
+  if (href.indexOf('mailto:') === 0) {
+    el.removeAttribute('target');
+    el.removeAttribute('rel');
+  } else {
+    el.setAttribute('target', '_blank');
+    el.setAttribute('rel', 'noopener');
+  }
+  el.onclick = function () { track('venture_submit_click', { via: VENTURE_FORM_URL ? 'form' : 'email' }); };
+}
+
 const VENTURES = [];
 
 let vtFilter = 'all';
@@ -4934,6 +4989,7 @@ function renderVentures() {
     chips.style.display = 'none';
     empty.style.display = '';
     cta.innerHTML = '';
+    wireVentureCta(document.getElementById('vtAddEmpty'));
     return;
   }
 
@@ -4957,7 +5013,8 @@ function renderVentures() {
       + '<p>' + v.blurb + '</p></div>';
   }).join('');
 
-  cta.innerHTML = '<a class="path-btn primary" style="display:inline-block;text-decoration:none" href="https://forms.gle/GhbcUXu9vD3FwZgL7" target="_blank" rel="noopener">Add your venture →</a>';
+  cta.innerHTML = '<a class="path-btn primary" id="vtAddMore" style="display:inline-block;text-decoration:none">Add your venture →</a>';
+  wireVentureCta(document.getElementById('vtAddMore'));
 }
 function filterVentures(btn) {
   vtFilter = btn.dataset.vt;
