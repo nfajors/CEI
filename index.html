@@ -530,6 +530,198 @@ html { scroll-behavior: smooth; }
 .section.dark .section-print-btn { border-color: var(--gold); color: var(--gold); }
 .section.dark .section-print-btn:hover { background: var(--gold); color: var(--black); }
 @media print { .section-print-btn { display: none !important; } }
+
+/* ============================================================
+   ADDITIONS — Founder Path, Deadlines, Workbench, Ventures, What's New
+   Built on the existing Mizzou token set. No new colors introduced:
+   urgency is encoded with gold fill / black fill / tint, not red.
+   ============================================================ */
+
+/* ---------- shared small parts ---------- */
+.cei-chiprow { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.cei-chip {
+  font: inherit; cursor: pointer; background: var(--paper); color: var(--ink);
+  border: 1px solid var(--black-tint-3); padding: 7px 14px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.cei-chip:hover { border-color: var(--black); }
+.cei-chip.on { background: var(--black); color: var(--paper); border-color: var(--black); }
+.cei-empty {
+  border: 1px dashed var(--black-tint-3); padding: 40px 28px; text-align: center;
+  color: var(--black-tint-1); font-size: 14px; line-height: 1.6;
+}
+.cei-empty strong { display: block; color: var(--ink); font-size: 16px; margin-bottom: 8px; }
+.cei-note { font-size: 12px; color: var(--black-tint-1); line-height: 1.6; margin-top: 20px; }
+.cei-bar { height: 6px; background: var(--black-tint-3); overflow: hidden; }
+.cei-bar > i { display: block; height: 100%; background: var(--gold); transition: width .45s cubic-bezier(.4,0,.2,1); }
+
+/* ---------- 1. What's New strip ---------- */
+.whatsnew { border-top: 1px solid var(--black-tint-3); border-bottom: 1px solid var(--black-tint-3); background: var(--paper); }
+.whatsnew-inner { max-width: 1200px; margin: 0 auto; padding: 22px 24px; display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+.whatsnew-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; padding-top: 2px; }
+.whatsnew-head .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: middle; }
+.whatsnew-list { display: flex; flex-direction: column; gap: 7px; flex: 1 1 420px; margin: 0; padding: 0; list-style: none; }
+.whatsnew-list li { font-size: 13.5px; line-height: 1.5; display: flex; gap: 12px; }
+.whatsnew-list time { color: var(--black-tint-1); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; padding-top: 3px; min-width: 64px; }
+.whatsnew-list a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+
+/* NEW badge on resource cards */
+.new-badge {
+  display: inline-block; background: var(--gold); color: var(--black);
+  font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 6px; margin-left: 8px; vertical-align: middle;
+}
+
+/* ---------- 2. My Founder Path ---------- */
+.path-wrap { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) { .path-wrap { grid-template-columns: 1.15fr 1fr; gap: 56px; } }
+
+.path-status { border: 1px solid var(--black-tint-3); padding: 28px; }
+.path-phase-num { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.path-phase-name { font-size: 20px; font-weight: 700; margin: 6px 0 2px; }
+.path-phase-sub { font-size: 14px; color: var(--black-tint-1); margin-bottom: 22px; }
+.path-metrics { display: flex; gap: 28px; margin: 20px 0 10px; }
+.path-metric b { display: block; font-size: 26px; font-weight: 800; line-height: 1; }
+.path-metric span { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--black-tint-1); }
+.path-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.path-btn {
+  font: inherit; cursor: pointer; font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  padding: 9px 16px; border: 1px solid var(--black); background: var(--paper); color: var(--ink);
+  transition: background .18s ease, color .18s ease;
+}
+.path-btn:hover { background: var(--black); color: var(--paper); }
+.path-btn.primary { background: var(--black); color: var(--paper); }
+.path-btn.primary:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+.path-btn.quiet { border-color: var(--black-tint-3); color: var(--black-tint-1); }
+.path-btn.quiet:hover { background: var(--black-tint-3); color: var(--ink); }
+
+.path-checklist { list-style: none; margin: 0; padding: 0; }
+.path-checklist li { border-bottom: 1px solid var(--black-tint-3); }
+.path-checklist li:first-child { border-top: 1px solid var(--black-tint-3); }
+.path-check {
+  width: 100%; text-align: left; font: inherit; cursor: pointer; background: none; border: none;
+  padding: 15px 4px; display: flex; gap: 14px; align-items: flex-start; color: var(--ink);
+  font-size: 14.5px; line-height: 1.5;
+}
+.path-check:hover { background: var(--gold-tint-3); }
+.path-box {
+  flex: 0 0 auto; width: 18px; height: 18px; border: 1.5px solid var(--black); margin-top: 1px;
+  display: grid; place-items: center; font-size: 12px; font-weight: 800; color: transparent;
+  transition: background .15s ease, color .15s ease;
+}
+.path-check[aria-pressed="true"] .path-box { background: var(--gold); border-color: var(--gold); color: var(--black); }
+.path-check[aria-pressed="true"] .path-text { text-decoration: line-through; color: var(--black-tint-1); }
+
+/* ---------- 3. Deadline board ---------- */
+.dl-grid { display: flex; flex-direction: column; }
+.dl-row {
+  display: grid; grid-template-columns: 1fr; gap: 6px;
+  padding: 20px 4px; border-bottom: 1px solid var(--black-tint-3); align-items: center;
+}
+.dl-row:first-child { border-top: 1px solid var(--black-tint-3); }
+@media (min-width: 820px) {
+  .dl-row { grid-template-columns: 128px 1fr 190px 108px; gap: 20px; padding: 18px 4px; }
+}
+.dl-status {
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 6px 10px; white-space: nowrap; width: fit-content;
+}
+.dl-status.urgent { background: var(--gold); color: var(--black); }
+.dl-status.open   { background: var(--black); color: var(--paper); }
+.dl-status.soon   { background: var(--paper); color: var(--ink); border: 1px solid var(--black); }
+.dl-status.rolling{ background: var(--paper); color: var(--black-tint-1); border: 1px dashed var(--black-tint-2); }
+.dl-status.closed { background: var(--black-tint-3); color: var(--black-tint-1); }
+.dl-name { font-size: 15.5px; font-weight: 700; line-height: 1.35; }
+.dl-name a { color: var(--ink); text-decoration: none; }
+.dl-name a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dl-meta { font-size: 12px; color: var(--black-tint-1); margin-top: 3px; line-height: 1.5; }
+.dl-tag {
+  display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--black-tint-1); border: 1px solid var(--black-tint-3);
+  padding: 2px 6px; margin-right: 6px;
+}
+.dl-when { font-size: 13px; line-height: 1.45; }
+.dl-when b { font-weight: 700; }
+.dl-unconfirmed { font-size: 11px; color: var(--black-tint-1); font-style: italic; }
+.dl-ics {
+  font: inherit; cursor: pointer; font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+  background: none; border: 1px solid var(--black-tint-3); color: var(--ink); padding: 7px 10px;
+  white-space: nowrap; transition: border-color .18s ease, background .18s ease;
+}
+.dl-ics:hover { border-color: var(--black); background: var(--gold-tint-3); }
+.dl-ics[disabled] { opacity: .35; cursor: default; }
+
+/* ---------- 4. Founder workbench ---------- */
+.wb-tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--black-tint-3); margin-bottom: 32px; }
+.wb-tab {
+  font: inherit; cursor: pointer; background: none; border: none; border-bottom: 2px solid transparent;
+  padding: 12px 20px 13px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--black-tint-1); margin-bottom: -1px; transition: color .18s ease, border-color .18s ease;
+}
+.wb-tab:hover { color: var(--ink); }
+.wb-tab.on { color: var(--ink); border-bottom-color: var(--gold); font-weight: 700; }
+.wb-panel { display: none; }
+.wb-panel.on { display: grid; grid-template-columns: 1fr; gap: 36px; }
+@media (min-width: 900px) { .wb-panel.on { grid-template-columns: 1fr 1fr; gap: 56px; } }
+
+.wb-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; align-content: start; }
+.wb-field { display: flex; flex-direction: column; gap: 6px; }
+.wb-field.wide { grid-column: 1 / -1; }
+.wb-field label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.wb-field .hint { font-size: 11px; color: var(--black-tint-1); font-weight: 400; text-transform: none; letter-spacing: 0; }
+.wb-input {
+  font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid var(--black-tint-3);
+  background: var(--paper); color: var(--ink); width: 100%;
+}
+.wb-input:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--black); }
+
+.wb-out { border: 1px solid var(--black-tint-3); padding: 26px; align-self: start; }
+.wb-verdict { padding: 16px 18px; margin-bottom: 22px; }
+.wb-verdict.good { background: var(--gold-tint-3); border-left: 3px solid var(--gold); }
+.wb-verdict.bad  { background: var(--black); color: var(--paper); }
+.wb-verdict.idle { background: var(--paper); border: 1px dashed var(--black-tint-3); color: var(--black-tint-1); }
+.wb-verdict b { display: block; font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+.wb-verdict span { font-size: 13px; line-height: 1.55; display: block; }
+.wb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.wb-stat b { display: block; font-size: 28px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+.wb-stat span { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--black-tint-1); }
+.wb-link { font-size: 12px; margin-top: 22px; }
+.wb-link a { color: var(--ink); }
+.wb-splitrow { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.wb-splitrow .wb-input { flex: 1 1 auto; }
+.wb-splitrow .pct { width: 96px; flex: 0 0 auto; }
+.wb-rm { font: inherit; cursor: pointer; background: none; border: 1px solid var(--black-tint-3); color: var(--black-tint-1); width: 34px; height: 38px; flex: 0 0 auto; }
+.wb-rm:hover { border-color: var(--black); color: var(--ink); }
+
+/* ---------- 5. Venture showcase ---------- */
+.vt-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 700px) { .vt-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1050px) { .vt-grid { grid-template-columns: repeat(3, 1fr); } }
+.vt-card {
+  border: 1px solid var(--black-tint-3); padding: 24px; display: flex; flex-direction: column; gap: 8px;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.vt-card:hover { border-color: var(--black); transform: translateY(-2px); }
+.vt-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.vt-phase { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black-tint-1); border: 1px solid var(--black-tint-3); padding: 2px 7px; }
+.vt-year { font-size: 11px; color: var(--black-tint-1); font-weight: 600; }
+.vt-card h3 { font-size: 18px; font-weight: 700; margin: 2px 0 0; }
+.vt-card h3 a { color: var(--ink); text-decoration: none; }
+.vt-card h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.vt-founder { font-size: 12px; color: var(--black-tint-1); font-weight: 600; }
+.vt-card p { font-size: 14px; line-height: 1.55; margin: 4px 0 0; }
+
+/* ---------- print ---------- */
+@media print {
+  .cei-chiprow, .dl-ics, .path-actions, .wb-tabs, .path-btn { display: none !important; }
+  .wb-panel { display: grid !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cei-bar > i, .vt-card { transition: none !important; }
+}
+
 </style>
 </head>
 
@@ -545,12 +737,16 @@ html { scroll-behavior: smooth; }
     </button>
     <div class="nav-links">
       <button onclick="scrollToSection('phases')">Phases</button>
+      <button onclick="scrollToSection('path')">My Path</button>
+      <button onclick="scrollToSection('deadlines')">Deadlines</button>
       <button onclick="scrollToSection('howto')">How-To</button>
       <button onclick="scrollToSection('ai')">AI</button>
+      <button onclick="scrollToSection('tools')">Tools</button>
       <button onclick="scrollToSection('resources')">Resources</button>
       <button onclick="scrollToSection('knowledge')">Knowledge</button>
       <button onclick="scrollToSection('glossary')">Glossary</button>
       <button onclick="scrollToSection('beyond')">Beyond</button>
+      <button onclick="scrollToSection('ventures')">Ventures</button>
       <button onclick="scrollToSection('alumni')">Alumni</button>
       <button onclick="scrollToSection('contacts')">Contacts</button>
     </div>
@@ -563,12 +759,16 @@ html { scroll-behavior: smooth; }
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <button onclick="mobileNav('phases')">Phases</button>
+    <button onclick="mobileNav('path')">My Path</button>
+    <button onclick="mobileNav('deadlines')">Deadlines</button>
     <button onclick="mobileNav('howto')">How-To</button>
     <button onclick="mobileNav('ai')">AI</button>
+    <button onclick="mobileNav('tools')">Tools</button>
     <button onclick="mobileNav('resources')">Resources</button>
     <button onclick="mobileNav('knowledge')">Knowledge</button>
     <button onclick="mobileNav('glossary')">Glossary</button>
     <button onclick="mobileNav('beyond')">Beyond</button>
+    <button onclick="mobileNav('ventures')">Ventures</button>
     <button onclick="mobileNav('alumni')">Alumni</button>
     <button onclick="mobileNav('contacts')">Contacts</button>
     <button class="mobile-menu-cta" onclick="mobileFindPhase()">⌖ Find My Phase</button>
@@ -1187,6 +1387,84 @@ html { scroll-behavior: smooth; }
 
 
 <!-- HOW-TO -->
+
+<!-- ===================== WHAT'S NEW STRIP ===================== -->
+<div class="whatsnew" id="whatsnew">
+  <div class="whatsnew-inner">
+    <div class="whatsnew-head"><span class="dot"></span>What's new</div>
+    <ul class="whatsnew-list" id="whatsnewList"></ul>
+  </div>
+</div>
+
+<!-- ===================== MY FOUNDER PATH ===================== -->
+<section class="section lg" id="path">
+  <div class="section-inner">
+    <div style="margin-bottom: 48px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">Your Progress</span></div>
+      <h2>My founder <span class="italic">path</span></h2>
+      <p class="lede">Pick your phase and work the list. Your progress is saved on this device, so you can leave and pick up where you stopped.</p>
+      <button class="section-print-btn" onclick="printSection('path')">⎙ Print this section</button>
+    </div>
+
+    <div class="path-wrap">
+      <div class="path-status">
+        <div class="path-phase-num" id="pathNum">—</div>
+        <div class="path-phase-name" id="pathName">No phase selected yet</div>
+        <div class="path-phase-sub" id="pathSub">Take the 30-second self-assessment and your path appears here.</div>
+
+        <div class="cei-bar"><i id="pathBar" style="width:0%"></i></div>
+        <div class="path-metrics">
+          <div class="path-metric"><b id="pathDone">0</b><span>Steps done</span></div>
+          <div class="path-metric"><b id="pathLeft">—</b><span>Remaining</span></div>
+          <div class="path-metric"><b id="pathPct">0%</b><span>Complete</span></div>
+        </div>
+
+        <div class="path-actions">
+          <button class="path-btn primary" onclick="openAssessment()">⌖ Find my phase</button>
+          <button class="path-btn" id="pathJump" onclick="pathGoToPhase()">Go to my phase</button>
+          <button class="path-btn quiet" onclick="pathReset()">Reset</button>
+        </div>
+        <p class="cei-note" id="pathSaved"></p>
+      </div>
+
+      <div>
+        <ul class="path-checklist" id="pathList"></ul>
+        <p class="cei-note">Saved in this browser only — nothing is sent anywhere, and clearing your browser data clears your progress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DEADLINE BOARD ===================== -->
+<section class="section lg alt" id="deadlines">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">On The Clock</span></div>
+      <h2>What's open <span class="italic">right now</span></h2>
+      <p class="lede">Grants, competitions, and accelerators you can apply to, sorted by what closes first. Add any deadline to your calendar in one click.</p>
+      <button class="section-print-btn" onclick="printSection('deadlines')">⎙ Print this section</button>
+    </div>
+
+    <div class="cei-chiprow" id="dlChips">
+      <button class="cei-chip on" data-dl="all" onclick="filterDeadlines(this)">All</button>
+      <button class="cei-chip" data-dl="open" onclick="filterDeadlines(this)">Open now</button>
+      <button class="cei-chip" data-dl="soon" onclick="filterDeadlines(this)">Opening soon</button>
+      <button class="cei-chip" data-dl="Grant" onclick="filterDeadlines(this)">Grants</button>
+      <button class="cei-chip" data-dl="Competition" onclick="filterDeadlines(this)">Competitions</button>
+      <button class="cei-chip" data-dl="Accelerator" onclick="filterDeadlines(this)">Accelerators</button>
+    </div>
+
+    <div class="dl-grid" id="dlGrid"></div>
+    <div class="cei-empty" id="dlEmpty" style="display:none"><strong>Nothing matches that filter</strong>Try "All" to see every opportunity on the board.</div>
+
+    <p class="cei-note">
+      Dates marked <em>unconfirmed</em> are the program's usual cycle, not a published date for this year — always confirm on the program's own site before you plan around it.
+      Deadlines shift, and a missed one is expensive. Spot something out of date?
+      <a href="https://forms.gle/GhbcUXu9vD3FwZgL7" target="_blank" rel="noopener">Tell us and we'll fix it</a>.
+    </p>
+  </div>
+</section>
+
 <section class="section lg" id="howto">
   <div class="section-inner">
     <div style="margin-bottom: 48px; max-width: 48rem;">
@@ -1626,6 +1904,124 @@ html { scroll-behavior: smooth; }
 </section>
 
 <!-- RESOURCE INDEX -->
+
+<!-- ===================== FOUNDER WORKBENCH ===================== -->
+<section class="section lg" id="tools">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">Run The Numbers</span></div>
+      <h2>The founder <span class="italic">workbench</span></h2>
+      <p class="lede">Three calculations every founder has to keep answering. Put your numbers in — they stay on this device, so they're still here next time you check.</p>
+      <button class="section-print-btn" onclick="printSection('tools')">⎙ Print this section</button>
+    </div>
+
+    <div class="wb-tabs" role="tablist">
+      <button class="wb-tab on" role="tab" aria-selected="true" aria-controls="wbRunway" data-wb="wbRunway" onclick="wbTab(this)">Runway &amp; default alive</button>
+      <button class="wb-tab" role="tab" aria-selected="false" aria-controls="wbUnit" data-wb="wbUnit" onclick="wbTab(this)">Unit economics</button>
+      <button class="wb-tab" role="tab" aria-selected="false" aria-controls="wbEquity" data-wb="wbEquity" onclick="wbTab(this)">Equity &amp; dilution</button>
+    </div>
+
+    <!-- Runway -->
+    <div class="wb-panel on" id="wbRunway" role="tabpanel">
+      <div class="wb-fields">
+        <div class="wb-field wide">
+          <label for="rwCash">Cash in the bank <span class="hint">every dollar you can actually spend</span></label>
+          <input class="wb-input" id="rwCash" type="number" min="0" step="100" placeholder="50000" oninput="calcRunway()" />
+        </div>
+        <div class="wb-field">
+          <label for="rwRev">Monthly revenue</label>
+          <input class="wb-input" id="rwRev" type="number" min="0" step="100" placeholder="4000" oninput="calcRunway()" />
+        </div>
+        <div class="wb-field">
+          <label for="rwCost">Monthly costs</label>
+          <input class="wb-input" id="rwCost" type="number" min="0" step="100" placeholder="9000" oninput="calcRunway()" />
+        </div>
+        <div class="wb-field wide">
+          <label for="rwGrowth">Monthly revenue growth <span class="hint">percent per month — be honest, use your last 3 months</span></label>
+          <input class="wb-input" id="rwGrowth" type="number" min="-100" max="200" step="0.5" placeholder="8" oninput="calcRunway()" />
+        </div>
+      </div>
+      <div class="wb-out">
+        <div class="wb-verdict idle" id="rwVerdict"><b>Enter your numbers</b><span>Paul Graham's test: if nothing changes and you raise nothing more, do you reach profitability before the money runs out?</span></div>
+        <div class="wb-stats">
+          <div class="wb-stat"><b id="rwMonths">—</b><span>Months of runway</span></div>
+          <div class="wb-stat"><b id="rwBurn">—</b><span>Net burn / month</span></div>
+          <div class="wb-stat"><b id="rwBreak">—</b><span>Breakeven in</span></div>
+          <div class="wb-stat"><b id="rwLow">—</b><span>Lowest cash point</span></div>
+        </div>
+        <p class="wb-link">Playbook: <a href="#howto" onclick="scrollToSection('howto')">How do I manage runway and stay alive?</a></p>
+      </div>
+    </div>
+
+    <!-- Unit economics -->
+    <div class="wb-panel" id="wbUnit" role="tabpanel">
+      <div class="wb-fields">
+        <div class="wb-field">
+          <label for="ueRev">Revenue per customer <span class="hint">per month</span></label>
+          <input class="wb-input" id="ueRev" type="number" min="0" step="1" placeholder="40" oninput="calcUnit()" />
+        </div>
+        <div class="wb-field">
+          <label for="ueMargin">Gross margin <span class="hint">percent</span></label>
+          <input class="wb-input" id="ueMargin" type="number" min="0" max="100" step="1" placeholder="75" oninput="calcUnit()" />
+        </div>
+        <div class="wb-field">
+          <label for="ueCac">Cost to acquire one customer</label>
+          <input class="wb-input" id="ueCac" type="number" min="0" step="1" placeholder="180" oninput="calcUnit()" />
+        </div>
+        <div class="wb-field">
+          <label for="ueChurn">Monthly churn <span class="hint">percent who leave each month</span></label>
+          <input class="wb-input" id="ueChurn" type="number" min="0.1" max="100" step="0.1" placeholder="4" oninput="calcUnit()" />
+        </div>
+      </div>
+      <div class="wb-out">
+        <div class="wb-verdict idle" id="ueVerdict"><b>Enter your numbers</b><span>The rule of thumb investors use: earn back acquisition cost inside 12 months, and make at least three times what a customer costs you.</span></div>
+        <div class="wb-stats">
+          <div class="wb-stat"><b id="ueLtv">—</b><span>Lifetime value</span></div>
+          <div class="wb-stat"><b id="ueRatio">—</b><span>LTV to CAC</span></div>
+          <div class="wb-stat"><b id="uePay">—</b><span>CAC payback</span></div>
+          <div class="wb-stat"><b id="ueLife">—</b><span>Avg. customer life</span></div>
+        </div>
+        <p class="wb-link">Glossary: <a href="#glossary" onclick="scrollToSection('glossary')">LTV / CAC, churn, unit economics</a></p>
+      </div>
+    </div>
+
+    <!-- Equity -->
+    <div class="wb-panel" id="wbEquity" role="tabpanel">
+      <div class="wb-fields">
+        <div class="wb-field wide">
+          <label>Founders and their split <span class="hint">percentages should total 100</span></label>
+          <div id="eqFounders"></div>
+          <button class="path-btn quiet" type="button" onclick="eqAddFounder()" style="margin-top:6px">+ Add founder</button>
+        </div>
+        <div class="wb-field">
+          <label for="eqPool">Option pool <span class="hint">percent, post-round</span></label>
+          <input class="wb-input" id="eqPool" type="number" min="0" max="50" step="0.5" placeholder="10" oninput="calcEquity()" />
+        </div>
+        <div class="wb-field">
+          <label for="eqRaise">Raising</label>
+          <input class="wb-input" id="eqRaise" type="number" min="0" step="1000" placeholder="500000" oninput="calcEquity()" />
+        </div>
+        <div class="wb-field wide">
+          <label for="eqPre">Pre-money valuation</label>
+          <input class="wb-input" id="eqPre" type="number" min="0" step="10000" placeholder="4500000" oninput="calcEquity()" />
+        </div>
+      </div>
+      <div class="wb-out">
+        <div class="wb-verdict idle" id="eqVerdict"><b>Enter your numbers</b><span>See what each founder holds after the round, the option pool, and the investor's stake are all accounted for.</span></div>
+        <div class="wb-stats">
+          <div class="wb-stat"><b id="eqPost">—</b><span>Post-money</span></div>
+          <div class="wb-stat"><b id="eqInv">—</b><span>Investor stake</span></div>
+        </div>
+        <ul class="path-checklist" id="eqTable" style="margin-top:24px"></ul>
+        <p class="wb-link">Playbook: <a href="#howto" onclick="scrollToSection('howto')">How do I choose a co-founder and split equity?</a></p>
+      </div>
+    </div>
+
+    <p class="cei-note">These are planning tools, not financial or legal advice. Before you sign anything, talk to the <a href="https://law.missouri.edu/elc/" target="_blank" rel="noopener">MU Law Entrepreneurship Legal Clinic</a>.</p>
+  </div>
+</section>
+
+
 <section class="section lg alt" id="resources">
   <div class="section-inner">
     <div style="margin-bottom: 48px; max-width: 48rem;">
@@ -2934,6 +3330,36 @@ html { scroll-behavior: smooth; }
 </section>
 
 <!-- ALUMNI -->
+<!-- ===================== VENTURE SHOWCASE ===================== -->
+<section class="section lg alt" id="ventures">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">In Progress</span></div>
+      <h2>Who's building <span class="italic">right now</span></h2>
+      <p class="lede">Mizzou students with something live this semester. The alumni further down this page started exactly here.</p>
+      <button class="section-print-btn" onclick="printSection('ventures')">⎙ Print this section</button>
+    </div>
+
+    <div class="cei-chiprow" id="vtChips">
+      <button class="cei-chip on" data-vt="all" onclick="filterVentures(this)">All</button>
+      <button class="cei-chip" data-vt="1" onclick="filterVentures(this)">Phase 1</button>
+      <button class="cei-chip" data-vt="2" onclick="filterVentures(this)">Phase 2</button>
+      <button class="cei-chip" data-vt="3" onclick="filterVentures(this)">Phase 3</button>
+      <button class="cei-chip" data-vt="4" onclick="filterVentures(this)">Phase 4</button>
+    </div>
+
+    <div class="vt-grid" id="vtGrid"></div>
+
+    <div class="cei-empty" id="vtEmpty">
+      <strong>This board is just opening.</strong>
+      If you're a Mizzou student with a venture underway — an idea you're testing, a storefront, an LLC, anything real — put it on the board and let the next founder find you.
+      <div style="margin-top:20px"><a class="path-btn primary" style="display:inline-block;text-decoration:none" href="https://forms.gle/GhbcUXu9vD3FwZgL7" target="_blank" rel="noopener">Add your venture →</a></div>
+    </div>
+
+    <div style="margin-top:32px" id="vtCta"></div>
+  </div>
+</section>
+
 <section class="section lg" id="alumni">
   <div class="section-inner">
     <div style="margin-bottom: 64px; max-width: 48rem;">
@@ -3419,7 +3845,7 @@ html { scroll-behavior: smooth; }
         <div class="footer-contact">Center for Entrepreneurship &amp; Innovation · Robert J. Trulaske, Sr. College of Business · University of Missouri · Columbia, MO 65211 · <a href="mailto:cei@missouri.edu">cei@missouri.edu</a> · <a href="tel:+15738826688">573-882-6688</a></div>
         <div class="footer-eeo">MU is an equal opportunity employer.</div>
         <div class="footer-copyright">© 2026 Curators of the University of Missouri. All rights reserved. <a href="https://missouri.edu/copyright/" target="_blank" rel="noopener">DMCA and other copyright information</a>. <a href="https://missouri.edu/privacy/" target="_blank" rel="noopener">Privacy policy</a>.</div>
-        <span class="footer-updated">Last updated 17 Jun 2026</span>
+        <span class="footer-updated"><span id="lastUpdatedText">Last updated 28 Jul 2026</span></span>
       </div>
       <div class="right">
         <button class="print-btn" onclick="window.print()">⎙ Download / Print Guidebook</button>
@@ -3556,7 +3982,7 @@ function copyPrompt(btn) {
 }
 
 // Nav scroll behavior + scrollspy active-section highlighting
-const NAV_SECTION_IDS = ['phases', 'howto', 'ai', 'resources', 'knowledge', 'glossary', 'beyond', 'alumni', 'contacts'];
+const NAV_SECTION_IDS = ['phases', 'path', 'deadlines', 'howto', 'ai', 'tools', 'resources', 'knowledge', 'glossary', 'beyond', 'ventures', 'alumni', 'contacts'];
 function updateActiveNav() {
   const trigger = window.innerHeight / 3;
   let activeId = null;
@@ -3853,6 +4279,733 @@ function copyStudio() {
     setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
   });
 }
+
+
+/* ============================================================
+   ADDITIONS — Founder Path, Deadlines, Workbench, Ventures, What's New
+   All state is local to the visitor's browser. Nothing is transmitted.
+   ============================================================ */
+
+/* ---------- storage (safe in private mode / blocked storage) ---------- */
+function ceiGet(key, fallback) {
+  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+  catch (e) { return fallback; }
+}
+function ceiSet(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+  catch (e) { return false; }
+}
+function ceiDel(key) { try { localStorage.removeItem(key); } catch (e) {} }
+
+/* ============================================================
+   1. WHAT'S NEW
+   EDITING: add a line at the top of CHANGELOG whenever the guidebook
+   changes. Newest first. Dates are ISO (YYYY-MM-DD).
+   ============================================================ */
+const CHANGELOG = [
+  { date: '2026-07-28', text: 'New: a deadline board, a saved founder path, three founder calculators, and a student venture board.' },
+  { date: '2026-06-17', text: 'Added national accelerators, startup job boards, and twelve student pitch competitions to Beyond the Guidebook.' },
+  { date: '2026-06-01', text: 'The Playbook expanded to ten questions, and the AI section was reviewed against the current model landscape.' },
+  { date: '2026-04-03', text: 'AODO MedTech won $7,000 at the Entrepreneurship Alliance Final.' }
+];
+
+/* Resources added recently, by exact card title -> ISO date.
+   Anything dated within the last 45 days gets a NEW badge automatically.
+   EDITING: add an entry here when you add a resource card. */
+const RESOURCE_ADDED = {};
+
+function renderWhatsNew() {
+  const ul = document.getElementById('whatsnewList');
+  if (!ul) return;
+  ul.innerHTML = CHANGELOG.slice(0, 3).map(function (c) {
+    const d = new Date(c.date + 'T12:00:00');
+    const label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return '<li><time datetime="' + c.date + '">' + label + '</time><span>' + c.text + '</span></li>';
+  }).join('');
+}
+
+function badgeNewResources() {
+  const cutoff = Date.now() - 45 * 864e5;
+  document.querySelectorAll('#resources .resource-card.master h3').forEach(function (h) {
+    const when = RESOURCE_ADDED[h.textContent.trim()];
+    if (!when) return;
+    if (new Date(when + 'T12:00:00').getTime() < cutoff) return;
+    if (h.querySelector('.new-badge')) return;
+    const b = document.createElement('span');
+    b.className = 'new-badge';
+    b.textContent = 'New';
+    h.appendChild(b);
+  });
+}
+
+function stampLastUpdated() {
+  const el = document.getElementById('lastUpdatedText');
+  if (!el || !CHANGELOG.length) return;
+  const d = new Date(CHANGELOG[0].date + 'T12:00:00');
+  const days = Math.floor((Date.now() - d.getTime()) / 864e5);
+  const rel = days <= 0 ? 'today' : days === 1 ? 'yesterday'
+    : days < 30 ? days + ' days ago'
+    : days < 60 ? 'last month'
+    : Math.round(days / 30) + ' months ago';
+  el.textContent = 'Updated ' + rel + ' · ' + d.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+/* ============================================================
+   2. MY FOUNDER PATH
+   Steps are drawn from each phase's Next Steps plus the resources
+   already listed in that phase.
+   ============================================================ */
+const PATH_STEPS = {
+  1: [
+    'Visit the Griggs Innovators Nexus in person',
+    'Talk to ten people who have the problem',
+    'Apply to Entrepreneurship Quest (EQ)',
+    'Book time with an Entrepreneur-in-Residence',
+    "Start the Founder's Bookshelf in the Knowledge Hub",
+    'Write the problem down in one sentence'
+  ],
+  2: [
+    'Run customer-discovery interviews (NSF I-Corps teaches the method)',
+    'Join the Entrepreneurship Alliance',
+    'Draft your positioning statement',
+    'Enter a pitch competition to test your story',
+    'Present at 1 Million Cups Columbia',
+    'Decide what evidence would prove you wrong'
+  ],
+  3: [
+    'Form the entity with the MU Law Entrepreneurship Legal Clinic',
+    'Build your first pitch deck (see The Playbook)',
+    'Pitch to Allen Angel Fund or Centennial Investors',
+    'Apply for an MTC investment or a grant',
+    'Move into the Missouri Innovation Center',
+    'Put a vesting schedule in writing with your co-founders'
+  ],
+  4: [
+    'Know whether you are default alive or default dead',
+    'Set your North Star metric',
+    'Apply to Y Combinator or Techstars',
+    'List your raise on AngelList',
+    'Begin conversations with growth-stage funds',
+    'Make your first key hire deliberately'
+  ]
+};
+const PATH_KEY = 'cei_path_v2';
+
+function pathState() { return ceiGet(PATH_KEY, { phase: null, done: [], updated: null }); }
+function pathSave(s) { s.updated = new Date().toISOString(); ceiSet(PATH_KEY, s); }
+
+function pathSetPhase(phase) {
+  const s = pathState();
+  if (s.phase !== phase) { s.phase = phase; s.done = []; }
+  pathSave(s);
+  renderPath();
+  track('path_phase_set', { phase: 'Phase ' + phase });
+}
+
+function pathToggle(i) {
+  const s = pathState();
+  if (!s.phase) return;
+  const at = s.done.indexOf(i);
+  if (at === -1) { s.done.push(i); } else { s.done.splice(at, 1); }
+  pathSave(s);
+  renderPath();
+  const steps = PATH_STEPS[s.phase] || [];
+  track('path_step_toggle', {
+    phase: 'Phase ' + s.phase,
+    step: (steps[i] || '').slice(0, 60),
+    done: at === -1,
+    completed: s.done.length + '/' + steps.length
+  });
+}
+
+function pathReset() {
+  ceiDel(PATH_KEY);
+  renderPath();
+  track('path_reset');
+}
+
+function pathGoToPhase() {
+  const s = pathState();
+  if (!s.phase) { openAssessment(); return; }
+  scrollToSection('phase-' + s.phase);
+}
+
+function renderPath() {
+  const list = document.getElementById('pathList');
+  if (!list) return;
+  const s = pathState();
+  const num = document.getElementById('pathNum');
+  const name = document.getElementById('pathName');
+  const sub = document.getElementById('pathSub');
+  const jump = document.getElementById('pathJump');
+  const saved = document.getElementById('pathSaved');
+
+  if (!s.phase) {
+    num.textContent = '—';
+    name.textContent = 'No phase selected yet';
+    sub.textContent = 'Take the 30-second self-assessment and your path appears here.';
+    document.getElementById('pathBar').style.width = '0%';
+    document.getElementById('pathDone').textContent = '0';
+    document.getElementById('pathLeft').textContent = '—';
+    document.getElementById('pathPct').textContent = '0%';
+    jump.textContent = 'Find my phase';
+    saved.textContent = '';
+    list.innerHTML = '<li><div class="cei-empty" style="border:none;padding:28px 0;text-align:left">'
+      + '<strong>Your checklist appears here.</strong>Choose a phase and you\'ll get the six moves that matter most at that stage.</div></li>';
+    return;
+  }
+
+  const steps = PATH_STEPS[s.phase] || [];
+  const t = (typeof PHASE_TITLES !== 'undefined' && PHASE_TITLES[s.phase]) || { title: '', sub: '' };
+  const done = s.done.filter(function (i) { return i < steps.length; });
+  const pct = steps.length ? Math.round(done.length / steps.length * 100) : 0;
+
+  num.textContent = '0' + s.phase;
+  name.textContent = t.title || ('Phase ' + s.phase);
+  sub.textContent = t.sub || '';
+  document.getElementById('pathBar').style.width = pct + '%';
+  document.getElementById('pathDone').textContent = done.length;
+  document.getElementById('pathLeft').textContent = steps.length - done.length;
+  document.getElementById('pathPct').textContent = pct + '%';
+  jump.textContent = 'Go to Phase ' + s.phase;
+
+  if (s.updated) {
+    const d = new Date(s.updated);
+    const days = Math.floor((Date.now() - d.getTime()) / 864e5);
+    saved.textContent = pct === 100
+      ? 'Phase ' + s.phase + ' complete. When the work changes, run the assessment again.'
+      : 'Last saved ' + (days <= 0 ? 'today' : days === 1 ? 'yesterday' : days + ' days ago') + '.';
+  }
+
+  list.innerHTML = steps.map(function (step, i) {
+    const on = done.indexOf(i) !== -1;
+    return '<li><button class="path-check" aria-pressed="' + on + '" onclick="pathToggle(' + i + ')">'
+      + '<span class="path-box" aria-hidden="true">✓</span>'
+      + '<span class="path-text">' + step + '</span></button></li>';
+  }).join('');
+}
+
+/* ============================================================
+   3. DEADLINE BOARD
+   -----------------------------------------------------------------
+   HOW TO MAINTAIN THIS LIST
+   Each entry needs: name, org, url, type, and a cycle.
+     cycle: 'rolling'  -> applications open year-round, no countdown
+     cycle: 'annual'   -> opens/closes are 'MM-DD', repeating every year
+     cycle: 'dated'    -> closesOn is a single 'YYYY-MM-DD'
+   confirmed: true  -> a date you have verified on the program's site.
+                       Shows a live countdown and an "Add to calendar" button.
+   confirmed: false -> the program's usual cycle only. Shown in italics as
+                       unconfirmed, and the calendar button stays disabled,
+                       because putting an unverified date in someone's
+                       calendar is worse than showing none.
+   Verify a date, flip confirmed to true, and the countdown turns on.
+   ============================================================ */
+const OPPORTUNITIES = [
+  // --- Mizzou and mid-Missouri ---
+  { name: 'Entrepreneurship Alliance', org: 'Trulaske CEI', type: 'Accelerator', phase: 2,
+    url: 'https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance',
+    cycle: 'annual', opens: '08-15', closes: '09-30', confirmed: false,
+    note: "CEI's flagship eight-week accelerator. Ask the CEI for this year's dates." },
+  { name: 'Entrepreneurship Quest (EQ) Accelerator', org: 'Griggs Innovators Nexus', type: 'Accelerator', phase: 1,
+    url: 'https://research.missouri.edu/griggs-innovators-nexus/entrepreneur-quest-student-accelerator',
+    cycle: 'annual', opens: '09-01', closes: '10-15', confirmed: false,
+    note: '$40,000 in prize money for student-led ventures.' },
+  { name: 'GIN Incubator Office Space', org: 'Griggs Innovators Nexus', type: 'Grant', phase: 3,
+    url: 'https://research.missouri.edu/griggs-innovators-nexus/incubator-office-space-for-students',
+    cycle: 'annual', opens: '03-01', closes: '04-30', confirmed: false,
+    note: 'Rent-free 100 sq ft in the MU Student Center, awarded for the academic year.' },
+  { name: 'REDI Small Business Grant', org: 'REDI · City of Columbia', type: 'Grant', phase: 3,
+    url: 'https://columbiaredi.com/small-business-grant/',
+    cycle: 'annual', opens: '02-01', closes: '03-31', confirmed: false,
+    note: 'A $50,000 pool split among eight entrepreneurs. CEI lists the next cycle as spring 2027 — confirm with REDI.' },
+
+  // --- Missouri and regional ---
+  { name: 'Arch Grants Startup Competition', org: 'Arch Grants · St. Louis', type: 'Grant', phase: 3,
+    url: 'https://archgrants.org/programs/startup-competition/',
+    cycle: 'annual', opens: '01-15', closes: '03-15', confirmed: false,
+    note: '$75,000 equity-free, plus $25,000 relocation. Requires HQ in St. Louis for a year.' },
+  { name: 'Regnier Venture Creation Challenge', org: 'UMKC', type: 'Competition', phase: 2,
+    url: 'https://info.umkc.edu/regnier/regnier-venture-creation-challenge/',
+    cycle: 'annual', opens: '01-01', closes: '02-28', confirmed: false,
+    note: 'Open to students in Missouri and surrounding states.' },
+  { name: 'Missouri Technology Corporation', org: 'State of Missouri', type: 'State', phase: 3,
+    url: 'https://www.missouritechnology.com/', cycle: 'rolling', confirmed: true,
+    note: 'State capital for Missouri technology startups. Contact ahead of a raise.' },
+
+  // --- National competitions ---
+  { name: 'Rice Business Plan Competition', org: 'Rice University', type: 'Competition', phase: 3,
+    url: 'https://rbpc.rice.edu/', cycle: 'annual', opens: '11-01', closes: '02-01', confirmed: false,
+    note: "World's largest and richest student competition. Graduate-focused, $1M+ in prizes." },
+  { name: 'MIT $100K Entrepreneurship Competition', org: 'MIT', type: 'Competition', phase: 3,
+    url: 'https://www.mit100k.org/', cycle: 'annual', opens: '09-01', closes: '11-15', confirmed: false,
+    note: 'Multi-stage: Pitch, Accelerate, Launch. Needs at least one MIT-affiliated team member.' },
+  { name: 'TigerLaunch', org: 'Princeton University', type: 'Competition', phase: 1,
+    url: 'https://tigerlaunch.com/', cycle: 'annual', opens: '10-01', closes: '12-15', confirmed: false,
+    note: "World's largest student-run competition. Regional rounds feed the final." },
+  { name: 'e-Fest (Schulze Entrepreneurship Challenge)', org: 'University of St. Thomas', type: 'Competition', phase: 2,
+    url: 'https://efest.biz/', cycle: 'annual', opens: '10-15', closes: '12-31', confirmed: false,
+    note: 'Undergraduate-only. Top 25 finalists pitch in Minneapolis.' },
+  { name: 'Pitch Dingman Competition', org: 'University of Maryland', type: 'Competition', phase: 2,
+    url: 'https://www.rhsmith.umd.edu/centers-initiatives/dingman-lamone-center/initiatives-programs/pitch-dingman-competition',
+    cycle: 'annual', opens: '09-15', closes: '11-01', confirmed: false,
+    note: 'Shark-Tank-style format, $150K+ in prizes.' },
+  { name: 'MN Cup', org: 'University of Minnesota', type: 'Competition', phase: 2,
+    url: 'https://carlsonschool.umn.edu/mn-cup', cycle: 'annual', opens: '03-01', closes: '04-30', confirmed: false,
+    note: 'Largest statewide competition in the country, with a strong student division.' },
+  { name: 'Baylor New Venture Competition', org: 'Baylor University', type: 'Competition', phase: 2,
+    url: 'https://hankamer.baylor.edu/baugh-center/new-venture', cycle: 'annual', opens: '10-01', closes: '01-15', confirmed: false,
+    note: 'Business plan and elevator pitch tracks, open to global collegiate teams.' },
+  { name: 'Global Student Entrepreneur Awards (GSEA)', org: "Entrepreneurs' Organization", type: 'Competition', phase: 3,
+    url: 'https://www.gsea.org/', cycle: 'annual', opens: '08-01', closes: '10-31', confirmed: false,
+    note: 'For students already running a revenue-generating business.' },
+  { name: 'Fowler Global Social Innovation Challenge', org: 'University of San Diego', type: 'Competition', phase: 2,
+    url: 'https://www.fowlergsic.org/', cycle: 'annual', opens: '11-01', closes: '02-15', confirmed: false,
+    note: 'Social and environmental ventures, framed around the UN SDGs.' },
+
+  // --- Accelerators ---
+  { name: 'Pear Competition', org: 'Pear VC', type: 'Accelerator', phase: 2,
+    url: 'https://pear.vc/programs/dorm/competition/', cycle: 'annual', opens: '01-15', closes: '03-15', confirmed: false,
+    note: '$100K SAFE to winners, and a fast track into PearX. Built for student and faculty founders.' },
+  { name: 'Future Founders Fellowship', org: 'Future Founders', type: 'Accelerator', phase: 1,
+    url: 'https://www.futurefounders.com/fellowship/', cycle: 'annual', opens: '09-01', closes: '10-31', confirmed: false,
+    note: 'Equity-free, year-long, for US founders 18–30. The guidebook lists a September 2026 reopening.' },
+  { name: 'Y Combinator', org: 'Y Combinator', type: 'Accelerator', phase: 4,
+    url: 'https://www.ycombinator.com/', cycle: 'rolling', confirmed: true,
+    note: 'Applications are accepted continuously; batches have their own cut-offs. Apply late rather than not at all.' },
+  { name: 'Techstars', org: 'Techstars', type: 'Accelerator', phase: 4,
+    url: 'https://www.techstars.com/', cycle: 'rolling', confirmed: true,
+    note: 'Programs run on separate calendars by city and vertical — check the one you want.' },
+  { name: 'MassChallenge', org: 'MassChallenge', type: 'Accelerator', phase: 3,
+    url: 'https://masschallenge.org/', cycle: 'annual', opens: '01-01', closes: '03-31', confirmed: false,
+    note: 'One of the largest equity-free accelerators.' },
+  { name: 'Founder Institute', org: 'Founder Institute', type: 'Accelerator', phase: 1,
+    url: 'https://fi.co/', cycle: 'rolling', confirmed: true,
+    note: 'Part-time pre-seed program running in 200+ cities, with cohorts starting through the year.' },
+  { name: 'NSF I-Corps', org: 'National Science Foundation', type: 'Federal', phase: 2,
+    url: 'https://new.nsf.gov/funding/initiatives/i-corps', cycle: 'rolling', confirmed: true,
+    note: 'MU is part of the Great Lakes regional hub. Cohorts run through the year.' }
+];
+
+const DAY = 864e5;
+function atNoon(y, m, d) { return new Date(y, m - 1, d, 12, 0, 0).getTime(); }
+function parseMD(md, year) { const p = md.split('-'); return atNoon(year, +p[0], +p[1]); }
+
+/* Resolve an entry to { state, closeAt, openAt } for right now. */
+function dlResolve(o, now) {
+  if (o.cycle === 'rolling') return { state: 'rolling' };
+  if (o.cycle === 'dated') {
+    const c = new Date(o.closesOn + 'T12:00:00').getTime();
+    return c < now ? { state: 'closed', closeAt: c } : { state: 'open', closeAt: c };
+  }
+  // annual — test this year and the neighbours so windows that cross
+  // New Year (opens Nov, closes Feb) resolve correctly
+  const y = new Date(now).getFullYear();
+  let best = null;
+  for (let k = -1; k <= 1; k++) {
+    let open = parseMD(o.opens, y + k);
+    let close = parseMD(o.closes, y + k);
+    if (close < open) close = parseMD(o.closes, y + k + 1); // wraps the year
+    if (now >= open && now <= close) return { state: 'open', openAt: open, closeAt: close };
+    if (open > now && (!best || open < best.openAt)) best = { state: 'soon', openAt: open, closeAt: close };
+  }
+  return best || { state: 'closed' };
+}
+
+function fmtDate(ms) {
+  return new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+let dlFilter = 'all';
+
+function renderDeadlines() {
+  const grid = document.getElementById('dlGrid');
+  if (!grid) return;
+  const now = Date.now();
+
+  const rows = OPPORTUNITIES.map(function (o) {
+    const r = dlResolve(o, now);
+    const daysToClose = r.closeAt ? Math.ceil((r.closeAt - now) / DAY) : null;
+    const daysToOpen = r.openAt && r.state === 'soon' ? Math.ceil((r.openAt - now) / DAY) : null;
+    const urgent = r.state === 'open' && daysToClose !== null && daysToClose <= 21;
+    return { o: o, r: r, daysToClose: daysToClose, daysToOpen: daysToOpen, urgent: urgent };
+  });
+
+  const rank = { open: 0, soon: 1, rolling: 2, closed: 3 };
+  rows.sort(function (a, b) {
+    if (a.urgent !== b.urgent) return a.urgent ? -1 : 1;
+    const ra = rank[a.r.state], rb = rank[b.r.state];
+    if (ra !== rb) return ra - rb;
+    if (a.r.state === 'open') return (a.daysToClose || 0) - (b.daysToClose || 0);
+    if (a.r.state === 'soon') return (a.daysToOpen || 0) - (b.daysToOpen || 0);
+    return a.o.name.localeCompare(b.o.name);
+  });
+
+  const shown = rows.filter(function (x) {
+    if (dlFilter === 'all') return true;
+    if (dlFilter === 'open') return x.r.state === 'open' || x.r.state === 'rolling';
+    if (dlFilter === 'soon') return x.r.state === 'soon';
+    return x.o.type === dlFilter;
+  });
+
+  document.getElementById('dlEmpty').style.display = shown.length ? 'none' : '';
+
+  grid.innerHTML = shown.map(function (x, i) {
+    const o = x.o, r = x.r;
+    let cls, label, when;
+
+    if (r.state === 'rolling') {
+      cls = 'rolling'; label = 'Rolling';
+      when = '<b>Open year-round</b>';
+    } else if (r.state === 'open') {
+      cls = x.urgent ? 'urgent' : 'open';
+      label = x.daysToClose <= 0 ? 'Closes today' : x.daysToClose + (x.daysToClose === 1 ? ' day left' : ' days left');
+      when = '<b>Closes ' + fmtDate(r.closeAt) + '</b>';
+    } else if (r.state === 'soon') {
+      cls = 'soon'; label = 'Opens in ' + x.daysToOpen + 'd';
+      when = 'Opens ' + fmtDate(r.openAt) + '<br><b>Closes ' + fmtDate(r.closeAt) + '</b>';
+    } else {
+      cls = 'closed'; label = 'Closed';
+      when = 'Cycle has passed for this year';
+    }
+    if (!o.confirmed && r.state !== 'rolling') {
+      when += '<div class="dl-unconfirmed">Usual cycle — unconfirmed, check the site</div>';
+    }
+
+    const canIcs = o.confirmed && r.closeAt;
+    return '<div class="dl-row">'
+      + '<div><span class="dl-status ' + cls + '">' + label + '</span></div>'
+      + '<div><div class="dl-name"><a href="' + o.url + '" target="_blank" rel="noopener" onclick="track(\'deadline_click\',{name:' + JSON.stringify(o.name) + '})">' + o.name + '</a></div>'
+      + '<div class="dl-meta"><span class="dl-tag">' + o.type + '</span>' + o.org + ' — ' + o.note + '</div></div>'
+      + '<div class="dl-when">' + when + '</div>'
+      + '<div><button class="dl-ics" ' + (canIcs ? '' : 'disabled title="Confirm the date on the program site first"')
+      + ' onclick="downloadIcs(' + OPPORTUNITIES.indexOf(o) + ')">+ Calendar</button></div>'
+      + '</div>';
+  }).join('');
+}
+
+function filterDeadlines(btn) {
+  dlFilter = btn.dataset.dl;
+  document.querySelectorAll('#dlChips .cei-chip').forEach(function (c) { c.classList.toggle('on', c === btn); });
+  renderDeadlines();
+  track('deadline_filter', { filter: dlFilter });
+}
+
+function downloadIcs(idx) {
+  const o = OPPORTUNITIES[idx];
+  if (!o) return;
+  const r = dlResolve(o, Date.now());
+  if (!r.closeAt) return;
+  const d = new Date(r.closeAt);
+  const stamp = function (dt) {
+    return dt.getFullYear() + String(dt.getMonth() + 1).padStart(2, '0') + String(dt.getDate()).padStart(2, '0');
+  };
+  const end = new Date(r.closeAt + DAY);
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Trulaske CEI//Guidebook//EN', 'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    'UID:' + stamp(d) + '-' + idx + '@cei.missouri.edu',
+    'DTSTAMP:' + stamp(new Date()) + 'T090000Z',
+    'DTSTART;VALUE=DATE:' + stamp(d),
+    'DTEND;VALUE=DATE:' + stamp(end),
+    'SUMMARY:Deadline — ' + o.name,
+    'DESCRIPTION:' + (o.org + '. ' + o.note + ' Confirm details at ' + o.url).replace(/[,;]/g, ' '),
+    'URL:' + o.url,
+    'BEGIN:VALARM', 'TRIGGER:-P7D', 'ACTION:DISPLAY', 'DESCRIPTION:One week to apply — ' + o.name, 'END:VALARM',
+    'END:VEVENT', 'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = o.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '.ics';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  track('deadline_calendar', { name: o.name });
+}
+
+/* ============================================================
+   4. FOUNDER WORKBENCH
+   ============================================================ */
+const WB_KEY = 'cei_workbench_v1';
+function wbStore() { return ceiGet(WB_KEY, {}); }
+function wbRemember(id, val) { const s = wbStore(); s[id] = val; ceiSet(WB_KEY, s); }
+function wbRestore(ids) {
+  const s = wbStore();
+  ids.forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el && s[id] !== undefined && s[id] !== '') el.value = s[id];
+    if (el) el.addEventListener('input', function () { wbRemember(id, el.value); });
+  });
+}
+function num(id) { const el = document.getElementById(id); const v = parseFloat(el && el.value); return isFinite(v) ? v : null; }
+function money(n) {
+  if (n === null || !isFinite(n)) return '—';
+  const abs = Math.abs(n);
+  if (abs >= 1e6) return '$' + (n / 1e6).toFixed(abs >= 1e7 ? 0 : 1) + 'M';
+  if (abs >= 1e3) return '$' + Math.round(n / 1e3) + 'k';
+  return '$' + Math.round(n);
+}
+
+function wbTab(btn) {
+  document.querySelectorAll('.wb-tab').forEach(function (t) {
+    const on = t === btn;
+    t.classList.toggle('on', on);
+    t.setAttribute('aria-selected', on);
+  });
+  document.querySelectorAll('.wb-panel').forEach(function (p) {
+    p.classList.toggle('on', p.id === btn.dataset.wb);
+  });
+  track('workbench_tab', { tab: btn.textContent.trim() });
+}
+
+/* --- Runway / default alive --- */
+function calcRunway() {
+  const cash = num('rwCash'), rev0 = num('rwRev'), cost = num('rwCost');
+  const g = (num('rwGrowth') || 0) / 100;
+  const v = document.getElementById('rwVerdict');
+  const set = function (id, t) { document.getElementById(id).textContent = String(t); };
+
+  if (cash === null || cost === null || rev0 === null) {
+    v.className = 'wb-verdict idle';
+    v.innerHTML = '<b>Enter your numbers</b><span>Paul Graham\'s test: if nothing changes and you raise nothing more, do you reach profitability before the money runs out?</span>';
+    ['rwMonths', 'rwBurn', 'rwBreak', 'rwLow'].forEach(function (id) { set(id, '—'); });
+    return;
+  }
+
+  let bal = cash, rev = rev0, months = 0, breakeven = null, low = cash;
+  const LIMIT = 120;
+  while (months < LIMIT) {
+    if (rev >= cost && breakeven === null) { breakeven = months; break; }
+    bal += rev - cost;
+    low = Math.min(low, bal);
+    months++;
+    rev = rev * (1 + g);
+    if (bal <= 0) break;
+  }
+  const alive = breakeven !== null && bal > 0;
+  const runway = (cost - rev0) > 0 ? Math.floor(cash / (cost - rev0)) : null;
+
+  set('rwBurn', money(Math.max(0, cost - rev0)) + '/mo');
+  set('rwMonths', alive ? '∞' : (runway === null ? '∞' : runway));
+  set('rwBreak', breakeven === null ? 'Not within 10 yrs' : breakeven === 0 ? 'Already there' : breakeven + ' mo');
+  set('rwLow', money(low));
+
+  if (rev0 >= cost) {
+    v.className = 'wb-verdict good';
+    v.innerHTML = '<b>Default alive</b><span>You are already profitable at this run rate. Raise because it accelerates something, not because you need it.</span>';
+  } else if (alive) {
+    v.className = 'wb-verdict good';
+    v.innerHTML = '<b>Default alive</b><span>At ' + (g * 100).toFixed(1) + '% monthly growth you reach breakeven in about ' + breakeven + ' months, with roughly ' + money(low) + ' left at the low point. Thin, but you get there without raising.</span>';
+  } else {
+    v.className = 'wb-verdict bad';
+    v.innerHTML = '<b>Default dead</b><span>On this trajectory the money runs out before you turn profitable. Two levers: grow revenue faster or cut costs. Find out now, while you still have room to act.</span>';
+  }
+  track('workbench_calc', { tool: 'runway' });
+}
+
+/* --- Unit economics --- */
+function calcUnit() {
+  const rev = num('ueRev'), margin = num('ueMargin'), cac = num('ueCac'), churn = num('ueChurn');
+  const v = document.getElementById('ueVerdict');
+  const set = function (id, t) { document.getElementById(id).textContent = String(t); };
+
+  if (rev === null || margin === null || cac === null || churn === null || churn <= 0) {
+    v.className = 'wb-verdict idle';
+    v.innerHTML = '<b>Enter your numbers</b><span>The rule of thumb investors use: earn back acquisition cost inside 12 months, and make at least three times what a customer costs you.</span>';
+    ['ueLtv', 'ueRatio', 'uePay', 'ueLife'].forEach(function (id) { set(id, '—'); });
+    return;
+  }
+
+  const life = 100 / churn;                      // months
+  const gross = rev * (margin / 100);            // gross profit per month
+  const ltv = gross * life;
+  const ratio = cac > 0 ? ltv / cac : Infinity;
+  const payback = gross > 0 ? cac / gross : null;
+
+  set('ueLtv', money(ltv));
+  set('ueRatio', (isFinite(ratio) ? ratio.toFixed(1) : '∞') + '×');
+  set('uePay', payback === null ? '—' : payback.toFixed(1) + ' mo');
+  set('ueLife', life.toFixed(1) + ' mo');
+
+  if (ratio >= 3 && payback !== null && payback <= 12) {
+    v.className = 'wb-verdict good';
+    v.innerHTML = '<b>These work</b><span>You make ' + ratio.toFixed(1) + '× what a customer costs and earn it back in ' + payback.toFixed(1) + ' months. Spend more on acquisition with some confidence.</span>';
+  } else {
+    const problems = [];
+    if (ratio < 3) problems.push('the ratio is ' + ratio.toFixed(1) + '× against a 3× floor');
+    if (payback !== null && payback > 12) problems.push('payback takes ' + payback.toFixed(1) + ' months against a 12-month ceiling');
+    v.className = 'wb-verdict bad';
+    v.innerHTML = '<b>Not there yet</b><span>Right now ' + problems.join(', and ') + '. Churn is usually the fastest lever — cutting it lengthens customer life and lifts value at the same time.</span>';
+  }
+  track('workbench_calc', { tool: 'unit_economics' });
+}
+
+/* --- Equity & dilution --- */
+let eqRows = [{ name: '', pct: '' }];
+function eqRender() {
+  const host = document.getElementById('eqFounders');
+  if (!host) return;
+  host.innerHTML = eqRows.map(function (r, i) {
+    return '<div class="wb-splitrow">'
+      + '<input class="wb-input" placeholder="Founder ' + (i + 1) + '" value="' + (r.name || '').replace(/"/g, '&quot;') + '" oninput="eqSet(' + i + ',\'name\',this.value)" />'
+      + '<input class="wb-input pct" type="number" min="0" max="100" step="1" placeholder="%" value="' + (r.pct === '' ? '' : r.pct) + '" oninput="eqSet(' + i + ',\'pct\',this.value)" />'
+      + (eqRows.length > 1 ? '<button class="wb-rm" type="button" aria-label="Remove founder" onclick="eqRemove(' + i + ')">×</button>' : '')
+      + '</div>';
+  }).join('');
+}
+function eqSet(i, k, v) { eqRows[i][k] = v; ceiSet('cei_equity_v1', eqRows); calcEquity(); }
+function eqAddFounder() { if (eqRows.length >= 8) return; eqRows.push({ name: '', pct: '' }); eqRender(); calcEquity(); }
+function eqRemove(i) { eqRows.splice(i, 1); ceiSet('cei_equity_v1', eqRows); eqRender(); calcEquity(); }
+
+function calcEquity() {
+  const pre = num('eqPre'), raise = num('eqRaise');
+  const pool = num('eqPool') || 0;
+  const v = document.getElementById('eqVerdict');
+  const table = document.getElementById('eqTable');
+  const set = function (id, t) { document.getElementById(id).textContent = String(t); };
+
+  const named = eqRows.filter(function (r) { return parseFloat(r.pct) > 0; });
+  const total = named.reduce(function (s, r) { return s + parseFloat(r.pct); }, 0);
+
+  if (pre === null || raise === null || pre <= 0 || !named.length) {
+    v.className = 'wb-verdict idle';
+    v.innerHTML = '<b>Enter your numbers</b><span>See what each founder holds after the round, the option pool, and the investor\'s stake are all accounted for.</span>';
+    set('eqPost', '—'); set('eqInv', '—'); table.innerHTML = '';
+    return;
+  }
+
+  const post = pre + raise;
+  const invPct = raise / post * 100;
+  const founderShare = Math.max(0, 100 - invPct - pool);
+
+  set('eqPost', money(post));
+  set('eqInv', invPct.toFixed(1) + '%');
+
+  table.innerHTML = named.map(function (r) {
+    const before = parseFloat(r.pct);
+    const after = before / (total || 100) * founderShare;
+    return '<li><div style="display:flex;justify-content:space-between;gap:16px;padding:13px 4px;font-size:14px">'
+      + '<span>' + (r.name || 'Founder') + '</span>'
+      + '<span style="color:var(--black-tint-1)">' + before.toFixed(1) + '% → <b style="color:var(--ink)">' + after.toFixed(1) + '%</b></span>'
+      + '</div></li>';
+  }).join('')
+    + '<li><div style="display:flex;justify-content:space-between;gap:16px;padding:13px 4px;font-size:14px">'
+    + '<span>Option pool</span><span><b>' + pool.toFixed(1) + '%</b></span></div></li>'
+    + '<li><div style="display:flex;justify-content:space-between;gap:16px;padding:13px 4px;font-size:14px">'
+    + '<span>New investor</span><span><b>' + invPct.toFixed(1) + '%</b></span></div></li>';
+
+  const dilution = 100 - founderShare;
+  if (Math.abs(total - 100) > 0.5) {
+    v.className = 'wb-verdict idle';
+    v.innerHTML = '<b>Splits total ' + total.toFixed(0) + '%</b><span>Founder percentages should add up to 100 before the round for these numbers to mean anything.</span>';
+  } else if (dilution > 35) {
+    v.className = 'wb-verdict bad';
+    v.innerHTML = '<b>' + dilution.toFixed(0) + '% dilution in one round</b><span>Founders end up holding ' + founderShare.toFixed(0) + '% together. Above roughly 25% for a single early round, it is worth asking whether you are raising too much, too early, or at too low a valuation.</span>';
+  } else {
+    v.className = 'wb-verdict good';
+    v.innerHTML = '<b>' + dilution.toFixed(0) + '% dilution</b><span>Founders hold ' + founderShare.toFixed(0) + '% together after the round. That is a normal outcome for an early raise at this valuation.</span>';
+  }
+  track('workbench_calc', { tool: 'equity' });
+}
+
+/* ============================================================
+   5. STUDENT VENTURE SHOWCASE
+   -----------------------------------------------------------------
+   EDITING: add a student venture as an object below. Keep the board
+   honest — only ventures with a student founder who has agreed to be
+   listed. Leave the array empty and the section shows an invitation
+   to submit instead of a thin, half-empty grid.
+     { name, founder, grad, phase (1-4), blurb, url (optional) }
+   ============================================================ */
+const VENTURES = [];
+
+let vtFilter = 'all';
+function renderVentures() {
+  const grid = document.getElementById('vtGrid');
+  const empty = document.getElementById('vtEmpty');
+  const chips = document.getElementById('vtChips');
+  const cta = document.getElementById('vtCta');
+  if (!grid) return;
+
+  if (!VENTURES.length) {
+    grid.innerHTML = '';
+    grid.style.display = 'none';
+    chips.style.display = 'none';
+    empty.style.display = '';
+    cta.innerHTML = '';
+    return;
+  }
+
+  grid.style.display = '';
+  chips.style.display = '';
+  const shown = VENTURES.filter(function (v) { return vtFilter === 'all' || String(v.phase) === vtFilter; });
+  empty.style.display = shown.length ? 'none' : '';
+  if (!shown.length) {
+    empty.innerHTML = '<strong>Nothing in that phase yet</strong>Try another phase, or add yours.';
+  }
+
+  grid.innerHTML = shown.map(function (v) {
+    const title = v.url
+      ? '<a href="' + v.url + '" target="_blank" rel="noopener" onclick="track(\'venture_click\',{name:' + JSON.stringify(v.name) + '})">' + v.name + '</a>'
+      : v.name;
+    return '<div class="vt-card">'
+      + '<div class="vt-top"><span class="vt-phase">Phase ' + v.phase + '</span>'
+      + (v.grad ? '<span class="vt-year">' + v.grad + '</span>' : '') + '</div>'
+      + '<h3>' + title + '</h3>'
+      + (v.founder ? '<div class="vt-founder">' + v.founder + '</div>' : '')
+      + '<p>' + v.blurb + '</p></div>';
+  }).join('');
+
+  cta.innerHTML = '<a class="path-btn primary" style="display:inline-block;text-decoration:none" href="https://forms.gle/GhbcUXu9vD3FwZgL7" target="_blank" rel="noopener">Add your venture →</a>';
+}
+function filterVentures(btn) {
+  vtFilter = btn.dataset.vt;
+  document.querySelectorAll('#vtChips .cei-chip').forEach(function (c) { c.classList.toggle('on', c === btn); });
+  renderVentures();
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function () {
+  // Save the phase whenever the existing self-assessment returns a result.
+  if (typeof answerAssessment === 'function') {
+    const original = answerAssessment;
+    window.answerAssessment = function (phase) {
+      try { pathSetPhase(phase); } catch (e) {}
+      return original.apply(this, arguments);
+    };
+  }
+
+  function boot() {
+    renderWhatsNew();
+    badgeNewResources();
+    stampLastUpdated();
+    renderPath();
+    renderDeadlines();
+    renderVentures();
+
+    eqRows = ceiGet('cei_equity_v1', [{ name: '', pct: '' }]);
+    if (!Array.isArray(eqRows) || !eqRows.length) eqRows = [{ name: '', pct: '' }];
+    eqRender();
+    wbRestore(['rwCash', 'rwRev', 'rwCost', 'rwGrowth', 'ueRev', 'ueMargin', 'ueCac', 'ueChurn', 'eqPool', 'eqRaise', 'eqPre']);
+    calcRunway(); calcUnit(); calcEquity();
+
+    // Returning visitor: report progress once per session so the GA4
+    // returning-visitor picture is readable.
+    const s = pathState();
+    if (s.phase) {
+      const steps = (PATH_STEPS[s.phase] || []).length;
+      track('path_resume', { phase: 'Phase ' + s.phase, completed: s.done.length + '/' + steps });
+    }
+    // Keep countdowns honest if a tab is left open across midnight.
+    setInterval(renderDeadlines, 60 * 60 * 1000);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
 
 </script>
 
