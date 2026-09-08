@@ -1,0 +1,47 @@
+# Weekly check of every outbound link in the Guidebook.
+# Opens (or updates) a single GitHub issue titled "Broken links in the Guidebook" when something fails,
+# so a dead resource is noticed within a week instead of by a student.
+name: Link check
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'   # Mondays, 12:00 UTC (7 a.m. Central)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --timeout 25
+            --max-retries 2
+            --max-concurrency 6
+            --accept 200..=299,403,429
+            --exclude-mail
+            --exclude '^https?://(www\.)?linkedin\.com'
+            --exclude '^https?://forms\.gle'
+            --exclude '^https?://airtable\.com'
+            --user-agent 'Mozilla/5.0 (compatible; CEI-Guidebook-LinkCheck/1.0; +https://github.com/nfajors/cei)'
+            index.html
+          fail: false
+          output: lychee-report.md
+
+      - name: Open or update the broken-links issue
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Broken links in the Guidebook
+          content-filepath: lychee-report.md
+          labels: links, maintenance
+          issue-number: ${{ vars.LINK_CHECK_ISSUE_NUMBER }}
