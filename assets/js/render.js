@@ -83,13 +83,16 @@ function resourceCard(r, master) {
 function renderPhases() {
   var grid = byId('phaseOverviewGrid'), stack = byId('phasesStack');
   if (!grid || !stack) return;
+  var pc = byId('phaseCount'); if (pc) pc.textContent = PHASES.length;
   grid.innerHTML = PHASES.map(function (p) {
-    return '<a href="#' + p.id + '" class="phase-overview-item" data-phase="' + p.n + '">'
+    return '<a href="#' + p.id + '" class="phase-overview-item' + (p.n === 0 ? ' zero' : '') + '" data-phase="' + p.n + '">'
       + '<div class="po-num"><div>' + p.n + '</div></div>'
       + '<div class="po-text"><h3>' + esc(p.title) + '</h3><p>' + esc(p.sub) + '</p></div></a>';
   }).join('');
   stack.innerHTML = PHASES.map(function (p, i) {
     var cards = p.resources.map(resourceById).filter(Boolean).map(function (r) { return resourceCard(r, false); }).join('');
+    var extra = '';
+    if (p.extra) { var tpl = byId(p.extra); if (tpl) { var tmp = document.createElement('div'); tmp.appendChild(tpl.content.cloneNode(true)); extra = tmp.innerHTML; } }
     var photo = p.photo ? '<div class="phase-photo">'
       + '<img src="' + esc(p.photo.src) + '" alt="' + esc(p.photo.alt) + '" width="900" height="600" loading="lazy" decoding="async"' + (p.photo.position ? ' style="object-position: ' + esc(p.photo.position) + '"' : '') + ' />'
       + '<div class="photo-caption-overlay"><div class="photo-eyebrow">Phase ' + p.n + ' · In Practice</div><p>' + esc(p.photo.caption) + '</p></div></div>' : '';
@@ -100,7 +103,7 @@ function renderPhases() {
       + '<div class="next-steps"><div class="next-steps-label">Next Steps</div><ul>'
       + p.next.map(function (s) { return '<li><span class="chev">›</span>' + esc(s) + '</li>'; }).join('')
       + '</ul></div></div></div>'
-      + '<div class="phase-right">' + photo + '<div class="phase-resources">' + cards + '</div></div>'
+      + '<div class="phase-right">' + photo + extra + '<div class="phase-resources">' + cards + '</div></div>'
       + '</div>';
   }).join('');
 }
@@ -197,6 +200,56 @@ function renderContacts() {
   }).join('');
 }
 
+/* ---------- started here (data/stories.js) ---------- */
+function renderStories() {
+  var grid = byId('storiesGrid');
+  if (!grid || typeof STORIES === 'undefined') return;
+  if (!STORIES.length) { byId('stories').hidden = true; return; }
+  grid.innerHTML = STORIES.map(function (st) {
+    var external = isExternal(st.to);
+    var link = external
+      ? '<a href="' + esc(st.to) + '" target="_blank" rel="noopener" onclick="track(\'story_click\',{name:' + esc(JSON.stringify(st.name)) + '})">' + esc(st.cta || 'Read more') + ' ↗</a>'
+      : '<button onclick="track(\'story_click\',{name:' + esc(JSON.stringify(st.name)) + '}); scrollToSection(\'' + esc(st.to) + '\')">' + esc(st.cta || 'Read more') + ' →</button>';
+    return '<article class="story">'
+      + '<div class="story-top"><span class="story-phase">' + (st.student ? 'Student · ' : '') + 'Phase ' + st.phase + '</span></div>'
+      + '<h3>' + esc(st.name) + '</h3><div class="story-who">' + esc(st.who) + '</div>'
+      + '<p>' + esc(st.text) + '</p><div class="story-cta">' + link + '</div></article>';
+  }).join('');
+}
+
+/* ---------- learn it for credit (data/courses.js) ---------- */
+function renderCourses() {
+  var grid = byId('courseGrid');
+  if (!grid || typeof COURSES === 'undefined') return;
+  var kinds = { course: 'Course', minor: 'Minor', certificate: 'Minor / certificate', program: 'Program' };
+  grid.innerHTML = COURSES.map(function (c) {
+    var ext = isExternal(c.url);
+    var open = ext ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener" onclick="track(\'course_click\',{name:' + esc(JSON.stringify(c.name)) + '})">' + (c.verified ? 'Program page ↗' : 'Check the catalog ↗') + '</a>'
+      : '<a href="' + esc(c.url) + '" onclick="track(\'course_click\',{name:' + esc(JSON.stringify(c.name)) + '}); scrollToSection(\'' + esc(c.url.replace('#', '')) + '\'); return false;">Talk to the director →</a>';
+    return '<div class="course-card' + (c.verified ? '' : ' unverified') + '">'
+      + '<div class="rc-top"><span class="tag">' + esc(kinds[c.kind] || c.kind) + '</span>' + (c.credits ? '<span class="phase-pill">' + esc(c.credits) + '</span>' : '') + '</div>'
+      + '<h3>' + esc(c.name) + '</h3><p>' + esc(c.text) + '</p>'
+      + '<div class="rc-meta"><span><b>Open to</b> ' + esc(c.open) + '</span></div>'
+      + (c.verified ? '' : '<div class="course-flag">Confirm in the catalog — not yet checked against this year\'s listings</div>')
+      + '<div class="course-cta">' + open + '</div></div>';
+  }).join('');
+  var cat = byId('catalogLink'); if (cat && typeof CATALOG_SEARCH !== 'undefined') cat.href = CATALOG_SEARCH;
+}
+
+/* ---------- who do I talk to first? (DOORS in data/contacts.js) ---------- */
+function renderDoors() {
+  var host = byId('doors');
+  if (!host || typeof DOORS === 'undefined') return;
+  host.innerHTML = '<h3 class="doors-title">Who do I talk to first?</h3><div class="doors-grid">' + DOORS.map(function (d) {
+    var people = d.contacts.map(function (id) { return CONTACTS.find(function (c) { return c.id === id; }); }).filter(Boolean);
+    return '<div class="door" id="door-' + esc(d.id) + '"><h4>' + esc(d.title) + '</h4><p>' + esc(d.text) + '</p><div class="door-people">'
+      + people.map(function (c, i) {
+        return '<a href="#contact-' + esc(c.id) + '" onclick="track(\'door_click\',{door:' + esc(JSON.stringify(d.id)) + ',contact:' + esc(JSON.stringify(c.name)) + '}); scrollToSection(\'contact-' + esc(c.id) + '\'); return false;">' + (i === 0 ? '<b>Start with</b> ' : '') + esc(c.name) + '</a>';
+      }).join('')
+      + '</div></div>';
+  }).join('') + '</div>';
+}
+
 /* ---------- venture board: hide until it has ventures (A2) ---------- */
 function hideEmptyVentureBoard() {
   var sec = byId('ventures');
@@ -225,6 +278,9 @@ function hideEmptyVentureBoard() {
     r.phases = PHASES.filter(function (p) { return p.resources.indexOf(r.id) !== -1; }).map(function (p) { return p.n; });
   });
   renderPhases();
+  renderStories();
+  renderCourses();
+  renderDoors();
   renderResourceIndex();
   renderKnowledge();
   renderGlossary();

@@ -172,6 +172,27 @@ img { display: block; max-width: 100%; }
 .stat .num { font-family: 'STIX Two Text', Georgia, serif; font-weight: 900; font-size: 30px; color: var(--gold); margin-bottom: 2px; line-height: 1; }
 .stat .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500; color: #a3a3a3; }
 
+.hero-more { margin-top: 18px; }
+.hero-more button { background: none; border: none; cursor: pointer; font: inherit; font-size: 13px; color: #d4d4d4; text-decoration: underline; text-underline-offset: 3px; padding: 0; }
+.hero-more button:hover { color: var(--gold); }
+
+/* ============ STARTED HERE (stories strip) ============ */
+.stories { background: #f5f5f0; border-bottom: 1px solid var(--black-tint-3); padding: 40px 24px; }
+.stories-inner { max-width: 1280px; margin: 0 auto; }
+.stories-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 18px; }
+.stories-head .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: middle; }
+.stories-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
+@media (min-width: 760px) { .stories-grid { grid-template-columns: repeat(3, 1fr); } }
+.story { background: #fff; padding: 22px 24px; display: flex; flex-direction: column; }
+.story-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.story-phase { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--black-tint-1); border: 1px solid var(--black-tint-3); padding: 2px 7px; }
+.story h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--black); }
+.story-who { font-size: 11.5px; font-weight: 600; color: var(--black-tint-1); margin: 4px 0 10px; }
+.story p { font-size: 14px; line-height: 1.6; color: #404040; flex-grow: 1; }
+.story-cta { margin-top: 14px; }
+.story-cta a, .story-cta button { font: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); background: none; border: none; padding: 0 0 2px; cursor: pointer; border-bottom: 2px solid var(--gold); }
+.story-cta a:hover, .story-cta button:hover { border-color: var(--black); }
+
 /* ============ SECTIONS ============ */
 .section { padding: 96px 24px; }
 .section.lg { padding: 96px 24px 128px; }
@@ -192,7 +213,9 @@ img { display: block; max-width: 100%; }
 .phase-overview .track { display: none; position: absolute; top: 48px; left: 48px; right: 48px; height: 1px; background: #e5e5e0; }
 @media (min-width: 768px) { .phase-overview .track { display: block; } }
 .phase-overview-grid { display: grid; grid-template-columns: 1fr; gap: 16px; position: relative; }
-@media (min-width: 768px) { .phase-overview-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+@media (min-width: 768px) { .phase-overview-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+@media (min-width: 1024px) { .phase-overview-grid { grid-template-columns: repeat(5, 1fr); } }
+.phase-overview-item.zero .po-num > div { background: var(--gold); color: var(--black); }
 /* Cross-cutting "throughout the journey" band */
 .crosscut { margin: 48px 0 0; padding: 24px 28px; background: var(--black); border-left: 4px solid var(--gold); }
 .crosscut-label { font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
@@ -212,6 +235,16 @@ img { display: block; max-width: 100%; }
 .phase-overview-item .po-text { min-width: 0; }
 .phase-overview-item.active .po-num > div { background: var(--gold); color: var(--black); transform: scale(1.04); }
 .phase-overview-item.active h3 { color: var(--black); }
+
+/* Semester math (Phase 0) — borrows the workbench's field and output styles */
+.semester { border: 1px solid var(--gold); background: #fffdf7; padding: 26px; margin-bottom: 24px; }
+.semester-head h4 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--black); margin: 10px 0 6px; }
+.semester-head p { font-size: 14px; line-height: 1.6; color: #525252; margin-bottom: 22px; max-width: 46rem; }
+.semester-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+@media (min-width: 900px) { .semester-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+.semester .wb-out { background: #fff; }
+.semester-fits { font-size: 13.5px; line-height: 1.6; color: #404040; margin-top: 18px; padding-top: 14px; border-top: 1px solid #ededea; }
+.semester-fits:empty { display: none; }
 
 /* Recent Win */
 .recent-win { display: grid; grid-template-columns: 1fr; gap: 0; margin-bottom: 80px; }
@@ -380,6 +413,33 @@ img { display: block; max-width: 100%; }
 .alum-cta-venture a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
 .alum-cta button { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); background: none; border: none; cursor: pointer; }
 
+/* Courses — learn it for credit */
+.course-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
+@media (min-width: 760px) { .course-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1100px) { .course-grid { grid-template-columns: repeat(3, 1fr); } }
+.course-card { background: #fff; padding: 24px; display: flex; flex-direction: column; }
+.course-card h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--black); margin: 8px 0 8px; }
+.course-card p { font-size: 13.5px; line-height: 1.6; color: #404040; flex-grow: 1; }
+.course-flag { margin-top: 10px; font-size: 11.5px; line-height: 1.5; color: #525252; background: var(--gold-tint-3); border-left: 3px solid var(--gold); padding: 8px 10px; }
+.course-cta { margin-top: 14px; }
+.course-cta a { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+.course-cta a:hover { border-color: var(--black); }
+
+/* Contacts — doors */
+.doors { margin-bottom: 40px; }
+.doors-title { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 24px; color: var(--black); margin-bottom: 16px; }
+.doors-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
+@media (min-width: 700px) { .doors-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1100px) { .doors-grid { grid-template-columns: repeat(5, 1fr); } }
+.door { background: #fff; padding: 22px; display: flex; flex-direction: column; }
+.door h4 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 17px; line-height: 1.25; color: var(--black); margin-bottom: 8px; }
+.door p { font-size: 13px; line-height: 1.55; color: #525252; flex-grow: 1; margin-bottom: 14px; }
+.door-people { display: flex; flex-direction: column; gap: 6px; }
+.door-people a { font-size: 13px; color: var(--black); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+.door-people a:hover { text-decoration-color: var(--black); }
+.door-people a b { font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: 0.1em; color: var(--black-tint-1); margin-right: 4px; }
+.contact-card { scroll-margin-top: 110px; }
+
 /* Contacts */
 .contacts-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 @media (min-width: 768px) { .contacts-grid { grid-template-columns: 1fr 1fr; } }
@@ -445,6 +505,8 @@ img { display: block; max-width: 100%; }
 
 
 /* How-To */
+.howto-group { padding: 14px 32px; background: #f5f5f0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--black); }
+@media (max-width: 640px) { .howto-group { padding: 12px 20px; } }
 .howto-list { display: flex; flex-direction: column; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
 .howto-card { background: white; }
 .howto-q { width: 100%; display: flex; align-items: center; gap: 20px; padding: 28px 32px; background: white; border: none; cursor: pointer; font-family: inherit; text-align: left; transition: background 0.2s; }
@@ -502,7 +564,7 @@ html { scroll-behavior: smooth; }
   .phase-overview-item { display: block !important; break-inside: avoid; margin-bottom: 8px; page-break-inside: avoid; }
   .phase-overview-item .po-num { display: inline-flex !important; margin-bottom: 4px !important; }
   .phase-overview-item .po-num > div { width: 36px !important; height: 36px !important; font-size: 18px !important; }
-  .recent-win, .resources-grid, .phase-right, .comp-grid, .gloss-grid, .alumni-grid, .contacts-grid, .kn-grid, .prompt-grid, .stats-grid, .studio-fields { display: block !important; grid-template-columns: none !important; }
+  .recent-win, .resources-grid, .phase-right, .comp-grid, .gloss-grid, .alumni-grid, .contacts-grid, .kn-grid, .prompt-grid, .stats-grid, .studio-fields, .stories-grid, .course-grid, .doors-grid, .semester-grid { display: block !important; grid-template-columns: none !important; }
   .resource-card, .gloss-term, .alum-card, .contact-card, .kn-card, .comp-row, .prompt-card, .beyond-block { break-inside: avoid; page-break-inside: avoid; }
   .gloss-a { display: block !important; }
   .gloss-a[hidden] { display: block !important; }

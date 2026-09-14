@@ -195,6 +195,7 @@ function closeAssessment(e) {
       <h3>Select the statement that best describes your current stage.</h3>
       <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
+        <button class="modal-option" onclick="answerCurious()"><span>I'm curious about entrepreneurship, but I don't have an idea yet.</span><span class="arrow">→</span></button>
         <button class="modal-option" onclick="answerAssessment(1)"><span>I'm exploring a problem or idea, but haven't validated it with anyone yet.</span><span class="arrow">→</span></button>
         <button class="modal-option" onclick="answerAssessment(2)"><span>I'm testing demand — talking to customers to see if they'll actually pay.</span><span class="arrow">→</span></button>
         <button class="modal-option" onclick="answerAssessment(3)"><span>Demand is validated. I'm ready to formally launch — entity, funding, operations.</span><span class="arrow">→</span></button>
@@ -218,6 +219,93 @@ function answerAssessment(phase) {
     setTimeout(() => closeAssessment(), 500);
   }, 1500);
 }
+
+// Phase 0 — the curious student. Deliberately does not go through
+// answerAssessment, so the saved Founder Path (phases 1-4) is untouched.
+function answerCurious() {
+  track('find_my_phase_result', { phase: 'Phase 0' });
+  const t = PHASE_TITLES[0];
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-result">
+      <div class="num">00</div>
+      <h3>Start with Phase 0</h3>
+      <p>${t.title} · ${t.sub}</p>
+      <div class="going">No idea required. Taking you there.</div>
+    </div>`;
+  setTimeout(() => {
+    document.getElementById('assessmentModal').classList.remove('open');
+    scrollToSection('phase-0');
+    setTimeout(() => closeAssessment(), 500);
+  }, 1500);
+}
+
+/* ---------- Semester math (Phase 0) ----------
+   Standalone: it shares the workbench's styles but none of its code or
+   storage keys. Values persist in this browser only. */
+const SM_KEY = 'cei_semester_v1';
+const SM_FIELDS = ['smCredits', 'smWork', 'smOther', 'smVenture', 'smOnce', 'smMonthly'];
+let smTrackTimer;
+function smNum(id) { const el = document.getElementById(id); const v = parseFloat(el && el.value); return isFinite(v) ? v : null; }
+function smMoney(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+function calcSemester() {
+  const v = document.getElementById('smVerdict');
+  if (!v) return;
+  const set = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = String(t); };
+  const credits = smNum('smCredits'), work = smNum('smWork') || 0, other = smNum('smOther') || 0, venture = smNum('smVenture');
+  const once = smNum('smOnce') || 0, monthly = smNum('smMonthly') || 0;
+  try { localStorage.setItem(SM_KEY, JSON.stringify(SM_FIELDS.reduce((o, id) => { o[id] = (document.getElementById(id) || {}).value || ''; return o; }, {}))); } catch (e) {}
+  const fits = document.getElementById('smFits');
+  if (credits === null || venture === null) {
+    v.className = 'wb-verdict idle';
+    v.innerHTML = '<b>Enter your week</b><span>Most first ventures cost less than a textbook and take about as much time as one class. Find out whether yours does.</span>';
+    ['smFree', 'smShare', 'smTotal', 'smCost'].forEach(id => set(id, '—'));
+    if (fits) fits.textContent = '';
+    return;
+  }
+  const WEEKS = 15, SLEEP = 56;
+  const free = Math.max(0, 168 - SLEEP - credits * 3 - work - other);
+  const share = free > 0 ? Math.round(venture / free * 100) : 100;
+  const total = Math.round(venture * WEEKS);
+  const cost = once + monthly * 4;
+  const likeCredits = Math.max(1, Math.round(venture / 3));
+  set('smFree', Math.round(free));
+  set('smShare', share + '%');
+  set('smTotal', total);
+  set('smCost', smMoney(cost));
+  let ladder;
+  if (venture < 2) ladder = 'With under two hours a week: sit in on 1 Million Cups (one morning, weekly) and read one Playbook answer a week. That is a real start.';
+  else if (venture < 5) ladder = 'Two to four hours a week fits ten customer conversations over the semester, a CEO meeting, and 1 Million Cups. Enough to find out whether a problem is real.';
+  else if (venture < 9) ladder = 'Five to eight hours a week is a cohort program: Entrepreneurship Quest or the Entrepreneurship Alliance, with their deadlines and mentors doing the pacing for you.';
+  else if (venture <= 15) ladder = 'Nine to fifteen hours a week is a build sprint: a landing page, the first paying customers, and a pitch-competition entry in one semester.';
+  else ladder = 'More than fifteen hours a week is a second course load. Most students cannot protect it past midterms. Try the plan at five to eight hours first.';
+  if (fits) fits.textContent = ladder;
+  if (venture > free) {
+    v.className = 'wb-verdict bad';
+    v.innerHTML = '<b>That is more than your free hours</b><span>After sleep, class and study time, work, and your other commitments you have about ' + Math.round(free) + ' hours a week left. Something has to give: fewer venture hours, or fewer other commitments for one semester.</span>';
+  } else if (venture > 15) {
+    v.className = 'wb-verdict bad';
+    v.innerHTML = '<b>That is a second full course load</b><span>' + venture + ' hours a week is more than most students can protect alongside classes. Try the plan at five to eight hours: ten customer interviews and a landing page fit comfortably in that.</span>';
+  } else if (share > 60) {
+    v.className = 'wb-verdict good';
+    v.innerHTML = '<b>You can try this, but it will be most of your free time</b><span>' + venture + ' hours a week is ' + share + '% of what is left after everything else. Pick one semester-sized goal so it stays finishable, and decide now what result would tell you to stop.</span>';
+  } else {
+    v.className = 'wb-verdict good';
+    v.innerHTML = '<b>You can afford to try this</b><span>' + total + ' hours over a fifteen-week semester, about the load of a ' + likeCredits + '-credit class, for ' + smMoney(cost) + ' all in. Pick one semester-sized goal and go.</span>';
+  }
+  clearTimeout(smTrackTimer);
+  smTrackTimer = setTimeout(() => track('semester_math', { hours: venture, free_hours: Math.round(free), verdict: v.className.replace('wb-verdict ', '') }), 1000);
+}
+(function initSemesterMath() {
+  const run = () => {
+    if (!document.getElementById('smVerdict')) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem(SM_KEY) || '{}');
+      SM_FIELDS.forEach(id => { const el = document.getElementById(id); if (el && saved[id]) el.value = saved[id]; });
+    } catch (e) {}
+    calcSemester();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
 
 // Auto-count "Founder Tools" = Playbook Q&As + starter prompts.
 // Scoped to the howto section's .howto-list so the AI section's

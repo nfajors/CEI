@@ -1,10 +1,12 @@
 /* ============================================================
    PHASES — the five stages of the path (0 = Curious, before you have
-   an idea). Each phase lists its resources by id (see data/resources.js).
+   an idea). `extra` names a <template> in index.html that is cloned into
+   the phase's right column (Phase 0 carries the Semester Math calculator). Each phase lists its resources by id (see data/resources.js).
    PHASE_TITLES is read by the self-assessment and the Founder Path;
    PATH_STEPS is the saved checklist for each phase (Founder Path).
    ============================================================ */
 const PHASE_TITLES = {
+  0: { title: 'Curious', sub: 'Find out if this is for you' },
   1: { title: 'Opportunity Discovery', sub: 'Find a problem worth solving' },
   2: { title: 'Customer & Model Validation', sub: 'Prove people want it and will pay' },
   3: { title: 'Venture Launch', sub: 'Stand it up legally and operationally' },
@@ -54,6 +56,15 @@ const PATH_STEPS = {
 /* The phase blocks on the page. `resources` lists ids from data/resources.js
    in display order. `photo` is a file in assets/img (900×600). */
 const PHASES = [
+  {
+    n: 0, id: 'phase-0',
+    title: 'Curious', sub: 'Find out if this is for you',
+    desc: 'Most founders did not start with an idea. They started by showing up somewhere, asking a question, or reading one thing. Nothing in this phase needs an application, a business major, or money. Pick one thing to do this week.',
+    next: ['Sit in on 1 Million Cups or a CEO meeting — no pitch required', 'Read the three first-year questions at the top of the Playbook', 'Run the semester math, then book twenty minutes with the CEI'],
+    photo: null,
+    extra: 'semesterMathTpl',
+    resources: ['collegiate-entrepreneurs-organization', '1-million-cups-columbia', 'creative-mornings-columbia', 'griggs-innovators-nexus', 'center-for-entrepreneurship-and-innovation', 'mizzou-startup-community', 'trulaske-alumni-entrepreneurs']
+  },
   {
     n: 1, id: 'phase-1',
     title: 'Opportunity Discovery', sub: 'Find a problem worth solving',

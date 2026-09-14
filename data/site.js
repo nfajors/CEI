@@ -56,6 +56,7 @@ const SITE = {
     { id: 'tools', label: 'Tools' },
     { id: 'resources', label: 'Resources' },
     { id: 'knowledge', label: 'Knowledge' },
+    { id: 'courses', label: 'Courses' },
     { id: 'glossary', label: 'Glossary' },
     { id: 'beyond', label: 'Beyond' },
     { id: 'ventures', label: 'Ventures' },

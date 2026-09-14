@@ -103,11 +103,12 @@
           <span class="label">Center for Entrepreneurship & Innovation</span>
         </div>
         <h1>The Entrepreneur's<br /><span class="italic">Guidebook</span></h1>
-        <p class="hero-sub">From idea to IPO — your complete roadmap through the resources, capital, and community at Mizzou and beyond.</p>
+        <p class="hero-sub">You don't need an idea, a business major, or money to start. This is how Mizzou students go from curious to founder — every program, deadline, tool, and person who can help, in one place. Open to every major and every year.</p>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="scrollToSection('phases')">Begin the Journey <span class="arrow">→</span></button>
-          <button class="btn-secondary" onclick="openAssessment()">⌖ Where Should I Start?</button>
+          <button class="btn-primary" onclick="track('curious_click', { via: 'hero' }); scrollToSection('phase-0')">I'm just curious <span class="arrow">→</span></button>
+          <button class="btn-secondary" onclick="openAssessment()">⌖ I have an idea — find my phase</button>
         </div>
+        <p class="hero-more"><button onclick="scrollToSection('phases')">Or see the whole path, Phase 0 to Phase 4 ↓</button></p>
       </div>
       <div class="hero-photo">
         <div class="frame">
@@ -138,7 +139,7 @@
           </div>
         </div>
         <div class="stats-grid">
-          <div class="stat"><div class="num" id="phaseCount">4</div><div class="lbl">Phases</div></div>
+          <div class="stat"><div class="num" id="phaseCount">5</div><div class="lbl">Phases, curious to scaling</div></div>
           <div class="stat"><div class="num" id="resourceCount">38</div><div class="lbl">Resources</div></div>
           <div class="stat"><div class="num" id="alumniCount">23</div><div class="lbl">Alumni Stories</div></div>
           <div class="stat"><div class="num" id="founderToolsCount">20</div><div class="lbl">Founder Tools</div></div>
@@ -148,13 +149,21 @@
   </div>
 </section>
 
+<!-- STARTED HERE — rendered from STORIES (data/stories.js) -->
+<section class="stories" id="stories" aria-labelledby="storiesHead">
+  <div class="stories-inner">
+    <div class="stories-head" id="storiesHead"><span class="dot" aria-hidden="true"></span>They started where you are</div>
+    <div class="stories-grid" id="storiesGrid"></div>
+  </div>
+</section>
+
 <!-- PHASES — overview grid and phase blocks are rendered from PHASES (data/phases.js) -->
 <section class="section lg" id="phases">
   <div class="section-inner">
     <div style="margin-bottom: 64px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The Path</span></div>
-      <h2>Four phases to <span class="italic">build something real</span></h2>
-      <p class="lede">Every founder's path is different, but the underlying structure is consistent. We've organized Mizzou's entrepreneurship resources around the four phases of building a venture — so you can find what you need at the moment you need it.</p>
+      <h2>From curious to company, <span class="italic">in five phases</span></h2>
+      <p class="lede">Every founder's path is different, but the underlying structure is consistent. Phase 0 is for the merely curious — no idea required. Phases 1 to 4 organize Mizzou's entrepreneurship resources around the four stages of building a venture, so you can find what you need at the moment you need it.</p>
       <button class="section-print-btn" onclick="printSection('phases')">⎙ Print this section</button>
     </div>
 
@@ -165,7 +174,7 @@
 
     <div class="crosscut">
       <div class="crosscut-label">Throughout the journey</div>
-      <p class="crosscut-lede">Some work isn't a phase you finish — it runs across all four. Keep these going from day one:</p>
+      <p class="crosscut-lede">Some work isn't a phase you finish — it runs across every phase. Keep these going from day one:</p>
       <div class="crosscut-items">
         <span class="crosscut-item">Networking</span>
         <span class="crosscut-item">Mentoring</span>
@@ -192,6 +201,56 @@
     <div class="phases-stack" id="phasesStack"></div>
   </div>
 </section>
+
+<!-- SEMESTER MATH — cloned into the Phase 0 block by renderPhases (data/phases.js: extra) -->
+<template id="semesterMathTpl">
+  <div class="semester" id="semesterMath">
+    <div class="semester-head">
+      <span class="studio-badge">Semester math</span>
+      <h4>Can you afford to try this for one semester?</h4>
+      <p>A week has 168 hours. Put in your real load and see how many are left, what a venture would take from them, and what fits in that time. Nothing here is saved anywhere but this browser.</p>
+    </div>
+    <div class="semester-grid">
+      <div class="wb-fields">
+        <div class="wb-field">
+          <label for="smCredits">Credit hours this semester <span class="hint">each credit ≈ 3 hrs/week with study</span></label>
+          <input class="wb-input" id="smCredits" type="number" min="0" max="24" step="1" placeholder="15" oninput="calcSemester()" />
+        </div>
+        <div class="wb-field">
+          <label for="smWork">Paid work <span class="hint">hours per week</span></label>
+          <input class="wb-input" id="smWork" type="number" min="0" max="80" step="1" placeholder="10" oninput="calcSemester()" />
+        </div>
+        <div class="wb-field">
+          <label for="smOther">Everything else you've committed to <span class="hint">clubs, sports, family, hrs/week</span></label>
+          <input class="wb-input" id="smOther" type="number" min="0" max="80" step="1" placeholder="6" oninput="calcSemester()" />
+        </div>
+        <div class="wb-field">
+          <label for="smVenture">Hours a week you'd give a venture <span class="hint">be honest</span></label>
+          <input class="wb-input" id="smVenture" type="number" min="0" max="80" step="0.5" placeholder="5" oninput="calcSemester()" />
+        </div>
+        <div class="wb-field">
+          <label for="smOnce">One-time costs <span class="hint">domain, materials, filing fees</span></label>
+          <input class="wb-input" id="smOnce" type="number" min="0" step="10" placeholder="120" oninput="calcSemester()" />
+        </div>
+        <div class="wb-field">
+          <label for="smMonthly">Monthly costs <span class="hint">software, ads — most have a free tier</span></label>
+          <input class="wb-input" id="smMonthly" type="number" min="0" step="5" placeholder="25" oninput="calcSemester()" />
+        </div>
+      </div>
+      <div class="wb-out">
+        <div class="wb-verdict idle" id="smVerdict"><b>Enter your week</b><span>Most first ventures cost less than a textbook and take about as much time as one class. Find out whether yours does.</span></div>
+        <div class="wb-stats">
+          <div class="wb-stat"><b id="smFree">—</b><span>Free hours / week</span></div>
+          <div class="wb-stat"><b id="smShare">—</b><span>Of your free time</span></div>
+          <div class="wb-stat"><b id="smTotal">—</b><span>Hours this semester</span></div>
+          <div class="wb-stat"><b id="smCost">—</b><span>Semester cost</span></div>
+        </div>
+        <p class="semester-fits" id="smFits"></p>
+        <p class="wb-link">Playbook: <a href="#howto" onclick="scrollToSection('howto')">Can I do this and keep my grades?</a></p>
+      </div>
+    </div>
+  </div>
+</template>
 
 <!-- ===================== WHAT'S NEW STRIP ===================== -->
 <div class="whatsnew" id="whatsnew">
@@ -275,16 +334,83 @@
     <div style="margin-bottom: 48px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The Playbook</span></div>
       <h2>How to <span class="italic">do the hard things</span></h2>
-      <p class="lede">Ten questions every first-time founder faces. The answers below are distilled from the most authoritative voices in venture — Sequoia Capital, Y Combinator, Paul Graham, Marc Andreessen, and the founders who built Airbnb, Stripe, and Facebook — into a starting point. Follow the links for the full frameworks.</p>
+      <p class="lede">Thirteen questions every founder faces, starting with the three you will ask before you have a venture at all. The answers are distilled from the most authoritative voices in venture — Sequoia Capital, Y Combinator, Paul Graham, Marc Andreessen, and the founders who built Airbnb, Stripe, and Facebook — into a starting point. Follow the links for the full frameworks.</p>
       <button class="section-print-btn" onclick="printSection('howto')">⎙ Print this section</button>
     </div>
 
     <div class="howto-list">
 
-<!-- 1: First Ten Customers -->
+<!-- First-year questions (B6) — the three you ask before you have a venture -->
+      <div class="howto-group" role="presentation">First-year questions · start here</div>
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">01</span>
+          <span class="howto-title">How do I find a problem worth solving?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Paul Graham, How to Get Startup Ideas (Y Combinator)</p>
+          <p>You do not need an idea to start. You need a problem, and the best ones are found, not invented. Paul Graham&#x27;s advice to students is to stop trying to think of startup ideas and start noticing what is broken around you:</p>
+          <ol class="howto-steps">
+            <li><strong>Notice problems you have yourself.</strong> The best startup ideas are things the founders want, can build, and few others realize are worth doing. Your own frustrations are the cheapest research you will ever do.</li>
+            <li><strong>Keep a list for two weeks.</strong> Every time something annoys you, wastes your time, or makes you say &quot;why is this so hard,&quot; write it down. Ten entries is a good start. Most will be small. One or two will not be.</li>
+            <li><strong>Live in the future.</strong> Get to the edge of a field you already care about, whether that is nursing, agriculture, esports, or journalism, and look for what is missing. People at the frontier see problems a year before everyone else.</li>
+            <li><strong>Look for the schlep.</strong> Problems that seem tedious or unglamorous are often the most valuable, because everyone else avoided them. Stripe existed because handling payments was a hassle nobody wanted to touch.</li>
+            <li><strong>Talk to ten people who have the problem.</strong> Do not pitch. Ask what they do about it today, how much it costs them, and what they have already tried. If nobody is bothered enough to complain, move to the next item on your list.</li>
+          </ol>
+          <p class="howto-note">At Mizzou, the next step is free: bring your list to the Griggs Innovators Nexus or an Entrepreneurship Quest info session. Nobody there expects a finished idea. They expect a problem you can describe in one sentence.</p>
+          <a href="https://paulgraham.com/startupideas.html" target="_blank" rel="noopener" class="howto-link">Read How to Get Startup Ideas →</a>
+        </div>
+      </div>
+
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">02</span>
+          <span class="howto-title">How do I find a co-founder on campus?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Y Combinator&#x27;s co-founder guidance and Noam Wasserman, The Founder&#x27;s Dilemmas</p>
+          <p>Y Combinator has funded thousands of teams and says the same thing every year: the strongest founding teams worked together before they committed to each other. A campus is one of the easiest places in the world to do that.</p>
+          <ol class="howto-steps">
+            <li><strong>Leave your college.</strong> A business major plus a business major is two people with the same gaps. The teams that win pitch competitions usually pair someone who can build (engineering, computer science, health sciences, design) with someone who can sell and organize.</li>
+            <li><strong>Work together before you decide.</strong> Missouri Startup Weekend, a class project, a hackathon, or a weekend building a landing page tells you more about a person than ten coffees. Notice who shows up on time, finishes what they said they would, and stays calm when things break.</li>
+            <li><strong>Go where builders already gather.</strong> The Collegiate Entrepreneurs&#x27; Organization, 1 Million Cups, Entrepreneurship Quest cohorts, and the Griggs Innovators Nexus are full of people looking for exactly what you are looking for.</li>
+            <li><strong>Have the awkward conversation early.</strong> Wasserman&#x27;s research on thousands of founders found that teams who split equity in the first five minutes, or never discussed it, were far likelier to fall apart. Talk about hours, money, roles, and what happens if one of you leaves, before it matters.</li>
+            <li><strong>Choose trust over résumé.</strong> Skills can be learned or hired. Whether you can tell each other hard truths cannot. Start small, then formalize with a vesting schedule (see the question on splitting equity).</li>
+          </ol>
+          <p class="howto-note">If nobody on campus fits, Y Combinator runs a free co-founder matching platform used by tens of thousands of founders. It works best once you can describe a problem and the skills you bring.</p>
+          <a href="https://www.ycombinator.com/cofounder-matching" target="_blank" rel="noopener" class="howto-link">Visit YC Co-Founder Matching →</a>
+        </div>
+      </div>
+
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">03</span>
+          <span class="howto-title">Can I do this and keep my grades?</span>
+          <span class="howto-chev">+</span>
+        </button>
+        <div class="howto-a">
+          <p class="howto-source">Source: Paul Graham, A Student&#x27;s Guide to Startups, and how Mizzou student founders actually manage it</p>
+          <p>Yes, if you treat it like one more class rather than a second life. Most student ventures fail not because the idea was bad but because the founder tried to do everything at once and burned out by midterms. The founders who last set a semester-sized goal and a weekly budget of hours.</p>
+          <ol class="howto-steps">
+            <li><strong>Budget hours like credits.</strong> A three-credit class takes about nine hours a week including class time. Give your venture five hours a week for one semester and protect them on your calendar. The Semester Math calculator in Phase 0 does the arithmetic.</li>
+            <li><strong>Pick a semester-sized goal.</strong> Not &quot;launch a company.&quot; Ten customer interviews, one landing page with sign-ups, or one pitch competition entry. Small, finished, and measurable beats big and abandoned.</li>
+            <li><strong>Make coursework do double duty.</strong> Where a professor allows it, make your venture the subject of the class project, the research paper, or the capstone. Many Mizzou founders wrote their first business model in a class they were already taking.</li>
+            <li><strong>Use programs with structure.</strong> Entrepreneurship Quest and the Entrepreneurship Alliance run on a schedule with deadlines and mentors, which is exactly what a busy student needs. Structure is a feature, not a constraint.</li>
+            <li><strong>Know what stopping looks like.</strong> Decide in advance what evidence would tell you to pause. Stopping after ten interviews because nobody has the problem is a result, not a failure. You learned something most graduates never do, in one semester, for free.</li>
+          </ol>
+          <p class="howto-note">Graham&#x27;s point to students is that the risk is lower now than it will ever be again: no mortgage, no dependents, and a campus full of potential co-founders and free advice. The grades matter. So does the fact that you can try this for the price of a few evenings.</p>
+          <a href="https://paulgraham.com/mit.html" target="_blank" rel="noopener" class="howto-link">Read A Student&#x27;s Guide to Startups →</a>
+        </div>
+      </div>
+
+      <div class="howto-group" role="presentation">Founder questions · the hard things</div>
+
+<!-- 1: First Ten Customers -->
+      <div class="howto-card">
+        <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
+          <span class="howto-num">04</span>
           <span class="howto-title">How do I secure my first ten customers?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -306,7 +432,7 @@
 <!-- 2: Pitch Deck -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">02</span>
+          <span class="howto-num">05</span>
           <span class="howto-title">How do I build my first pitch deck?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -333,7 +459,7 @@
 <!-- 3: First Capital -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">03</span>
+          <span class="howto-num">06</span>
           <span class="howto-title">How do I raise my first capital?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -357,7 +483,7 @@
 <!-- 4: Product-Market Fit -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">04</span>
+          <span class="howto-num">07</span>
           <span class="howto-title">How do I know if I have product-market fit?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -379,7 +505,7 @@
 <!-- 5: Co-founder & Equity -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">05</span>
+          <span class="howto-num">08</span>
           <span class="howto-title">How do I choose a co-founder and split equity?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -401,7 +527,7 @@
 <!-- 6: First Key Hires -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">06</span>
+          <span class="howto-num">09</span>
           <span class="howto-title">How do I make my first key hires?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -423,7 +549,7 @@
 <!-- 7: Pricing -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">07</span>
+          <span class="howto-num">10</span>
           <span class="howto-title">How do I price my product?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -445,7 +571,7 @@
 <!-- 8: When to Pivot -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">08</span>
+          <span class="howto-num">11</span>
           <span class="howto-title">How do I know when to pivot?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -467,7 +593,7 @@
 <!-- 9: Runway & Default Alive -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">09</span>
+          <span class="howto-num">12</span>
           <span class="howto-title">How do I manage runway and stay alive?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -489,7 +615,7 @@
 <!-- 10: Leading at Scale -->
       <div class="howto-card">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
-          <span class="howto-num">10</span>
+          <span class="howto-num">13</span>
           <span class="howto-title">How do I lead as the company grows?</span>
           <span class="howto-chev">+</span>
         </button>
@@ -863,6 +989,20 @@
   </div>
 </section>
 
+<!-- COURSES — rendered from COURSES (data/courses.js) -->
+<section class="section lg" id="courses">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">For Credit</span></div>
+      <h2>Learn it <span class="italic">for credit</span></h2>
+      <p class="lede">Courses, the minor, and the certificate: ways to make entrepreneurship part of your degree rather than something you do around it. Most are open to any major. Entries marked <em>confirm in the catalog</em> have not yet been checked against this year's catalog by a person; treat credit counts and names as a starting point for a conversation with your advisor.</p>
+      <button class="section-print-btn" onclick="printSection('courses')">⎙ Print this section</button>
+    </div>
+    <div class="course-grid" id="courseGrid"></div>
+    <p class="cei-note">Course list last reviewed <time data-reviewed="courses"></time>. The MU catalog is the source of record: <a id="catalogLink" href="https://catalog.missouri.edu/" target="_blank" rel="noopener">search it for "entrepreneurship"</a>, then confirm with your academic advisor.</p>
+  </div>
+</section>
+
 <!-- GLOSSARY — terms are rendered from GLOSSARY (data/glossary.js) -->
 <section class="section lg" id="glossary">
   <div class="section-inner">
@@ -972,9 +1112,11 @@
     <div style="margin-bottom: 64px; max-width: 48rem;">
       <div class="section-label"><div class="line"></div><span class="lbl">The People</span></div>
       <h2>The <span class="italic">support network</span></h2>
-      <p class="lede">The faculty, directors, and staff who make Trulaske's entrepreneurship ecosystem run. Reach out — they're here for you.</p>
+      <p class="lede">The faculty, directors, and staff who make Mizzou's entrepreneurship ecosystem run. Not sure who to ask? Pick the door that sounds like you, and start with the first name behind it. Every one of them takes questions from any major.</p>
       <button class="section-print-btn" onclick="printSection('contacts')">⎙ Print this section</button>
     </div>
+
+    <div class="doors" id="doors" aria-label="Who do I talk to first?"></div>
 
     <div class="intro-callout">
       <div class="intro-callout-text">
@@ -1046,6 +1188,10 @@
       <h3>Select the statement that best describes your current stage.</h3>
       <p class="modal-instruction">Choose one option below to receive your recommended phase.</p>
       <div class="modal-options">
+        <button class="modal-option" onclick="answerCurious()">
+          <span>I'm curious about entrepreneurship, but I don't have an idea yet.</span>
+          <span class="arrow">→</span>
+        </button>
         <button class="modal-option" onclick="answerAssessment(1)">
           <span>I'm exploring a problem or idea, but haven't validated it with anyone yet.</span>
           <span class="arrow">→</span>
@@ -1079,6 +1225,8 @@
 <script src="data/beyond.js"></script>
 <script src="data/alumni.js"></script>
 <script src="data/contacts.js"></script>
+<script src="data/stories.js"></script>
+<script src="data/courses.js"></script>
 <!-- Behaviour -->
 <script src="assets/js/render.js"></script>
 <script src="assets/js/guidebook.js"></script>
