@@ -21,9 +21,10 @@
 const OPPORTUNITIES = [
   // --- Mizzou and mid-Missouri ---
   { name: 'Entrepreneurship Alliance', org: 'Trulaske CEI', type: 'Accelerator', phase: 2,
-    url: 'https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance',
+    // Direct link to the application form; the program page is on the resource card.
+    url: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
     cycle: 'dated', closesOn: '2026-12-11', confirmed: true, verifiedOn: '2026-09-14',
-    note: "CEI's flagship eight-week accelerator, open to any major. Applications for the spring 2027 cohort close December 11, 2026." },
+    note: "CEI's flagship eight-week accelerator, open to any major. Applications for the spring 2027 cohort close December 11, 2026 — this link opens the application form." },
   { name: 'Entrepreneurship Quest (EQ) Accelerator', org: 'Griggs Innovators Nexus', type: 'Accelerator', phase: 1,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/entrepreneur-quest-student-accelerator',
     cycle: 'dated', closesOn: '2026-09-03', confirmed: true, verifiedOn: '2026-09-14',

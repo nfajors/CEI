@@ -11,15 +11,15 @@ REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
 UID:20261211-entrepreneurship-alliance@cei-guidebook
-DTSTAMP:20260914T183000Z
+DTSTAMP:20260914T183400Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Deadline — Entrepreneurship Alliance
 DESCRIPTION:Trulaske CEI. CEI's flagship eight-week accelerator\, open to
   any major. Applications for the spring 2027 cohort close December 11\, 
- 2026. Confirm details at https://business.missouri.edu/student-developme
- nt/learning-doing/entrepreneurship-alliance
-URL:https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance
+ 2026 — this link opens the application form. Confirm details at https://
+ airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form
+URL:https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form
 BEGIN:VALARM
 TRIGGER:-P7D
 ACTION:DISPLAY
