@@ -21,13 +21,14 @@
 const OPPORTUNITIES = [
   // --- Mizzou and mid-Missouri ---
   { name: 'Entrepreneurship Alliance', org: 'Trulaske CEI', type: 'Accelerator', phase: 2,
-    url: 'https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance',
-    cycle: 'annual', opens: '08-15', closes: '09-30', confirmed: false, verifiedOn: null,
-    note: "CEI's flagship eight-week accelerator, open to any major. This year's application window will be posted here once CEI publishes it." },
+    // Direct link to the application form; the program page is on the resource card.
+    url: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
+    cycle: 'dated', closesOn: '2026-12-11', confirmed: true, verifiedOn: '2026-09-14',
+    note: "CEI's flagship eight-week accelerator, open to any major. Applications for the spring 2027 cohort close December 11, 2026 — this link opens the application form." },
   { name: 'Entrepreneurship Quest (EQ) Accelerator', org: 'Griggs Innovators Nexus', type: 'Accelerator', phase: 1,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/entrepreneur-quest-student-accelerator',
-    cycle: 'annual', opens: '09-01', closes: '10-15', confirmed: false, verifiedOn: null,
-    note: '$40,000 in prize money for student-led ventures, any major. This year\'s dates will be posted here once GIN publishes them.' },
+    cycle: 'dated', closesOn: '2026-09-03', confirmed: true, verifiedOn: '2026-09-14',
+    note: '$40,000 in prize money for student-led ventures, any major. Applications for 2026 closed September 3; the next cohort\'s dates will be posted here once GIN publishes them.' },
   { name: 'GIN Incubator Office Space', org: 'Griggs Innovators Nexus', type: 'Grant', phase: 3,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/incubator-office-space-for-students',
     cycle: 'annual', opens: '03-01', closes: '04-30', confirmed: false, verifiedOn: null,

@@ -128,7 +128,7 @@ const CONTACTS = [
 /* "Who do I talk to first?" — the doors at the top of the Contacts section.
    Each door lists contact ids (from CONTACTS above) in the order to try. */
 const DOORS = [
-  { id: 'curious', title: "I'm curious. No idea yet.", text: 'Start with a twenty-minute conversation. Tell us your major and what you find interesting; we point you to a first step and a first person.', contacts: ['nique-fajors', 'sophia-rivera-hassemer', 'greg-bier'] },
+  { id: 'curious', title: "I'm curious. No idea yet.", text: 'Start with a twenty-minute conversation. Tell us your major and what you find interesting; we point you to a first step and a first person.', contacts: ['nique-fajors', 'sophia-rivera-hassemer'] },
   { id: 'idea', title: 'I have an idea and want to test it', text: 'An entrepreneur-in-residence, the Nexus team, and the business librarian will help you find the first ten people to talk to.', contacts: ['greg-bier', 'kelsey-raymond', 'gwen-gray', 'stephen-mukembo'] },
   { id: 'legal', title: 'I need a lawyer or real market data', text: 'Free legal help for student startups, and one-on-one research help for market sizing and competitors.', contacts: ['don-seitz', 'gwen-gray'] },
   { id: 'biomed', title: 'It started in a lab, a clinic, or an engineering project', text: 'The people who move research into companies: biomedical, engineering, life science, and emerging technology.', contacts: ['anandhi-upendran-phd-rac', 'david-grant', 'sheila-grant', 'christine-karslake', 'andrew-reeves'] },
