@@ -5,6 +5,7 @@
    "Updated …" stamp and the What's New strip both read from it.
    ============================================================ */
 const CHANGELOG = [
+  { date: '2026-09-14', text: 'A front door for the curious: Phase 0, a semester-math calculator, three first-year Playbook questions, who-to-talk-to doors, mentor booking, courses for credit, a wins feed, an outcomes dashboard, a calendar feed for deadlines, and eligibility, cost, and time on every resource.' },
   { date: '2026-07-30', text: 'Anandhi Upendran (BETA Program Director, School of Medicine) joined the support network.' },
   { date: '2026-07-28', text: 'New: a deadline board, a saved founder path, three founder calculators, and a student venture board.' },
   { date: '2026-06-17', text: 'Added national accelerators, startup job boards, and twelve student pitch competitions to Beyond the Guidebook.' },

@@ -23,6 +23,7 @@ function stampSite() {
     if (el.tagName === 'A' && key === 'email') { el.href = 'mailto:' + val; el.textContent = val; }
     else if (el.tagName === 'A' && key === 'phone') { el.href = SITE.phoneHref; el.textContent = val; }
     else if (el.tagName === 'A') { el.href = val; }
+    else if (key === 'nextReview') { var nd = new Date(val + 'T12:00:00'); el.textContent = nd.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }); el.setAttribute('datetime', val); }
     else el.textContent = val;
   });
   document.querySelectorAll('[data-reviewed]').forEach(function (el) {
@@ -487,8 +488,9 @@ function renderShare() {
   var em = byId('shareEmail'); if (em) { em.href = 'mailto:?subject=' + encodeURIComponent(SITE.name + ' · ' + SITE.brand) + '&body=' + encodeURIComponent(SITE.shareText + '\n\n' + url); em.addEventListener('click', function () { track('share_page', { method: 'email' }); }); }
   var li = byId('shareLinkedIn'); if (li) { li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url); li.addEventListener('click', function () { track('share_page', { method: 'linkedin' }); }); }
   var x = byId('shareX'); if (x) { x.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(SITE.shareText) + '&url=' + encodeURIComponent(url); x.addEventListener('click', function () { track('share_page', { method: 'x' }); }); }
-  drawQr(byId('shareQr'), url);
-  drawQr(byId('flyerQr'), url);
+  // The QR library loads deferred; draw once it (and the DOM) is ready.
+  var draw = function () { drawQr(byId('shareQr'), url); drawQr(byId('flyerQr'), url); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', draw); else draw();
   // A "copy link" beside every "Print this section" button, so a specific section can be sent.
   document.querySelectorAll('.section-print-btn').forEach(function (btn) {
     var sec = btn.closest('section'); if (!sec || !sec.id) return;

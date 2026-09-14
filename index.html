@@ -62,6 +62,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/guidebook.css" />
+<link rel="preload" as="image" href="assets/img/hero-ea-final-dean.jpg" />
 </head>
 
 <body>
@@ -152,7 +153,7 @@
 <!-- STARTED HERE — rendered from STORIES (data/stories.js) -->
 <section class="stories" id="stories" aria-labelledby="storiesHead">
   <div class="stories-inner">
-    <div class="stories-head" id="storiesHead"><span class="dot" aria-hidden="true"></span>They started where you are</div>
+    <h2 class="stories-head" id="storiesHead"><span class="dot" aria-hidden="true"></span>They started where you are</h2>
     <div class="stories-grid" id="storiesGrid"></div>
   </div>
 </section>
@@ -1147,7 +1148,7 @@
       <button class="section-print-btn" onclick="printSection('contacts')">⎙ Print this section</button>
     </div>
 
-    <div class="doors" id="doors" aria-label="Who do I talk to first?"></div>
+    <div class="doors" id="doors" role="region" aria-label="Who do I talk to first?"></div>
 
     <div class="intro-callout">
       <div class="intro-callout-text">
@@ -1254,7 +1255,8 @@
         <div class="footer-contact">Center for Entrepreneurship &amp; Innovation · Robert J. Trulaske, Sr. College of Business · University of Missouri · Columbia, MO 65211 · <a href="mailto:cei@missouri.edu" data-site="email">cei@missouri.edu</a> · <a href="tel:+15738826688" data-site="phone">573-882-6688</a></div>
         <div class="footer-eeo">MU is an equal opportunity employer.</div>
         <div class="footer-copyright">© <span id="copyYear">2026</span> Curators of the University of Missouri. All rights reserved. <a href="https://missouri.edu/copyright/" target="_blank" rel="noopener">DMCA and other copyright information</a>. <a href="https://missouri.edu/privacy/" target="_blank" rel="noopener">Privacy policy</a>.</div>
-        <span class="footer-updated"><span id="lastUpdatedText">Last updated 30 Jul 2026</span></span>
+        <span class="footer-updated"><span id="lastUpdatedText">Last updated 30 Jul 2026</span> · Next scheduled review <time id="nextReview" data-site="nextReview"></time></span>
+        <div class="footer-meta"><a href="docs/AUDIT.md">Accessibility &amp; performance audit</a> · <a href="ADOPTING.md">Adopt this guidebook for your campus</a> · <a href="https://github.com/nfajors/CEI" data-site="repoUrl" target="_blank" rel="noopener">Source on GitHub</a></div>
       </div>
       <div class="right">
         <button class="print-btn" onclick="window.print()">⎙ Download / Print Guidebook</button>
@@ -1314,7 +1316,7 @@
 <script src="data/courses.js"></script>
 <script src="data/wins.js"></script>
 <script src="data/lessons.js"></script>
-<script src="assets/vendor/qrcode-generator.js"></script>
+<script src="assets/vendor/qrcode-generator.js" defer></script>
 <!-- Behaviour -->
 <script src="assets/js/render.js"></script>
 <script src="assets/js/guidebook.js"></script>
