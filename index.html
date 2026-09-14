@@ -184,18 +184,17 @@
       </div>
     </div>
 
-    <div class="recent-win">
-      <div class="rw-photo">
-        <img src="assets/img/aodo-medtech-win.jpg" width="900" height="600" alt="The AODO MedTech team accepts a $7,000 award at the Entrepreneurship Alliance Final" loading="lazy" decoding="async" />
-        <div class="grad"></div>
-        <div class="rw-badge"><span>Recent Win</span></div>
+    <!-- Recent Win and the wins feed are rendered from WINS (data/wins.js) -->
+    <div class="recent-win" id="recentWin"></div>
+    <div class="wins" id="wins">
+      <div class="wins-head">
+        <div>
+          <div class="section-label"><div class="line"></div><span class="lbl">Wins</span></div>
+          <h3 class="wins-title">What Mizzou founders did <span class="italic">lately</span></h3>
+        </div>
+        <a class="path-btn" id="winSubmit" href="#">Tell us about a win →</a>
       </div>
-      <div class="rw-text">
-        <div class="eb">April 3, 2026 · Entrepreneurship Alliance Final</div>
-        <h3>AODO MedTech wins <span class="gold">$7,000</span></h3>
-        <p>A Trulaske student team turned an idea into investment-ready capital through the Entrepreneurship Alliance pitch competition. This is what Phase 3 looks like in practice.</p>
-        <button class="rw-link" onclick="scrollToSection('phase-3')">See Phase 3 Resources →</button>
-      </div>
+      <ol class="wins-feed" id="winsFeed"></ol>
     </div>
 
     <div class="phases-stack" id="phasesStack"></div>
@@ -320,6 +319,18 @@
 
     <div class="dl-grid" id="dlGrid"></div>
     <div class="cei-empty" id="dlEmpty" style="display:none"><strong>Nothing matches that filter</strong>Try "All" to see every opportunity on the board.</div>
+
+    <div class="subscribe" id="dlSubscribe">
+      <div class="subscribe-text">
+        <h3>Deadlines in your inbox</h3>
+        <p>Subscribe once and every confirmed deadline lands in your calendar with a one-week reminder, and updates itself as dates are verified. Or ask for the email round-up.</p>
+      </div>
+      <div class="subscribe-actions">
+        <a class="path-btn primary" id="dlWebcal" href="deadlines.ics">Subscribe in your calendar</a>
+        <a class="path-btn" id="dlIcsAll" href="deadlines.ics" download>Download all (.ics)</a>
+        <a class="path-btn" id="dlEmail" href="#">Email me reminders</a>
+      </div>
+    </div>
 
     <p class="cei-note">
       Dates marked <em>unconfirmed</em> are the program's usual cycle, not a published date for this year — always confirm on the program's own site before you plan around it.
@@ -986,6 +997,13 @@
       <button class="section-print-btn" onclick="printSection('knowledge')">⎙ Print this section</button>
     </div>
     <div class="kn-grid" id="knGrid"></div>
+
+    <div class="lessons" id="lessons">
+      <div class="section-label" style="color: var(--gold); margin-top: 56px;"><div class="line"></div><span class="lbl">Watch</span></div>
+      <h3 class="lessons-title">Short video lessons</h3>
+      <p class="lessons-lede">Free, from the people who teach this best. Each card says how long a lesson runs, so you can fit one between classes. Rendered from <code>data/lessons.js</code> — CEI recordings go there too.</p>
+      <div class="lessons-grid" id="lessonsGrid"></div>
+    </div>
   </div>
 </section>
 
@@ -1106,6 +1124,19 @@
   </div>
 </section>
 
+<!-- OUTCOMES — computed tiles plus the numbers CEI reports each year (data/wins.js: OUTCOMES) -->
+<section class="section lg" id="outcomes">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">By The Numbers</span></div>
+      <h2>What this <span class="italic">adds up to</span></h2>
+      <p class="lede">What is on offer right now, counted from this page, and what came of it, reported by the CEI each year. Every number here has a source you can click.</p>
+    </div>
+    <div class="kpi-row" id="kpiComputed"></div>
+    <div class="kpi-reported" id="kpiReported"></div>
+  </div>
+</section>
+
 <!-- CONTACTS — cards are rendered from CONTACTS (data/contacts.js) -->
 <section class="section lg alt" id="contacts">
   <div class="section-inner">
@@ -1120,10 +1151,13 @@
 
     <div class="intro-callout">
       <div class="intro-callout-text">
-        <h3>Want an introduction?</h3>
-        <p>Not sure who to talk to, or want a warm hand-off to someone on this list? Email the CEI and we'll connect you with the right person.</p>
+        <h3>Twenty minutes with a mentor</h3>
+        <p>No pitch needed. Pick a time, tell us your major and what you are curious about, and a mentor from this page talks it through with you. Prefer a warm hand-off to someone specific? Email the CEI and we make the introduction.</p>
       </div>
-      <a href="mailto:cei@missouri.edu?subject=Request%20for%20an%20introduction%20%E2%80%94%20CEI%20Guidebook" class="intro-callout-btn">✦ Email the CEI</a>
+      <div class="intro-callout-actions">
+        <a href="#" class="intro-callout-btn" data-mentor="contacts">✦ Book 20 minutes with a mentor</a>
+        <a href="mailto:cei@missouri.edu?subject=Request%20for%20an%20introduction%20%E2%80%94%20CEI%20Guidebook" class="intro-callout-btn quiet">Email the CEI</a>
+      </div>
     </div>
 
     <div class="contacts-grid" id="contactsGrid"></div>
@@ -1137,6 +1171,57 @@
     <h2>What's <span class="italic">missing?</span></h2>
     <p class="lede" style="margin-bottom: 32px;">This guidebook is a living resource. A resource we should add, a question we didn't answer, something that's gone out of date — tell us, and we'll make it better.</p>
     <a href="https://forms.gle/GhbcUXu9vD3FwZgL7" data-site="feedbackUrl" target="_blank" rel="noopener" class="feedback-cta">Share your suggestion →</a>
+
+    <div class="nominate" id="nominate">
+      <h3>Nominate someone</h3>
+      <p>Know a student who is building something, a win that belongs in the feed, or a mentor who should be on this page? Nominate them. We ask their permission before anything is published.</p>
+      <div class="share-actions">
+        <a id="nominateFounder" href="#">Nominate a founder</a>
+        <a id="nominateWin" href="#">Report a win</a>
+        <a id="nominateResource" href="#">Suggest a resource</a>
+      </div>
+    </div>
+
+    <div class="share-block" id="share">
+      <div class="share-qr"><canvas id="shareQr" width="320" height="320" role="img" aria-label="QR code that opens this guidebook"></canvas></div>
+      <div>
+        <h3>Spread the word</h3>
+        <p>Know a student who should see this? Every program here is open to any major. Scan, share, or print the one-page flyer for a classroom, a residence hall, or a club meeting.</p>
+        <div class="share-url" id="shareUrl"></div>
+        <div class="share-actions">
+          <button type="button" onclick="sharePage()">Share this page</button>
+          <button type="button" onclick="copyLink(this)">Copy link</button>
+          <a id="shareEmail" href="#">Email it to a friend</a>
+          <a id="shareLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="shareX" href="#" target="_blank" rel="noopener">X</a>
+          <button type="button" onclick="track('flyer_print'); printSection('flyer')">⎙ Print the one-page flyer</button>
+        </div>
+        <p class="share-permanent">Permanent address: <a id="permanentUrl" href="#"></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONE-PAGE FLYER — print only (Spread the word → Print the one-page flyer) -->
+<section id="flyer" class="flyer" aria-hidden="true">
+  <div class="flyer-inner">
+    <div class="flyer-eyebrow">Center for Entrepreneurship &amp; Innovation · Robert J. Trulaske, Sr. College of Business · University of Missouri</div>
+    <h2>Curious about starting something?</h2>
+    <p class="flyer-lede">You don&#x27;t need an idea, a business major, or money to start. Four free ways in this week, open to every Mizzou student:</p>
+    <ol class="flyer-list">
+      <li><strong>Sit in on something.</strong> 1 Million Cups Columbia, Creative Mornings Columbia, or a Collegiate Entrepreneurs&#x27; Organization meeting. No sign-up, no pitch of your own.</li>
+      <li><strong>Read three answers.</strong> How to find a problem worth solving, how to find a co-founder on campus, and how to do this without losing your grades.</li>
+      <li><strong>Run the semester math.</strong> Put in your real week and see how many hours a venture would take, and what fits in them.</li>
+      <li><strong>Talk to a person.</strong> Book twenty minutes with a mentor through the guidebook, or email cei@missouri.edu. Tell us your major and what you&#x27;re curious about.</li>
+    </ol>
+    <div class="flyer-foot">
+      <canvas id="flyerQr" width="320" height="320" role="img" aria-label="QR code that opens this guidebook"></canvas>
+      <div>
+        <div class="flyer-title">The Entrepreneur&#x27;s Guidebook</div>
+        <div class="flyer-url" id="flyerUrl"></div>
+        <div class="flyer-contact">cei@missouri.edu · 573-882-6688 · Columbia, MO 65211</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1227,6 +1312,9 @@
 <script src="data/contacts.js"></script>
 <script src="data/stories.js"></script>
 <script src="data/courses.js"></script>
+<script src="data/wins.js"></script>
+<script src="data/lessons.js"></script>
+<script src="assets/vendor/qrcode-generator.js"></script>
 <!-- Behaviour -->
 <script src="assets/js/render.js"></script>
 <script src="assets/js/guidebook.js"></script>

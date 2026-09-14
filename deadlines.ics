@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Trulaske CEI//Guidebook deadlines//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Trulaske CEI — student deadlines
+X-WR-CALDESC:Confirmed application deadlines from The Entrepreneur's Guid
+ ebook. Unconfirmed dates are left out until verified. https://nfajors.gi
+ thub.io/cei/
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+END:VCALENDAR

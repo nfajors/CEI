@@ -1,7 +1,9 @@
 /* ============================================================
    PHASES — the five stages of the path (0 = Curious, before you have
    an idea). `extra` names a <template> in index.html that is cloned into
-   the phase's right column (Phase 0 carries the Semester Math calculator). Each phase lists its resources by id (see data/resources.js).
+   the phase's right column (Phase 0 carries the Semester Math calculator).
+   `cta` (optional) adds a button under Next Steps: action 'mentor' opens
+   the mentor booking link (SITE.bookingUrl, or an email to the CEI). Each phase lists its resources by id (see data/resources.js).
    PHASE_TITLES is read by the self-assessment and the Founder Path;
    PATH_STEPS is the saved checklist for each phase (Founder Path).
    ============================================================ */
@@ -63,6 +65,7 @@ const PHASES = [
     next: ['Sit in on 1 Million Cups or a CEO meeting — no pitch required', 'Read the three first-year questions at the top of the Playbook', 'Run the semester math, then book twenty minutes with the CEI'],
     photo: null,
     extra: 'semesterMathTpl',
+    cta: { label: 'Book twenty minutes with a mentor', action: 'mentor' },
     resources: ['collegiate-entrepreneurs-organization', '1-million-cups-columbia', 'creative-mornings-columbia', 'griggs-innovators-nexus', 'center-for-entrepreneurship-and-innovation', 'mizzou-startup-community', 'trulaske-alumni-entrepreneurs']
   },
   {

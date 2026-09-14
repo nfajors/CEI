@@ -292,3 +292,246 @@ function hideEmptyVentureBoard() {
   stampSite();
   var y = byId('copyYear'); if (y) y.textContent = new Date().getFullYear();
 })();
+
+/* ============================================================
+   BATCH 4 — wins, outcomes, lessons, mentor booking, subscriptions,
+   nominations, sharing. All read SITE (data/site.js).
+   ============================================================ */
+
+/* ---------- helpers ---------- */
+function mailto(subject, bodyLines) {
+  return 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+}
+function pageUrl() {
+  if (/^https?:$/.test(location.protocol)) return location.origin + location.pathname;
+  return SITE.url;
+}
+function winDate(d) {
+  var parts = String(d).split('-');
+  var dt = new Date(+parts[0], parts[1] ? +parts[1] - 1 : 0, parts[2] ? +parts[2] : 1, 12);
+  if (parts.length === 1) return parts[0];
+  if (parts.length === 2) return dt.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  return dt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+function compact(n) {
+  if (n === null || n === undefined || n === '') return null;
+  if (typeof n === 'string') return n;
+  var abs = Math.abs(n);
+  if (abs >= 1e6) return (n / 1e6).toFixed(abs >= 1e7 ? 0 : 1) + 'M';
+  if (abs >= 1e4) return (n / 1e3).toFixed(abs >= 1e5 ? 0 : 1) + 'K';
+  return n.toLocaleString('en-US');
+}
+
+/* ---------- C2 book twenty minutes with a mentor ---------- */
+function mentorBookingHref() {
+  if (SITE.bookingUrl) return SITE.bookingUrl;
+  return mailto('Twenty minutes with a mentor — CEI Guidebook', [
+    'Hi CEI,', '',
+    'My name is [name], a [year] studying [major].',
+    "I'd like twenty minutes with a mentor.", '',
+    'What I want to talk about (one sentence): [ ]',
+    'Where I am: [just curious / have an idea / already building]',
+    'Times that work for me: [ ]', '',
+    'Thanks,', '[name]'
+  ]);
+}
+function wireMentorLinks() {
+  document.querySelectorAll('[data-mentor]').forEach(function (a) {
+    var href = mentorBookingHref();
+    a.setAttribute('href', href);
+    if (/^https?:/.test(href)) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+    a.addEventListener('click', function () { track('book_mentor_click', { via: a.getAttribute('data-mentor'), method: SITE.bookingUrl ? 'booking' : 'email' }); });
+  });
+}
+
+/* ---------- C5 nominations ---------- */
+function nominationHref(kind) {
+  if (SITE.nominationUrl) return SITE.nominationUrl;
+  var forms = {
+    founder: ['Nomination — a student founder for the guidebook', ['Hi CEI,', '', 'I want to nominate a Mizzou student founder for the guidebook.', '', 'Founder name and year: [ ]', 'Venture, in one sentence: [ ]', 'Why they belong on the page: [ ]', 'How to reach them: [ ]', '', 'My name: [ ]']],
+    win: ['A win for the guidebook feed', ['Hi CEI,', '', 'A win for the feed:', '', 'Who: [team or person]', 'What happened: [prize, launch, customer, award]', 'When: [date]', 'Link or photo: [ ]', '', 'My name: [ ]']],
+    resource: ['A resource the guidebook is missing', ['Hi CEI,', '', 'A resource to add:', '', 'Name and link: [ ]', 'Who it is for: [ ]', 'What it costs / how long it takes: [ ]', 'Why it belongs here: [ ]', '', 'My name: [ ]']]
+  };
+  var f = forms[kind] || forms.resource;
+  return mailto(f[0] + ' — CEI Guidebook', f[1]);
+}
+function wireNominations() {
+  [['nominateFounder', 'founder'], ['nominateWin', 'win'], ['nominateResource', 'resource'], ['winSubmit', 'win']].forEach(function (pair) {
+    var a = byId(pair[0]); if (!a) return;
+    var href = nominationHref(pair[1]);
+    a.setAttribute('href', href);
+    if (/^https?:/.test(href)) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+    a.addEventListener('click', function () { track('nominate_click', { kind: pair[1], method: SITE.nominationUrl ? 'form' : 'email' }); });
+  });
+}
+
+/* ---------- B12 wins feed + recent win card (data/wins.js) ---------- */
+function renderWins() {
+  var rw = byId('recentWin'), feed = byId('winsFeed');
+  if (typeof WINS === 'undefined') return;
+  var sorted = WINS.slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+  var lead = sorted.filter(function (w) { return w.photo; })[0];
+  if (rw) {
+    if (!lead) rw.hidden = true;
+    else rw.innerHTML = '<div class="rw-photo"><img src="' + esc(lead.photo.src) + '" width="900" height="600" alt="' + esc(lead.photo.alt) + '" loading="lazy" decoding="async" /><div class="grad"></div><div class="rw-badge"><span>Recent Win</span></div></div>'
+      + '<div class="rw-text"><div class="eb">' + esc(winDate(lead.date)) + (lead.event ? ' · ' + esc(lead.event) : '') + '</div>'
+      + '<h3>' + esc(lead.who) + ' <span class="gold">' + esc(lead.what) + '</span></h3>'
+      + (lead.detail ? '<p>' + esc(lead.detail) + '</p>' : '')
+      + (lead.to ? (isExternal(lead.to) ? '<a class="rw-link" href="' + esc(lead.to) + '" target="_blank" rel="noopener">Read more ↗</a>' : '<button class="rw-link" onclick="scrollToSection(\'' + esc(lead.to) + '\')">See ' + esc(sectionName(lead.to)) + ' →</button>') : '')
+      + '</div>';
+  }
+  if (feed) {
+    feed.innerHTML = sorted.slice(0, 8).map(function (w) {
+      var link = !w.to ? '' : isExternal(w.to)
+        ? '<a href="' + esc(w.to) + '" target="_blank" rel="noopener" onclick="track(\'win_click\',{who:' + esc(JSON.stringify(w.who)) + '})">Read more ↗</a>'
+        : '<button onclick="track(\'win_click\',{who:' + esc(JSON.stringify(w.who)) + '}); scrollToSection(\'' + esc(w.to) + '\')">' + esc(sectionName(w.to)) + ' →</button>';
+      return '<li class="win"><time datetime="' + esc(w.date) + '">' + esc(winDate(w.date)) + '</time>'
+        + '<div class="win-body"><div class="win-what"><b>' + esc(w.who) + '</b> ' + esc(w.what) + (w.student ? ' <span class="pill-open">Student</span>' : '') + '</div>'
+        + (w.detail ? '<div class="win-detail">' + esc(w.detail) + '</div>' : '') + (link ? '<div class="win-link">' + link + '</div>' : '') + '</div></li>';
+    }).join('');
+  }
+}
+function sectionName(id) {
+  var m = /^phase-(\d)$/.exec(id);
+  if (m) return 'Phase ' + m[1];
+  var n = (SITE.nav || []).filter(function (x) { return x.id === id; })[0];
+  return n ? n.label : 'more';
+}
+
+/* ---------- C1 outcomes dashboard (OUTCOMES in data/wins.js) ---------- */
+function renderOutcomes() {
+  var comp = byId('kpiComputed'), rep = byId('kpiReported');
+  if (!comp || typeof OUTCOMES === 'undefined') return;
+  var tile = function (value, label, note, to) {
+    var v = compact(value);
+    if (v === null) return '';
+    var body = '<div class="kpi-value">' + esc(v) + '</div><div class="kpi-label">' + esc(label) + '</div>' + (note ? '<div class="kpi-note">' + esc(note) + '</div>' : '');
+    return to ? '<a class="kpi" href="#' + esc(to) + '" onclick="scrollToSection(\'' + esc(to) + '\'); return false;">' + body + '</a>' : '<div class="kpi">' + body + '</div>';
+  };
+  var render = function () {
+    var openNow = 0;
+    if (typeof dlResolve === 'function') {
+      var now = Date.now();
+      openNow = OPPORTUNITIES.filter(function (o) { var r = dlResolve(o, now); return r.state === 'open' || r.state === 'rolling'; }).length;
+    }
+    comp.innerHTML = tile(RESOURCES.length, 'Resources indexed', 'Phase grids and the searchable index', 'resources')
+      + tile(RESOURCES.filter(function (r) { return r.anyMajor; }).length, 'Mizzou programs open to any major', 'Marked "Any major" on their cards', 'resources')
+      + tile(openNow, 'Opportunities open right now', 'Open or rolling on the deadline board today', 'deadlines')
+      + tile(CONTACTS.length, 'People in the support network', 'Faculty, directors, and staff who take questions', 'contacts')
+      + tile(typeof WINS !== 'undefined' ? WINS.length : 0, 'Wins on the feed', 'Newest first, since spring 2026', 'wins')
+      + tile(ALUMNI.length, 'Alumni stories', ALUMNI.filter(function (a) { return !a.business; }).length + ' from outside the business school', 'alumni');
+    var reported = (OUTCOMES.reported || []).filter(function (t) { return t.value !== null && t.value !== undefined; });
+    if (!reported.length) {
+      rep.innerHTML = '<p class="cei-note">Program outcomes for ' + esc(OUTCOMES.year) + ' — students served, prize money awarded, ventures launched, mentor conversations — are reported by the CEI each summer and will appear here when published. <a href="#feedback" onclick="scrollToSection(\'feedback\')">Ask for them</a>.</p>';
+    } else {
+      rep.innerHTML = '<h3 class="kpi-heading">Reported for ' + esc(OUTCOMES.year) + '</h3><div class="kpi-row">' + reported.map(function (t) { return tile((t.prefix || '') + compact(t.value), t.label, t.note); }).join('') + '</div>';
+    }
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+}
+
+/* ---------- C3 short video lessons (data/lessons.js) ---------- */
+function renderLessons() {
+  var grid = byId('lessonsGrid');
+  if (!grid || typeof LESSONS === 'undefined') return;
+  grid.innerHTML = LESSONS.map(function (l, i) {
+    var player = l.youtube
+      ? '<button class="lesson-play" onclick="playLesson(this, \'' + esc(l.youtube) + '\')" aria-label="Play ' + esc(l.title) + '"><span>▶</span> Play (loads from YouTube)</button><div class="lesson-frame" id="lesson-' + i + '"></div>'
+      : '';
+    return '<div class="lesson"><div class="lesson-top"><span class="lesson-min">' + esc(l.minutes) + '</span>' + (l.phase !== undefined ? '<span class="lesson-phase">Phase ' + l.phase + '</span>' : '') + '</div>'
+      + '<h4><a href="' + esc(l.url) + '" target="_blank" rel="noopener" onclick="track(\'lesson_open\',{title:' + esc(JSON.stringify(l.title)) + '})">' + esc(l.title) + '<span class="arrow">→</span></a></h4>'
+      + '<div class="lesson-source">' + esc(l.source) + '</div><p>' + esc(l.what) + '</p>' + player + '</div>';
+  }).join('');
+}
+function playLesson(btn, id) {
+  var frame = btn.nextElementSibling;
+  frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1" title="Video lesson" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+  btn.remove();
+  track('lesson_play', { id: id });
+}
+
+/* ---------- C7 deadlines in your inbox ---------- */
+function wireSubscriptions() {
+  var webcal = byId('dlWebcal'), email = byId('dlEmail'), dl = byId('dlIcsAll');
+  var feed = pageUrl().replace(/index\.html$/, '') + 'deadlines.ics';
+  if (webcal) {
+    webcal.href = feed.replace(/^https?:/, 'webcal:');
+    webcal.addEventListener('click', function () { track('deadline_subscribe', { via: 'webcal' }); });
+  }
+  if (dl) dl.addEventListener('click', function () { track('deadline_subscribe', { via: 'ics_all' }); });
+  if (email) {
+    var href = SITE.newsletterUrl || mailto('Add me to the deadline reminders — CEI Guidebook', ['Hi CEI,', '', 'Please add me to the deadline reminder emails.', '', 'Name: [ ]', 'Major and year: [ ]', 'Interested in: [grants / competitions / accelerators / all]', '', 'Thanks!']);
+    email.href = href;
+    if (/^https?:/.test(href)) { email.target = '_blank'; email.rel = 'noopener'; }
+    email.addEventListener('click', function () { track('deadline_subscribe', { via: SITE.newsletterUrl ? 'form' : 'email' }); });
+  }
+}
+
+/* ---------- B11 make it easy to spread ---------- */
+function drawQr(canvas, text) {
+  if (!canvas || typeof qrcode !== 'function') return;
+  try {
+    var qr = qrcode(0, 'M'); qr.addData(text); qr.make();
+    var n = qr.getModuleCount(), size = canvas.width, cell = Math.floor(size / (n + 6)), off = Math.floor((size - cell * n) / 2);
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, size, size); ctx.fillStyle = '#000000';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (qr.isDark(r, c)) ctx.fillRect(off + c * cell, off + r * cell, cell, cell);
+  } catch (e) { /* leave the canvas blank rather than break the page */ }
+}
+function renderShare() {
+  var url = pageUrl();
+  var pretty = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  var a = byId('shareUrl'); if (a) a.textContent = pretty;
+  var b = byId('flyerUrl'); if (b) b.textContent = pretty;
+  var perm = byId('permanentUrl'); if (perm) { perm.href = SITE.url; perm.textContent = SITE.url.replace(/^https?:\/\//, '').replace(/\/$/, ''); }
+  var em = byId('shareEmail'); if (em) { em.href = 'mailto:?subject=' + encodeURIComponent(SITE.name + ' · ' + SITE.brand) + '&body=' + encodeURIComponent(SITE.shareText + '\n\n' + url); em.addEventListener('click', function () { track('share_page', { method: 'email' }); }); }
+  var li = byId('shareLinkedIn'); if (li) { li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url); li.addEventListener('click', function () { track('share_page', { method: 'linkedin' }); }); }
+  var x = byId('shareX'); if (x) { x.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(SITE.shareText) + '&url=' + encodeURIComponent(url); x.addEventListener('click', function () { track('share_page', { method: 'x' }); }); }
+  drawQr(byId('shareQr'), url);
+  drawQr(byId('flyerQr'), url);
+  // A "copy link" beside every "Print this section" button, so a specific section can be sent.
+  document.querySelectorAll('.section-print-btn').forEach(function (btn) {
+    var sec = btn.closest('section'); if (!sec || !sec.id) return;
+    var c = document.createElement('button');
+    c.className = 'section-print-btn section-link-btn'; c.type = 'button'; c.textContent = '⧉ Copy link to this section';
+    c.addEventListener('click', function () { copyLink(c, url + '#' + sec.id, sec.id); });
+    btn.insertAdjacentElement('afterend', c);
+  });
+}
+function copyLink(btn, url, section) {
+  url = url || pageUrl();
+  var done = function () { if (!btn) return; var o = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = o; }, 1800); };
+  track('share_copy_link', { section: section || 'page' });
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { window.prompt('Copy this link:', url); });
+  else window.prompt('Copy this link:', url);
+}
+function sharePage() {
+  var data = { title: SITE.name + ' · ' + SITE.brand, text: SITE.shareText, url: pageUrl() };
+  track('share_page', { method: navigator.share ? 'native' : 'copy' });
+  if (navigator.share) navigator.share(data).catch(function () {});
+  else copyLink(document.querySelector('.share-actions button:nth-child(2)'));
+}
+
+/* ---------- phase CTA buttons (PHASES[].cta) ---------- */
+function wirePhaseCtas() {
+  PHASES.forEach(function (p) {
+    if (!p.cta) return;
+    var side = document.querySelector('#' + p.id + ' .phase-side-inner'); if (!side) return;
+    var a = document.createElement('a');
+    a.className = 'phase-cta'; a.textContent = p.cta.label + ' →';
+    if (p.cta.action === 'mentor') a.setAttribute('data-mentor', p.id);
+    else if (p.cta.href) a.href = p.cta.href;
+    side.appendChild(a);
+  });
+}
+
+(function renderBatch4() {
+  renderWins();
+  renderLessons();
+  renderOutcomes();
+  wirePhaseCtas();
+  wireMentorLinks();
+  wireNominations();
+  wireSubscriptions();
+  renderShare();
+})();

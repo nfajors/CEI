@@ -779,3 +779,110 @@ html { scroll-behavior: smooth; }
   .cei-bar > i, .vt-card { transition: none !important; }
 }
 
+
+/* ============================================================
+   BATCH 4 — wins feed, outcomes tiles, lessons, subscriptions,
+   nominations, sharing, the printable flyer
+   ============================================================ */
+
+/* Wins feed */
+.wins { margin-bottom: 80px; }
+.wins-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.wins-title { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: clamp(24px, 3vw, 34px); line-height: 1.1; }
+.wins-title .italic { font-style: italic; font-weight: 500; }
+.wins-head .path-btn { text-decoration: none; }
+.wins-feed { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--black-tint-3); }
+.win { display: grid; grid-template-columns: 1fr; gap: 4px 24px; padding: 16px 4px; border-bottom: 1px solid var(--black-tint-3); }
+@media (min-width: 700px) { .win { grid-template-columns: 160px 1fr; } }
+.win time { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black-tint-1); padding-top: 3px; }
+.win-what { font-size: 15.5px; line-height: 1.45; }
+.win-what b { font-weight: 700; }
+.win-what .pill-open { margin-left: 8px; font-size: 9px; vertical-align: middle; }
+.win-detail { font-size: 13.5px; line-height: 1.55; color: #525252; margin-top: 4px; }
+.win-link { margin-top: 6px; }
+.win-link a, .win-link button { font: inherit; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--black); background: none; border: none; padding: 0 0 2px; cursor: pointer; border-bottom: 2px solid var(--gold); }
+.win-link a:hover, .win-link button:hover { border-color: var(--black); }
+.rw-text a.rw-link { text-decoration: none; }
+
+/* Outcomes — KPI row of stat tiles (values in the sans, proportional figures) */
+.kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e5e5e0; border: 1px solid #e5e5e0; }
+@media (min-width: 760px) { .kpi-row { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .kpi-row { grid-template-columns: repeat(6, 1fr); } }
+.kpi { display: block; background: #fff; padding: 22px 20px; color: var(--ink); text-decoration: none; transition: background 0.2s; }
+a.kpi:hover { background: var(--gold-tint-3); }
+.kpi-value { font-family: 'Open Sans', system-ui, sans-serif; font-weight: 600; font-size: 34px; line-height: 1.05; letter-spacing: -0.02em; color: var(--black); }
+.kpi-label { font-size: 13px; font-weight: 600; margin-top: 8px; line-height: 1.35; }
+.kpi-note { font-size: 11.5px; color: #666666; margin-top: 4px; line-height: 1.45; }
+.kpi-reported { margin-top: 28px; }
+.kpi-heading { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 20px; margin-bottom: 14px; }
+
+/* Lessons (inside the dark knowledge section) */
+.lessons-title { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: clamp(24px, 3vw, 34px); color: var(--paper); margin-bottom: 8px; }
+.lessons-lede { font-size: 15px; line-height: 1.6; color: #a3a3a3; max-width: 46rem; margin-bottom: 28px; }
+.lessons-lede code { font-size: 13px; color: #d4d4d4; }
+.lessons-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 768px) { .lessons-grid { grid-template-columns: repeat(3, 1fr); } }
+.lesson { background: #171717; border: 1px solid #262626; padding: 24px; display: flex; flex-direction: column; }
+.lesson-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.lesson-min { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); }
+.lesson-phase { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #a3a3a3; }
+.lesson h4 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 19px; line-height: 1.2; }
+.lesson h4 a { color: var(--paper); }
+.lesson h4 a .arrow { color: var(--gold); margin-left: 6px; opacity: 0; transition: opacity 0.2s; }
+.lesson h4 a:hover .arrow { opacity: 1; }
+.lesson-source { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin: 4px 0 10px; }
+.lesson p { font-size: 13.5px; line-height: 1.6; color: #d4d4d4; flex-grow: 1; }
+.lesson-play { margin-top: 14px; font: inherit; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 10px 14px; border: 1px solid var(--gold); background: none; color: var(--gold); cursor: pointer; }
+.lesson-play:hover { background: var(--gold); color: var(--black); }
+.lesson-frame:not(:empty) { margin-top: 14px; aspect-ratio: 16 / 9; }
+.lesson-frame iframe { width: 100%; height: 100%; border: 0; }
+
+/* Deadlines in your inbox */
+.subscribe { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; margin-top: 32px; background: var(--black); color: var(--paper); border-left: 4px solid var(--gold); }
+.subscribe-text { max-width: 40rem; }
+.subscribe-text h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 20px; color: #fff; margin-bottom: 6px; }
+.subscribe-text p { font-size: 14px; line-height: 1.6; color: #c4c4c4; }
+.subscribe-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.subscribe-actions .path-btn { text-decoration: none; border-color: var(--gold); color: var(--gold); background: none; }
+.subscribe-actions .path-btn:hover, .subscribe-actions .path-btn.primary { background: var(--gold); color: var(--black); }
+
+/* Mentor booking in the contacts callout */
+.intro-callout-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.intro-callout-btn.quiet { background: none; color: var(--gold); border: 1px solid var(--gold); }
+.intro-callout-btn.quiet:hover { background: var(--gold); color: var(--black); }
+.phase-cta { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+.phase-cta:hover { border-color: var(--black); }
+
+/* Nominations + share (inside the dark feedback section) */
+.nominate { margin-top: 56px; padding-top: 40px; border-top: 1px solid #333333; }
+.nominate h3, .share-block h3 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--paper); margin-bottom: 8px; }
+.nominate p, .share-block p { font-size: 14px; line-height: 1.6; color: #d4d4d4; margin-bottom: 14px; max-width: 40rem; }
+.share-block { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; margin-top: 48px; padding-top: 40px; border-top: 1px solid #333333; text-align: left; }
+@media (min-width: 640px) { .share-block { grid-template-columns: auto 1fr; } }
+.share-qr canvas { display: block; width: 160px; height: 160px; background: #fff; padding: 6px; box-sizing: content-box; }
+.share-url { font-size: 13px; font-weight: 700; color: var(--gold); word-break: break-all; margin-bottom: 16px; }
+.share-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-actions button, .share-actions a { font: inherit; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 10px 16px; border: 1px solid var(--gold); background: none; color: var(--gold); cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.share-actions button:hover, .share-actions a:hover { background: var(--gold); color: var(--black); }
+.share-permanent { margin-top: 16px; font-size: 12px; color: #a3a3a3; }
+.share-permanent a { color: #d4d4d4; text-decoration: underline; text-underline-offset: 3px; }
+.section-link-btn { margin-left: 8px; }
+
+/* Printable flyer: hidden on screen, shown only through printSection('flyer') */
+.flyer { display: none; }
+.flyer-inner { max-width: 7in; margin: 0 auto; padding: 0.4in 0; color: #000; }
+.flyer-eyebrow { font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; border-bottom: 3px solid var(--gold); padding-bottom: 8pt; margin-bottom: 20pt; }
+.flyer h2 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 30pt; line-height: 1.1; margin-bottom: 12pt; }
+.flyer-lede { font-size: 13pt; line-height: 1.5; margin-bottom: 18pt; }
+.flyer-list { padding-left: 20pt; font-size: 12pt; line-height: 1.5; }
+.flyer-list li { margin-bottom: 10pt; }
+.flyer-foot { display: flex; gap: 20pt; align-items: center; margin-top: 24pt; padding-top: 16pt; border-top: 1px solid #000; }
+.flyer-foot canvas { width: 1.4in; height: 1.4in; flex-shrink: 0; }
+.flyer-title { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 16pt; }
+.flyer-url { font-size: 12pt; font-weight: 700; margin: 4pt 0; }
+.flyer-contact { font-size: 10pt; color: #333; }
+@media print {
+  .section-link-btn, .share-block, .nominate, .subscribe-actions, .lesson-play { display: none !important; }
+  body.printing-section .print-target.flyer { display: block !important; }
+  .kpi-row, .lessons-grid, .wins-head { display: block !important; grid-template-columns: none !important; }
+}

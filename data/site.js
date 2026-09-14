@@ -31,6 +31,9 @@ const SITE = {
      email to `email` above; paste a URL and the buttons switch over. */
   bookingUrl: null,        // C2 — a Calendly / Microsoft Bookings page for 20-minute mentor slots
   newsletterUrl: null,     // C7 — a sign-up form for the deadline email
+  nominationUrl: null,     // C5 — a form for nominating a founder, a win, or a resource
+  /* One sentence used by the share buttons and the printable flyer. */
+  shareText: "You don't need an idea, a business major, or money to start. Here's how Mizzou students go from curious to founder.",
   ventureFormUrl: null,    // set in data/ventures.js (VENTURE_FORM_URL); mirrored here for adopters
 
   /* "Last reviewed" stamps, one per section that carries one (A5).
