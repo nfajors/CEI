@@ -174,6 +174,12 @@ function renderAlumni() {
     + '<p>The next name in this list could be yours. We\'re here to help you write it.</p>'
     + '<button onclick="scrollToSection(\'contacts\')">Connect with the team →</button></div>';
   var c = byId('alumniCount'); if (c) c.textContent = ALUMNI.length;
+  var other = ALUMNI.filter(function (a) { return !a.business; });
+  var note = byId('alumniMajorNote');
+  if (note && other.length) {
+    var fields = other.map(function (a) { return a.field.toLowerCase(); }).filter(function (f, i, arr) { return f && arr.indexOf(f) === i; });
+    note.textContent = other.length + ' of the ' + ALUMNI.length + ' below studied ' + fields.slice(0, -1).join(', ') + (fields.length > 1 ? ', or ' : '') + fields.slice(-1)[0] + ' before they built anything.';
+  }
 }
 
 /* ---------- contacts (data/contacts.js) ---------- */
@@ -228,4 +234,5 @@ function hideEmptyVentureBoard() {
   hideEmptyVentureBoard();
   renderNav();
   stampSite();
+  var y = byId('copyYear'); if (y) y.textContent = new Date().getFullYear();
 })();

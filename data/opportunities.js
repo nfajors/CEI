@@ -13,26 +13,29 @@
                        because putting an unverified date in someone's
                        calendar is worse than showing none.
    Verify a date, flip confirmed to true, and the countdown turns on.
+   verifiedOn: ISO date you last checked the program's page (maintainers only;
+   it is not shown). The Mizzou entries at the top are the ones to confirm
+   each August and January — see EDITORIAL.md for the checklist.
    Entries are grouped by geography; the order on the board is computed.
    ============================================================ */
 const OPPORTUNITIES = [
   // --- Mizzou and mid-Missouri ---
   { name: 'Entrepreneurship Alliance', org: 'Trulaske CEI', type: 'Accelerator', phase: 2,
     url: 'https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance',
-    cycle: 'annual', opens: '08-15', closes: '09-30', confirmed: false,
-    note: "CEI's flagship eight-week accelerator. Ask the CEI for this year's dates." },
+    cycle: 'annual', opens: '08-15', closes: '09-30', confirmed: false, verifiedOn: null,
+    note: "CEI's flagship eight-week accelerator, open to any major. This year's application window will be posted here once CEI publishes it." },
   { name: 'Entrepreneurship Quest (EQ) Accelerator', org: 'Griggs Innovators Nexus', type: 'Accelerator', phase: 1,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/entrepreneur-quest-student-accelerator',
-    cycle: 'annual', opens: '09-01', closes: '10-15', confirmed: false,
-    note: '$40,000 in prize money for student-led ventures.' },
+    cycle: 'annual', opens: '09-01', closes: '10-15', confirmed: false, verifiedOn: null,
+    note: '$40,000 in prize money for student-led ventures, any major. This year\'s dates will be posted here once GIN publishes them.' },
   { name: 'GIN Incubator Office Space', org: 'Griggs Innovators Nexus', type: 'Grant', phase: 3,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/incubator-office-space-for-students',
-    cycle: 'annual', opens: '03-01', closes: '04-30', confirmed: false,
-    note: 'Rent-free 100 sq ft in the MU Student Center, awarded for the academic year.' },
+    cycle: 'annual', opens: '03-01', closes: '04-30', confirmed: false, verifiedOn: null,
+    note: 'Rent-free 100 sq ft in the MU Student Center, awarded for the academic year. Confirm the application window with GIN.' },
   { name: 'REDI Small Business Grant', org: 'REDI · City of Columbia', type: 'Grant', phase: 3,
     url: 'https://columbiaredi.com/small-business-grant/',
-    cycle: 'annual', opens: '02-01', closes: '03-31', confirmed: false,
-    note: 'A $50,000 pool split among eight entrepreneurs. CEI lists the next cycle as spring 2027 — confirm with REDI.' },
+    cycle: 'annual', opens: '02-01', closes: '03-31', confirmed: false, verifiedOn: null,
+    note: 'A $50,000 pool split among eight entrepreneurs; requires a City of Columbia business license. Confirm the cycle with REDI.' },
 
   // --- Missouri and regional ---
   { name: 'Arch Grants Startup Competition', org: 'Arch Grants · St. Louis', type: 'Grant', phase: 3,
@@ -80,7 +83,7 @@ const OPPORTUNITIES = [
     note: '$100K SAFE to winners, and a fast track into PearX. Built for student and faculty founders.' },
   { name: 'Future Founders Fellowship', org: 'Future Founders', type: 'Accelerator', phase: 1,
     url: 'https://www.futurefounders.com/fellowship/', cycle: 'annual', opens: '09-01', closes: '10-31', confirmed: false,
-    note: 'Equity-free, year-long, for US founders 18–30. The guidebook lists a September 2026 reopening.' },
+    note: 'Equity-free, year-long, for US founders 18–30.' },
   { name: 'Y Combinator', org: 'Y Combinator', type: 'Accelerator', phase: 4,
     url: 'https://www.ycombinator.com/', cycle: 'rolling', confirmed: true,
     note: 'Applications are accepted continuously; batches have their own cut-offs. Apply late rather than not at all.' },

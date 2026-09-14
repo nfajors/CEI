@@ -23,10 +23,12 @@ const RESOURCES = [
     tag: 'Core',
     throughout: false,
     blurb: 'Trulaske\'s home for entrepreneurial resources, mentorship, and programs.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'Any MU student, any major',
+    cost: 'Free',
+    time: 'Drop in or email',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'griggs-innovators-nexus',
@@ -35,10 +37,12 @@ const RESOURCES = [
     tag: 'Core',
     throughout: false,
     blurb: 'The hub of Mizzou\'s entrepreneurial community in the MU Student Center — collaborative workspaces, retail storefronts, incubator offices, and programming.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'Any MU student, any major',
+    cost: 'Free',
+    time: 'Open during Student Center hours',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'entrepreneurship-quest-accelerator',
@@ -48,10 +52,12 @@ const RESOURCES = [
     throughout: false,
     blurb: 'Intensive accelerator program offering courses, mentorship, networking, and $40,000 in prize money for student-led ventures.',
     keywords: 'eq',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'MU students, any major, with an idea to test',
+    cost: 'Free',
+    time: 'About one semester, weekly sessions',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'entrepreneurship-alliance',
@@ -60,10 +66,12 @@ const RESOURCES = [
     tag: 'Accelerator',
     throughout: false,
     blurb: 'CEI\'s flagship eight-week accelerator taking student founders from idea to launch with mentorship and a chance to pitch for seed funding.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'MU students, any major, with an idea to launch',
+    cost: 'Free',
+    time: '8 weeks, spring semester',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'technology-venture-studio-by-redbud-vc',
@@ -73,10 +81,12 @@ const RESOURCES = [
     throughout: false,
     blurb: 'Griggs Innovators Nexus studio developing student founders with mentorship, networks, and capital. Sponsored by Redbud VC and EquipmentShare.',
     keywords: 'develops entrepreneurs into knowledge from world-class education financing scale kelsey raymond',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'MU student tech founders',
+    cost: 'Free; can lead to investment',
+    time: 'Cohort program; length varies',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'mu-law-entrepreneurship-legal-clinic',
@@ -86,10 +96,12 @@ const RESOURCES = [
     throughout: false,
     blurb: 'Free legal services for student startups — incorporation, IP, and contracts.',
     keywords: 'intellectual property',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'Student and early-stage Missouri startups',
+    cost: 'Free',
+    time: 'By appointment; a semester for bigger matters',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'redi',
@@ -98,9 +110,9 @@ const RESOURCES = [
     tag: 'Support',
     throughout: true,
     blurb: 'Regional Economic Development Inc. — Columbia\'s economic development organization. Connects entrepreneurs with the local business ecosystem, offers research and innovation support, and runs the annual REDI Small Business Grant.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Columbia entrepreneurs, students included',
+    cost: 'Free',
+    time: 'By appointment',
     anyMajor: false
   },
   {
@@ -110,9 +122,9 @@ const RESOURCES = [
     tag: 'Incubator',
     throughout: false,
     blurb: 'Business incubator for high-growth startups in mid-Missouri — workspace, mentorship, and direct connections to investors.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'High-growth startups in mid-Missouri',
+    cost: 'Rent or membership; varies',
+    time: 'Multi-year residency',
     anyMajor: false
   },
   {
@@ -122,9 +134,9 @@ const RESOURCES = [
     tag: 'Support',
     throughout: false,
     blurb: 'Free consulting, training, and resources for small businesses and startups across Missouri.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Any Missouri business or startup',
+    cost: 'Free consulting; some paid courses',
+    time: 'By appointment',
     anyMajor: false
   },
   {
@@ -135,9 +147,9 @@ const RESOURCES = [
     throughout: false,
     blurb: 'Missouri nonprofit supporting founders with startup resources, AI training, software development, and grant funding.',
     keywords: 'codefiworks foundation rural innovation legal services weekend partner not mizzou affiliated',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Missouri founders; some programs statewide',
+    cost: 'Free to low-cost',
+    time: 'Varies by program',
     anyMajor: false
   },
   {
@@ -147,22 +159,25 @@ const RESOURCES = [
     tag: 'Event',
     throughout: true,
     blurb: '54-hour event where developers, designers, and business builders form teams and launch startups in front of judges — all in one weekend.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Anyone; students welcome',
+    cost: 'Small ticket fee; student rates',
+    time: '54 hours, one weekend',
     anyMajor: false
   },
   {
     id: 'pitch-competitions',
     name: 'Pitch Competitions',
-    url: 'https://airtable.com/appKJ8iWWwDoskkYY/shrh76kDXji6efx3r',
+    url: '#deadlines',
     tag: 'Competition',
     throughout: false,
-    blurb: 'Active calendar of Mizzou and regional pitch competitions with cash prizes and funding opportunities.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    blurb: 'Every Mizzou, regional, and national pitch competition we track, with what closes first — on the deadline board on this page.',
+    who: 'MU students',
+    cost: 'Free to enter',
+    time: 'A 3–10 minute pitch, plus prep',
+    mizzou: true,
+    keywords: 'deadline board calendar cash prizes',
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'mizzou-startup-community',
@@ -171,10 +186,12 @@ const RESOURCES = [
     tag: 'Community',
     throughout: true,
     blurb: 'Online platform connecting Mizzou entrepreneurs, alumni, and mentors.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'Mizzou students, alumni, and mentors',
+    cost: 'Free',
+    time: 'Self-paced',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'collegiate-entrepreneurs-organization',
@@ -183,10 +200,12 @@ const RESOURCES = [
     tag: 'Student Org',
     throughout: true,
     blurb: 'The only student organization on campus dedicated to entrepreneurs. The first stop for building your peer network at Mizzou.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'Any MU student, any major',
+    cost: 'Free (dues may apply)',
+    time: 'Meets during the semester',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'creative-mornings-columbia',
@@ -195,9 +214,9 @@ const RESOURCES = [
     tag: 'Event',
     throughout: true,
     blurb: 'Monthly breakfast lecture series for Columbia\'s creative and entrepreneurial community.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Anyone',
+    cost: 'Free',
+    time: 'One morning a month',
     anyMajor: false
   },
   {
@@ -207,9 +226,9 @@ const RESOURCES = [
     tag: 'Event',
     throughout: true,
     blurb: 'Weekly gathering where local entrepreneurs present their work to the community and receive feedback.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Anyone',
+    cost: 'Free',
+    time: 'Weekly, about an hour',
     anyMajor: false
   },
   {
@@ -220,9 +239,9 @@ const RESOURCES = [
     throughout: true,
     blurb: 'Connection to Missouri\'s entire small business support network across the state.',
     keywords: 'statewide resource navigator partners',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Any Missouri entrepreneur',
+    cost: 'Free',
+    time: 'Self-serve',
     anyMajor: false
   },
   {
@@ -232,9 +251,9 @@ const RESOURCES = [
     tag: 'Networking',
     throughout: true,
     blurb: 'Local business community and networking hub for Columbia-based ventures.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Members; many events open to all',
+    cost: 'Membership; some free events',
+    time: 'Events through the year',
     anyMajor: false
   },
   {
@@ -244,34 +263,40 @@ const RESOURCES = [
     tag: 'Event',
     throughout: true,
     blurb: 'Annual entrepreneurship conference in Columbia featuring speakers, panels, and networking, with a strong investor presence each year.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Anyone',
+    cost: 'Ticket; ask about student pricing',
+    time: 'A few days each fall',
     anyMajor: false
   },
   {
     id: 'trulaske-alumni-entrepreneurs',
     name: 'Trulaske Alumni Entrepreneurs',
-    url: 'https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation',
+    url: 'mailto:cei@missouri.edu?subject=Introduction%20to%20a%20Trulaske%20alumni%20founder%20%E2%80%94%20CEI%20Guidebook&body=Hi%20CEI%2C%0A%0AMy%20name%20is%20%5Bname%5D%2C%20a%20%5Byear%5D%20studying%20%5Bmajor%5D.%0A%0AWhat%20I%27m%20working%20on%3A%20%5Bone%20sentence%5D%0A%0AI%27d%20like%20to%20talk%20with%20an%20alumni%20founder%20or%20operator%20in%20%5Bindustry%5D%20about%20%5Bwhat%20you%20want%20to%20learn%5D.%0A%0AThanks%2C%0A%5Bname%5D',
     tag: 'Mentorship',
     throughout: true,
-    blurb: 'Connect with Trulaske alumni founders and operators for mentorship and introductions.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    blurb: 'Trulaske alumni founders and operators who take calls with students. Email the CEI with what you are working on and we make the introduction.',
+    who: 'MU students',
+    cost: 'Free',
+    time: 'One email; a 20-minute call',
+    mizzou: true,
+    keywords: 'mentor introduction warm intro',
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'trulaske-vcs-and-angels',
     name: 'Trulaske VCs & Angels',
-    url: 'https://business.missouri.edu/centers-institutes/center-entrepreneurship-and-innovation',
+    url: 'mailto:cei@missouri.edu?subject=Introduction%20to%20a%20Trulaske%20investor%20%E2%80%94%20CEI%20Guidebook&body=Hi%20CEI%2C%0A%0AMy%20name%20is%20%5Bname%5D%2C%20a%20%5Byear%5D%20studying%20%5Bmajor%5D.%0A%0AVenture%3A%20%5Bname%20and%20one%20sentence%5D%0ATraction%20so%20far%3A%20%5Bcustomers%2C%20revenue%2C%20pilots%5D%0ARaising%3A%20%5Bamount%20and%20instrument%5D%0A%0ACould%20you%20introduce%20me%20to%20an%20alumni%20investor%20who%20backs%20%5Bindustry%5D%3F%0A%0AThanks%2C%0A%5Bname%5D',
     tag: 'Funding',
     throughout: false,
-    blurb: 'Network of Trulaske alumni who are venture capitalists and angel investors.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    blurb: 'Trulaske alumni who are venture capitalists and angel investors. Email the CEI with your traction and raise, and we make the introduction when there is a fit.',
+    who: 'MU student founders who are raising',
+    cost: 'Free introduction',
+    time: 'One email',
+    mizzou: true,
+    keywords: 'investor introduction warm intro',
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'redbud-vc',
@@ -280,9 +305,9 @@ const RESOURCES = [
     tag: 'VC',
     throughout: false,
     blurb: 'Missouri-based venture capital firm investing in pre-seed and seed-stage startups.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Pre-seed and seed startups, Missouri focus',
+    cost: 'Takes equity',
+    time: 'Rolling',
     anyMajor: false
   },
   {
@@ -292,9 +317,9 @@ const RESOURCES = [
     tag: 'State',
     throughout: false,
     blurb: 'State-funded organization providing capital and support for Missouri-based technology startups.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Missouri technology startups',
+    cost: 'Equity co-investment',
+    time: 'Rolling',
     anyMajor: false
   },
   {
@@ -304,9 +329,10 @@ const RESOURCES = [
     tag: 'Student Fund',
     throughout: false,
     blurb: 'Trulaske\'s student-managed angel investment fund. Real capital, real deals, real students.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups seeking angel capital; run by Trulaske students',
+    cost: 'Takes equity',
+    time: 'Deal cycle follows the semester',
+    mizzou: true,
     anyMajor: false
   },
   {
@@ -316,10 +342,12 @@ const RESOURCES = [
     tag: 'Retail',
     throughout: false,
     blurb: 'Griggs Innovators Nexus retail program for student consumer-product ventures.',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'MU students with a consumer product',
+    cost: 'Free storefront space',
+    time: 'One semester',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'gin-incubator-office-space',
@@ -329,10 +357,12 @@ const RESOURCES = [
     throughout: false,
     blurb: 'Rent-free 100-sq-ft office space in the MU Student Center, awarded competitively for an academic year — ideal for e-commerce and software ventures.',
     keywords: 'griggs innovators nexus square foot ecommerce',
-    who: '',
-    cost: '',
-    time: '',
-    anyMajor: false
+    who: 'MU student ventures',
+    cost: 'Free (rent-free)',
+    time: 'One academic year',
+    mizzou: true,
+    anyMajor: true,
+    anyMajor: true
   },
   {
     id: 'centennial-investors',
@@ -341,9 +371,9 @@ const RESOURCES = [
     tag: 'VC',
     throughout: false,
     blurb: 'Early-stage venture capital firm focused on Midwest entrepreneurs and ventures.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Early-stage Midwest startups',
+    cost: 'Takes equity',
+    time: 'Rolling',
     anyMajor: false
   },
   {
@@ -354,9 +384,9 @@ const RESOURCES = [
     throughout: false,
     blurb: 'Network of accredited investors funding early-stage Missouri-region startups, typically $50,000–$500,000 per round — a range often underserved by institutional VCs. Since 2005: $122.7M invested across 156+ ventures. Recent exit: Acera Surgical, acquired by Solventum for up to $850M.',
     keywords: '50000 500000 million steve trampe co-founder',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Early-stage startups in the Missouri region',
+    cost: 'Takes equity',
+    time: 'Monthly meetings; rolling applications',
     anyMajor: false
   },
   {
@@ -367,9 +397,9 @@ const RESOURCES = [
     throughout: false,
     blurb: '$75,000 equity-free grants (plus $25,000 relocation) for early-stage startups that headquarter in St. Louis for at least one year. Idea-stage through pre-Series A.',
     keywords: '75000',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups that will headquarter in St. Louis for a year',
+    cost: 'Free; equity-free grant',
+    time: 'Annual cycle',
     anyMajor: false
   },
   {
@@ -378,11 +408,11 @@ const RESOURCES = [
     url: 'https://columbiaredi.com/small-business-grant/',
     tag: 'Grant',
     throughout: false,
-    blurb: 'Equity-free grants — a $50,000 pool split among eight entrepreneurs (two $10,000, six $5,000). Open to any entrepreneur with a City of Columbia business license. Funded by the City, administered by REDI. Next cycle: spring 2027.',
+    blurb: 'Equity-free grants — a $50,000 pool split among eight entrepreneurs (two $10,000, six $5,000). Open to any entrepreneur with a City of Columbia business license. Funded by the City, administered by REDI. Dates are on the deadline board.',
     keywords: 'non-dilutive funding 50000 5000 10000 locally owned for-profit boone county missouri grow',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Entrepreneurs with a City of Columbia business license',
+    cost: 'Free; equity-free',
+    time: 'Annual cycle, spring',
     anyMajor: false
   },
   {
@@ -392,9 +422,9 @@ const RESOURCES = [
     tag: 'Accelerator',
     throughout: false,
     blurb: 'The most prestigious startup accelerator in the world. Three-month program in the Bay Area.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups worldwide; student teams welcome',
+    cost: 'Takes equity (standard deal)',
+    time: '3 months, two batches a year',
     anyMajor: false
   },
   {
@@ -404,9 +434,9 @@ const RESOURCES = [
     tag: 'Accelerator',
     throughout: false,
     blurb: 'Global network of accelerators, mentors, and investors with vertical-specific programs.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups worldwide',
+    cost: 'Takes equity',
+    time: '3 months',
     anyMajor: false
   },
   {
@@ -416,9 +446,9 @@ const RESOURCES = [
     tag: 'Investment',
     throughout: false,
     blurb: 'Investment firm focused on acquiring and growing operating businesses for the long term.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Established operating businesses, not startups',
+    cost: 'Sells part or all of the company',
+    time: 'Long-term partnership',
     anyMajor: false
   },
   {
@@ -428,9 +458,9 @@ const RESOURCES = [
     tag: 'Platform',
     throughout: false,
     blurb: 'Platform connecting startups with investors, syndicates, and operating talent.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups raising; anyone can browse',
+    cost: 'Free to list; fees on raises',
+    time: 'Self-serve',
     anyMajor: false
   },
   {
@@ -440,9 +470,10 @@ const RESOURCES = [
     tag: 'Federal',
     throughout: false,
     blurb: 'National Science Foundation program teaching academic founders to commercialize research. MU is part of the Great Lakes regional hub.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Research-based teams (a student, a faculty lead, a mentor)',
+    cost: 'Free; NSF-funded',
+    time: 'Regional course ~4 weeks; national 7 weeks',
+    mizzou: true,
     anyMajor: false
   },
   {
@@ -452,9 +483,9 @@ const RESOURCES = [
     tag: 'Accelerator',
     throughout: false,
     blurb: 'Midwest-focused accelerator network with programs across multiple states. Strong for B2B SaaS, fintech, and consumer ventures.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups; several programs by stage',
+    cost: 'Takes equity (accelerator); some free programs',
+    time: '12 weeks',
     anyMajor: false
   },
   {
@@ -464,9 +495,9 @@ const RESOURCES = [
     tag: 'Accelerator',
     throughout: false,
     blurb: 'Texas-based accelerator and venture community. Active in deep tech, defense, energy, and software.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'Startups, Texas focus',
+    cost: 'Takes equity',
+    time: 'Rolling',
     anyMajor: false
   },
   {
@@ -476,9 +507,9 @@ const RESOURCES = [
     tag: 'Accelerator',
     throughout: false,
     blurb: 'Pre-seed accelerator with chapters globally. Structured 4-month curriculum for first-time founders building from scratch.',
-    who: '',
-    cost: '',
-    time: '',
+    who: 'First-time founders, pre-seed',
+    cost: 'Program fee + 2.5% equity warrant',
+    time: '4 months, part-time',
     anyMajor: false
   }
 ];

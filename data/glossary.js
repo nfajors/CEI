@@ -386,5 +386,60 @@ const GLOSSARY = [
     cat: 'Growth & Strategy',
     def: 'A framework for judging an industry\'s attractiveness via five forces: rivalry, new entrants, substitutes, supplier power, and buyer power.',
     eg: 'Strong supplier power and easy substitutes signal a tough industry to enter.'
+  },
+  {
+    term: 'Business Model',
+    phase: 'Phase 1–2',
+    cat: 'Product & Market',
+    start: true,
+    def: 'How your venture makes money: who pays, how much, how often, and what it costs you to deliver. Every company has one, even a side hustle.',
+    eg: 'A campus meal-prep service charges $60 a week per student, spends $35 on food and containers, and keeps $25. That is the business model in one sentence.'
+  },
+  {
+    term: 'Side Hustle vs. Startup',
+    phase: 'Phase 0–1',
+    cat: 'Growth & Strategy',
+    start: true,
+    def: 'A side hustle earns money now, at a scale you can run yourself. A startup is a bet on something that could grow far larger than you, usually with more risk and more outside help. Both count; knowing which one you are building tells you which resources to use.',
+    eg: 'Tutoring twenty students a semester is a side hustle. Building a tutoring app for every campus in the SEC is a startup. The guidebook serves both; the accelerators and investors serve the second.'
+  },
+  {
+    term: 'Nondilutive Funding',
+    phase: 'Phase 1–3',
+    cat: 'Funding & Investors',
+    start: true,
+    def: 'Money you do not give up ownership for: grants, prizes, competitions, and customer revenue. The best first money for a student venture, because you keep 100% of the company.',
+    eg: 'Winning prize money at Entrepreneurship Quest, a REDI Small Business Grant, or an Arch Grants award is nondilutive. A $5,000 angel check for 5% of the company is not.'
+  },
+  {
+    term: 'LLC vs. C-Corp',
+    phase: 'Phase 3',
+    cat: 'Equity & Deal Terms',
+    start: true,
+    def: 'The two entity types student founders choose between. An LLC is simple and cheap and suits a small business or side hustle. A Delaware C-Corp is what venture investors expect if you plan to raise money and issue stock.',
+    eg: 'A photography business stays an LLC. A software startup that wants angel investment forms a C-Corp so it can issue shares. The MU Law Entrepreneurship Legal Clinic will help you decide for free.'
+  },
+  {
+    term: 'Intellectual Property (IP)',
+    phase: 'Phase 1–3',
+    cat: 'Equity & Deal Terms',
+    start: true,
+    def: 'Ideas and creations the law lets you own: patents (inventions), trademarks (names and logos), copyrights (writing, code, designs), and trade secrets. If your venture grows out of MU research or coursework, ask who owns the IP before you build on it.',
+    eg: 'A student who invents a new sensor in a university lab talks to MU\'s technology transfer office about a patent and license before pitching it as a company.'
+  },
+  {
+    term: 'NDA (Non-Disclosure Agreement)',
+    phase: 'Phase 1–2',
+    cat: 'Equity & Deal Terms',
+    start: true,
+    def: 'A contract that says the other party will keep what you tell them confidential. Useful with a manufacturer or a contractor; almost never signed by investors, mentors, or judges, so do not let the lack of one stop you from talking about your idea.',
+    eg: 'An investor at a pitch night politely declines to sign your NDA. That is normal. Ideas are cheap; execution is what they are evaluating.'
+  },
+  {
+    term: 'SBIR / STTR',
+    phase: 'Phase 2–3',
+    cat: 'Funding & Investors',
+    def: 'Federal grant programs (Small Business Innovation Research and Small Business Technology Transfer) that fund early technology development with nondilutive money, often $150,000 to $300,000 in a first phase. Built for science and engineering ventures, including ones spun out of university research.',
+    eg: 'A Mizzou engineering team commercializing a lab discovery applies for an NSF SBIR Phase I award while going through NSF I-Corps.'
   }
 ];

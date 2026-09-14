@@ -284,7 +284,8 @@ function filterGlossary() {
   let visible = 0;
   terms.forEach(t => {
     const matchText = !q || t.dataset.search.includes(q);
-    const matchCat = glossActiveCat === 'all' || t.dataset.cat === glossActiveCat;
+    const matchCat = glossActiveCat === 'all'
+      || (glossActiveCat === 'start' ? t.dataset.start === '1' : t.dataset.cat === glossActiveCat);
     const show = matchText && matchCat;
     t.style.display = show ? '' : 'none';
     if (show) visible++;

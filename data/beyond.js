@@ -134,7 +134,7 @@ const BEYOND = [
     name: 'Future Founders Fellowship',
     url: 'https://www.futurefounders.com/fellowship/',
     host: 'Equity-free',
-    focus: 'Free year-long program for US founders 18–30 (students included). Applications reopen Sept 2026',
+    focus: 'Free year-long program for US founders 18–30 (students included). Applications usually open each fall — dates on the deadline board',
     group: 'accelerator-student'
   },
   {
