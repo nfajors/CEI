@@ -6,8 +6,8 @@ The guidebook is only useful if its address never changes. This page records whe
 
 | What | Value | Where it is set |
 |---|---|---|
-| Permanent address | `https://nfajors.github.io/cei/` | `SITE.url` in `data/site.js`, mirrored in the `<head>` of `index.html`, `robots.txt`, and `sitemap.xml` (`node scripts/check-site.mjs` fails if they disagree) |
-| Calendar feed | `https://nfajors.github.io/cei/deadlines.ics` | built by `scripts/build-ics.mjs` from `data/opportunities.js` |
+| Permanent address | `https://nfajors.github.io/CEI/` | `SITE.url` in `data/site.js`, mirrored in the `<head>` of `index.html`, `robots.txt`, and `sitemap.xml` (`node scripts/check-site.mjs` fails if they disagree) |
+| Calendar feed | `https://nfajors.github.io/CEI/deadlines.ics` | built by `scripts/build-ics.mjs` from `data/opportunities.js` |
 | Source | `https://github.com/nfajors/CEI` | `SITE.repoUrl` |
 
 The share buttons, QR codes, and the printed flyer encode whatever address the page is actually served from, so they stay right when the page moves.

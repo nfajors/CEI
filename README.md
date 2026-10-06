@@ -2,7 +2,7 @@
 
 A guidebook for students at the University of Missouri from the Center for Entrepreneurship & Innovation at the Robert J. Trulaske, Sr. College of Business. It is an evolving platform, open to every major.
 
-Live page: https://nfajors.github.io/cei/
+Live page: https://nfajors.github.io/CEI/
 
 ## Layout
 

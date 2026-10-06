@@ -22,7 +22,6 @@ const KNOWLEDGE = [
     icon: '◆', title: 'Methodology', sub: 'The founder\'s canon',
     items: [
       { text: 'Disciplined Entrepreneurship (Aulet)', url: 'https://www.amazon.com/Disciplined-Entrepreneurship-Steps-Successful-Startup/dp/1118692284' },
-      { text: 'MIT Entrepreneurship 101 (free edX)', url: 'https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer' },
       { text: 'MIT 15.390 New Enterprises', url: 'https://ocw.mit.edu/courses/15-390-new-enterprises-spring-2013/' },
       { text: 'Stanford eCorner', url: 'https://ecorner.stanford.edu/' },
       { text: 'Steve Blank · Lean LaunchPad', url: 'https://steveblank.com/category/lean-launchpad/' }

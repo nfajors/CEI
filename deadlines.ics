@@ -6,12 +6,12 @@ METHOD:PUBLISH
 X-WR-CALNAME:Trulaske CEI — student deadlines
 X-WR-CALDESC:Confirmed application deadlines from The Entrepreneur's Guid
  ebook. Unconfirmed dates are left out until verified. https://nfajors.gi
- thub.io/cei/
+ thub.io/CEI/
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
 UID:20261211-leslie-flegel-entrepreneurship-alliance@cei-guidebook
-DTSTAMP:20261006T155100Z
+DTSTAMP:20261006T161900Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Deadline — Leslie Flegel Entrepreneurship Alliance
