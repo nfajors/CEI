@@ -24,7 +24,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   border-radius: 1px;
 }
 /* On dark backgrounds, use gold for sufficient contrast */
-.section.dark a:focus-visible, .section.dark button:focus-visible, .nav a:focus-visible, .nav button:focus-visible, .footer a:focus-visible, .footer button:focus-visible, .hero button:focus-visible, .modal-overlay button:focus-visible {
+.section.dark a:focus-visible, .section.dark button:focus-visible, .nav a:focus-visible, .nav button:focus-visible, .footer a:focus-visible, .footer button:focus-visible, .hero button:focus-visible, .spotlight a:focus-visible, .spotlight button:focus-visible, .modal-overlay button:focus-visible {
   outline-color: var(--gold);
 }
 /* WCAG 2.3.3 — respect reduced-motion preference */
@@ -245,6 +245,31 @@ img { display: block; max-width: 100%; }
 .semester .wb-out { background: #fff; }
 .semester-fits { font-size: 13.5px; line-height: 1.6; color: #404040; margin-top: 18px; padding-top: 14px; border-top: 1px solid #ededea; }
 .semester-fits:empty { display: none; }
+
+/* Spotlight — one featured program (data/spotlight.js) */
+.spotlight { background: var(--black); color: var(--paper); border-top: 4px solid var(--gold); padding: 64px 24px; scroll-margin-top: 72px; }
+.spotlight[hidden] { display: none; }
+.spotlight-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 1024px) { .spotlight-inner { grid-template-columns: 7fr 5fr; gap: 64px; align-items: start; } }
+.sp-badge { display: inline-block; padding: 6px 12px; background: var(--gold); color: var(--black); margin-bottom: 24px; }
+.sp-badge span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; }
+.spotlight h2 { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+.spotlight h2 .gold { color: var(--gold); display: block; font-weight: 400; font-size: 0.62em; margin-top: 8px; }
+.sp-lede { font-size: 16px; line-height: 1.7; color: #d4d4d4; max-width: 44rem; margin-bottom: 32px; }
+.sp-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black-tint-1); border: 1px solid var(--black-tint-1); margin-bottom: 32px; }
+@media (min-width: 760px) { .sp-facts { grid-template-columns: repeat(4, 1fr); } }
+.sp-fact { background: var(--black); padding: 18px 16px; }
+.sp-fact b { display: block; font-family: 'STIX Two Text', Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1; color: var(--gold); margin-bottom: 8px; }
+.sp-fact span { display: block; font-size: 12px; line-height: 1.45; color: #d4d4d4; }
+.sp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.sp-link { background: none; border: none; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); padding: 8px 0; }
+.sp-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sp-side { border: 1px solid var(--black-tint-1); padding: 28px; background: #0d0d0d; }
+.sp-side-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 18px; }
+.sp-steps { list-style: none; counter-reset: sp; display: flex; flex-direction: column; gap: 16px; }
+.sp-steps li { counter-increment: sp; position: relative; padding-left: 40px; font-size: 14px; line-height: 1.6; color: #e5e5e5; }
+.sp-steps li::before { content: counter(sp); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.sp-fit { font-size: 13px; line-height: 1.6; color: var(--black-tint-2); font-style: italic; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--black-tint-1); }
 
 /* Recent Win */
 .recent-win { display: grid; grid-template-columns: 1fr; gap: 0; margin-bottom: 80px; }
@@ -567,10 +592,14 @@ html { scroll-behavior: smooth; }
   .phase-overview-item { display: block !important; break-inside: avoid; margin-bottom: 8px; page-break-inside: avoid; }
   .phase-overview-item .po-num { display: inline-flex !important; margin-bottom: 4px !important; }
   .phase-overview-item .po-num > div { width: 36px !important; height: 36px !important; font-size: 18px !important; }
-  .recent-win, .resources-grid, .phase-right, .comp-grid, .gloss-grid, .alumni-grid, .contacts-grid, .kn-grid, .prompt-grid, .stats-grid, .studio-fields, .stories-grid, .course-grid, .doors-grid, .semester-grid { display: block !important; grid-template-columns: none !important; }
+  .spotlight-inner, .sp-facts, .recent-win, .resources-grid, .phase-right, .comp-grid, .gloss-grid, .alumni-grid, .contacts-grid, .kn-grid, .prompt-grid, .stats-grid, .studio-fields, .stories-grid, .course-grid, .doors-grid, .semester-grid { display: block !important; grid-template-columns: none !important; }
   .resource-card, .gloss-term, .alum-card, .contact-card, .kn-card, .comp-row, .prompt-card, .beyond-block { break-inside: avoid; page-break-inside: avoid; }
   .gloss-a { display: block !important; }
   .gloss-a[hidden] { display: block !important; }
+  .spotlight, .sp-fact, .sp-side { background: #fff !important; color: #000 !important; border-color: #999 !important; }
+  .spotlight { padding: 16px 0 !important; }
+  .spotlight h2 .gold, .sp-fact b, .sp-side-head, .sp-lede, .sp-fact span, .sp-steps li, .sp-fit { color: #000 !important; }
+  .sp-actions button { display: none !important; }
   .crosscut { background: #fff !important; border-left: 3px solid #000 !important; }
   .crosscut-label { color: #000 !important; }
   .crosscut-lede { color: #333 !important; }

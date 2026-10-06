@@ -90,7 +90,7 @@ const PHASES = [
     desc: "With demand validated, it's time to formally launch — form the entity, secure early capital, and put the operational foundation in place. Mid-Missouri has a deeper funding and support stack than most assume.",
     next: ['Pitch to Allen Angel Fund or Centennial Investors', 'Apply for an MTC investment or a grant', 'Move into the Missouri Innovation Center'],
     photo: { src: 'assets/img/phase3-ea-2026-second-place.jpg', alt: 'The second-place winner at the 2026 Leslie Flegel Entrepreneurship Alliance Final with his parents and Dean Balaji Rajagopalan', caption: '2nd place winner at the 2026 Leslie Flegel Entrepreneurship Alliance Final shares a moment with his parents and the Dean.', position: 'center 25%' },
-    resources: ['redbud-vc', 'missouri-technology-corporation', 'missouri-innovation-center', 'allen-angel-fund', 'gin-retail-program', 'centennial-investors', 'st-louis-arch-angels', 'arch-grants', 'redi-small-business-grant', 'trulaske-vcs-and-angels']
+    resources: ['redbud-vc', 'missouri-technology-corporation', 'missouri-innovation-center', 'allen-angel-fund', 'gin-retail-program', 'centennial-investors', 'st-louis-arch-angels', 'nsf-seed-fund', 'arch-grants', 'redi-small-business-grant', 'trulaske-vcs-and-angels']
   },
   {
     n: 4, id: 'phase-4',

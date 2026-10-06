@@ -48,6 +48,7 @@ Added by this upgrade:
 | `find_my_phase_result` | `phase: 'Phase 0'` | the curious option in the self-assessment (same event, new value) |
 | `semester_math` | `hours`, `free_hours`, `verdict` | a calculation settles (debounced) |
 | `story_click` | `name` | a story card's link |
+| `spotlight_click` | `name`, `link` (`cta`, `more`, `card`) | a link in the Spotlight band |
 | `win_click` | `who` | a wins-feed link |
 | `course_click` | `name` | a course card's link |
 | `door_click` | `door`, `contact` | a name behind a "who do I talk to first" door |

@@ -17,6 +17,7 @@ The guidebook stays trustworthy only if someone looks at it on a schedule. This 
 - [ ] Add any wins from the last month to `data/wins.js` (get the founder's OK first). Newest first.
 - [ ] Read the "Broken links in the Guidebook" issue if one is open; fix or replace each link in `data/*.js` or `index.html`, then close it.
 - [ ] Look at the deadline board: anything now confirmed on a program's site? Set `confirmed: true` and `verifiedOn` in `data/opportunities.js`. Anything closed for good? Remove it.
+- [ ] Read the Spotlight (`data/spotlight.js`). Are its amounts and next deadline still right? If the deadline has passed, move it to the next one (here and in `data/opportunities.js`), or feature a different program.
 - [ ] Check the CEI inbox for nominations (founders, wins, resources) and mentor requests that came through the page.
 - [ ] Add one line to the top of `data/changelog.js` describing what changed.
 

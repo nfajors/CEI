@@ -5,6 +5,7 @@
    "Updated …" stamp and the What's New strip both read from it.
    ============================================================ */
 const CHANGELOG = [
+  { date: '2026-10-06', text: 'In the spotlight: <a href="#spotlight">America\'s Seed Fund</a>, NSF\'s SBIR/STTR program. Up to $305,000 in equity-free funding for deep-tech startups, with the November 4 deadline on the board.' },
   { date: '2026-10-06', text: 'Corrected prize amounts: Entrepreneurship Quest has a $30,000 prize pool, and the Leslie Flegel Entrepreneurship Alliance awards $40,000.' },
   { date: '2026-10-06', text: 'The Entrepreneurship Alliance is now the Leslie Flegel Entrepreneurship Alliance, honoring S. Leslie Flegel (AB 1959), who grew Source Interlink from $2 million to $2 billion in sales and has long backed entrepreneurship at Trulaske. He now appears among <a href="#alumni">the alumni founders</a>.' },
   { date: '2026-09-14', text: 'A front door for the curious: Phase 0, a semester-math calculator, three first-year Playbook questions, who-to-talk-to doors, mentor booking, courses for credit, a wins feed, an outcomes dashboard, a calendar feed for deadlines, and eligibility, cost, and time on every resource.' },
@@ -18,4 +19,6 @@ const CHANGELOG = [
 /* Resources added recently, by exact card title -> ISO date.
    Anything dated within the last 45 days gets a NEW badge automatically.
    EDITING: add an entry here when you add a resource card. */
-const RESOURCE_ADDED = {};
+const RESOURCE_ADDED = {
+  "America's Seed Fund (NSF SBIR/STTR)": '2026-10-06'
+};

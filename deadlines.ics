@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
 UID:20261211-leslie-flegel-entrepreneurship-alliance@cei-guidebook
-DTSTAMP:20261006T175100Z
+DTSTAMP:20261006T195200Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Deadline — Leslie Flegel Entrepreneurship Alliance
@@ -25,6 +25,23 @@ BEGIN:VALARM
 TRIGGER:-P7D
 ACTION:DISPLAY
 DESCRIPTION:One week to apply — Leslie Flegel Entrepreneurship Alliance
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261104-america-s-seed-fund-nsf-sbir-sttr-@cei-guidebook
+DTSTAMP:20261006T195200Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Deadline — America's Seed Fund (NSF SBIR/STTR)
+DESCRIPTION:National Science Foundation. Up to $305\,000 for Phase I\, no
+  equity taken. This is the full-proposal deadline: submit a Project Pitc
+ h first and leave time for NSF's invitation. Next deadline after this on
+ e: March 4\, 2027. Confirm details at https://seedfund.nsf.gov/
+URL:https://seedfund.nsf.gov/
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:One week to apply — America's Seed Fund (NSF SBIR/STTR)
 END:VALARM
 END:VEVENT
 END:VCALENDAR

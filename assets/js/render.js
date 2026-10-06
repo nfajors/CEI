@@ -218,6 +218,31 @@ function renderStories() {
   }).join('');
 }
 
+/* ---------- spotlight (data/spotlight.js) ---------- */
+function renderSpotlight() {
+  var el = byId('spotlight');
+  if (!el || typeof SPOTLIGHT === 'undefined' || !SPOTLIGHT) return;
+  var s = SPOTLIGHT, card = s.resource && resourceById(s.resource);
+  var facts = (s.facts || []).slice(0, 4).map(function (f) {
+    return '<div class="sp-fact"><b>' + esc(f.value) + '</b><span>' + esc(f.label) + '</span></div>';
+  }).join('');
+  var steps = (s.steps || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+  var name = esc(JSON.stringify(s.title));
+  var links = '<a class="btn-primary sp-cta" href="' + esc(s.cta.url) + '" target="_blank" rel="noopener" onclick="track(\'spotlight_click\',{name:' + name + ',link:\'cta\'})">' + esc(s.cta.label) + ' <span class="arrow">↗</span></a>'
+    + (s.more ? '<button class="sp-link" onclick="track(\'spotlight_click\',{name:' + name + ',link:\'more\'}); scrollToSection(\'' + esc(s.more.to) + '\')">' + esc(s.more.label) + ' →</button>' : '')
+    + (card ? '<button class="sp-link" onclick="track(\'spotlight_click\',{name:' + name + ',link:\'card\'}); var c=byId(\'res-' + esc(card.id) + '\'); if(c) c.scrollIntoView({behavior:\'smooth\',block:\'center\'})">See the card in Resources →</button>' : '');
+  el.innerHTML = '<div class="spotlight-inner">'
+    + '<div class="sp-main"><div class="sp-badge"><span>' + esc(s.eyebrow) + '</span></div>'
+    + '<h2 id="spotlightHead">' + esc(s.title) + (s.titleGold ? ' <span class="gold italic">' + esc(s.titleGold) + '</span>' : '') + '</h2>'
+    + '<p class="sp-lede">' + esc(s.lede) + '</p>'
+    + (facts ? '<div class="sp-facts">' + facts + '</div>' : '')
+    + '<div class="sp-actions">' + links + '</div></div>'
+    + (steps ? '<div class="sp-side"><div class="sp-side-head">How to start</div><ol class="sp-steps">' + steps + '</ol>'
+      + (s.fit ? '<p class="sp-fit">' + esc(s.fit) + '</p>' : '') + '</div>' : '')
+    + '</div>';
+  el.hidden = false;
+}
+
 /* ---------- learn it for credit (data/courses.js) ---------- */
 function renderCourses() {
   var grid = byId('courseGrid');
@@ -280,6 +305,7 @@ function hideEmptyVentureBoard() {
   });
   renderPhases();
   renderStories();
+  renderSpotlight();
   renderCourses();
   renderDoors();
   renderResourceIndex();
