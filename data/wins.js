@@ -12,21 +12,21 @@ const WINS = [
   {
     date: '2026-04-03',
     who: 'AODO MedTech',
-    what: 'won $7,000 at the Entrepreneurship Alliance Final',
-    detail: 'A Trulaske student team turned an idea into investment-ready capital through the Entrepreneurship Alliance pitch competition. This is what Phase 3 looks like in practice.',
+    what: 'won $7,000 at the Leslie Flegel Entrepreneurship Alliance Final',
+    detail: 'A Trulaske student team turned an idea into investment-ready capital through the Leslie Flegel Entrepreneurship Alliance pitch competition. This is what Phase 3 looks like in practice.',
     to: 'phase-3',
-    photo: { src: 'assets/img/aodo-medtech-win.jpg', alt: 'The AODO MedTech team accepts a $7,000 award at the Entrepreneurship Alliance Final' },
+    photo: { src: 'assets/img/aodo-medtech-win.jpg', alt: 'The AODO MedTech team accepts a $7,000 award at the Leslie Flegel Entrepreneurship Alliance Final' },
     student: true,
-    event: 'Entrepreneurship Alliance Final'
+    event: 'Leslie Flegel Entrepreneurship Alliance Final'
   },
   {
     date: '2026-04-03',
-    who: 'The 2026 Entrepreneurship Alliance cohort',
+    who: 'The 2026 Leslie Flegel Entrepreneurship Alliance cohort',
     what: 'pitched to a room of investors and alumni at the spring final',
     detail: 'Eight weeks from idea to a final pitch in front of judges, including Kelsey Raymond of the Griggs Innovators Nexus.',
     to: 'phase-2',
     student: true,
-    event: 'Entrepreneurship Alliance Final'
+    event: 'Leslie Flegel Entrepreneurship Alliance Final'
   },
   {
     date: '2026-05',
@@ -56,7 +56,7 @@ const WINS = [
 const OUTCOMES = {
   year: '2025–26',
   reported: [
-    { key: 'students', label: 'Students in CEI programs', value: null, note: 'Entrepreneurship Alliance and Quest cohorts, workshops, and one-on-ones' },
+    { key: 'students', label: 'Students in CEI programs', value: null, note: 'Leslie Flegel Entrepreneurship Alliance and Quest cohorts, workshops, and one-on-ones' },
     { key: 'prizes', label: 'Prize money awarded to students', value: null, prefix: '$', note: 'Pitch competitions and program awards, this academic year' },
     { key: 'ventures', label: 'Student ventures launched', value: null, note: 'Ventures with a registered entity or first revenue' },
     { key: 'mentors', label: 'Mentor conversations', value: null, note: 'Twenty-minute sessions booked through the guidebook' },

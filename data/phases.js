@@ -31,7 +31,7 @@ const PATH_STEPS = {
   ],
   2: [
     'Run customer-discovery interviews (NSF I-Corps teaches the method)',
-    'Join the Entrepreneurship Alliance',
+    'Join the Leslie Flegel Entrepreneurship Alliance',
     'Draft your positioning statement',
     'Enter a pitch competition to test your story',
     'Present at 1 Million Cups Columbia',
@@ -80,8 +80,8 @@ const PHASES = [
     n: 2, id: 'phase-2',
     title: 'Customer & Model Validation', sub: 'Prove people want it and will pay',
     desc: 'Before you build, prove the problem is real and the business can work. Test demand with real customers, sharpen your model, and use the programs designed to validate — not just cheerlead — your idea.',
-    next: ['Run customer-discovery interviews (NSF I-Corps teaches the method)', 'Join the Entrepreneurship Alliance', 'Enter a pitch competition to test your story'],
-    photo: { src: 'assets/img/phase2-kelsey-raymond-judging.jpg', alt: 'Kelsey Raymond, Executive Director of Griggs Innovators Nexus, talking with student teams as an Entrepreneurship Alliance judge', caption: 'Kelsey Raymond, Executive Director of Griggs Innovators Nexus, engages with student teams as an EA judge.', position: 'center 40%' },
+    next: ['Run customer-discovery interviews (NSF I-Corps teaches the method)', 'Join the Leslie Flegel Entrepreneurship Alliance', 'Enter a pitch competition to test your story'],
+    photo: { src: 'assets/img/phase2-kelsey-raymond-judging.jpg', alt: 'Kelsey Raymond, Executive Director of Griggs Innovators Nexus, talking with student teams as a Leslie Flegel Entrepreneurship Alliance judge', caption: 'Kelsey Raymond, Executive Director of Griggs Innovators Nexus, engages with student teams as a Leslie Flegel Entrepreneurship Alliance judge.', position: 'center 40%' },
     resources: ['mizzou-startup-community', 'collegiate-entrepreneurs-organization', 'creative-mornings-columbia', '1-million-cups-columbia', 'nsf-i-corps', 'columbia-chamber-of-commerce', 'main-street-summit', 'trulaske-alumni-entrepreneurs']
   },
   {
@@ -89,7 +89,7 @@ const PHASES = [
     title: 'Venture Launch', sub: 'Stand it up legally and operationally',
     desc: "With demand validated, it's time to formally launch — form the entity, secure early capital, and put the operational foundation in place. Mid-Missouri has a deeper funding and support stack than most assume.",
     next: ['Pitch to Allen Angel Fund or Centennial Investors', 'Apply for an MTC investment or a grant', 'Move into the Missouri Innovation Center'],
-    photo: { src: 'assets/img/phase3-ea-2026-second-place.jpg', alt: 'The second-place winner at the 2026 Entrepreneurship Alliance Final with his parents and Dean Balaji Rajagopalan', caption: '2nd place winner at EA 2026 shares a moment with his parents and the Dean.', position: 'center 25%' },
+    photo: { src: 'assets/img/phase3-ea-2026-second-place.jpg', alt: 'The second-place winner at the 2026 Leslie Flegel Entrepreneurship Alliance Final with his parents and Dean Balaji Rajagopalan', caption: '2nd place winner at the 2026 Leslie Flegel Entrepreneurship Alliance Final shares a moment with his parents and the Dean.', position: 'center 25%' },
     resources: ['redbud-vc', 'missouri-technology-corporation', 'missouri-innovation-center', 'allen-angel-fund', 'gin-retail-program', 'centennial-investors', 'st-louis-arch-angels', 'arch-grants', 'redi-small-business-grant', 'trulaske-vcs-and-angels']
   },
   {

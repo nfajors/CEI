@@ -61,11 +61,11 @@ const RESOURCES = [
   },
   {
     id: 'entrepreneurship-alliance',
-    name: 'Entrepreneurship Alliance',
+    name: 'Leslie Flegel Entrepreneurship Alliance',
     url: 'https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance',
     tag: 'Accelerator',
     throughout: false,
-    blurb: 'CEI\'s flagship eight-week accelerator taking student founders from idea to launch with mentorship and a chance to pitch for seed funding.',
+    blurb: 'CEI\'s flagship eight-week accelerator taking student founders from idea to launch with mentorship and a chance to pitch for seed funding. Named for entrepreneur Leslie Flegel (AB 1959).',
     who: 'MU students, any major, with an idea to launch',
     cost: 'Free',
     time: '8 weeks, spring semester',

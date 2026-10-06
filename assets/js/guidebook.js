@@ -275,7 +275,7 @@ function calcSemester() {
   let ladder;
   if (venture < 2) ladder = 'With under two hours a week: sit in on 1 Million Cups (one morning, weekly) and read one Playbook answer a week. That is a real start.';
   else if (venture < 5) ladder = 'Two to four hours a week fits ten customer conversations over the semester, a CEO meeting, and 1 Million Cups. Enough to find out whether a problem is real.';
-  else if (venture < 9) ladder = 'Five to eight hours a week is a cohort program: Entrepreneurship Quest or the Entrepreneurship Alliance, with their deadlines and mentors doing the pacing for you.';
+  else if (venture < 9) ladder = 'Five to eight hours a week is a cohort program: Entrepreneurship Quest or the Leslie Flegel Entrepreneurship Alliance, with their deadlines and mentors doing the pacing for you.';
   else if (venture <= 15) ladder = 'Nine to fifteen hours a week is a build sprint: a landing page, the first paying customers, and a pitch-competition entry in one semester.';
   else ladder = 'More than fifteen hours a week is a second course load. Most students cannot protect it past midterms. Try the plan at five to eight hours first.';
   if (fits) fits.textContent = ladder;

@@ -20,7 +20,7 @@
    ============================================================ */
 const OPPORTUNITIES = [
   // --- Mizzou and mid-Missouri ---
-  { name: 'Entrepreneurship Alliance', org: 'Trulaske CEI', type: 'Accelerator', phase: 2,
+  { name: 'Leslie Flegel Entrepreneurship Alliance', org: 'Trulaske CEI', type: 'Accelerator', phase: 2,
     // Direct link to the application form; the program page is on the resource card.
     url: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
     cycle: 'dated', closesOn: '2026-12-11', confirmed: true, verifiedOn: '2026-09-14',
