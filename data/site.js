@@ -17,7 +17,7 @@ const SITE = {
 
   /* Permanent address of this page. The canonical tag, share links, the
      calendar feed, and the sitemap all read from here. */
-  url: 'https://nfajors.github.io/cei/',
+  url: 'https://nfajors.github.io/CEI/',
   repoUrl: 'https://github.com/nfajors/CEI',
 
   email: 'cei@missouri.edu',

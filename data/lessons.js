@@ -27,7 +27,7 @@ const LESSONS = [
     title: 'How to Start a Startup',
     source: 'Stanford CS183B · Sam Altman and guests',
     minutes: '20 lectures, about 50 minutes',
-    url: 'https://startupclass.samaltman.com/',
+    url: 'https://www.youtube.com/watch?v=CBYhVcO4WgI',
     what: 'The classic course: ideas, team, product, growth, fundraising, with Paul Graham, Peter Thiel, and the founders of Airbnb and Stripe.',
     phase: 2
   },

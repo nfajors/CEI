@@ -10,6 +10,13 @@
    ============================================================ */
 const WINS = [
   {
+    date: '2026-10-06',
+    who: 'The Entrepreneurship Alliance',
+    what: 'is now the Leslie Flegel Entrepreneurship Alliance',
+    detail: 'Renamed to honor S. Leslie Flegel (AB 1959), who grew Source Interlink from $2 million to $2 billion in sales and founded the Flegel Academy for Aspiring Entrepreneurs at Trulaske. Same flagship accelerator, open to any major; applications for spring 2027 close December 11.',
+    to: 'alumni'
+  },
+  {
     date: '2026-04-03',
     who: 'AODO MedTech',
     what: 'won $7,000 at the Leslie Flegel Entrepreneurship Alliance Final',

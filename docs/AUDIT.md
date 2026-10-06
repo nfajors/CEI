@@ -47,7 +47,7 @@ node -e "const {chromium}=require('playwright-core');(async()=>{const b=await ch
 npx lighthouse http://127.0.0.1:8123/index.html --only-categories=performance,accessibility,best-practices,seo --view
 ```
 
-Run the Lighthouse pass against the live address as well (`npx lighthouse https://nfajors.github.io/cei/ --view`); those are the numbers to publish here.
+Run the Lighthouse pass against the live address as well (`npx lighthouse https://nfajors.github.io/CEI/ --view`); those are the numbers to publish here.
 
 ## Statement
 
