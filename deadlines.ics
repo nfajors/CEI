@@ -11,14 +11,15 @@ REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
 UID:20261211-leslie-flegel-entrepreneurship-alliance@cei-guidebook
-DTSTAMP:20261006T161900Z
+DTSTAMP:20261006T175100Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Deadline — Leslie Flegel Entrepreneurship Alliance
-DESCRIPTION:Trulaske CEI. CEI's flagship eight-week accelerator\, open to
-  any major. Applications for the spring 2027 cohort close December 11\, 
- 2026 — this link opens the application form. Confirm details at https://
- airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form
+DESCRIPTION:Trulaske CEI. CEI's flagship eight-week accelerator with $40\
+ ,000 in prize money\, open to any major. Applications for the spring 202
+ 7 cohort close December 11\, 2026 — this link opens the application form
+ . Confirm details at https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OE
+ tAAoK/form
 URL:https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form
 BEGIN:VALARM
 TRIGGER:-P7D
