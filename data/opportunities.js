@@ -24,11 +24,11 @@ const OPPORTUNITIES = [
     // Direct link to the application form; the program page is on the resource card.
     url: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
     cycle: 'dated', closesOn: '2026-12-11', confirmed: true, verifiedOn: '2026-09-14',
-    note: "CEI's flagship eight-week accelerator, open to any major. Applications for the spring 2027 cohort close December 11, 2026 — this link opens the application form." },
+    note: "CEI's flagship eight-week accelerator with $40,000 in prize money, open to any major. Applications for the spring 2027 cohort close December 11, 2026 — this link opens the application form." },
   { name: 'Entrepreneurship Quest (EQ) Accelerator', org: 'Griggs Innovators Nexus', type: 'Accelerator', phase: 1,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/entrepreneur-quest-student-accelerator',
     cycle: 'dated', closesOn: '2026-09-03', confirmed: true, verifiedOn: '2026-09-14',
-    note: '$40,000 in prize money for student-led ventures, any major. Applications for 2026 closed September 3; the next cohort\'s dates will be posted here once GIN publishes them.' },
+    note: 'A $30,000 prize pool for new ventures, open to any full-time Mizzou student. Applications for 2026 closed September 3; the next cohort\'s dates will be posted here once GIN publishes them.' },
   { name: 'GIN Incubator Office Space', org: 'Griggs Innovators Nexus', type: 'Grant', phase: 3,
     url: 'https://research.missouri.edu/griggs-innovators-nexus/incubator-office-space-for-students',
     cycle: 'annual', opens: '03-01', closes: '04-30', confirmed: false, verifiedOn: null,
