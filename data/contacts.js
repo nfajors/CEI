@@ -102,7 +102,7 @@ const CONTACTS = [
     name: 'Sophia Rivera Hassemer',
     title: 'Assistant Director of Operations, CEI',
     linkedin: 'https://www.linkedin.com/in/srh26/',
-    bestFor: 'CEI programs, the Entrepreneurship Alliance, and getting an appointment',
+    bestFor: 'CEI programs, the Leslie Flegel Entrepreneurship Alliance, and getting an appointment',
     tags: ['curious']
   },
   {

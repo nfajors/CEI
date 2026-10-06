@@ -5,6 +5,7 @@
    "Updated …" stamp and the What's New strip both read from it.
    ============================================================ */
 const CHANGELOG = [
+  { date: '2026-10-06', text: 'The Entrepreneurship Alliance is now the Leslie Flegel Entrepreneurship Alliance, honoring S. Leslie Flegel (AB 1959), who grew Source Interlink from $2 million to $2 billion in sales and has long backed entrepreneurship at Trulaske. He now appears among <a href="#alumni">the alumni founders</a>.' },
   { date: '2026-09-14', text: 'A front door for the curious: Phase 0, a semester-math calculator, three first-year Playbook questions, who-to-talk-to doors, mentor booking, courses for credit, a wins feed, an outcomes dashboard, a calendar feed for deadlines, and eligibility, cost, and time on every resource.' },
   { date: '2026-07-30', text: 'Anandhi Upendran (BETA Program Director, School of Medicine) joined the support network.' },
   { date: '2026-07-28', text: 'New: a deadline board, a saved founder path, three founder calculators, and a student venture board.' },

@@ -20,6 +20,14 @@ const ALUMNI = [
     blurb: 'Founder and chairman of Panda Restaurant Group. Built Panda Express into one of the largest and most successful fast-casual Asian dining chains in the United States.'
   },
   {
+    initials: 'LF',
+    name: 'S. Leslie Flegel',
+    degree: 'AB 1959',
+    field: 'Arts & Science',
+    business: false,
+    blurb: 'Founder, chairman and CEO of Source Interlink Companies, a national leader in retail marketing and magazine distribution. Struck out on his own in 1981 and, over an 11-year run at Source Interlink, grew sales from $2 million to $2 billion. Founded the Flegel Academy for Aspiring Entrepreneurs at Trulaske in 2006; the Leslie Flegel Entrepreneurship Alliance is named in his honor.'
+  },
+  {
     initials: 'WF',
     name: 'Wade Foster',
     degree: 'BS IE 2009, MBA 2010',

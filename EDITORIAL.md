@@ -23,7 +23,7 @@ The guidebook stays trustworthy only if someone looks at it on a schedule. This 
 ## The semester refresh
 
 - [ ] **Mizzou deadlines (A6).** Confirm this semester's dates with each program office and set `confirmed: true`, `verifiedOn: 'YYYY-MM-DD'`:
-  - Entrepreneurship Alliance — CEI (business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance)
+  - Leslie Flegel Entrepreneurship Alliance — CEI (business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance)
   - Entrepreneurship Quest — Griggs Innovators Nexus (research.missouri.edu/griggs-innovators-nexus/entrepreneur-quest-student-accelerator)
   - GIN Incubator Office Space — Griggs Innovators Nexus
   - REDI Small Business Grant — REDI (columbiaredi.com/small-business-grant)

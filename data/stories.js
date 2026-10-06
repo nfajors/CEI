@@ -9,7 +9,7 @@ const STORIES = [
   {
     name: 'AODO MedTech',
     who: 'Trulaske student team · Spring 2026',
-    text: 'Pitched at the Entrepreneurship Alliance Final in April 2026 and left with $7,000 to keep building.',
+    text: 'Pitched at the Leslie Flegel Entrepreneurship Alliance Final in April 2026 and left with $7,000 to keep building.',
     phase: 3, to: 'phase-3', cta: 'See Phase 3'
   },
   {
