@@ -477,6 +477,19 @@ const RESOURCES = [
     anyMajor: false
   },
   {
+    id: 'nsf-seed-fund',
+    name: "America's Seed Fund (NSF SBIR/STTR)",
+    url: 'https://seedfund.nsf.gov/',
+    tag: 'Federal',
+    throughout: false,
+    blurb: 'Non-dilutive federal funding for deep-tech startups: up to $305,000 for Phase I and up to $1.25 million for Phase II. Start with a short Project Pitch; a full proposal needs NSF\'s invitation.',
+    keywords: 'sbir sttr nsf national science foundation seed fund project pitch phase i phase ii non-dilutive grant research commercialization deep tech 305000 1250000',
+    who: 'U.S. for-profit small businesses with fewer than 500 employees',
+    cost: 'Free; no equity taken',
+    time: 'Phase I 6–18 months; full-proposal deadlines three times a year',
+    anyMajor: false
+  },
+  {
     id: 'gener8tor',
     name: 'gener8tor',
     url: 'https://www.gener8tor.com/',

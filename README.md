@@ -43,6 +43,7 @@ Live page: https://nfajors.github.io/CEI/
 | Alumni stories | `data/alumni.js` |
 | Support network and the "who do I talk to first" doors | `data/contacts.js` |
 | Stories under the hero | `data/stories.js` |
+| The Spotlight band (one featured program, under the stories) | `data/spotlight.js` — set `SPOTLIGHT = null` to hide it |
 | Wins feed, Recent Win card, and the outcomes dashboard | `data/wins.js` |
 | Courses, the minor, and the certificate | `data/courses.js` |
 | Short video lessons | `data/lessons.js` |

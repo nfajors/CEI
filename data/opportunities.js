@@ -99,5 +99,11 @@ const OPPORTUNITIES = [
     note: 'Part-time pre-seed program running in 200+ cities, with cohorts starting through the year.' },
   { name: 'NSF I-Corps', org: 'National Science Foundation', type: 'Federal', phase: 2,
     url: 'https://new.nsf.gov/funding/initiatives/i-corps', cycle: 'rolling', confirmed: true,
-    note: 'MU is part of the Great Lakes regional hub. Cohorts run through the year.' }
+    note: 'MU is part of the Great Lakes regional hub. Cohorts run through the year.' },
+  { name: "America's Seed Fund (NSF SBIR/STTR)", org: 'National Science Foundation', type: 'Federal', phase: 3,
+    url: 'https://seedfund.nsf.gov/',
+    // NSF 26-510 full-proposal deadlines: 2026-07-27, 2026-11-04, 2027-03-04, 2027-07-07.
+    // After a deadline passes, move closesOn to the next one.
+    cycle: 'dated', closesOn: '2026-11-04', confirmed: true, verifiedOn: '2026-10-06',
+    note: 'Up to $305,000 for Phase I, no equity taken. This is the full-proposal deadline: submit a Project Pitch first and leave time for NSF\'s invitation. Next deadline after this one: March 4, 2027.' }
 ];
