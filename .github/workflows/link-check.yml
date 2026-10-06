@@ -55,7 +55,6 @@ jobs:
             --max-retries 2
             --max-concurrency 6
             --accept 200..=299,403,429
-            --exclude-mail
             --exclude-path assets/vendor
             --user-agent 'Mozilla/5.0 (compatible; CEI-Guidebook-LinkCheck/1.0; +https://github.com/nfajors/CEI)'
             index.html data/*.js
