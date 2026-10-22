@@ -1017,6 +1017,17 @@ a.kpi:hover { background: var(--gold-tint-3); }
 .ea-final .howto-steps li::before { background: var(--ea-deep); color: var(--paper); }
 .ea-body > .cei-note { margin-top: 28px; }
 
+/* Workshop files: slides and spreadsheets, per week and all together */
+.ea-library { margin-bottom: 20px; }
+.ea-files { list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 700px) { .ea-files { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); } }
+.ea-files a { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center; height: 100%; padding: 12px 14px; background: var(--paper); border: 1px solid var(--ea-line); border-left: 3px solid var(--ea); transition: background 0.15s; }
+.ea-files a:hover { background: var(--ea-tint); }
+.ea-file-type { grid-row: 1 / 3; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper); background: var(--ea-deep); padding: 4px 7px; align-self: center; }
+.ea-files b { font-size: 14px; line-height: 1.3; color: var(--ea-deep); }
+.ea-file-meta { font-size: 12px; line-height: 1.4; color: #525252; }
+.howto-a .ea-files { margin-left: 0; }
+
 /* "Taught in the EA" — the link back from the Playbook, glossary, workbench, and phases */
 p.ea-xref, .howto-a p.ea-xref { margin: 18px 0 0; padding: 10px 14px; font-size: 13px; line-height: 1.55; color: var(--ea-deep); background: var(--ea-tint); border-left: 3px solid var(--ea); }
 .ea-xref a, .howto-a p.ea-xref a { color: var(--ea-deep); font-weight: 700; text-decoration: underline; text-decoration-color: var(--ea); text-underline-offset: 2px; }
