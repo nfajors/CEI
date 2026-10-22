@@ -19,6 +19,7 @@ The guidebook stays trustworthy only if someone looks at it on a schedule. This 
 - [ ] Look at the deadline board: anything now confirmed on a program's site? Set `confirmed: true` and `verifiedOn` in `data/opportunities.js`. Anything closed for good? Remove it.
 - [ ] Read the Spotlight (`data/spotlight.js`). Are its amounts and next deadline still right? If the deadline has passed, move it to the next one (here and in `data/opportunities.js`), or feature a different program.
 - [ ] Check the CEI inbox for nominations (founders, wins, resources) and mentor requests that came through the page.
+- [ ] During the spring EA cohort: after each Monday workshop, add that week's recap to `data/alliance.js` (summary, goals, rules, what's due, and `guide` links into the guidebook) and set `recap: true`.
 - [ ] Add one line to the top of `data/changelog.js` describing what changed.
 
 ## The semester refresh
@@ -29,6 +30,7 @@ The guidebook stays trustworthy only if someone looks at it on a schedule. This 
   - GIN Incubator Office Space — Griggs Innovators Nexus
   - REDI Small Business Grant — REDI (columbiaredi.com/small-business-grant)
   Then run `node scripts/build-ics.mjs` so the calendar feed carries them.
+- [ ] **The EA tab.** Each fall, update `cohort`, `dates`, `applyUrl`, and `verifiedOn` in `data/alliance.js` for the coming spring cohort.
 - [ ] **Programs and people.** Anyone new in the support network, anyone gone? Update `data/contacts.js` (and the doors at the bottom of it). New program on campus? Add it to `data/resources.js` with who / cost / time, and to the right phase in `data/phases.js`.
 - [ ] **Courses (B10).** Check `data/courses.js` against the current catalog; set `verified: true` where it matches, fix names and credit counts, and update `SITE.reviewed.courses`.
 - [ ] **Stories.** Is there a current student who has agreed to be featured? Add them to `data/stories.js` with `student: true`.

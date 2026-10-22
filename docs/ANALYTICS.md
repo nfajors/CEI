@@ -59,6 +59,10 @@ Added by this upgrade:
 | `share_page` | `method` (`native`, `copy`, `email`, `linkedin`, `x`) | share buttons |
 | `share_copy_link` | `section` | copy link (page or a section) |
 | `flyer_print` | — | print the one-page flyer |
+| `nav_group_open` | `group` | a menu dropdown opens (Start here, Programs, Learn, People) |
+| `guide_link` | `to`, `from` | a link between the EA tab and the Playbook, glossary, workbench, or phases, in either direction (`from: 'hash'` for a shared link like `#ea-week-7`) |
+
+`nav_section` still fires for every menu link, so the section a student picked from a dropdown is in the same report as before. EA weeks opening arrive as `playbook_open` with `area: 'ea'`.
 
 ## Reading it in GA4
 

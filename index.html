@@ -69,7 +69,8 @@
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- NAV — links are rendered from SITE.nav (data/site.js) -->
+<!-- NAV — four dropdown groups and the EA tab, rendered from SITE.nav (data/site.js).
+     The page follows the same order: Start here, Programs, Learn, People. -->
 <nav class="nav" id="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <button class="logo-text" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -302,6 +303,7 @@
   </div>
 </section>
 
+<!-- ===================== PROGRAMS: deadlines, the EA, resources, courses, beyond Mizzou ===================== -->
 <!-- ===================== DEADLINE BOARD ===================== -->
 <section class="section lg alt" id="deadlines">
   <div class="section-inner">
@@ -344,6 +346,130 @@
     </p>
   </div>
 </section>
+<!-- ===================== LESLIE FLEGEL ENTREPRENEURSHIP ALLIANCE =====================
+     The EA tab. Its own colour scheme (the --ea tokens in guidebook.css) marks it as a
+     program inside the guidebook rather than a part of the path. Everything inside
+     is rendered from ALLIANCE (data/alliance.js). -->
+<section class="section lg ea" id="ea" aria-labelledby="eaHead">
+  <div class="ea-band">
+    <div class="section-inner">
+      <div class="section-label"><div class="line"></div><span class="lbl">CEI's flagship accelerator</span></div>
+      <h2 id="eaHead">Leslie Flegel <span class="italic">Entrepreneurship Alliance</span></h2>
+      <p class="lede" id="eaLede"></p>
+      <div class="ea-facts" id="eaFacts"></div>
+      <div class="ea-actions" id="eaActions"></div>
+      <button class="section-print-btn" onclick="printSection('ea')">⎙ Print this section</button>
+    </div>
+  </div>
+  <div class="section-inner ea-body">
+    <div class="ea-grid">
+      <div class="ea-panel" id="ea-dates"><h3 class="ea-h3">Spring 2027 at a glance</h3><ol class="ea-dates" id="eaDates"></ol></div>
+      <div class="ea-panel" id="ea-format"><h3 class="ea-h3">How a Monday runs</h3><ol class="ea-format" id="eaFormat"></ol><div class="ea-req" id="eaReq"></div></div>
+    </div>
+
+    <div class="ea-block" id="ea-apply">
+      <h3 class="ea-h3">What the application asks</h3>
+      <p class="ea-sub">Seven short answers. The guidebook links beside each one help you write it.</p>
+      <ul class="ea-app" id="eaApp"></ul>
+      <p class="ea-note" id="eaAppNote"></p>
+    </div>
+
+    <div class="ea-block" id="ea-before">
+      <h3 class="ea-h3">Accepted? Before Workshop 1</h3>
+      <ul class="ea-check" id="eaBefore"></ul>
+    </div>
+
+    <div class="ea-block" id="ea-weeks">
+      <h3 class="ea-h3">The eight workshops</h3>
+      <p class="ea-sub">What each Monday covered, what was due, and where the guidebook goes deeper. Dates are the spring 2026 cohort's.</p>
+      <div class="howto-list ea-weeks" id="eaWeeks"></div>
+    </div>
+
+    <div class="ea-block ea-final" id="ea-final"></div>
+
+    <p class="cei-note">Facts on this tab last checked <time id="eaVerified"></time>. Questions about the program go to <a data-site="email" href="mailto:cei@missouri.edu">cei@missouri.edu</a>.</p>
+  </div>
+</section>
+<!-- RESOURCE INDEX — cards and filter options are rendered from RESOURCES (data/resources.js) -->
+<section class="section lg alt" id="resources">
+  <div class="section-inner">
+    <div style="margin-bottom: 48px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
+      <h2>Every resource, <span class="italic">searchable</span></h2>
+      <p class="lede">Filter by phase, type, or search by name. Every resource across mid-Missouri and beyond, in one place. Each card says who it is for, what it costs, and how much time it takes; the <strong>Any major</strong> mark means the program is open to every Mizzou student, whatever you study.</p>
+      <button class="section-print-btn" onclick="printSection('resources')">⎙ Print this section</button>
+    </div>
+
+    <div class="filter-row">
+      <div class="search-wrap">
+        <input type="text" id="searchInput" aria-label="Search resources by name" placeholder="Search resources…" oninput="filterResources()" />
+      </div>
+      <select class="filter-select" id="phaseFilter" aria-label="Filter resources by phase" onchange="filterResources()"></select>
+      <select class="filter-select" id="tagFilter" aria-label="Filter resources by type" onchange="filterResources()"></select>
+      <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
+    </div>
+
+    <div class="results-count" id="resultsCount"></div>
+    <div class="resource-grid" id="resourceGrid"></div>
+    <div class="no-results" id="noResults" style="display:none">
+      <h3>No matches</h3>
+      <p>Try a different search or filter combination.</p>
+    </div>
+    <p class="cei-note">Resource list last reviewed <time data-reviewed="resources"></time>. Something missing or out of date? <a href="#feedback" onclick="scrollToSection('feedback')">Tell us</a>.</p>
+  </div>
+</section>
+
+<!-- COURSES — rendered from COURSES (data/courses.js) -->
+<section class="section lg" id="courses">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">For Credit</span></div>
+      <h2>Learn it <span class="italic">for credit</span></h2>
+      <p class="lede">Courses, the minor, and the certificate: ways to make entrepreneurship part of your degree rather than something you do around it. Most are open to any major. Entries marked <em>confirm in the catalog</em> have not yet been checked against this year's catalog by a person; treat credit counts and names as a starting point for a conversation with your advisor.</p>
+      <button class="section-print-btn" onclick="printSection('courses')">⎙ Print this section</button>
+    </div>
+    <div class="course-grid" id="courseGrid"></div>
+    <p class="cei-note">Course list last reviewed <time data-reviewed="courses"></time>. The MU catalog is the source of record: <a id="catalogLink" href="https://catalog.missouri.edu/" target="_blank" rel="noopener">search it for "entrepreneurship"</a>, then confirm with your academic advisor.</p>
+  </div>
+</section>
+
+<!-- BEYOND THE GUIDEBOOK — rows are rendered from BEYOND (data/beyond.js) -->
+<section class="section lg alt" id="beyond">
+  <div class="section-inner">
+    <div style="margin-bottom: 48px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">Beyond the Guidebook</span></div>
+      <h2>Get in the <span class="italic">arena</span></h2>
+      <p class="lede">Not everyone starts a company on day one. Compete to sharpen your idea and win capital — or go work at a startup to learn how it's really done.</p>
+      <button class="section-print-btn" onclick="printSection('beyond')">⎙ Print this section</button>
+    </div>
+
+    <div class="beyond-block">
+      <h3 class="beyond-sub">National pitch competitions</h3>
+      <p class="beyond-sub-lede">Student-focused competitions across the country — real prize money, real investors, real exposure. Every one below is open to founders from any school.</p>
+      <p class="comp-note">External programs whose dates and eligibility change year to year. Confirm details on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
+      <div class="comp-grid" data-beyond="competition"></div>
+    </div>
+
+    <div class="beyond-block">
+      <h3 class="beyond-sub">Startup job &amp; internship boards</h3>
+      <p class="beyond-sub-lede">Your career center covers the big employers; these boards are where startups actually hire. The first three list jobs across thousands of companies; the rest are curated to a top VC's portfolio.</p>
+      <p class="comp-note">External boards, updated continuously by their operators. Roles, filters, and availability change daily. Last reviewed <time data-reviewed="beyond"></time>.</p>
+      <div class="comp-grid" data-beyond="jobs"></div>
+    </div>
+
+    <div class="beyond-block">
+      <h3 class="beyond-sub">Accelerators open to our students</h3>
+      <p class="beyond-sub-lede">If you're already building, an accelerator brings structure, mentorship, and often capital. A few are built specifically for students; many more are open to anyone, students included. Equity terms vary — each is noted below.</p>
+      <p class="comp-note">External programs with their own application cycles and terms. Confirm current details and equity terms on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
+      <h4 class="beyond-group">Built for students</h4>
+      <div class="comp-grid" data-beyond="accelerator-student"></div>
+      <h4 class="beyond-group">Open to all — students included</h4>
+      <div class="comp-grid" data-beyond="accelerator-open"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEARN: the Playbook, AI, the workbench, the knowledge hub, the glossary ===================== -->
 <section class="section lg" id="howto">
   <div class="section-inner">
     <div style="margin-bottom: 48px; max-width: 48rem;">
@@ -357,7 +483,7 @@
 
 <!-- First-year questions (B6) — the three you ask before you have a venture -->
       <div class="howto-group" role="presentation">First-year questions · start here</div>
-      <div class="howto-card">
+      <div class="howto-card" id="howto-problem">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">01</span>
           <span class="howto-title">How do I find a problem worth solving?</span>
@@ -378,7 +504,7 @@
         </div>
       </div>
 
-      <div class="howto-card">
+      <div class="howto-card" id="howto-cofounder-campus">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">02</span>
           <span class="howto-title">How do I find a co-founder on campus?</span>
@@ -399,7 +525,7 @@
         </div>
       </div>
 
-      <div class="howto-card">
+      <div class="howto-card" id="howto-grades">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">03</span>
           <span class="howto-title">Can I do this and keep my grades?</span>
@@ -423,7 +549,7 @@
       <div class="howto-group" role="presentation">Founder questions · the hard things</div>
 
 <!-- 1: First Ten Customers -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-first-customers">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">04</span>
           <span class="howto-title">How do I secure my first ten customers?</span>
@@ -445,7 +571,7 @@
       </div>
 
 <!-- 2: Pitch Deck -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pitch-deck">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">05</span>
           <span class="howto-title">How do I build my first pitch deck?</span>
@@ -472,7 +598,7 @@
       </div>
 
 <!-- 3: First Capital -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-raise">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">06</span>
           <span class="howto-title">How do I raise my first capital?</span>
@@ -496,7 +622,7 @@
       </div>
 
 <!-- 4: Product-Market Fit -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pmf">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">07</span>
           <span class="howto-title">How do I know if I have product-market fit?</span>
@@ -518,7 +644,7 @@
       </div>
 
 <!-- 5: Co-founder & Equity -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-equity">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">08</span>
           <span class="howto-title">How do I choose a co-founder and split equity?</span>
@@ -540,7 +666,7 @@
       </div>
 
 <!-- 6: First Key Hires -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-hires">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">09</span>
           <span class="howto-title">How do I make my first key hires?</span>
@@ -562,7 +688,7 @@
       </div>
 
 <!-- 7: Pricing -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pricing">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">10</span>
           <span class="howto-title">How do I price my product?</span>
@@ -584,7 +710,7 @@
       </div>
 
 <!-- 8: When to Pivot -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pivot">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">11</span>
           <span class="howto-title">How do I know when to pivot?</span>
@@ -606,7 +732,7 @@
       </div>
 
 <!-- 9: Runway & Default Alive -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-runway">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">12</span>
           <span class="howto-title">How do I manage runway and stay alive?</span>
@@ -628,7 +754,7 @@
       </div>
 
 <!-- 10: Leading at Scale -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-lead">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">13</span>
           <span class="howto-title">How do I lead as the company grows?</span>
@@ -961,35 +1087,6 @@
   </div>
 </section>
 
-<!-- RESOURCE INDEX — cards and filter options are rendered from RESOURCES (data/resources.js) -->
-<section class="section lg alt" id="resources">
-  <div class="section-inner">
-    <div style="margin-bottom: 48px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
-      <h2>Every resource, <span class="italic">searchable</span></h2>
-      <p class="lede">Filter by phase, type, or search by name. Every resource across mid-Missouri and beyond, in one place. Each card says who it is for, what it costs, and how much time it takes; the <strong>Any major</strong> mark means the program is open to every Mizzou student, whatever you study.</p>
-      <button class="section-print-btn" onclick="printSection('resources')">⎙ Print this section</button>
-    </div>
-
-    <div class="filter-row">
-      <div class="search-wrap">
-        <input type="text" id="searchInput" aria-label="Search resources by name" placeholder="Search resources…" oninput="filterResources()" />
-      </div>
-      <select class="filter-select" id="phaseFilter" aria-label="Filter resources by phase" onchange="filterResources()"></select>
-      <select class="filter-select" id="tagFilter" aria-label="Filter resources by type" onchange="filterResources()"></select>
-      <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
-    </div>
-
-    <div class="results-count" id="resultsCount"></div>
-    <div class="resource-grid" id="resourceGrid"></div>
-    <div class="no-results" id="noResults" style="display:none">
-      <h3>No matches</h3>
-      <p>Try a different search or filter combination.</p>
-    </div>
-    <p class="cei-note">Resource list last reviewed <time data-reviewed="resources"></time>. Something missing or out of date? <a href="#feedback" onclick="scrollToSection('feedback')">Tell us</a>.</p>
-  </div>
-</section>
-
 <!-- KNOWLEDGE — cards are rendered from KNOWLEDGE (data/knowledge.js) -->
 <section class="section lg dark" id="knowledge">
   <div class="lines-bg"></div>
@@ -1008,20 +1105,6 @@
       <p class="lessons-lede">Free, from the people who teach this best. Each card says how long a lesson runs, so you can fit one between classes. Rendered from <code>data/lessons.js</code> — CEI recordings go there too.</p>
       <div class="lessons-grid" id="lessonsGrid"></div>
     </div>
-  </div>
-</section>
-
-<!-- COURSES — rendered from COURSES (data/courses.js) -->
-<section class="section lg" id="courses">
-  <div class="section-inner">
-    <div style="margin-bottom: 40px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">For Credit</span></div>
-      <h2>Learn it <span class="italic">for credit</span></h2>
-      <p class="lede">Courses, the minor, and the certificate: ways to make entrepreneurship part of your degree rather than something you do around it. Most are open to any major. Entries marked <em>confirm in the catalog</em> have not yet been checked against this year's catalog by a person; treat credit counts and names as a starting point for a conversation with your advisor.</p>
-      <button class="section-print-btn" onclick="printSection('courses')">⎙ Print this section</button>
-    </div>
-    <div class="course-grid" id="courseGrid"></div>
-    <p class="cei-note">Course list last reviewed <time data-reviewed="courses"></time>. The MU catalog is the source of record: <a id="catalogLink" href="https://catalog.missouri.edu/" target="_blank" rel="noopener">search it for "entrepreneurship"</a>, then confirm with your academic advisor.</p>
   </div>
 </section>
 
@@ -1050,42 +1133,7 @@
   </div>
 </section>
 
-<!-- BEYOND THE GUIDEBOOK — rows are rendered from BEYOND (data/beyond.js) -->
-<section class="section lg alt" id="beyond">
-  <div class="section-inner">
-    <div style="margin-bottom: 48px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">Beyond the Guidebook</span></div>
-      <h2>Get in the <span class="italic">arena</span></h2>
-      <p class="lede">Not everyone starts a company on day one. Compete to sharpen your idea and win capital — or go work at a startup to learn how it's really done.</p>
-      <button class="section-print-btn" onclick="printSection('beyond')">⎙ Print this section</button>
-    </div>
-
-    <div class="beyond-block">
-      <h3 class="beyond-sub">National pitch competitions</h3>
-      <p class="beyond-sub-lede">Student-focused competitions across the country — real prize money, real investors, real exposure. Every one below is open to founders from any school.</p>
-      <p class="comp-note">External programs whose dates and eligibility change year to year. Confirm details on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
-      <div class="comp-grid" data-beyond="competition"></div>
-    </div>
-
-    <div class="beyond-block">
-      <h3 class="beyond-sub">Startup job &amp; internship boards</h3>
-      <p class="beyond-sub-lede">Your career center covers the big employers; these boards are where startups actually hire. The first three list jobs across thousands of companies; the rest are curated to a top VC's portfolio.</p>
-      <p class="comp-note">External boards, updated continuously by their operators. Roles, filters, and availability change daily. Last reviewed <time data-reviewed="beyond"></time>.</p>
-      <div class="comp-grid" data-beyond="jobs"></div>
-    </div>
-
-    <div class="beyond-block">
-      <h3 class="beyond-sub">Accelerators open to our students</h3>
-      <p class="beyond-sub-lede">If you're already building, an accelerator brings structure, mentorship, and often capital. A few are built specifically for students; many more are open to anyone, students included. Equity terms vary — each is noted below.</p>
-      <p class="comp-note">External programs with their own application cycles and terms. Confirm current details and equity terms on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
-      <h4 class="beyond-group">Built for students</h4>
-      <div class="comp-grid" data-beyond="accelerator-student"></div>
-      <h4 class="beyond-group">Open to all — students included</h4>
-      <div class="comp-grid" data-beyond="accelerator-open"></div>
-    </div>
-  </div>
-</section>
-
+<!-- ===================== PEOPLE: student ventures, alumni, outcomes, contacts ===================== -->
 <section class="section lg alt" id="ventures">
   <div class="section-inner">
     <div style="margin-bottom: 40px; max-width: 48rem;">
@@ -1320,6 +1368,7 @@
 <script src="data/courses.js"></script>
 <script src="data/wins.js"></script>
 <script src="data/lessons.js"></script>
+<script src="data/alliance.js"></script>
 <script src="assets/vendor/qrcode-generator.js" defer></script>
 <!-- Behaviour -->
 <script src="assets/js/render.js"></script>

@@ -12,7 +12,7 @@ Live page: https://nfajors.github.io/CEI/
 | `data/*.js` | **The content you edit.** One plain JavaScript list per file, each with a comment explaining its fields. No build step: edit, save, refresh. |
 | `assets/css/guidebook.css` | All styles (Mizzou black-and-gold tokens at the top). |
 | `assets/js/render.js` | Turns `data/*.js` into the page. Runs before the other scripts. |
-| `assets/js/guidebook.js` | Core behaviour: navigation, accordions, printing, search and filters, the self-assessment, the Prompt Studio, and the GA4 event calls. |
+| `assets/js/guidebook.js` | Core behaviour: navigation (the dropdown menu and scrollspy), accordions, printing, search and filters, the self-assessment, the Prompt Studio, and the GA4 event calls. |
 | `assets/js/features.js` | The five return-visit features: What's New, My Founder Path, the Deadline board, the Founder Workbench, and the Student Venture board. All state stays in the visitor's browser. |
 | `assets/img/` | Photos and the college logo, served as files so browsers cache them. |
 | `assets/vendor/qrcode-generator.js` | QR code library (MIT, Kazuhiko Arase) used by the share block and the printable flyer; loads deferred. |
@@ -31,7 +31,8 @@ Live page: https://nfajors.github.io/CEI/
 
 | Want to change… | Edit |
 |---|---|
-| Name, URL, email, phone, "last reviewed" dates, the menu, the mentor-booking / newsletter / nomination links | `data/site.js` |
+| Name, URL, email, phone, "last reviewed" dates, the mentor-booking / newsletter / nomination links | `data/site.js` |
+| The menu: four dropdowns (Start here, Programs, Learn, People) and the EA tab, each link with a one-line description | `SITE.nav` in `data/site.js`. The page runs in the same order as the menu, so move the section in `index.html` too if you move a link to another group |
 | Phase titles, descriptions, next steps, photos, which resources each phase shows; the Founder Path checklist (`PATH_STEPS`) | `data/phases.js` |
 | Resource cards (phase grids and the searchable index) | `data/resources.js` |
 | Deadline board | `data/opportunities.js` — set `confirmed: true` once a date is verified and the countdown and calendar button switch on |
@@ -47,6 +48,7 @@ Live page: https://nfajors.github.io/CEI/
 | Wins feed, Recent Win card, and the outcomes dashboard | `data/wins.js` |
 | Courses, the minor, and the certificate | `data/courses.js` |
 | Short video lessons | `data/lessons.js` |
+| The EA tab: the Leslie Flegel Entrepreneurship Alliance, its dates, the application questions, and the eight weekly workshops with their links into the guidebook | `data/alliance.js` — after each Monday, paste that week's recap into its entry and set `recap: true` |
 
 The Playbook questions and the AI section are prose and live in `index.html` under `id="howto"` and `id="ai"`.
 
