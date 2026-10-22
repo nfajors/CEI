@@ -35,21 +35,60 @@ function stampSite() {
   });
 }
 
-/* ---------- navigation (SITE.nav) ---------- */
-// An entry with `accent` (e.g. 'ea') gets its own colour in the menu.
-function navClass(n) { return n.accent ? ' class="nav-' + esc(n.accent) + '"' : ''; }
+/* ---------- navigation (SITE.nav) ----------
+   Four dropdown groups plus standalone tabs (the EA). Each dropdown is a
+   disclosure: a button with aria-expanded that shows a panel of links, the
+   W3C APG "disclosure navigation" pattern rather than an ARIA menu. The
+   open/close behaviour lives in guidebook.js (wireNav). */
+function navVisible(n) { if (n.action) return true; var el = byId(n.id); return !!(el && !el.hidden); }
+// Every link in the menu, flattened: groups' items and standalone tabs, one per id.
+function navLeaves() {
+  var seen = {}, out = [];
+  SITE.nav.forEach(function (n) {
+    (n.items || [n]).forEach(function (it) {
+      if (!it.id || seen[it.id] || !navVisible(it)) return;
+      seen[it.id] = true; out.push(it);
+    });
+  });
+  return out;
+}
+function navTabIds() { return SITE.nav.filter(function (n) { return !n.items; }).map(function (n) { return n.id; }); }
+function navLeafHref(it) { return it.action ? '#' : '#' + esc(it.id); }
+function navLeafData(it) { return it.action ? ' data-nav-action="' + esc(it.action) + '"' : ' data-nav-id="' + esc(it.id) + '"'; }
 function renderNav() {
-  var items = SITE.nav.filter(function (n) { var el = byId(n.id); return el && !el.hidden; });
   var links = byId('navLinks'), mobile = byId('mobileMenuLinks'), foot = byId('footerNav');
-  if (links) links.innerHTML = items.map(function (n) {
-    return '<button' + navClass(n) + ' onclick="scrollToSection(\'' + n.id + '\')">' + esc(n.label) + '</button>';
+  var tabs = navTabIds();
+  var groups = SITE.nav.map(function (n, gi) {
+    if (!n.items) return navVisible(n) ? n : null;
+    var items = n.items.filter(navVisible);
+    return items.length ? { label: n.label, items: items, gi: gi } : null;
+  }).filter(Boolean);
+  if (links) links.innerHTML = '<ul class="nav-menu">' + groups.map(function (g) {
+    if (!g.items) {
+      return '<li class="nav-item"><a class="nav-top nav-' + esc(g.accent || 'tab') + '" href="#' + esc(g.id) + '" data-nav-id="' + esc(g.id) + '"' + (g.title ? ' title="' + esc(g.title) + '"' : '') + '>' + esc(g.label) + '</a></li>';
+    }
+    var ids = g.items.filter(function (it) { return it.id && tabs.indexOf(it.id) === -1; }).map(function (it) { return it.id; }).join(' ');
+    return '<li class="nav-item nav-group">'
+      + '<button class="nav-top" type="button" aria-expanded="false" aria-controls="navPanel' + g.gi + '" data-ids="' + esc(ids) + '">' + esc(g.label) + '<span class="nav-caret" aria-hidden="true"></span></button>'
+      + '<div class="nav-panel" id="navPanel' + g.gi + '" hidden><div class="nav-panel-inner">'
+      + '<div class="nav-panel-label">' + esc(g.label) + '</div>'
+      + '<ul class="nav-panel-list">' + g.items.map(function (it) {
+        return '<li><a href="' + navLeafHref(it) + '"' + navLeafData(it) + (it.accent ? ' class="nav-' + esc(it.accent) + '"' : '') + '><b>' + esc(it.label) + '</b><span>' + esc(it.desc || '') + '</span></a></li>';
+      }).join('') + '</ul></div></div></li>';
+  }).join('') + '</ul>';
+  if (mobile) mobile.innerHTML = groups.filter(function (g) { return !g.items; }).map(function (g) {
+    return '<a class="mm-tab nav-' + esc(g.accent || 'tab') + '" href="#' + esc(g.id) + '" data-nav-id="' + esc(g.id) + '">' + esc(g.title || g.label) + '</a>';
+  }).join('') + groups.filter(function (g) { return g.items; }).map(function (g) {
+    return '<div class="mm-group"><button class="mm-head" type="button" aria-expanded="false" aria-controls="mmList' + g.gi + '">' + esc(g.label) + '<span class="nav-caret" aria-hidden="true"></span></button>'
+      + '<ul class="mm-list" id="mmList' + g.gi + '" hidden>' + g.items.map(function (it) {
+        return '<li><a href="' + navLeafHref(it) + '"' + navLeafData(it) + (it.accent ? ' class="nav-' + esc(it.accent) + '"' : '') + '>' + esc(it.label) + '<span>' + esc(it.desc || '') + '</span></a></li>';
+      }).join('') + '</ul></div>';
   }).join('');
-  if (mobile) mobile.innerHTML = items.map(function (n) {
-    return '<button' + navClass(n) + ' onclick="mobileNav(\'' + n.id + '\')">' + esc(n.label) + '</button>';
-  }).join('');
-  if (foot) foot.innerHTML = items.concat([{ id: 'feedback', label: 'Feedback' }]).map(function (n) {
-    return '<li><button onclick="scrollToSection(\'' + n.id + '\')">' + esc(n.label) + '</button></li>';
-  }).join('');
+  if (foot) foot.innerHTML = groups.filter(function (g) { return g.items; }).map(function (g) {
+    return '<li class="fn-group"><span class="fn-head">' + esc(g.label) + '</span><ul>' + g.items.filter(function (it) { return it.id; }).map(function (it) {
+      return '<li><button onclick="scrollToSection(\'' + esc(it.id) + '\')">' + esc(it.label) + '</button></li>';
+    }).join('') + '</ul></li>';
+  }).join('') + '<li class="fn-group"><span class="fn-head">More</span><ul><li><button onclick="scrollToSection(\'feedback\')">Feedback</button></li></ul></li>';
 }
 
 /* ---------- resource cards (data/resources.js) ---------- */
@@ -533,7 +572,7 @@ function renderWins() {
 function sectionName(id) {
   var m = /^phase-(\d)$/.exec(id);
   if (m) return 'Phase ' + m[1];
-  var n = (SITE.nav || []).filter(function (x) { return x.id === id; })[0];
+  var n = navLeaves().filter(function (x) { return x.id === id; })[0];
   return n ? n.label : 'more';
 }
 

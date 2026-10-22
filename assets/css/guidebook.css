@@ -1022,13 +1022,6 @@ p.ea-xref, .howto-a p.ea-xref { margin: 18px 0 0; padding: 10px 14px; font-size:
 .ea-xref a, .howto-a p.ea-xref a { color: var(--ea-deep); font-weight: 700; text-decoration: underline; text-decoration-color: var(--ea); text-underline-offset: 2px; }
 .ea-xref-tag { display: inline-block; margin-right: 8px; padding: 1px 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; background: var(--ea); color: var(--paper); }
 
-/* The EA entry in the menu */
-.nav-links button.nav-ea { background: var(--ea); color: var(--paper); padding: 5px 10px; margin: -5px 0; }
-.nav-links button.nav-ea::after { display: none; }
-.nav-links button.nav-ea:hover { background: var(--ea-deep); }
-.nav-links button.nav-ea.active, .nav.scrolled .nav-links button.nav-ea.active { color: var(--paper); background: var(--ea-deep); box-shadow: inset 0 -2px 0 var(--ea-bright); }
-.mobile-menu button.nav-ea { color: var(--ea); border-left: 4px solid var(--ea); padding-left: 12px; }
-
 @media print {
   .section.ea { background: #fff !important; padding: 16px 0 !important; }
   .ea-band { background: #fff !important; color: #000 !important; padding: 0 0 16px !important; border-bottom: 2px solid #000 !important; }
@@ -1040,3 +1033,50 @@ p.ea-xref, .howto-a p.ea-xref { margin: 18px 0 0; padding: 10px 14px; font-size:
   .ea-panel, .ea-block { border: 1px solid #999 !important; break-inside: avoid; }
   .ea-weeks .ea-block, .ea-week { break-inside: avoid; }
 }
+
+/* ============================================================
+   NAVIGATION — four dropdown groups and the EA tab (SITE.nav).
+   Each dropdown is a disclosure panel the width of the bar, with
+   a one-line description under every link.
+   ============================================================ */
+.nav-menu { list-style: none; display: flex; align-items: center; gap: 26px; }
+.nav-links .nav-top { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.nav-caret { width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+.nav-top[aria-expanded="true"] .nav-caret, .mm-head[aria-expanded="true"] .nav-caret { transform: translateY(1px) rotate(-135deg); }
+.nav-links button.nav-top[aria-expanded="true"]::after { width: 100%; }
+.nav-panel { position: absolute; left: 0; right: 0; top: 100%; background: var(--paper); color: var(--ink); border-top: 3px solid var(--gold); border-bottom: 1px solid #e5e5e0; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16); text-transform: none; letter-spacing: normal; }
+.nav-panel[hidden] { display: none; }
+.nav-panel-inner { max-width: 1280px; margin: 0 auto; padding: 28px 24px 32px; display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 1024px) { .nav-panel-inner { grid-template-columns: 200px 1fr; gap: 32px; } }
+.nav-panel-label { font-family: 'STIX Two Text', Georgia, serif; font-weight: 700; font-size: 26px; line-height: 1.1; color: var(--black); }
+.nav-panel-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+@media (min-width: 1100px) { .nav-panel-list { grid-template-columns: repeat(3, 1fr); } }
+.nav-links .nav-panel a { display: block; height: 100%; padding: 12px 14px; border-left: 2px solid #ededea; color: var(--ink); transition: background 0.15s, border-color 0.15s; }
+.nav-links .nav-panel a::after { display: none; }
+.nav-links .nav-panel a:hover { background: #fafaf7; border-left-color: var(--gold); }
+.nav-links .nav-panel a.active { background: var(--gold-tint-3); border-left-color: var(--gold-deep); }
+.nav-panel a b { display: block; font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 3px; }
+.nav-panel a span { display: block; font-size: 13px; line-height: 1.45; font-weight: 400; color: #525252; }
+.nav-links .nav-panel a.nav-ea { border-left-color: var(--ea); background: var(--ea-tint); }
+.nav-links .nav-panel a.nav-ea:hover, .nav-links .nav-panel a.nav-ea.active { background: var(--ea-line); }
+.nav-panel a.nav-ea b { color: var(--ea-deep); }
+.nav-panel a:focus-visible { outline-color: var(--gold-deep); }
+/* The EA tab: its own colour, in the bar and the mobile menu */
+.nav-links a.nav-top.nav-ea { background: var(--ea); color: var(--paper); padding: 6px 12px; margin: -6px 0; font-weight: 700; }
+.nav-links a.nav-top.nav-ea::after { display: none; }
+.nav-links a.nav-top.nav-ea:hover { background: var(--ea-deep); }
+.nav-links a.nav-top.nav-ea.active { background: var(--ea-deep); box-shadow: inset 0 -2px 0 var(--ea-bright); }
+.mobile-menu.open { max-height: calc(100vh - 72px); overflow-y: auto; }
+.mobile-menu .mm-tab { display: block; margin: 12px 0 4px; padding: 14px 16px; background: var(--ea); color: var(--paper); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.mobile-menu .mm-tab.active { background: var(--ea-deep); }
+.mobile-menu .mm-head { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+.mm-list { list-style: none; padding: 6px 0 14px; display: flex; flex-direction: column; gap: 2px; }
+.mm-list[hidden] { display: none; }
+.mm-list a { display: block; padding: 9px 0 9px 14px; border-left: 2px solid #ededea; font-size: 14px; font-weight: 700; color: var(--ink); }
+.mm-list a span { display: block; font-size: 12px; font-weight: 400; color: #525252; margin-top: 2px; }
+.mm-list a.active { border-left-color: var(--gold-deep); }
+.mm-list a.nav-ea { border-left-color: var(--ea); color: var(--ea-deep); }
+/* Footer: the same four groups as columns */
+#footerNav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+#footerNav ul { gap: 6px; }
+.fn-head { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #a3a3a3; margin-bottom: 8px; }

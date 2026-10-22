@@ -38,6 +38,9 @@ expect(ALLIANCE.weeks.map(w => w.n).join() === '1,2,3,4,5,6,7,8', 'data/alliance
 for (const w of ALLIANCE.weeks) expect(/^\d{4}-\d{2}-\d{2}$/.test(w.date) && w.title, `EA week ${w.n} needs a date and a title`);
 const eaLinks = [].concat(...ALLIANCE.weeks.map(w => w.guide || []), ...ALLIANCE.application.map(a => a.guide || []), ...ALLIANCE.beforeWeek1.map(b => b.guide || []), ALLIANCE.final.guide || []);
 for (const g of eaLinks) expect(pageIds.has(g.to), `data/alliance.js links to "${g.to}", which is not on the page`);
+// The menu: every link names a section on the page (or the assessment).
+for (const n of SITE.nav) for (const it of (n.items || [n])) expect(it.action === 'assessment' || pageIds.has(it.id), `menu link "${it.label}" points at missing section "${it.id}"`);
+for (const n of SITE.nav) if (n.items) for (const it of n.items) expect(it.label && it.desc, `menu link "${it.label || it.id}" in "${n.label}" needs a label and a desc`);
 for (const d of Object.values(SITE.reviewed)) expect(/^\d{4}-\d{2}-\d{2}$/.test(d), `bad reviewed date ${d}`);
 
 if (problems.length) { console.error('check-site: ' + problems.length + ' problem(s)\n - ' + problems.join('\n - ')); process.exit(1); }

@@ -69,7 +69,8 @@
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- NAV — links are rendered from SITE.nav (data/site.js) -->
+<!-- NAV — four dropdown groups and the EA tab, rendered from SITE.nav (data/site.js).
+     The page follows the same order: Start here, Programs, Learn, People. -->
 <nav class="nav" id="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <button class="logo-text" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -302,6 +303,7 @@
   </div>
 </section>
 
+<!-- ===================== PROGRAMS: deadlines, the EA, resources, courses, beyond Mizzou ===================== -->
 <!-- ===================== DEADLINE BOARD ===================== -->
 <section class="section lg alt" id="deadlines">
   <div class="section-inner">
@@ -388,6 +390,86 @@
     <p class="cei-note">Facts on this tab last checked <time id="eaVerified"></time>. Questions about the program go to <a data-site="email" href="mailto:cei@missouri.edu">cei@missouri.edu</a>.</p>
   </div>
 </section>
+<!-- RESOURCE INDEX — cards and filter options are rendered from RESOURCES (data/resources.js) -->
+<section class="section lg alt" id="resources">
+  <div class="section-inner">
+    <div style="margin-bottom: 48px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
+      <h2>Every resource, <span class="italic">searchable</span></h2>
+      <p class="lede">Filter by phase, type, or search by name. Every resource across mid-Missouri and beyond, in one place. Each card says who it is for, what it costs, and how much time it takes; the <strong>Any major</strong> mark means the program is open to every Mizzou student, whatever you study.</p>
+      <button class="section-print-btn" onclick="printSection('resources')">⎙ Print this section</button>
+    </div>
+
+    <div class="filter-row">
+      <div class="search-wrap">
+        <input type="text" id="searchInput" aria-label="Search resources by name" placeholder="Search resources…" oninput="filterResources()" />
+      </div>
+      <select class="filter-select" id="phaseFilter" aria-label="Filter resources by phase" onchange="filterResources()"></select>
+      <select class="filter-select" id="tagFilter" aria-label="Filter resources by type" onchange="filterResources()"></select>
+      <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
+    </div>
+
+    <div class="results-count" id="resultsCount"></div>
+    <div class="resource-grid" id="resourceGrid"></div>
+    <div class="no-results" id="noResults" style="display:none">
+      <h3>No matches</h3>
+      <p>Try a different search or filter combination.</p>
+    </div>
+    <p class="cei-note">Resource list last reviewed <time data-reviewed="resources"></time>. Something missing or out of date? <a href="#feedback" onclick="scrollToSection('feedback')">Tell us</a>.</p>
+  </div>
+</section>
+
+<!-- COURSES — rendered from COURSES (data/courses.js) -->
+<section class="section lg" id="courses">
+  <div class="section-inner">
+    <div style="margin-bottom: 40px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">For Credit</span></div>
+      <h2>Learn it <span class="italic">for credit</span></h2>
+      <p class="lede">Courses, the minor, and the certificate: ways to make entrepreneurship part of your degree rather than something you do around it. Most are open to any major. Entries marked <em>confirm in the catalog</em> have not yet been checked against this year's catalog by a person; treat credit counts and names as a starting point for a conversation with your advisor.</p>
+      <button class="section-print-btn" onclick="printSection('courses')">⎙ Print this section</button>
+    </div>
+    <div class="course-grid" id="courseGrid"></div>
+    <p class="cei-note">Course list last reviewed <time data-reviewed="courses"></time>. The MU catalog is the source of record: <a id="catalogLink" href="https://catalog.missouri.edu/" target="_blank" rel="noopener">search it for "entrepreneurship"</a>, then confirm with your academic advisor.</p>
+  </div>
+</section>
+
+<!-- BEYOND THE GUIDEBOOK — rows are rendered from BEYOND (data/beyond.js) -->
+<section class="section lg alt" id="beyond">
+  <div class="section-inner">
+    <div style="margin-bottom: 48px; max-width: 48rem;">
+      <div class="section-label"><div class="line"></div><span class="lbl">Beyond the Guidebook</span></div>
+      <h2>Get in the <span class="italic">arena</span></h2>
+      <p class="lede">Not everyone starts a company on day one. Compete to sharpen your idea and win capital — or go work at a startup to learn how it's really done.</p>
+      <button class="section-print-btn" onclick="printSection('beyond')">⎙ Print this section</button>
+    </div>
+
+    <div class="beyond-block">
+      <h3 class="beyond-sub">National pitch competitions</h3>
+      <p class="beyond-sub-lede">Student-focused competitions across the country — real prize money, real investors, real exposure. Every one below is open to founders from any school.</p>
+      <p class="comp-note">External programs whose dates and eligibility change year to year. Confirm details on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
+      <div class="comp-grid" data-beyond="competition"></div>
+    </div>
+
+    <div class="beyond-block">
+      <h3 class="beyond-sub">Startup job &amp; internship boards</h3>
+      <p class="beyond-sub-lede">Your career center covers the big employers; these boards are where startups actually hire. The first three list jobs across thousands of companies; the rest are curated to a top VC's portfolio.</p>
+      <p class="comp-note">External boards, updated continuously by their operators. Roles, filters, and availability change daily. Last reviewed <time data-reviewed="beyond"></time>.</p>
+      <div class="comp-grid" data-beyond="jobs"></div>
+    </div>
+
+    <div class="beyond-block">
+      <h3 class="beyond-sub">Accelerators open to our students</h3>
+      <p class="beyond-sub-lede">If you're already building, an accelerator brings structure, mentorship, and often capital. A few are built specifically for students; many more are open to anyone, students included. Equity terms vary — each is noted below.</p>
+      <p class="comp-note">External programs with their own application cycles and terms. Confirm current details and equity terms on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
+      <h4 class="beyond-group">Built for students</h4>
+      <div class="comp-grid" data-beyond="accelerator-student"></div>
+      <h4 class="beyond-group">Open to all — students included</h4>
+      <div class="comp-grid" data-beyond="accelerator-open"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEARN: the Playbook, AI, the workbench, the knowledge hub, the glossary ===================== -->
 <section class="section lg" id="howto">
   <div class="section-inner">
     <div style="margin-bottom: 48px; max-width: 48rem;">
@@ -1005,35 +1087,6 @@
   </div>
 </section>
 
-<!-- RESOURCE INDEX — cards and filter options are rendered from RESOURCES (data/resources.js) -->
-<section class="section lg alt" id="resources">
-  <div class="section-inner">
-    <div style="margin-bottom: 48px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">The Index</span></div>
-      <h2>Every resource, <span class="italic">searchable</span></h2>
-      <p class="lede">Filter by phase, type, or search by name. Every resource across mid-Missouri and beyond, in one place. Each card says who it is for, what it costs, and how much time it takes; the <strong>Any major</strong> mark means the program is open to every Mizzou student, whatever you study.</p>
-      <button class="section-print-btn" onclick="printSection('resources')">⎙ Print this section</button>
-    </div>
-
-    <div class="filter-row">
-      <div class="search-wrap">
-        <input type="text" id="searchInput" aria-label="Search resources by name" placeholder="Search resources…" oninput="filterResources()" />
-      </div>
-      <select class="filter-select" id="phaseFilter" aria-label="Filter resources by phase" onchange="filterResources()"></select>
-      <select class="filter-select" id="tagFilter" aria-label="Filter resources by type" onchange="filterResources()"></select>
-      <button class="clear-btn" id="clearBtn" onclick="clearFilters()" style="display:none">Clear</button>
-    </div>
-
-    <div class="results-count" id="resultsCount"></div>
-    <div class="resource-grid" id="resourceGrid"></div>
-    <div class="no-results" id="noResults" style="display:none">
-      <h3>No matches</h3>
-      <p>Try a different search or filter combination.</p>
-    </div>
-    <p class="cei-note">Resource list last reviewed <time data-reviewed="resources"></time>. Something missing or out of date? <a href="#feedback" onclick="scrollToSection('feedback')">Tell us</a>.</p>
-  </div>
-</section>
-
 <!-- KNOWLEDGE — cards are rendered from KNOWLEDGE (data/knowledge.js) -->
 <section class="section lg dark" id="knowledge">
   <div class="lines-bg"></div>
@@ -1052,20 +1105,6 @@
       <p class="lessons-lede">Free, from the people who teach this best. Each card says how long a lesson runs, so you can fit one between classes. Rendered from <code>data/lessons.js</code> — CEI recordings go there too.</p>
       <div class="lessons-grid" id="lessonsGrid"></div>
     </div>
-  </div>
-</section>
-
-<!-- COURSES — rendered from COURSES (data/courses.js) -->
-<section class="section lg" id="courses">
-  <div class="section-inner">
-    <div style="margin-bottom: 40px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">For Credit</span></div>
-      <h2>Learn it <span class="italic">for credit</span></h2>
-      <p class="lede">Courses, the minor, and the certificate: ways to make entrepreneurship part of your degree rather than something you do around it. Most are open to any major. Entries marked <em>confirm in the catalog</em> have not yet been checked against this year's catalog by a person; treat credit counts and names as a starting point for a conversation with your advisor.</p>
-      <button class="section-print-btn" onclick="printSection('courses')">⎙ Print this section</button>
-    </div>
-    <div class="course-grid" id="courseGrid"></div>
-    <p class="cei-note">Course list last reviewed <time data-reviewed="courses"></time>. The MU catalog is the source of record: <a id="catalogLink" href="https://catalog.missouri.edu/" target="_blank" rel="noopener">search it for "entrepreneurship"</a>, then confirm with your academic advisor.</p>
   </div>
 </section>
 
@@ -1094,42 +1133,7 @@
   </div>
 </section>
 
-<!-- BEYOND THE GUIDEBOOK — rows are rendered from BEYOND (data/beyond.js) -->
-<section class="section lg alt" id="beyond">
-  <div class="section-inner">
-    <div style="margin-bottom: 48px; max-width: 48rem;">
-      <div class="section-label"><div class="line"></div><span class="lbl">Beyond the Guidebook</span></div>
-      <h2>Get in the <span class="italic">arena</span></h2>
-      <p class="lede">Not everyone starts a company on day one. Compete to sharpen your idea and win capital — or go work at a startup to learn how it's really done.</p>
-      <button class="section-print-btn" onclick="printSection('beyond')">⎙ Print this section</button>
-    </div>
-
-    <div class="beyond-block">
-      <h3 class="beyond-sub">National pitch competitions</h3>
-      <p class="beyond-sub-lede">Student-focused competitions across the country — real prize money, real investors, real exposure. Every one below is open to founders from any school.</p>
-      <p class="comp-note">External programs whose dates and eligibility change year to year. Confirm details on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
-      <div class="comp-grid" data-beyond="competition"></div>
-    </div>
-
-    <div class="beyond-block">
-      <h3 class="beyond-sub">Startup job &amp; internship boards</h3>
-      <p class="beyond-sub-lede">Your career center covers the big employers; these boards are where startups actually hire. The first three list jobs across thousands of companies; the rest are curated to a top VC's portfolio.</p>
-      <p class="comp-note">External boards, updated continuously by their operators. Roles, filters, and availability change daily. Last reviewed <time data-reviewed="beyond"></time>.</p>
-      <div class="comp-grid" data-beyond="jobs"></div>
-    </div>
-
-    <div class="beyond-block">
-      <h3 class="beyond-sub">Accelerators open to our students</h3>
-      <p class="beyond-sub-lede">If you're already building, an accelerator brings structure, mentorship, and often capital. A few are built specifically for students; many more are open to anyone, students included. Equity terms vary — each is noted below.</p>
-      <p class="comp-note">External programs with their own application cycles and terms. Confirm current details and equity terms on each site before applying. Last reviewed <time data-reviewed="beyond"></time>.</p>
-      <h4 class="beyond-group">Built for students</h4>
-      <div class="comp-grid" data-beyond="accelerator-student"></div>
-      <h4 class="beyond-group">Open to all — students included</h4>
-      <div class="comp-grid" data-beyond="accelerator-open"></div>
-    </div>
-  </div>
-</section>
-
+<!-- ===================== PEOPLE: student ventures, alumni, outcomes, contacts ===================== -->
 <section class="section lg alt" id="ventures">
   <div class="section-inner">
     <div style="margin-bottom: 40px; max-width: 48rem;">

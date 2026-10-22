@@ -93,22 +93,88 @@ function copyPrompt(btn) {
   });
 }
 
-// Nav scroll behavior + scrollspy active-section highlighting
-const NAV_SECTION_IDS = SITE.nav.map(function (n) { return n.id; });
+// Nav scroll behavior + scrollspy active-section highlighting.
+// The active section is the lowest one whose top has passed a third of the
+// way down the screen; its link, its dropdown's button, or its tab lights up.
+const NAV_SECTION_IDS = navLeaves().map(function (n) { return n.id; });
 function updateActiveNav() {
   const trigger = window.innerHeight / 3;
-  let activeId = null;
+  let activeId = null, best = -Infinity;
   for (const id of NAV_SECTION_IDS) {
     const el = document.getElementById(id);
     if (!el || el.hidden) continue;
     const top = el.getBoundingClientRect().top;
-    if (top <= trigger) activeId = id;
+    if (top <= trigger && top > best) { best = top; activeId = id; }
   }
-  document.querySelectorAll('.nav-links button').forEach(btn => {
-    const matches = btn.getAttribute('onclick') === "scrollToSection('" + activeId + "')";
-    btn.classList.toggle('active', matches);
+  document.querySelectorAll('.nav-links [data-nav-id], .mobile-menu [data-nav-id]').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('data-nav-id') === activeId);
+  });
+  document.querySelectorAll('.nav-links button.nav-top').forEach(btn => {
+    btn.classList.toggle('active', (btn.getAttribute('data-ids') || '').split(' ').indexOf(activeId) !== -1);
   });
 }
+
+// Dropdowns: click or Enter/Space opens one (and closes the others), Escape
+// closes it and returns focus to its button, and so does clicking or tabbing
+// away. Links close the menu and scroll to their section.
+function closeNavPanels(except) {
+  document.querySelectorAll('.nav-links button.nav-top[aria-expanded="true"]').forEach(btn => {
+    if (btn === except) return;
+    btn.setAttribute('aria-expanded', 'false');
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (panel) panel.hidden = true;
+  });
+}
+function navGo(a, e) {
+  const id = a.getAttribute('data-nav-id'), action = a.getAttribute('data-nav-action');
+  if (!id && !action) return;
+  e.preventDefault();
+  closeNavPanels();
+  closeMobileMenu();
+  if (action === 'assessment') openAssessment();
+  else scrollToSection(id);
+}
+function wireNav() {
+  const bar = document.getElementById('navLinks');
+  const mobile = document.getElementById('mobileMenu');
+  if (bar) {
+    bar.addEventListener('click', e => {
+      const btn = e.target.closest('button.nav-top');
+      if (btn) {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        closeNavPanels(btn);
+        btn.setAttribute('aria-expanded', String(!open));
+        document.getElementById(btn.getAttribute('aria-controls')).hidden = open;
+        if (!open) track('nav_group_open', { group: btn.textContent.trim() });
+        return;
+      }
+      const a = e.target.closest('a');
+      if (a) navGo(a, e);
+    });
+    bar.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      const open = bar.querySelector('button.nav-top[aria-expanded="true"]');
+      if (open) { closeNavPanels(); open.focus(); }
+    });
+    bar.addEventListener('focusout', e => {
+      const group = e.target.closest('.nav-group');
+      if (group && !group.contains(e.relatedTarget)) closeNavPanels();
+    });
+  }
+  document.addEventListener('click', e => { if (!e.target.closest('#navLinks')) closeNavPanels(); });
+  if (mobile) mobile.addEventListener('click', e => {
+    const head = e.target.closest('button.mm-head');
+    if (head) {
+      const open = head.getAttribute('aria-expanded') === 'true';
+      head.setAttribute('aria-expanded', String(!open));
+      document.getElementById(head.getAttribute('aria-controls')).hidden = open;
+      return;
+    }
+    const a = e.target.closest('a');
+    if (a) navGo(a, e);
+  });
+}
+wireNav();
 function updatePhaseTimeline() {
   const trigger = window.innerHeight / 2;
   let active = 0;
