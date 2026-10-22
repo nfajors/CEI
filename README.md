@@ -15,6 +15,7 @@ Live page: https://nfajors.github.io/CEI/
 | `assets/js/guidebook.js` | Core behaviour: navigation (the dropdown menu and scrollspy), accordions, printing, search and filters, the self-assessment, the Prompt Studio, and the GA4 event calls. |
 | `assets/js/features.js` | The five return-visit features: What's New, My Founder Path, the Deadline board, the Founder Workbench, and the Student Venture board. All state stays in the visitor's browser. |
 | `assets/img/` | Photos and the college logo, served as files so browsers cache them. |
+| `assets/ea/` | The EA workshop files (slides and spreadsheets) linked from each week in `data/alliance.js`. Keep PDFs small: compress large slide decks before adding them. |
 | `assets/vendor/qrcode-generator.js` | QR code library (MIT, Kazuhiko Arase) used by the share block and the printable flyer; loads deferred. |
 | `scripts/check-site.mjs` | Validates the data files and checks that the permanent address is the same everywhere. Run before committing. |
 | `scripts/build-ics.mjs` | Builds `deadlines.ics`, the subscribable calendar of confirmed deadlines. |

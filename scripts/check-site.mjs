@@ -33,11 +33,12 @@ expect(GLOSSARY.some(g => g.start), 'no glossary term is marked start: true');
 // (a static id in index.html, a phase block, or a glossary term).
 const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const pageIds = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1])
-  .concat(PHASES.map(p => p.id), GLOSSARY.map(g => 'term-' + slug(g.term))));
+  .concat(PHASES.map(p => p.id), GLOSSARY.map(g => 'term-' + slug(g.term)), CONTACTS.map(c => 'contact-' + c.id), ALLIANCE.weeks.map(w => 'ea-week-' + w.n)));
 expect(ALLIANCE.weeks.map(w => w.n).join() === '1,2,3,4,5,6,7,8', 'data/alliance.js should list weeks 1 to 8 in order');
 for (const w of ALLIANCE.weeks) expect(/^\d{4}-\d{2}-\d{2}$/.test(w.date) && w.title, `EA week ${w.n} needs a date and a title`);
 const eaLinks = [].concat(...ALLIANCE.weeks.map(w => w.guide || []), ...ALLIANCE.application.map(a => a.guide || []), ...ALLIANCE.beforeWeek1.map(b => b.guide || []), ALLIANCE.final.guide || []);
-for (const g of eaLinks) expect(pageIds.has(g.to), `data/alliance.js links to "${g.to}", which is not on the page`);
+for (const g of eaLinks) expect(g.url ? /^https:\/\//.test(g.url) : pageIds.has(g.to), `data/alliance.js links to "${g.to || g.url}", which is not on the page`);
+for (const w of ALLIANCE.weeks) for (const m of (w.materials || [])) expect(fs.existsSync(path.join(root, m.file)), `EA week ${w.n} lists a missing file: ${m.file}`);
 // The menu: every link names a section on the page (or the assessment).
 for (const n of SITE.nav) for (const it of (n.items || [n])) expect(it.action === 'assessment' || pageIds.has(it.id), `menu link "${it.label}" points at missing section "${it.id}"`);
 for (const n of SITE.nav) if (n.items) for (const it of n.items) expect(it.label && it.desc, `menu link "${it.label || it.id}" in "${n.label}" needs a label and a desc`);

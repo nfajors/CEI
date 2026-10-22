@@ -346,12 +346,26 @@ function guideKind(id) {
   if (el.classList.contains('gloss-term')) return 'Glossary';
   if (el.classList.contains('wb-panel')) return 'Workbench';
   if (el.classList.contains('phase-block')) return 'Phase';
+  if (el.classList.contains('contact-card')) return 'Contact';
+  if (el.classList.contains('resource-card')) return 'Resource';
+  if (el.classList.contains('ea-week')) return 'EA';
   return 'Guidebook';
 }
 function guideLinks(list, cls) {
   if (!list || !list.length) return '';
-  return '<ul class="' + (cls || 'ea-guide') + '">' + list.filter(function (g) { return byId(g.to); }).map(function (g) {
+  return '<ul class="' + (cls || 'ea-guide') + '">' + list.filter(function (g) { return g.url || byId(g.to); }).map(function (g) {
+    if (g.url) return '<li><a href="' + esc(g.url) + '" target="_blank" rel="noopener"><span class="ea-kind">Link</span>' + esc(g.label) + ' ↗</a></li>';
     return '<li><a href="#' + esc(g.to) + '" onclick="return openGuide(\'' + esc(g.to) + '\', \'ea\')"><span class="ea-kind">' + guideKind(g.to) + '</span>' + esc(g.label) + '</a></li>';
+  }).join('') + '</ul>';
+}
+// Workshop files (slides, spreadsheets). PDFs open in a new tab; the rest download.
+function eaFiles(list) {
+  if (!list || !list.length) return '';
+  return '<ul class="ea-files">' + list.map(function (m) {
+    var pdf = /\.pdf$/i.test(m.file);
+    return '<li><a href="' + esc(m.file) + '"' + (pdf ? ' target="_blank" rel="noopener"' : ' download') + ' data-ea-file="' + esc(m.label) + '">'
+      + '<span class="ea-file-type">' + esc(m.type) + '</span><b>' + esc(m.label) + '</b>'
+      + '<span class="ea-file-meta">' + esc([m.note, m.size].filter(Boolean).join(' · ')) + '</span></a></li>';
   }).join('') + '</ul>';
 }
 function eaDate(iso) {
@@ -381,17 +395,28 @@ function renderAlliance() {
       var tag = ordered ? 'ol' : 'ul';
       return '<div class="ea-wk-part"><div class="ea-wk-head">' + head + '</div><' + tag + ' class="' + (ordered ? 'howto-steps' : 'ea-due') + '">' + items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</' + tag + '></div>';
     };
-    var body = w.recap
-      ? (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + list('This week\'s goals', w.goals, true) + list('The rules', w.rules, true) + list('Due and coming up', w.due, false)
+    var ready = !!w.summary;
+    var body = ready
+      ? '<p>' + esc(w.summary) + '</p>' + list('How the night ran', w.agenda, false) + list('What it covers', w.covers, false)
+        + list('This week\'s goals', w.goals, true) + list('The rules', w.rules, true) + list('Due and coming up', w.due, false)
+        + (w.materials && w.materials.length ? '<div class="ea-wk-part"><div class="ea-wk-head">Workshop files</div>' + eaFiles(w.materials) + '</div>' : '')
         + (w.guide && w.guide.length ? '<div class="ea-wk-part"><div class="ea-wk-head">Go deeper in the guidebook</div>' + guideLinks(w.guide) + '</div>' : '')
       : '<p class="ea-pending">Recap coming. CEI is adding the summary of this workshop.</p>';
-    return '<div class="howto-card ea-week' + (w.recap ? '' : ' pending') + '" id="ea-week-' + w.n + '">'
+    var files = (w.materials || []).length;
+    return '<div class="howto-card ea-week' + (ready ? '' : ' pending') + '" id="ea-week-' + w.n + '">'
       + '<button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false" aria-controls="ea-week-' + w.n + '-a">'
       + '<span class="howto-num">' + (w.n < 10 ? '0' : '') + w.n + '</span>'
       + '<span class="howto-title"><span class="ea-wk-label">Week ' + w.n + ' · ' + eaDate(w.date) + '</span>' + esc(w.title) + '</span>'
-      + '<span class="ea-status">' + (w.recap ? 'Recap' : 'Coming') + '</span><span class="howto-chev" aria-hidden="true">+</span></button>'
+      + (ready ? (files ? '<span class="ea-status">' + files + (files === 1 ? ' file' : ' files') + '</span>' : '') : '<span class="ea-status">Coming</span>') + '<span class="howto-chev" aria-hidden="true">+</span></button>'
       + '<div class="howto-a" id="ea-week-' + w.n + '-a">' + body + '</div></div>';
   }).join('');
+  var all = [];
+  A.weeks.forEach(function (w) { (w.materials || []).forEach(function (m) {
+    var seen = all.filter(function (x) { return x.file === m.file; })[0];
+    if (seen) seen.weeks.push(w.n); else all.push({ label: m.label, file: m.file, type: m.type, size: m.size, weeks: [w.n] });
+  }); });
+  var lib = byId('eaFiles');
+  if (lib) lib.innerHTML = all.length ? eaFiles(all.map(function (m) { return { label: m.label, file: m.file, type: m.type, size: m.size, note: (m.weeks.length > 1 ? 'Weeks ' : 'Week ') + m.weeks.join(', ') }; })) : '';
   var F = A.final;
   byId('ea-final').innerHTML = '<h3 class="ea-h3">' + esc(F.title) + ' and getting paid</h3><ol class="howto-steps">' + F.steps.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>' + guideLinks(F.guide);
   var v = byId('eaVerified');
@@ -402,14 +427,14 @@ function renderAlliance() {
 // EA links to gets a line saying where in the program it is taught.
 function markAllianceLinks(A) {
   var refs = {};
-  var add = function (list, where, to) { (list || []).forEach(function (g) { (refs[g.to] = refs[g.to] || []); if (!refs[g.to].some(function (r) { return r.to === to; })) refs[g.to].push({ where: where, to: to }); }); };
+  var add = function (list, where, to) { (list || []).filter(function (g) { return g.to; }).forEach(function (g) { (refs[g.to] = refs[g.to] || []); if (!refs[g.to].some(function (r) { return r.to === to; })) refs[g.to].push({ where: where, to: to }); }); };
   add([].concat.apply([], A.application.map(function (a) { return a.guide || []; })), 'The application', 'ea-apply');
   add([].concat.apply([], A.beforeWeek1.map(function (b) { return b.guide || []; })), 'Before Workshop 1', 'ea-before');
   A.weeks.forEach(function (w) { add(w.guide, 'Week ' + w.n + ': ' + w.title, 'ea-week-' + w.n); });
   add(A.final.guide, 'The final', 'ea-final');
   Object.keys(refs).forEach(function (id) {
     var el = byId(id);
-    if (!el || el.closest('#ea') || id === 'wins') return;
+    if (!el || el.closest('#ea') || id === 'wins' || el.tagName === 'A') return;
     var host = el.querySelector('.howto-a, .gloss-a, .wb-out, .phase-side-inner') || el;
     var line = document.createElement('p');
     line.className = 'ea-xref';

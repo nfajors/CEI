@@ -5,6 +5,7 @@
    "Updated …" stamp and the What's New strip both read from it.
    ============================================================ */
 const CHANGELOG = [
+  { date: '2026-10-22', text: 'All eight <a href="#ea-weeks">EA workshops</a> are now on the EA tab, from the Business Model Canvas to the final run-through, with the workshop slides, a break-even calculator, and a profit-and-loss template to download.' },
   { date: '2026-10-22', text: 'A simpler menu: fifteen links became four dropdowns (Start here, Programs, Learn, People) plus the EA tab, each link with a line on what you will find. The page now runs in the same order.' },
   { date: '2026-10-22', text: 'New: <a href="#ea">the EA tab</a>. The Leslie Flegel Entrepreneurship Alliance in one place: spring 2027 dates, what the application asks, and the eight workshops week by week, each linked to the Playbook questions, glossary terms, and calculators that go deeper.' },
   { date: '2026-10-06', text: 'In the spotlight: <a href="#spotlight">America\'s Seed Fund</a>, NSF\'s SBIR/STTR program. Up to $305,000 in equity-free funding for deep-tech startups, with the November 4 deadline on the board.' },
