@@ -49,11 +49,13 @@ const SITE = {
   nextReview: '2027-01-15',
 
   /* Primary navigation. id = section id on the page. Sections that are
-     hidden (an empty venture board) drop out of the menu automatically. */
+     hidden (an empty venture board) drop out of the menu automatically.
+     accent: 'ea' gives an entry its own colour (the EA tab). */
   nav: [
     { id: 'phases', label: 'Phases' },
     { id: 'path', label: 'My Path' },
     { id: 'deadlines', label: 'Deadlines' },
+    { id: 'ea', label: 'EA', accent: 'ea' },
     { id: 'howto', label: 'How-To' },
     { id: 'ai', label: 'AI' },
     { id: 'tools', label: 'Tools' },

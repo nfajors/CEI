@@ -36,14 +36,16 @@ function stampSite() {
 }
 
 /* ---------- navigation (SITE.nav) ---------- */
+// An entry with `accent` (e.g. 'ea') gets its own colour in the menu.
+function navClass(n) { return n.accent ? ' class="nav-' + esc(n.accent) + '"' : ''; }
 function renderNav() {
   var items = SITE.nav.filter(function (n) { var el = byId(n.id); return el && !el.hidden; });
   var links = byId('navLinks'), mobile = byId('mobileMenuLinks'), foot = byId('footerNav');
   if (links) links.innerHTML = items.map(function (n) {
-    return '<button onclick="scrollToSection(\'' + n.id + '\')">' + esc(n.label) + '</button>';
+    return '<button' + navClass(n) + ' onclick="scrollToSection(\'' + n.id + '\')">' + esc(n.label) + '</button>';
   }).join('');
   if (mobile) mobile.innerHTML = items.map(function (n) {
-    return '<button onclick="mobileNav(\'' + n.id + '\')">' + esc(n.label) + '</button>';
+    return '<button' + navClass(n) + ' onclick="mobileNav(\'' + n.id + '\')">' + esc(n.label) + '</button>';
   }).join('');
   if (foot) foot.innerHTML = items.concat([{ id: 'feedback', label: 'Feedback' }]).map(function (n) {
     return '<li><button onclick="scrollToSection(\'' + n.id + '\')">' + esc(n.label) + '</button></li>';
@@ -145,7 +147,7 @@ function renderGlossary() {
   if (!grid) return;
   grid.innerHTML = GLOSSARY.map(function (g, i) {
     var search = (g.term + ' ' + g.def + ' ' + g.eg).toLowerCase();
-    return '<div class="gloss-term" data-search="' + esc(search) + '" data-cat="' + esc(g.cat) + '"' + (g.start ? ' data-start="1"' : '') + '>'
+    return '<div class="gloss-term" id="term-' + slugify(g.term) + '" data-search="' + esc(search) + '" data-cat="' + esc(g.cat) + '"' + (g.start ? ' data-start="1"' : '') + '>'
       + '<button class="gloss-q" aria-expanded="false" aria-controls="gloss-' + i + '" onclick="toggleGloss(this)">'
       + '<span class="gloss-name">' + esc(g.term) + '</span><span class="gloss-phase">' + esc(g.phase) + '</span><span class="gloss-chev" aria-hidden="true">+</span></button>'
       + '<div class="gloss-a" id="gloss-' + i + '" hidden><p class="gloss-def">' + esc(g.def) + '</p><p class="gloss-eg"><strong>Example:</strong> ' + esc(g.eg) + '</p></div></div>';
@@ -296,6 +298,109 @@ function hideEmptyVentureBoard() {
   });
 }
 
+/* ---------- Leslie Flegel Entrepreneurship Alliance (data/alliance.js) ---------- */
+// What kind of guidebook content an id points at, for the link's small label.
+function guideKind(id) {
+  var el = byId(id);
+  if (!el) return '';
+  if (el.classList.contains('howto-card')) return 'Playbook';
+  if (el.classList.contains('gloss-term')) return 'Glossary';
+  if (el.classList.contains('wb-panel')) return 'Workbench';
+  if (el.classList.contains('phase-block')) return 'Phase';
+  return 'Guidebook';
+}
+function guideLinks(list, cls) {
+  if (!list || !list.length) return '';
+  return '<ul class="' + (cls || 'ea-guide') + '">' + list.filter(function (g) { return byId(g.to); }).map(function (g) {
+    return '<li><a href="#' + esc(g.to) + '" onclick="return openGuide(\'' + esc(g.to) + '\', \'ea\')"><span class="ea-kind">' + guideKind(g.to) + '</span>' + esc(g.label) + '</a></li>';
+  }).join('') + '</ul>';
+}
+function eaDate(iso) {
+  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+}
+function renderAlliance() {
+  var A = typeof ALLIANCE !== 'undefined' ? ALLIANCE : null;
+  var sec = byId('ea');
+  if (!sec) return;
+  if (!A) { sec.hidden = true; return; }
+  byId('eaLede').textContent = A.lede;
+  byId('eaFacts').innerHTML = A.facts.map(function (f) { return '<div class="ea-fact"><b>' + esc(f.value) + '</b><span>' + esc(f.label) + '</span></div>'; }).join('');
+  byId('eaActions').innerHTML = '<a class="ea-btn primary" href="' + esc(A.applyUrl) + '" target="_blank" rel="noopener" data-ea="apply">Apply for ' + esc(A.cohort) + ' ↗</a>'
+    + '<a class="ea-btn" href="' + esc(A.programUrl) + '" target="_blank" rel="noopener" data-ea="program">Program page ↗</a>'
+    + '<a class="ea-btn" href="#ea-weeks" onclick="return openGuide(\'ea-weeks\', \'ea\')">The eight workshops ↓</a>';
+  byId('eaDates').innerHTML = A.dates.map(function (d) { return '<li><b>' + esc(d.when) + '</b><span class="ea-what">' + esc(d.what) + '</span><span class="ea-dnote">' + esc(d.note) + '</span></li>'; }).join('');
+  byId('eaFormat').innerHTML = A.format.map(function (f) { return '<li><b>' + esc(f.title) + '</b> ' + esc(f.text) + '</li>'; }).join('');
+  byId('eaReq').innerHTML = '<div class="ea-req-head">To pitch at the final</div><ul>' + A.requirements.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul><p>' + esc(A.requirementsNote) + '</p>';
+  byId('eaApp').innerHTML = A.application.map(function (a) {
+    return '<li><div class="ea-app-q"><b>' + esc(a.q) + '</b><span>' + esc(a.hint) + '</span></div>' + guideLinks(a.guide) + '</li>';
+  }).join('');
+  byId('eaAppNote').textContent = A.applicationNote || '';
+  byId('eaBefore').innerHTML = A.beforeWeek1.map(function (b) { return '<li><span>' + esc(b.text) + '</span>' + guideLinks(b.guide) + '</li>'; }).join('');
+  byId('eaWeeks').innerHTML = A.weeks.map(function (w) {
+    var list = function (head, items, ordered) {
+      if (!items || !items.length) return '';
+      var tag = ordered ? 'ol' : 'ul';
+      return '<div class="ea-wk-part"><div class="ea-wk-head">' + head + '</div><' + tag + ' class="' + (ordered ? 'howto-steps' : 'ea-due') + '">' + items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</' + tag + '></div>';
+    };
+    var body = w.recap
+      ? (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + list('This week\'s goals', w.goals, true) + list('The rules', w.rules, true) + list('Due and coming up', w.due, false)
+        + (w.guide && w.guide.length ? '<div class="ea-wk-part"><div class="ea-wk-head">Go deeper in the guidebook</div>' + guideLinks(w.guide) + '</div>' : '')
+      : '<p class="ea-pending">Recap coming. CEI is adding the summary of this workshop.</p>';
+    return '<div class="howto-card ea-week' + (w.recap ? '' : ' pending') + '" id="ea-week-' + w.n + '">'
+      + '<button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false" aria-controls="ea-week-' + w.n + '-a">'
+      + '<span class="howto-num">' + (w.n < 10 ? '0' : '') + w.n + '</span>'
+      + '<span class="howto-title"><span class="ea-wk-label">Week ' + w.n + ' · ' + eaDate(w.date) + '</span>' + esc(w.title) + '</span>'
+      + '<span class="ea-status">' + (w.recap ? 'Recap' : 'Coming') + '</span><span class="howto-chev" aria-hidden="true">+</span></button>'
+      + '<div class="howto-a" id="ea-week-' + w.n + '-a">' + body + '</div></div>';
+  }).join('');
+  var F = A.final;
+  byId('ea-final').innerHTML = '<h3 class="ea-h3">' + esc(F.title) + ' and getting paid</h3><ol class="howto-steps">' + F.steps.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>' + guideLinks(F.guide);
+  var v = byId('eaVerified');
+  if (v) { v.textContent = new Date(A.verifiedOn + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }); v.setAttribute('datetime', A.verifiedOn); }
+  markAllianceLinks(A);
+}
+// The other direction: every Playbook question, glossary term, or calculator the
+// EA links to gets a line saying where in the program it is taught.
+function markAllianceLinks(A) {
+  var refs = {};
+  var add = function (list, where, to) { (list || []).forEach(function (g) { (refs[g.to] = refs[g.to] || []); if (!refs[g.to].some(function (r) { return r.to === to; })) refs[g.to].push({ where: where, to: to }); }); };
+  add([].concat.apply([], A.application.map(function (a) { return a.guide || []; })), 'The application', 'ea-apply');
+  add([].concat.apply([], A.beforeWeek1.map(function (b) { return b.guide || []; })), 'Before Workshop 1', 'ea-before');
+  A.weeks.forEach(function (w) { add(w.guide, 'Week ' + w.n + ': ' + w.title, 'ea-week-' + w.n); });
+  add(A.final.guide, 'The final', 'ea-final');
+  Object.keys(refs).forEach(function (id) {
+    var el = byId(id);
+    if (!el || el.closest('#ea') || id === 'wins') return;
+    var host = el.querySelector('.howto-a, .gloss-a, .wb-out, .phase-side-inner') || el;
+    var line = document.createElement('p');
+    line.className = 'ea-xref';
+    line.innerHTML = '<span class="ea-xref-tag">' + esc(A.short) + '</span>Taught in the ' + esc(A.name) + ': '
+      + refs[id].map(function (r) { return '<a href="#' + r.to + '" onclick="return openGuide(\'' + r.to + '\', \'' + esc(id) + '\')">' + esc(r.where) + '</a>'; }).join(' · ');
+    host.appendChild(line);
+  });
+}
+// Jump to any part of the page and open it: a Playbook question, a glossary
+// term, a workbench calculator, or an EA week. Returns false for onclick.
+function openGuide(id, from) {
+  var el = byId(id);
+  if (!el) return true;
+  if (typeof track === 'function') track('guide_link', { to: id, from: from || 'link' });
+  if (el.classList.contains('gloss-term') && el.offsetParent === null) {
+    var search = byId('glossSearch'); if (search) search.value = '';
+    var all = document.querySelector('.gloss-chip[data-cat="all"]'); if (all) all.click();
+  }
+  var q = el.querySelector(':scope > .howto-q, :scope > .gloss-q');
+  if (q && q.getAttribute('aria-expanded') !== 'true') q.click();
+  var target = el;
+  if (el.classList.contains('wb-panel')) {
+    var tab = document.querySelector('.wb-tab[data-wb="' + id + '"]'); if (tab) tab.click();
+    target = byId('tools') || el;
+  }
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (history.replaceState) history.replaceState(null, '', '#' + id);
+  return false;
+}
+
 /* ---------- run ---------- */
 (function renderAll() {
   // A resource's phases are wherever the phase blocks list it (data/phases.js),
@@ -314,11 +419,18 @@ function hideEmptyVentureBoard() {
   renderBeyond();
   renderAlumni();
   renderContacts();
+  renderAlliance();
   hideEmptyVentureBoard();
   renderNav();
   stampSite();
   var y = byId('copyYear'); if (y) y.textContent = new Date().getFullYear();
 })();
+
+// A shared link to one EA week or Playbook question (…/#ea-week-7) opens it.
+window.addEventListener('load', function () {
+  var id = decodeURIComponent(location.hash.slice(1));
+  if (/^(ea-week-|howto-|term-|wb)/.test(id) && byId(id)) openGuide(id, 'hash');
+});
 
 /* ============================================================
    BATCH 4 — wins, outcomes, lessons, mentor booking, subscriptions,

@@ -344,6 +344,50 @@
     </p>
   </div>
 </section>
+<!-- ===================== LESLIE FLEGEL ENTREPRENEURSHIP ALLIANCE =====================
+     The EA tab. Its own colour scheme (the --ea tokens in guidebook.css) marks it as a
+     program inside the guidebook rather than a part of the path. Everything inside
+     is rendered from ALLIANCE (data/alliance.js). -->
+<section class="section lg ea" id="ea" aria-labelledby="eaHead">
+  <div class="ea-band">
+    <div class="section-inner">
+      <div class="section-label"><div class="line"></div><span class="lbl">CEI's flagship accelerator</span></div>
+      <h2 id="eaHead">Leslie Flegel <span class="italic">Entrepreneurship Alliance</span></h2>
+      <p class="lede" id="eaLede"></p>
+      <div class="ea-facts" id="eaFacts"></div>
+      <div class="ea-actions" id="eaActions"></div>
+      <button class="section-print-btn" onclick="printSection('ea')">⎙ Print this section</button>
+    </div>
+  </div>
+  <div class="section-inner ea-body">
+    <div class="ea-grid">
+      <div class="ea-panel" id="ea-dates"><h3 class="ea-h3">Spring 2027 at a glance</h3><ol class="ea-dates" id="eaDates"></ol></div>
+      <div class="ea-panel" id="ea-format"><h3 class="ea-h3">How a Monday runs</h3><ol class="ea-format" id="eaFormat"></ol><div class="ea-req" id="eaReq"></div></div>
+    </div>
+
+    <div class="ea-block" id="ea-apply">
+      <h3 class="ea-h3">What the application asks</h3>
+      <p class="ea-sub">Seven short answers. The guidebook links beside each one help you write it.</p>
+      <ul class="ea-app" id="eaApp"></ul>
+      <p class="ea-note" id="eaAppNote"></p>
+    </div>
+
+    <div class="ea-block" id="ea-before">
+      <h3 class="ea-h3">Accepted? Before Workshop 1</h3>
+      <ul class="ea-check" id="eaBefore"></ul>
+    </div>
+
+    <div class="ea-block" id="ea-weeks">
+      <h3 class="ea-h3">The eight workshops</h3>
+      <p class="ea-sub">What each Monday covered, what was due, and where the guidebook goes deeper. Dates are the spring 2026 cohort's.</p>
+      <div class="howto-list ea-weeks" id="eaWeeks"></div>
+    </div>
+
+    <div class="ea-block ea-final" id="ea-final"></div>
+
+    <p class="cei-note">Facts on this tab last checked <time id="eaVerified"></time>. Questions about the program go to <a data-site="email" href="mailto:cei@missouri.edu">cei@missouri.edu</a>.</p>
+  </div>
+</section>
 <section class="section lg" id="howto">
   <div class="section-inner">
     <div style="margin-bottom: 48px; max-width: 48rem;">
@@ -357,7 +401,7 @@
 
 <!-- First-year questions (B6) — the three you ask before you have a venture -->
       <div class="howto-group" role="presentation">First-year questions · start here</div>
-      <div class="howto-card">
+      <div class="howto-card" id="howto-problem">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">01</span>
           <span class="howto-title">How do I find a problem worth solving?</span>
@@ -378,7 +422,7 @@
         </div>
       </div>
 
-      <div class="howto-card">
+      <div class="howto-card" id="howto-cofounder-campus">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">02</span>
           <span class="howto-title">How do I find a co-founder on campus?</span>
@@ -399,7 +443,7 @@
         </div>
       </div>
 
-      <div class="howto-card">
+      <div class="howto-card" id="howto-grades">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">03</span>
           <span class="howto-title">Can I do this and keep my grades?</span>
@@ -423,7 +467,7 @@
       <div class="howto-group" role="presentation">Founder questions · the hard things</div>
 
 <!-- 1: First Ten Customers -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-first-customers">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">04</span>
           <span class="howto-title">How do I secure my first ten customers?</span>
@@ -445,7 +489,7 @@
       </div>
 
 <!-- 2: Pitch Deck -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pitch-deck">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">05</span>
           <span class="howto-title">How do I build my first pitch deck?</span>
@@ -472,7 +516,7 @@
       </div>
 
 <!-- 3: First Capital -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-raise">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">06</span>
           <span class="howto-title">How do I raise my first capital?</span>
@@ -496,7 +540,7 @@
       </div>
 
 <!-- 4: Product-Market Fit -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pmf">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">07</span>
           <span class="howto-title">How do I know if I have product-market fit?</span>
@@ -518,7 +562,7 @@
       </div>
 
 <!-- 5: Co-founder & Equity -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-equity">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">08</span>
           <span class="howto-title">How do I choose a co-founder and split equity?</span>
@@ -540,7 +584,7 @@
       </div>
 
 <!-- 6: First Key Hires -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-hires">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">09</span>
           <span class="howto-title">How do I make my first key hires?</span>
@@ -562,7 +606,7 @@
       </div>
 
 <!-- 7: Pricing -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pricing">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">10</span>
           <span class="howto-title">How do I price my product?</span>
@@ -584,7 +628,7 @@
       </div>
 
 <!-- 8: When to Pivot -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-pivot">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">11</span>
           <span class="howto-title">How do I know when to pivot?</span>
@@ -606,7 +650,7 @@
       </div>
 
 <!-- 9: Runway & Default Alive -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-runway">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">12</span>
           <span class="howto-title">How do I manage runway and stay alive?</span>
@@ -628,7 +672,7 @@
       </div>
 
 <!-- 10: Leading at Scale -->
-      <div class="howto-card">
+      <div class="howto-card" id="howto-lead">
         <button class="howto-q" onclick="toggleHowto(this)" aria-expanded="false">
           <span class="howto-num">13</span>
           <span class="howto-title">How do I lead as the company grows?</span>
@@ -1320,6 +1364,7 @@
 <script src="data/courses.js"></script>
 <script src="data/wins.js"></script>
 <script src="data/lessons.js"></script>
+<script src="data/alliance.js"></script>
 <script src="assets/vendor/qrcode-generator.js" defer></script>
 <!-- Behaviour -->
 <script src="assets/js/render.js"></script>
