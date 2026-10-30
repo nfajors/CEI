@@ -441,5 +441,140 @@ const GLOSSARY = [
     cat: 'Funding & Investors',
     def: 'Federal grant programs (Small Business Innovation Research and Small Business Technology Transfer) that fund early technology development with nondilutive money, often $150,000 to $300,000 in a first phase. Built for science and engineering ventures, including ones spun out of university research.',
     eg: 'A Mizzou engineering team commercializing a lab discovery applies for an NSF SBIR Phase I award while going through NSF I-Corps.'
+  },
+  {
+    term: 'Cash Flow',
+    phase: 'All phases',
+    cat: 'Metrics & Money',
+    start: true,
+    def: 'The actual cash moving in and out of your business over a period. A profitable company can still run out of money if customers pay late or inventory ties up cash, which is why founders watch cash, not just profit.',
+    eg: 'A caterer books a $20,000 fall gala, but the client pays in 60 days while food and staff must be paid this week. The event is profitable; the month\'s cash flow is negative.'
+  },
+  {
+    term: 'Break-Even Point',
+    phase: 'Phase 1–3',
+    cat: 'Metrics & Money',
+    start: true,
+    def: 'The sales volume at which revenue exactly covers all your costs, so you neither make nor lose money. Fixed costs divided by the margin you keep on each sale.',
+    eg: 'A meal-prep service with $3,000 in fixed monthly costs and $25 of margin per box breaks even at 120 boxes a month.'
+  },
+  {
+    term: 'Financial Projections (Pro Forma)',
+    phase: 'Phase 2–3',
+    cat: 'Metrics & Money',
+    def: 'A forecast of revenue, costs, and cash, usually monthly for the first year and yearly for three to five years, built from stated assumptions. Investors and judges care less about the totals than whether the assumptions are believable.',
+    eg: '"We sign three new gyms a month at $200/month each, with 2% monthly churn" is an assumption a judge can test. "$10M in year three" is not.'
+  },
+  {
+    term: 'CAC Payback Period',
+    phase: 'Phase 3–4',
+    cat: 'Metrics & Money',
+    def: 'How many months of a customer\'s gross margin it takes to earn back what you spent to acquire them. The shorter it is, the less cash you need to grow.',
+    eg: 'A $300 CAC and a customer paying $50/month at 80% gross margin ($40/month) means a 7.5-month payback.'
+  },
+  {
+    term: 'Working Capital',
+    phase: 'Phase 2–4',
+    cat: 'Metrics & Money',
+    def: 'Current assets (cash, money owed to you, inventory) minus current liabilities (bills due within a year). It is the cushion that funds day-to-day operations, and product businesses need far more of it than software.',
+    eg: 'A clothing brand pays for 1,000 units months before they sell. That gap is a working-capital need, often covered by a line of credit.'
+  },
+  {
+    term: 'Pre-Money / Post-Money Valuation',
+    phase: 'Phase 3–4',
+    cat: 'Equity & Deal Terms',
+    def: 'Pre-money is what the company is worth just before new investment; post-money is pre-money plus the new cash. An investor\'s ownership is their check divided by the post-money valuation.',
+    eg: '$1M invested at a $4M pre-money valuation makes a $5M post-money company, and the investor owns 20%.'
+  },
+  {
+    term: 'Valuation Cap',
+    phase: 'Phase 3',
+    cat: 'Equity & Deal Terms',
+    def: 'The highest valuation at which a SAFE or convertible note converts into shares, rewarding early investors for taking the earliest risk. The cap is often the most negotiated number in an early round.',
+    eg: 'A $100K SAFE with a $4M cap converts as if the company were worth $4M, even if the Series A prices it at $12M, giving that investor about three times the shares.'
+  },
+  {
+    term: 'Conversion Discount',
+    phase: 'Phase 3',
+    cat: 'Equity & Deal Terms',
+    def: 'A percentage off the next round\'s share price that SAFE or convertible-note holders get when their money converts into stock, typically 10–25%.',
+    eg: 'With a 20% discount, a note holder converts at $0.80 a share when Series A investors pay $1.00. If there is also a cap, the holder gets whichever price is lower.'
+  },
+  {
+    term: 'Preferred vs. Common Stock',
+    phase: 'Phase 3–4',
+    cat: 'Equity & Deal Terms',
+    def: 'Investors usually buy preferred stock, which carries extra rights such as a liquidation preference, protective votes, and anti-dilution protection. Founders and employees hold common stock, which is why common shares are valued lower.',
+    eg: 'Seed investors pay $1.00 per preferred share while the 409A sets employees\' option strike price on common stock at $0.25.'
+  },
+  {
+    term: 'Fully Diluted Shares',
+    phase: 'Phase 3–4',
+    cat: 'Equity & Deal Terms',
+    def: 'The total share count if every option, warrant, and convertible instrument turned into stock. Ownership percentages in a term sheet are almost always quoted on a fully diluted basis.',
+    eg: '8M founder shares, a 1.5M-share option pool, and 0.5M shares owed to SAFE holders make 10M fully diluted. A founder with 4M shares owns 40%, not 50%.'
+  },
+  {
+    term: 'Anti-Dilution Protection',
+    phase: 'Phase 4',
+    cat: 'Equity & Deal Terms',
+    def: 'A preferred-stock term that adjusts an investor\'s conversion price if the company later raises at a lower price. Broad-based weighted average is standard and mild; full ratchet is rare and harsh on founders.',
+    eg: 'An investor bought at $2.00 a share and the next round prices at $1.00. Full ratchet resets them to $1.00, doubling their shares; weighted average moves them only partway.'
+  },
+  {
+    term: 'Lead Investor',
+    phase: 'Phase 3–4',
+    cat: 'Funding & Investors',
+    def: 'The investor who sets the terms of a round, usually writes the largest check, and often takes a board seat. Other investors tend to wait for a lead before committing.',
+    eg: 'A seed fund commits $750K of a $1.5M round and sets the valuation; four angels fill the rest on the same terms.'
+  },
+  {
+    term: 'Accredited Investor',
+    phase: 'Phase 3',
+    cat: 'Funding & Investors',
+    def: 'Under SEC rules, a person with $200,000 in income ($300,000 with a spouse or partner) in each of the last two years, $1 million in net worth not counting their home, or certain finance licenses. Most private startup rounds take money only from accredited investors.',
+    eg: 'A friend\'s parents can\'t simply join your seed round unless they qualify. Equity crowdfunding is the route open to everyone.'
+  },
+  {
+    term: 'Equity Crowdfunding (Reg CF)',
+    phase: 'Phase 2–3',
+    cat: 'Funding & Investors',
+    def: 'Raising investment from the general public, accredited or not, through an SEC-registered online portal under Regulation Crowdfunding, up to $5 million in 12 months. Different from rewards crowdfunding like Kickstarter, where backers get a product, not shares.',
+    eg: 'A local brewery raises $250K from 600 of its customers, each investing as little as $100 through a crowdfunding portal.'
+  },
+  {
+    term: 'Revenue-Based Financing',
+    phase: 'Phase 3–4',
+    cat: 'Funding & Investors',
+    def: 'Capital repaid as a fixed share of monthly revenue until a set multiple of the amount is returned. You keep your equity, but you need steady revenue to qualify.',
+    eg: '$100K repaid at 6% of monthly revenue until $140K (a 1.4x cap) has been paid back: faster in good months, slower in bad ones.'
+  },
+  {
+    term: 'Bridge Round',
+    phase: 'Phase 3–4',
+    cat: 'Funding & Investors',
+    def: 'A small raise that extends runway until the next priced round, usually from existing investors on a SAFE or convertible note.',
+    eg: 'With six months of runway left and the Series A two quarters away, current investors put in $300K on a SAFE to bridge the gap.'
+  },
+  {
+    term: 'Due Diligence',
+    phase: 'Phase 3–4',
+    cat: 'Funding & Investors',
+    def: 'The investigation an investor or acquirer runs before closing a deal: checking your legal documents, finances, cap table, IP, and claims about customers.',
+    eg: 'Before wiring money, an angel asks for your incorporation papers, cap table, IP assignments from every co-founder, and two customer references. A tidy shared folder makes it quick.'
+  },
+  {
+    term: 'Power Law',
+    phase: 'Phase 3–4',
+    cat: 'Funding & Investors',
+    def: 'The pattern in venture returns where a few huge winners produce almost all the gains. It is why VCs back only ventures that could become very large, and why a solid, profitable business can still be a poor fit for venture capital.',
+    eg: 'In a fund of 25 startups, one that returns 50x can repay the whole fund. That is why a VC asks "could this be huge?" rather than "will this work?"'
+  },
+  {
+    term: 'Exit',
+    phase: 'Phase 4',
+    cat: 'Funding & Investors',
+    def: 'The event that turns shares into cash for founders and investors, most often an acquisition and occasionally an IPO (listing on a public stock exchange).',
+    eg: 'A larger company buys your startup for $40M. Investors\' liquidation preferences are paid first, and the rest is split by ownership.'
   }
 ];
