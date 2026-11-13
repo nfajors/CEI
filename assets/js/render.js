@@ -398,7 +398,11 @@ function renderAlliance() {
     var ready = !!w.summary;
     var body = ready
       ? '<p>' + esc(w.summary) + '</p>' + list('How the night ran', w.agenda, false) + list('What it covers', w.covers, false)
-        + list('This week\'s goals', w.goals, true) + list('The rules', w.rules, true) + list('Due and coming up', w.due, false)
+        + list('This week\'s goals', w.goals, true)
+        + (w.more || []).map(function (m) { return list(esc(m.head), m.items, false); }).join('')
+        + (w.swap && w.swap.length ? '<div class="ea-wk-part"><div class="ea-wk-head">Ask this, not that</div><table class="ea-swap"><thead><tr><th scope="col">Instead of…</th><th scope="col">Ask…</th></tr></thead><tbody>'
+          + w.swap.map(function (r) { return '<tr><td>' + esc(r.instead) + '</td><td>' + esc(r.ask) + '</td></tr>'; }).join('') + '</tbody></table></div>' : '')
+        + list('The rules', w.rules, true) + list('Due and coming up', w.due, false)
         + (w.materials && w.materials.length ? '<div class="ea-wk-part"><div class="ea-wk-head">Workshop files</div>' + eaFiles(w.materials) + '</div>' : '')
         + (w.guide && w.guide.length ? '<div class="ea-wk-part"><div class="ea-wk-head">Go deeper in the guidebook</div>' + guideLinks(w.guide) + '</div>' : '')
       : '<p class="ea-pending">Recap coming. CEI is adding the summary of this workshop.</p>';

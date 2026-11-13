@@ -7,7 +7,9 @@
    - Each spring, update `cohort`, `dates`, and `verifiedOn`.
    - Each week in `weeks` can carry any of: `summary` (a paragraph),
      `agenda` (how the night ran), `covers` (what it teaches), `goals`,
-     `rules`, `due`, `materials`, and `guide`. A week with no summary
+     `rules`, `due`, `more` (extra headed lists: { head, items }),
+     `swap` (an "Instead of… / Ask…" table: { instead, ask }),
+     `materials`, and `guide`. A week with no summary
      shows "Recap coming" with its date.
    - `materials` are the workshop files, kept in assets/ea/:
        { label, file, type, size, note (optional, e.g. which slides) }
@@ -88,34 +90,63 @@ const ALLIANCE = {
 
   /* The eight workshops. */
   weeks: [
-    { n: 1, date: '2026-02-02', title: 'The Business Model Canvas',
-      summary: 'The one-page map every EA venture works from for the next eight weeks. The Business Model Canvas, from Strategyzer, breaks a business into nine building blocks, so you can see the whole of it, and its weakest assumption, on a single sheet.',
-      covers: [
-        'Customer segments: who you create value for.',
-        'Value propositions: the problem you solve, and why customers would pick you.',
-        'Channels and customer relationships: how you reach customers, win them, and keep them.',
-        'Revenue streams: what customers pay for, and how.',
-        'Key resources, key activities, and key partners: what it takes to deliver.',
-        'Cost structure: what all of that costs.'
+    { n: 1, date: '2026-02-02', title: 'Clarifying your idea: the Business Model Canvas',
+      summary: 'The first night, and the one-page map every EA venture works from for the next eight weeks. The Business Model Canvas, from Strategyzer, breaks a business into nine building blocks, so you can see the whole of it, and its weakest assumption, on a single sheet. The value proposition canvas then zooms in on the two blocks that matter most: what you offer, and who it is for.',
+      agenda: [
+        '5:30 Welcome. Go around and introduce yourself.',
+        '5:45 Warm-up: a round or two of the game Products.',
+        '6:00 Introduce the idea you are developing, in 30 seconds to a minute.',
+        '6:15 A walk through the Business Model Canvas and what to think about for your own idea.',
+        '6:30 Dinner and a break.',
+        '6:45 Work session: fill out the canvas for your venture.',
+        '7:05 Swap tables: explain your idea and ask for feedback and blind spots.'
       ],
-      materials: [ { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slides 2 to 5 review the canvas' }
+      covers: [
+        'A startup is a business built around an innovation; a small business is an activity for profit. Both are entrepreneurship: running a new business.',
+        'Success = idea × execution × market × team × luck. Because it is a product, a zero in any one of them makes the whole thing zero.',
+        'Customer segments: the groups of people or organizations you aim to reach and serve.',
+        'Value propositions: the bundle of products and services that creates value for a specific segment.',
+        'Channels and customer relationships: how you reach each segment to deliver that value, and the kind of relationship you build with it.',
+        'Revenue streams: the cash you earn from each segment.',
+        'Key resources, key activities, and key partners: the assets, the work, and the suppliers and partners that make the model run.',
+        'Cost structure: everything it costs to operate the model.',
+        'The value proposition canvas: on the customer\'s side, the jobs they are trying to get done, their pains, and the gains they want; on yours, your products and services, pain relievers, and gain creators. Product-market fit is where the two sides match.',
+        'Focus on the customer\'s problem. Sell pain relievers, not vitamins: a migraine, not a nice-to-have.',
+        'Avoid the startup loop of despair (idea, build, brand, and only then look for a customer). Go idea, customer, build, brand, starting with one customer who has a big problem.'
+      ],
+      materials: [
+        { label: 'The Business Model Canvas', file: 'assets/ea/ea-week1-business-model-canvas.pdf', type: 'PDF', size: '2.8 MB', note: 'The first-night slides' },
+        { label: 'Blank canvas to print', file: 'assets/ea/ea-week1-blank-business-model-canvas.pdf', type: 'PDF', size: '40 KB', note: 'Strategyzer, CC BY-SA 3.0. Prints on A3 or tabloid' },
+        { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slides 2 to 5 review the canvas' }
       ],
       guide: [
         { to: 'term-business-model', label: 'Business Model' },
         { to: 'term-lean-canvas', label: 'Lean Canvas' },
         { to: 'term-value-proposition', label: 'Value Proposition' },
+        { to: 'term-product-market-fit', label: 'Product-Market Fit' },
         { to: 'howto-problem', label: 'How do I find a problem worth solving?' },
         { url: 'https://www.strategyzer.com/library/the-business-model-canvas', label: 'The canvas, free from Strategyzer' }
       ] },
     { n: 2, date: '2026-02-09', title: 'Customer segments',
       summary: 'Narrowing "everyone" down to the first customers who feel the problem most. The canvas starts on the customer side for a reason: every other block depends on who the customer is.',
+      agenda: [
+        '5:30 Introduce your idea again. Get used to talking about it.',
+        '5:40 A warm-up on the topic.',
+        '5:55 What a customer segment is, and how to find yours.',
+        '6:30 Dinner and a break.',
+        '7:00 Work session: evaluate your customer segments, then swap tables to give and get feedback.'
+      ],
       covers: [
+        'The end user and the customer are not always the same person: the one who uses the product may not be the one who pays for it. Know both.',
+        'You cannot sell to everyone, so define the customer narrowly. Behavior (how they buy and how they use a product) usually tells you more than demographics, which tend to be too simple, or geography, which matters only when your reach is limited.',
         'Segment by the problem and the job the customer is trying to get done, not only by age or income.',
         'The technology adoption life cycle: innovators and early adopters buy early because their pain is big; the mainstream market waits for a complete, reliable solution. The gap between the two is the chasm.',
         'Pick a beachhead: one segment small enough to win and big enough to matter, then widen.',
         'Then go and talk to them. Interviews settle what a whiteboard cannot.'
       ],
-      materials: [ { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slide 7 is the adoption life cycle' }
+      materials: [
+        { label: 'The Business Model Canvas', file: 'assets/ea/ea-week1-business-model-canvas.pdf', type: 'PDF', size: '2.8 MB', note: 'Slides 20 and 21 are customer definitions' },
+        { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slide 7 is the adoption life cycle' }
       ],
       guide: [
         { to: 'term-early-adopter', label: 'Early Adopter' },
@@ -143,17 +174,49 @@ const ALLIANCE = {
         { to: 'term-customer-discovery', label: 'Customer Discovery' },
         { url: 'https://missouri.qualtrics.com', label: 'Mizzou Qualtrics, for surveys' }
       ] },
-    { n: 4, date: '2026-02-23', title: 'Market research',
-      summary: 'Putting numbers and evidence behind the canvas: how big the market is, who already serves it, and what customers do about the problem today.',
+    { n: 4, date: '2026-02-23', title: 'Market research and customer discovery',
+      summary: 'Moving from general ideas to data-backed proof of where your target customers live, spend, and behave. Gwen Gray, the business research librarian, walks through the MU Libraries research guide built for the EA, and then you put it to work on your own venture.',
+      agenda: [
+        '5:30 Welcome, a recap of Week 3, and this week\'s focus.',
+        '5:45 Warm-up, "The Mystery Customer": a quick table challenge naming the demographic and psychographic traits of a non-obvious customer segment.',
+        '6:00 The customer lens: in 30 seconds to a minute, state your idea and who you assume your primary customer is.',
+        '6:15 Market research with Gwen Gray: a live walk-through of the library guide, finding demographic data, industry reports, consumer behavior, and market data.',
+        '6:45 Dinner and a break.',
+        '7:00 Work session: use the guide to find where your customers are, their demographic profile, the market size, geographic density, and their online and offline habits.',
+        '7:35 Swap tables: explain what you found, and ask for feedback and blind spots.'
+      ],
       covers: [
+        'Demographics describe who customers are (age, income, education, family); psychographics describe how they think and what they value. You need both.',
         'Size the market two ways, top-down from industry data and bottom-up from what you can actually sell, and compare: TAM, SAM, and SOM.',
         'Map the competition, including the option customers use most: doing nothing.',
-        'MU Libraries keeps a research guide built for the Entrepreneurship Alliance, and the business research librarian meets founders one-on-one.',
         'Frameworks for organizing what you find: SWOT, PESTLE, and Porter\'s Five Forces.'
       ],
+      goals: ['Leave with evidence instead of assumptions: where your customers are, who they are, how many there are, and how they spend their time online and off.'],
+      more: [
+        { head: 'Interviewing customers', items: [
+          'Every interview should answer three questions: why is there a problem, what causes it, and what solution does the customer imagine?',
+          'Keep three things apart in your notes, in the customer\'s own words: the problem (what they are trying to get done), the issues (what falls short in how they solve it today), and success (the concrete outcome they want).',
+          'Share your thinking, but do not sell. "I love it," "Brilliant idea," and "Let me know when you launch" are false positives: the person is reacting to your pitch, not describing a problem they have.',
+          'It is qualitative, not a vote. The one person in ten who says something different may matter more than the nine who agree.',
+          'After each interview, put the key ideas on sticky notes and sort them into problems, issues, and success. When all the interviews are done, rank them by importance.',
+          'Common mistakes: mixing customer segments, mixing up problem and success, being too generic, holding on to your assumptions, not listening, skipping follow-up questions, rushing, and not preparing and practicing your questions.',
+          'Interviews are one of six ways to learn about customers described in Strategyzer\'s Value Proposition Design. The others are desk research, watching people in the real world, using the product yourself, building with customers, and running experiments.'
+        ] }
+      ],
+      swap: [
+        { instead: 'How much would you pay?', ask: 'Talk me through the last time you had a problem with …' },
+        { instead: 'Do you like my idea?', ask: 'How much grief, time, or effort is this problem causing you?' },
+        { instead: 'Would you buy this product?', ask: 'Show me how you currently solve, or try to solve, this problem.' },
+        { instead: '', ask: 'Who else should I talk to to learn more about this problem?' }
+      ],
+      materials: [
+        { label: 'Interviewing potential customers', file: 'assets/ea/ea-week4-interviewing-potential-customers.pdf', type: 'PDF', size: '70 KB', note: 'Questions to ask, and mistakes to avoid' }
+      ],
       guide: [
-        { url: 'https://libraryguides.missouri.edu/entrepreneurshipalliance/intro', label: 'MU Libraries research guide for the EA' },
+        { url: 'https://libraryguides.missouri.edu/entrepreneurshipalliance', label: 'MU Libraries research guide for the EA' },
         { to: 'contact-gwen-gray', label: 'Gwen Gray, business research librarian' },
+        { to: 'howto-problem', label: 'How do I find a problem worth solving?' },
+        { to: 'term-customer-discovery', label: 'Customer Discovery' },
         { to: 'term-tam-sam-som', label: 'TAM / SAM / SOM' },
         { to: 'term-swot-analysis', label: 'SWOT Analysis' },
         { to: 'term-pestle-analysis', label: 'PESTLE Analysis' },

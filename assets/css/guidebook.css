@@ -1017,6 +1017,13 @@ a.kpi:hover { background: var(--gold-tint-3); }
 .ea-final .howto-steps li::before { background: var(--ea-deep); color: var(--paper); }
 .ea-body > .cei-note { margin-top: 28px; }
 
+/* "Instead of… / Ask…" question table in a week */
+.ea-swap { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+.ea-swap th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ea-deep); background: var(--ea-tint); padding: 8px 12px; border-bottom: 2px solid var(--ea); }
+.ea-swap td { padding: 10px 12px; border-bottom: 1px solid #ECEFEE; vertical-align: top; color: #404040; }
+.ea-swap td:first-child { color: #6b6b6b; text-decoration: line-through; text-decoration-color: #b9b9b9; width: 40%; }
+.ea-swap td:last-child { color: var(--ea-deep); font-weight: 600; }
+
 /* Workshop files: slides and spreadsheets, per week and all together */
 .ea-library { margin-bottom: 20px; }
 .ea-files { list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px; }
