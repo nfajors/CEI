@@ -11,7 +11,9 @@
      `swap` (an "Instead of… / Ask…" table: { instead, ask }),
      `materials`, and `guide`. A week with no summary
      shows "Recap coming" with its date.
-   - `materials` are the workshop files, kept in assets/ea/:
+   - `materials` are the workshop files, kept in assets/ea/. Slide decks
+     are posted only in CEI-branded public versions; handouts, templates,
+     and calculators can go up as they are.
        { label, file, type, size, note (optional, e.g. which slides) }
      They also appear together under "Workshop files".
    - `guide` links connect the workshop to the rest of the guidebook.
@@ -37,6 +39,8 @@ const ALLIANCE = {
   // The "Scan to Apply" QR on the spring 2027 recruiting slide opens this form.
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
   verifiedOn: '2026-10-22',
+  // Shown under "Workshop files" until CEI's branded slide decks are posted.
+  slidesNote: 'Workshop slides: CEI is preparing branded versions for public posting. Until then, ask cei@missouri.edu.',
 
   lede: 'CEI\'s flagship accelerator: eight Monday-night workshops that take you from an idea to a funded pitch, with dinner, a cohort of founders from every corner of campus, and up to $40,000 in startup funds for the winners. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
@@ -115,9 +119,7 @@ const ALLIANCE = {
         'Avoid the startup loop of despair (idea, build, brand, and only then look for a customer). Go idea, customer, build, brand, starting with one customer who has a big problem.'
       ],
       materials: [
-        { label: 'The Business Model Canvas', file: 'assets/ea/ea-week1-business-model-canvas.pdf', type: 'PDF', size: '2.8 MB', note: 'The first-night slides' },
-        { label: 'Blank canvas to print', file: 'assets/ea/ea-week1-blank-business-model-canvas.pdf', type: 'PDF', size: '40 KB', note: 'Strategyzer, CC BY-SA 3.0. Prints on A3 or tabloid' },
-        { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slides 2 to 5 review the canvas' }
+        { label: 'Blank canvas to print', file: 'assets/ea/ea-week1-blank-business-model-canvas.pdf', type: 'PDF', size: '40 KB', note: 'Strategyzer, CC BY-SA 3.0. Prints on A3 or tabloid' }
       ],
       guide: [
         { to: 'term-business-model', label: 'Business Model' },
@@ -144,10 +146,6 @@ const ALLIANCE = {
         'Pick a beachhead: one segment small enough to win and big enough to matter, then widen.',
         'Then go and talk to them. Interviews settle what a whiteboard cannot.'
       ],
-      materials: [
-        { label: 'The Business Model Canvas', file: 'assets/ea/ea-week1-business-model-canvas.pdf', type: 'PDF', size: '2.8 MB', note: 'Slides 20 and 21 are customer definitions' },
-        { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slide 7 is the adoption life cycle' }
-      ],
       guide: [
         { to: 'term-early-adopter', label: 'Early Adopter' },
         { to: 'term-beachhead-market', label: 'Beachhead Market' },
@@ -163,9 +161,7 @@ const ALLIANCE = {
         'Ask "what if" of the business model: what if it were free, a subscription, a bundle, do-it-yourself like IKEA, a luxury item, or deliberately scarce?',
         'Write desirability hypotheses: "We believe our customers have these jobs, pains, and gains" and "We believe our product solves them." Then test each one.',
         'Tests, roughly from cheapest up: a survey (Mizzou has Qualtrics), a landing page that collects emails (WordPress, Mailchimp), A/B tests of your pitch, features, design, and price, a letter of intent, a mock sale, and crowdfunding.',
-        'From the slides: hardware founders who built their first proof of concept by repurposing open-source devices instead of designing a custom system.'
-      ],
-      materials: [ { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slides 6 to 43 cover prototyping and testing' }
+        'Hardware founders can often build a first proof of concept by repurposing open-source devices instead of designing a custom system.'
       ],
       guide: [
         { to: 'term-mvp-minimum-viable-product', label: 'MVP (Minimum Viable Product)' },
@@ -223,7 +219,7 @@ const ALLIANCE = {
         { to: 'term-porter-s-five-forces', label: 'Porter\'s Five Forces' }
       ] },
     { n: 5, date: '2026-03-02', title: 'Accounting basics and financial projections',
-      summary: 'Two halves: the advisers a business needs on its side, starting with a banker, and the numbers. A local banker talks about the relationship with your bank and how small-business loans work, then a short course in accounting, then a work session on your own projections.',
+      summary: 'Two halves: the people a business needs on its side, and the numbers. A local banker talks about the relationship with your bank and how small-business loans work, then a short course in accounting, then a work session on your own projections.',
       agenda: [
         '5:30 Welcome. Introduce yourself, your idea, and the evening\'s guests.',
         '5:40 Meet "your" banker: why the relationship matters, small-business loans, and Q&A.',
@@ -232,6 +228,7 @@ const ALLIANCE = {
         '7:05 Work session: your 1-year and 5-year projections.'
       ],
       covers: [
+        'B.A.I.L.L.: the five relationships every business needs. A Banker, an Accountant, an Insurance agent, a Lawyer, and a Landlord. This week starts with the banker.',
         'Revenue is money in. Expenses are money out, either fixed (they do not change with volume) or variable (they do). Profit is revenue minus expenses, and profit margin is profit divided by revenue.',
         'The break-even point is where revenue equals expenses. Use it to set sales targets and to see what a change in price or cost does.',
         'Worked example: a subscription news site with $70 a month in fixed costs (hosting, internet, marketing), $2 to win each subscriber, and $50 per article. At $8 a month and 5 articles, it breaks even at 54 subscribers.',
@@ -240,7 +237,6 @@ const ALLIANCE = {
       ],
       goals: ['Build a 1-year projection by month and a 5-year projection by year. The profit-and-loss template has a sheet for each.'],
       materials: [
-        { label: 'Accounting basics', file: 'assets/ea/ea-week5-accounting-basics.pptx', type: 'PowerPoint', size: '200 KB' },
         { label: 'Break-even calculator', file: 'assets/ea/ea-week5-break-even-calculator.xlsx', type: 'Excel', size: '9 KB', note: 'Three calculators: price, subscribers, open-ended' },
         { label: 'Profit-and-loss template', file: 'assets/ea/ea-week5-profit-and-loss-template.xlsx', type: 'Excel', size: '9 KB', note: 'Monthly for year 1, annual for 5 years' }
       ],
@@ -250,17 +246,17 @@ const ALLIANCE = {
         { to: 'term-unit-economics', label: 'Unit Economics' },
         { to: 'term-gross-margin', label: 'Gross Margin' },
         { to: 'term-burn-rate', label: 'Burn Rate' },
-        { to: 'howto-runway', label: 'How do I manage runway and stay alive?' }
+        { to: 'howto-runway', label: 'How do I manage runway and stay alive?' },
+        { to: 'res-mu-law-entrepreneurship-legal-clinic', label: 'The L in B.A.I.L.L.: MU Law Entrepreneurship Legal Clinic' },
+        { to: 'res-missouri-sbdc', label: 'Missouri SBDC: free small-business advising' }
       ] },
     { n: 6, date: '2026-03-09', title: 'Learning to pitch',
       summary: 'Turning six weeks of work into ten minutes. The pitch that wins is one the judges can follow: a clear story, slides that show instead of tell, and answers that hold up under questions.',
       covers: [
-        'Graphics: replace slides full of bullets with one clear visual. The slides show before-and-after makeovers.',
+        'Graphics: replace slides full of bullets with one clear visual.',
         'The murder board: before the real thing, pitch to a panel whose job is to tear it apart with the hardest questions they can find.',
         'Practice, out loud and on a timer, until the ten minutes are comfortable.',
         'Every EA pitch follows the Sequoia Capital template; the rules for the final are in Week 7.'
-      ],
-      materials: [ { label: 'Review, prototyping, desirability, and pitching', file: 'assets/ea/ea-week3-prototyping-desirability-pitching.pdf', type: 'PDF', size: '5.4 MB', note: 'Slides 44 to 49 are pitch advice' }
       ],
       guide: [
         { to: 'howto-pitch-deck', label: 'How do I build my first pitch deck?' },

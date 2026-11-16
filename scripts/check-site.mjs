@@ -33,7 +33,7 @@ expect(GLOSSARY.some(g => g.start), 'no glossary term is marked start: true');
 // (a static id in index.html, a phase block, or a glossary term).
 const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const pageIds = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1])
-  .concat(PHASES.map(p => p.id), GLOSSARY.map(g => 'term-' + slug(g.term)), CONTACTS.map(c => 'contact-' + c.id), ALLIANCE.weeks.map(w => 'ea-week-' + w.n)));
+  .concat(PHASES.map(p => p.id), GLOSSARY.map(g => 'term-' + slug(g.term)), CONTACTS.map(c => 'contact-' + c.id), RESOURCES.map(r => 'res-' + r.id), ALLIANCE.weeks.map(w => 'ea-week-' + w.n)));
 expect(ALLIANCE.weeks.map(w => w.n).join() === '1,2,3,4,5,6,7,8', 'data/alliance.js should list weeks 1 to 8 in order');
 for (const w of ALLIANCE.weeks) expect(/^\d{4}-\d{2}-\d{2}$/.test(w.date) && w.title, `EA week ${w.n} needs a date and a title`);
 const eaLinks = [].concat(...ALLIANCE.weeks.map(w => w.guide || []), ...ALLIANCE.application.map(a => a.guide || []), ...ALLIANCE.beforeWeek1.map(b => b.guide || []), ALLIANCE.final.guide || []);

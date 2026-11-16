@@ -420,7 +420,7 @@ function renderAlliance() {
     if (seen) seen.weeks.push(w.n); else all.push({ label: m.label, file: m.file, type: m.type, size: m.size, weeks: [w.n] });
   }); });
   var lib = byId('eaFiles');
-  if (lib) lib.innerHTML = all.length ? eaFiles(all.map(function (m) { return { label: m.label, file: m.file, type: m.type, size: m.size, note: (m.weeks.length > 1 ? 'Weeks ' : 'Week ') + m.weeks.join(', ') }; })) : '';
+  if (lib) lib.innerHTML = (A.slidesNote ? '<p class="ea-slides-note">' + esc(A.slidesNote) + '</p>' : '') + (all.length ? eaFiles(all.map(function (m) { return { label: m.label, file: m.file, type: m.type, size: m.size, note: (m.weeks.length > 1 ? 'Weeks ' : 'Week ') + m.weeks.join(', ') }; })) : '');
   var F = A.final;
   byId('ea-final').innerHTML = '<h3 class="ea-h3">' + esc(F.title) + ' and getting paid</h3><ol class="howto-steps">' + F.steps.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>' + guideLinks(F.guide);
   var v = byId('eaVerified');
@@ -457,6 +457,7 @@ function openGuide(id, from) {
     var search = byId('glossSearch'); if (search) search.value = '';
     var all = document.querySelector('.gloss-chip[data-cat="all"]'); if (all) all.click();
   }
+  if (el.classList.contains('resource-card') && el.offsetParent === null && typeof clearFilters === 'function') clearFilters();
   var q = el.querySelector(':scope > .howto-q, :scope > .gloss-q');
   if (q && q.getAttribute('aria-expanded') !== 'true') q.click();
   var target = el;
