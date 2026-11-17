@@ -77,7 +77,7 @@ const SITE = {
       { id: 'tools', label: 'Workbench', desc: 'Runway, unit economics, and equity calculators' },
       { id: 'ai', label: 'AI for founders', desc: 'Papers, models, podcasts, and the Prompt Studio' },
       { id: 'knowledge', label: 'Knowledge', desc: 'Books, essays, channels, and short video lessons' },
-      { id: 'glossary', label: 'Glossary', desc: 'Speak founder: sixty terms, defined plainly' }
+      { id: 'glossary', label: 'Glossary', desc: 'Speak founder: seventy-nine terms, defined plainly' }
     ] },
     { label: 'People', items: [
       { id: 'contacts', label: 'Contacts', desc: 'Who to talk to first, and the whole support network' },
