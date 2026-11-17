@@ -241,6 +241,9 @@ const ALLIANCE = {
         { label: 'Profit-and-loss template', file: 'assets/ea/ea-week5-profit-and-loss-template.xlsx', type: 'Excel', size: '9 KB', note: 'Monthly for year 1, annual for 5 years' }
       ],
       guide: [
+        { to: 'term-break-even-point', label: 'Break-Even Point' },
+        { to: 'term-cash-flow', label: 'Cash Flow' },
+        { to: 'term-financial-projections-pro-forma', label: 'Financial Projections (Pro Forma)' },
         { to: 'wbUnit', label: 'Unit economics calculator' },
         { to: 'wbRunway', label: 'Runway & default alive calculator' },
         { to: 'term-unit-economics', label: 'Unit Economics' },
