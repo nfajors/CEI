@@ -3,13 +3,17 @@
 #   - mid-August:  the fall refresh (Mizzou deadlines, new programs, contacts)
 #   - mid-January: the spring refresh (deadlines, courses, outcomes numbers)
 #   - first Monday of each month: the light monthly pass (wins, what's new, link report)
+# One issue per review: if an open issue with the same title exists, nothing new is opened.
 name: Editorial review reminder
 
 on:
   schedule:
     - cron: '0 13 15 8 *'    # 15 August, 13:00 UTC
     - cron: '0 13 15 1 *'    # 15 January, 13:00 UTC
-    - cron: '0 13 1-7 * 1'   # first Monday of every month, 13:00 UTC
+    # Every Monday; the job itself skips all but the first Monday of the month.
+    # (A cron with both a day range and a weekday fires on EITHER, which opened
+    # a monthly issue every day of the 1st to the 7th.)
+    - cron: '0 13 * * 1'     # Mondays, 13:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -27,7 +31,24 @@ jobs:
           if [ "$month" = "08" ] && [ "$day" = "15" ]; then echo "kind=semester" >> "$GITHUB_OUTPUT"; echo "title=Fall refresh of the Guidebook ($(date -u +%Y))" >> "$GITHUB_OUTPUT";
           elif [ "$month" = "01" ] && [ "$day" = "15" ]; then echo "kind=semester" >> "$GITHUB_OUTPUT"; echo "title=Spring refresh of the Guidebook ($(date -u +%Y))" >> "$GITHUB_OUTPUT";
           else echo "kind=monthly" >> "$GITHUB_OUTPUT"; echo "title=Monthly pass: $(date -u +'%B %Y')" >> "$GITHUB_OUTPUT"; fi
+      - name: Skip if this review is not due or is already open
+        id: due
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ steps.which.outputs.title }}
+        run: |
+          day=$(date -u +%-d)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ steps.which.outputs.kind }}" = "monthly" ] && [ "$day" -gt 7 ]; then
+            echo "Not the first Monday of the month; nothing to open."; echo "open=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label editorial --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}{{"\t"}}{{.title}}{{"\n"}}{{end}}' | awk -F'\t' -v t="$TITLE" '$2 == t { print $1; exit }')
+          if [ -n "$existing" ]; then
+            echo "\"$TITLE\" is already open as #$existing; nothing to open."; echo "open=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          echo "open=true" >> "$GITHUB_OUTPUT"
       - name: Build the checklist
+        if: steps.due.outputs.open == 'true'
         run: |
           {
             echo "Checklist from [EDITORIAL.md](EDITORIAL.md). Tick each item, then close this issue."
@@ -39,6 +60,7 @@ jobs:
             fi
           } > body.md
       - uses: peter-evans/create-issue-from-file@v5
+        if: steps.due.outputs.open == 'true'
         with:
           title: ${{ steps.which.outputs.title }}
           content-filepath: body.md
