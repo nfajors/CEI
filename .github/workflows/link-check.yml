@@ -1,7 +1,7 @@
 # Weekly health check for the Guidebook (D3, C7):
 #  1. every outbound link is checked with lychee; a single "Broken links" issue is
-#     opened or updated when something fails, so a dead resource is noticed within
-#     a week instead of by a student;
+#     opened or updated when something fails (and closed when everything passes),
+#     so a dead resource is noticed within a week instead of by a student;
 #  2. the data files are validated (scripts/check-site.mjs);
 #  3. deadlines.ics is rebuilt from data/opportunities.js and committed if it changed,
 #     so calendar subscribers pick up newly confirmed dates.
@@ -62,6 +62,17 @@ jobs:
           fail: false
           output: lychee-report.md
 
+      # Keep ONE broken-links issue: update it while links fail, close it when they pass.
+      - name: Find the open broken-links issue
+        id: issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          number=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label links --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}{{"\t"}}{{.title}}{{"\n"}}{{end}}' | awk -F'\t' '$2 == "Broken links in the Guidebook" { print $1; exit }')
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
       - name: Open or update the broken-links issue
         if: steps.lychee.outputs.exit_code != 0 && github.event_name != 'pull_request'
         uses: peter-evans/create-issue-from-file@v5
@@ -69,6 +80,13 @@ jobs:
           title: Broken links in the Guidebook
           content-filepath: lychee-report.md
           labels: links, maintenance
+          issue-number: ${{ steps.issue.outputs.number }}
+
+      - name: Close the broken-links issue when every link passes
+        if: steps.lychee.outputs.exit_code == 0 && github.event_name != 'pull_request' && steps.issue.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ steps.issue.outputs.number }}" --repo "$GITHUB_REPOSITORY" --comment "Every link passed this week's check, so this is closed. A new report opens here if one fails again." 
 
       # On pull requests, only a 4xx (404 Not Found, 410 Gone, ...) fails the check: the
       # page is gone. Timeouts, connection failures, and 5xx server errors are usually a
