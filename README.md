@@ -49,7 +49,7 @@ Live page: https://nfajors.github.io/CEI/
 | Wins feed, Recent Win card, and the outcomes dashboard | `data/wins.js` |
 | Courses, the minor, and the certificate | `data/courses.js` |
 | Short video lessons | `data/lessons.js` |
-| The EA tab: the Leslie Flegel Entrepreneurship Alliance, its dates, the application questions, and the eight weekly workshops with their links into the guidebook | `data/alliance.js` — after each Monday, paste that week's recap into its entry and set `recap: true` |
+| The EA tab: the Leslie Flegel Entrepreneurship Alliance, its dates, who can apply, the application questions, the eight weekly workshops with their links into the guidebook, awards and judging, and the Miscellaneous talks | `data/alliance.js` — after each Monday, paste that week's recap into its entry and set `recap: true` |
 
 The Playbook questions and the AI section are prose and live in `index.html` under `id="howto"` and `id="ai"`.
 

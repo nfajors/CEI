@@ -31,7 +31,9 @@
      The target gets a "Taught in the Leslie Flegel EA" line pointing back
      here, so the link works in both directions. scripts/check-site.mjs
      fails if a target does not exist.
-   - Week dates are the spring 2026 cohort's, the one the recaps describe.
+   - Week dates and titles are the spring 2027 schedule. The recaps describe
+     the spring 2026 sessions on the same topics; replace each one as the
+     2027 workshop runs. Week 4 (pricing and scaling) is new in 2027.
    - Never put applicant names or team details here; this page is public.
    ============================================================ */
 const ALLIANCE = {
@@ -41,25 +43,66 @@ const ALLIANCE = {
   programUrl: 'https://business.missouri.edu/student-development/learning-doing/entrepreneurship-alliance',
   // The "Scan to Apply" QR on the spring 2027 recruiting slide opens this form.
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
-  verifiedOn: '2026-10-22',
+  verifiedOn: '2026-11-24',
   // Shown under "Workshop files" until CEI's branded slide decks are posted.
   slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Week 6 is posted. For the other weeks, ask cei@missouri.edu.',
 
-  lede: 'CEI\'s flagship accelerator: eight Monday-night workshops that take you from an idea to a funded pitch, with dinner, a cohort of founders from every corner of campus, and up to $40,000 in startup funds for the winners. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
+  lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $40,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
   facts: [
     { value: '8', label: 'Monday-night workshops' },
-    { value: '$40K', label: 'In startup funds for winners' },
-    { value: '10 + 3', label: 'Minutes to pitch, then judge Q&A' },
-    { value: 'Free', label: 'Open to any major. Dinner included' }
+    { value: '$40K', label: 'In awards for the top five' },
+    { value: '10 + 4', label: 'Minutes to pitch, then judge Q&A' },
+    { value: 'Free', label: 'Open to any Mizzou student. Dinner included' }
   ],
 
   /* The cohort that is recruiting now. */
   dates: [
-    { when: 'Dec 11, 2026', what: 'Applications close', note: 'Apply as a solo founder or as a team.' },
+    { when: 'Dec 11, 2026', what: 'Applications close', note: 'Applications open the first week of the fall semester. Apply as a solo founder or as a team.' },
     { when: 'Mon, Feb 8, 2027', what: 'Workshop 1', note: 'Then every Monday, 5:30 to 8 pm, for eight workshops.' },
-    { when: 'Fri, Apr 9, 2027', what: 'Final Pitch Competition', note: 'A morning of pitches to judges, then the awards luncheon.' }
+    { when: 'Mon, Mar 29, 2027', what: 'No workshop', note: 'Spring break, between Weeks 7 and 8.' },
+    { when: 'Fri, Apr 9, 2027', what: 'Final Pitch Competition', note: 'Pitches to the judges, their deliberation, then the winners\' luncheon.' }
   ],
+
+  /* The program in brief (the "Who it is for" block). */
+  about: [
+    { title: 'Who can apply', text: 'Any Mizzou undergraduate or graduate student with a startup or business idea. Teams are encouraged but not required.' },
+    { title: 'When to apply', text: 'Applications open the first week of the fall semester and close before finals. The program runs each spring.' },
+    { title: 'Credit', text: 'The EA is not a course: you do not receive college credit or a grade for it.' },
+    { title: 'Mentors', text: 'You learn alongside the cohort, get one-on-one mentoring from founders, investors, and experienced entrepreneurs, and meet EA alumni.' }
+  ],
+
+  /* Awards and judging at the final. Starting with the spring 2027 cohort,
+     only the top five businesses receive an award. */
+  awards: {
+    intro: 'Starting with the spring 2027 cohort, awards go to the top five businesses at the final pitch competition. Everyone else completes the program without a cash award.',
+    places: [
+      { place: '1st', amount: '$20,000' },
+      { place: '2nd', amount: '$10,000' },
+      { place: '3rd', amount: '$5,000' },
+      { place: '4th', amount: '$2,500' },
+      { place: '5th', amount: '$2,500' }
+    ],
+    total: '$40,000',
+    funders: 'Program costs, including the awards, are covered by the Eisenhart Family Foundation and the Steen Venture Fund.',
+    criteria: [
+      { name: 'Problem and opportunity', points: 15, text: 'A clear, real problem; evidence that customers have it; a sense of the market\'s size.' },
+      { name: 'Solution and value proposition', points: 15, text: 'How the product or service solves the problem, and why customers would choose it over alternatives.' },
+      { name: 'Customer and market validation', points: 20, text: 'Customer interviews, surveys, pre-sales, pilots, or other proof gathered during the program.' },
+      { name: 'Business model and viability', points: 20, text: 'How the business makes money, realistic costs and pricing, and a credible path to sustainability.' },
+      { name: 'Use of award funds', points: 10, text: 'A specific plan for the money and the milestone it would help reach.' },
+      { name: 'Founder and team execution', points: 10, text: 'Progress made during the eight weeks, and the team\'s ability to carry the plan forward.' },
+      { name: 'Pitch delivery and Q&A', points: 10, text: 'A clear, well-organized presentation within the time limit, and thoughtful answers to the judges\' questions.' }
+    ],
+    scale: [
+      { band: 'Exceptional', range: '90 to 100% of the points', text: 'Clear, specific, and backed by strong evidence.' },
+      { band: 'Strong', range: '70 to 89%', text: 'Solid, with minor gaps.' },
+      { band: 'Developing', range: '50 to 69%', text: 'Ideas are present but lack evidence or detail.' },
+      { band: 'Limited', range: 'Below 50%', text: 'Missing, unclear, or unsupported.' }
+    ],
+    sheet: { label: 'Judge scoring sheet', file: 'assets/ea/ea-judge-scoring-sheet.pdf', type: 'PDF', size: '30 KB', note: 'Score your own practice pitches the way the judges will' },
+    guide: [{ to: 'ea-week-6', label: 'Week 6: Learning to pitch' }, { to: 'howto-pitch-deck', label: 'How do I build my first pitch deck?' }]
+  },
 
   /* What the application asks (the fields on the form). */
   application: [
@@ -97,8 +140,8 @@ const ALLIANCE = {
 
   /* The eight workshops. */
   weeks: [
-    { n: 1, date: '2026-02-02', title: 'Clarifying your idea: the Business Model Canvas',
-      summary: 'The first night, and the one-page map every EA venture works from for the next eight weeks. The Business Model Canvas, from Strategyzer, breaks a business into nine building blocks, so you can see the whole of it, and its weakest assumption, on a single sheet. The value proposition canvas then zooms in on the two blocks that matter most: what you offer, and who it is for.',
+    { n: 1, date: '2027-02-08', title: 'The Business Model Canvas and customer segments',
+      summary: 'The first night, and the one-page map every EA venture works from for the next eight weeks. The Business Model Canvas, from Strategyzer, breaks a business into nine building blocks, so you can see the whole of it, and its weakest assumption, on a single sheet. The value proposition canvas then zooms in on the two blocks that matter most: what you offer, and who it is for. Then the customer side gets narrowed: from "everyone" down to the first customers who feel the problem most.',
       agenda: [
         '5:30 Welcome. Go around and introduce yourself.',
         '5:45 Warm-up: a round or two of the game Products.',
@@ -121,6 +164,16 @@ const ALLIANCE = {
         'Focus on the customer\'s problem. Sell pain relievers, not vitamins: a migraine, not a nice-to-have.',
         'Avoid the startup loop of despair (idea, build, brand, and only then look for a customer). Go idea, customer, build, brand, starting with one customer who has a big problem.'
       ],
+      more: [
+        { head: 'Customer segments', items: [
+          'The end user and the customer are not always the same person: the one who uses the product may not be the one who pays for it. Know both.',
+          'You cannot sell to everyone, so define the customer narrowly. Behavior (how they buy and how they use a product) usually tells you more than demographics, which tend to be too simple, or geography, which matters only when your reach is limited.',
+          'Segment by the problem and the job the customer is trying to get done, not only by age or income.',
+          'The technology adoption life cycle: innovators and early adopters buy early because their pain is big; the mainstream market waits for a complete, reliable solution. The gap between the two is the chasm.',
+          'Pick a beachhead: one segment small enough to win and big enough to matter, then widen.',
+          'Then go and talk to them. Interviews settle what a whiteboard cannot.'
+        ] }
+      ],
       materials: [
         { label: 'Blank canvas to print', file: 'assets/ea/ea-week1-blank-business-model-canvas.pdf', type: 'PDF', size: '40 KB', note: 'Strategyzer, CC BY-SA 3.0. Prints on A3 or tabloid' }
       ],
@@ -130,53 +183,15 @@ const ALLIANCE = {
         { to: 'term-value-proposition', label: 'Value Proposition' },
         { to: 'term-product-market-fit', label: 'Product-Market Fit' },
         { to: 'howto-problem', label: 'How do I find a problem worth solving?' },
-        { url: 'https://www.strategyzer.com/library/the-business-model-canvas', label: 'The canvas, free from Strategyzer' }
-      ] },
-    { n: 2, date: '2026-02-09', title: 'Customer segments',
-      summary: 'Narrowing "everyone" down to the first customers who feel the problem most. The canvas starts on the customer side for a reason: every other block depends on who the customer is.',
-      agenda: [
-        '5:30 Introduce your idea again. Get used to talking about it.',
-        '5:40 A warm-up on the topic.',
-        '5:55 What a customer segment is, and how to find yours.',
-        '6:30 Dinner and a break.',
-        '7:00 Work session: evaluate your customer segments, then swap tables to give and get feedback.'
-      ],
-      covers: [
-        'The end user and the customer are not always the same person: the one who uses the product may not be the one who pays for it. Know both.',
-        'You cannot sell to everyone, so define the customer narrowly. Behavior (how they buy and how they use a product) usually tells you more than demographics, which tend to be too simple, or geography, which matters only when your reach is limited.',
-        'Segment by the problem and the job the customer is trying to get done, not only by age or income.',
-        'The technology adoption life cycle: innovators and early adopters buy early because their pain is big; the mainstream market waits for a complete, reliable solution. The gap between the two is the chasm.',
-        'Pick a beachhead: one segment small enough to win and big enough to matter, then widen.',
-        'Then go and talk to them. Interviews settle what a whiteboard cannot.'
-      ],
-      guide: [
         { to: 'term-early-adopter', label: 'Early Adopter' },
         { to: 'term-beachhead-market', label: 'Beachhead Market' },
-        { to: 'term-customer-discovery', label: 'Customer Discovery' },
-        { to: 'howto-first-customers', label: 'How do I secure my first ten customers?' }
+        { to: 'howto-first-customers', label: 'How do I secure my first ten customers?' },
+        { url: 'https://www.strategyzer.com/library/the-business-model-canvas', label: 'The canvas, free from Strategyzer' }
       ] },
-    { n: 3, date: '2026-02-16', title: 'Prototypes and tests: desirability',
-      summary: 'Finding out whether customers want it before you build it. The order is idea, customer, build, brand: find the customer before you build, and do not fall in love with your product or service.',
-      covers: [
-        'Prototyping is building quick, inexpensive, rough study models to learn about the desirability, feasibility, and viability of a value proposition and a business model. This week is about desirability.',
-        'Prototype to communicate, get feedback, stress-test the idea, build empathy for the customer, build excitement, and brainstorm.',
-        'Types: low-fidelity mock-ups, static prototypes (screens that look real with little or no interaction), scale models, and storyboards of the customer\'s experience.',
-        'Ask "what if" of the business model: what if it were free, a subscription, a bundle, do-it-yourself like IKEA, a luxury item, or deliberately scarce?',
-        'Write desirability hypotheses: "We believe our customers have these jobs, pains, and gains" and "We believe our product solves them." Then test each one.',
-        'Tests, roughly from cheapest up: a survey (Mizzou has Qualtrics), a landing page that collects emails (WordPress, Mailchimp), A/B tests of your pitch, features, design, and price, a letter of intent, a mock sale, and crowdfunding.',
-        'Hardware founders can often build a first proof of concept by repurposing open-source devices instead of designing a custom system.'
-      ],
-      guide: [
-        { to: 'term-mvp-minimum-viable-product', label: 'MVP (Minimum Viable Product)' },
-        { to: 'howto-pmf', label: 'How do I know if I have product-market fit?' },
-        { to: 'howto-pricing', label: 'How do I price my product?' },
-        { to: 'term-customer-discovery', label: 'Customer Discovery' },
-        { url: 'https://missouri.qualtrics.com', label: 'Mizzou Qualtrics, for surveys' }
-      ] },
-    { n: 4, date: '2026-02-23', title: 'Market research and customer discovery',
-      summary: 'Moving from general ideas to data-backed proof of where your target customers live, spend, and behave. Gwen Gray, the business research librarian, walks through the MU Libraries research guide built for the EA, and then you put it to work on your own venture.',
+    { n: 2, date: '2027-02-15', title: 'Market research and customer interviews',
+      summary: 'Moving from general ideas to data-backed proof of where your target customers live, spend, and behave. Gwen Gray, the business research librarian at MU Libraries, walks through the campus research tools and the guide built for the EA, and then you put them to work on your own venture and your customer interviews.',
       agenda: [
-        '5:30 Welcome, a recap of Week 3, and this week\'s focus.',
+        '5:30 Welcome, a recap of last week, and this week\'s focus.',
         '5:45 Warm-up, "The Mystery Customer": a quick table challenge naming the demographic and psychographic traits of a non-obvious customer segment.',
         '6:00 The customer lens: in 30 seconds to a minute, state your idea and who you assume your primary customer is.',
         '6:15 Market research with Gwen Gray: a live walk-through of the library guide, finding demographic data, industry reports, consumer behavior, and market data.',
@@ -221,7 +236,32 @@ const ALLIANCE = {
         { to: 'term-pestle-analysis', label: 'PESTLE Analysis' },
         { to: 'term-porter-s-five-forces', label: 'Porter\'s Five Forces' }
       ] },
-    { n: 5, date: '2026-03-02', title: 'Accounting basics and financial projections',
+    { n: 3, date: '2027-02-22', title: 'Prototypes and MVP testing',
+      summary: 'Finding out whether customers want it before you build it. The order is idea, customer, build, brand: find the customer before you build, and do not fall in love with your product or service.',
+      covers: [
+        'Prototyping is building quick, inexpensive, rough study models to learn about the desirability, feasibility, and viability of a value proposition and a business model. This week is about desirability.',
+        'Prototype to communicate, get feedback, stress-test the idea, build empathy for the customer, build excitement, and brainstorm.',
+        'Types: low-fidelity mock-ups, static prototypes (screens that look real with little or no interaction), scale models, and storyboards of the customer\'s experience.',
+        'Ask "what if" of the business model: what if it were free, a subscription, a bundle, do-it-yourself like IKEA, a luxury item, or deliberately scarce?',
+        'Write desirability hypotheses: "We believe our customers have these jobs, pains, and gains" and "We believe our product solves them." Then test each one.',
+        'Tests, roughly from cheapest up: a survey (Mizzou has Qualtrics), a landing page that collects emails (WordPress, Mailchimp), A/B tests of your pitch, features, design, and price, a letter of intent, a mock sale, and crowdfunding.',
+        'Hardware founders can often build a first proof of concept by repurposing open-source devices instead of designing a custom system.'
+      ],
+      guide: [
+        { to: 'term-mvp-minimum-viable-product', label: 'MVP (Minimum Viable Product)' },
+        { to: 'howto-pmf', label: 'How do I know if I have product-market fit?' },
+        { to: 'howto-pricing', label: 'How do I price my product?' },
+        { to: 'term-customer-discovery', label: 'Customer Discovery' },
+        { url: 'https://missouri.qualtrics.com', label: 'Mizzou Qualtrics, for surveys' }
+      ] },
+    { n: 4, date: '2027-03-01', title: 'Pricing and scaling',
+      guide: [
+        { to: 'howto-pricing', label: 'How do I price my product?' },
+        { to: 'wbUnit', label: 'Unit economics calculator' },
+        { to: 'term-unit-economics', label: 'Unit Economics' },
+        { to: 'term-gross-margin', label: 'Gross Margin' }
+      ] },
+    { n: 5, date: '2027-03-08', title: 'Financial projections, B.A.I.L.L., and legal structure',
       summary: 'Two halves: the people a business needs on its side, and the numbers. A local banker talks about the relationship with your bank and how small-business loans work, then a short course in accounting, then a work session on your own projections.',
       agenda: [
         '5:30 Welcome. Introduce yourself, your idea, and the evening\'s guests.',
@@ -253,19 +293,21 @@ const ALLIANCE = {
         { to: 'term-gross-margin', label: 'Gross Margin' },
         { to: 'term-burn-rate', label: 'Burn Rate' },
         { to: 'howto-runway', label: 'How do I manage runway and stay alive?' },
+        { to: 'term-llc-vs-c-corp', label: 'LLC vs. C-Corp: choosing a legal structure' },
         { to: 'res-mu-law-entrepreneurship-legal-clinic', label: 'The L in B.A.I.L.L.: MU Law Entrepreneurship Legal Clinic' },
         { to: 'res-missouri-sbdc', label: 'Missouri SBDC: free small-business advising' }
       ] },
-    { n: 6, date: '2026-03-09', title: 'Learning to pitch',
+    { n: 6, date: '2027-03-15', title: 'Learning to pitch',
       summary: 'Turning six weeks of work into ten minutes. The pitch that wins is one the judges can follow: a clear story, slides that show instead of tell, and answers that hold up under questions.',
       covers: [
         'Graphics: replace slides full of bullets with one clear visual.',
         'The murder board: before the real thing, pitch to a panel whose job is to tear it apart with the hardest questions they can find.',
         'Practice, out loud and on a timer, until the ten minutes are comfortable.',
-        'Every EA pitch follows the Sequoia Capital template; the rules for the final are in Week 7.'
+        'Every EA pitch follows the Sequoia Capital template; the rules for the final are in Week 7.',
+        'Seven criteria, 100 points: build the deck around how the judges score it (Awards and judging, below).'
       ],
       materials: [
-        { label: 'Learning to pitch (slides)', file: 'assets/ea/ea-week6-learning-to-pitch.pptx', type: 'PowerPoint', size: '280 KB', note: 'The Sequoia deck slide by slide, the murder board, judge Q&A, and the rules for the final' }
+        { label: 'Learning to pitch (slides)', file: 'assets/ea/ea-week6-learning-to-pitch.pptx', type: 'PowerPoint', size: '285 KB', note: 'The Sequoia deck slide by slide, how the judges score, the murder board, judge Q&A, and the rules for the final' }
       ],
       guide: [
         { to: 'howto-pitch-deck', label: 'How do I build my first pitch deck?' },
@@ -273,16 +315,17 @@ const ALLIANCE = {
         { to: 'term-traction', label: 'Traction' },
         { to: 'term-tam-sam-som', label: 'TAM / SAM / SOM' },
         { to: 'wbUnit', label: 'Unit economics calculator' },
-        { to: 'ea-week-7', label: 'Week 7: the rules for the final' }
+        { to: 'ea-week-7', label: 'Week 7: the rules for the final' },
+        { to: 'ea-awards', label: 'How the judges score the final' }
       ] },
-    { n: 7, date: '2026-03-16', title: 'Pitch feedback and the Sequoia deck',
-      summary: 'Teams pitched and got feedback. The work now is to take it to heart, refine the deck, and practice out loud, over spring break if that is when you have the time. Every EA pitch is built on the Sequoia Capital template, the same framework the Playbook walks through.',
+    { n: 7, date: '2027-03-22', title: 'Test pitch and alumni feedback',
+      summary: 'Every team gives its full pitch and gets feedback from EA alumni. The work then is to take it to heart, refine the deck, and practice out loud over spring break: there is no workshop the following Monday. Every EA pitch is built on the Sequoia Capital template, the same framework the Playbook walks through.',
       rules: [
         'Follow the order of the Sequoia template. Do not move sections around.',
         'Include, at minimum, every slide in the template.',
         'Add slides if you have more to show.',
         'You may include up to 10 to 15 seconds of video if it helps.',
-        'You get 10 minutes to present, then 3 minutes of judge Q&A.',
+        'You get 10 minutes to present, then 4 minutes of judge Q&A.',
         'You get a 2-minute and a 1-minute warning, and you are cut off at 10 minutes.'
       ],
       due: [
@@ -294,9 +337,10 @@ const ALLIANCE = {
         { to: 'term-pitch-deck', label: 'Pitch Deck' },
         { to: 'term-traction', label: 'Traction' },
         { to: 'term-tam-sam-som', label: 'TAM / SAM / SOM' },
-        { to: 'howto-raise', label: 'How do I raise my first capital?' }
+        { to: 'howto-raise', label: 'How do I raise my first capital?' },
+        { to: 'ea-awards', label: 'How the judges score the final' }
       ] },
-    { n: 8, date: '2026-03-30', title: 'Final run-through',
+    { n: 8, date: '2027-04-05', title: 'Final run-through',
       summary: 'A full run-through of every pitch in Cornell Hall 205, the room where the final happens. Two days later the deck is locked.',
       due: [
         'Final slides are due that Wednesday at 6 pm. PowerPoint (.pptx) only: not Canva, not PDF. Email them to cei@missouri.edu.',
@@ -315,11 +359,13 @@ const ALLIANCE = {
   final: {
     title: 'Final Pitch Competition',
     steps: [
-      'Pitches run from 9:30 am to about 12:30 pm, then the awards luncheon. Expect to finish around 1:30 or 2 pm.',
-      'Judges have included Kelsey Raymond, Executive Director of the Griggs Innovators Nexus.',
-      'The Monday after the final is a short debrief, under an hour (no dinner). CEI covers what it needs to pay your business, so come: it is how you receive your funding. Bring feedback on the program: what to keep, what to add, what to stop.'
+      'The final follows the Week 8 run-through, in Cornell Hall 205. Each business gets 15 minutes: 10 to pitch, 4 for the judges\' questions, and 1 to change over. You are stopped at 10 minutes.',
+      'Three judges score every pitch on the seven criteria under Awards and judging. CEI staff choose the panel, and it changes every year; past judges have included Kelsey Raymond, Executive Director of the Griggs Innovators Nexus.',
+      'After the last pitch, the judges deliberate in private. Each judge may revise their own scores after comparing the pitches, then signs and submits a final sheet. Scores are not final until then.',
+      'CEI averages the judges\' scores and breaks any ties, the CEI director confirms the ranking, and the top five are announced at the winners\' luncheon right after the competition.',
+      'The Monday after the final is a short debrief for the whole cohort, under an hour (no dinner). Bring feedback on the program: what to keep, what to add, what to stop. If you placed in the top five, this is also where CEI collects what it needs to pay your award to your business.'
     ],
-    guide: [{ to: 'wins', label: 'Past EA winners in the wins feed' }, { to: 'phase-3', label: 'Phase 3: what comes after the money' }]
+    guide: [{ to: 'ea-awards', label: 'Awards and judging' }, { to: 'wins', label: 'Past EA winners in the wins feed' }, { to: 'phase-3', label: 'Phase 3: what comes after the money' }]
   },
 
   /* Miscellaneous: decks that go with the program but are not one

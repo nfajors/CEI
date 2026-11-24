@@ -340,6 +340,7 @@ function hideEmptyVentureBoard() {
 /* ---------- Leslie Flegel Entrepreneurship Alliance (data/alliance.js) ---------- */
 // What kind of guidebook content an id points at, for the link's small label.
 function guideKind(id) {
+  if (/^ea-week-\d+$/.test(id)) return 'EA';
   var el = byId(id);
   if (!el) return '';
   if (el.classList.contains('howto-card')) return 'Playbook';
@@ -348,7 +349,7 @@ function guideKind(id) {
   if (el.classList.contains('phase-block')) return 'Phase';
   if (el.classList.contains('contact-card')) return 'Contact';
   if (el.classList.contains('resource-card')) return 'Resource';
-  if (el.classList.contains('ea-week')) return 'EA';
+  if (el.classList.contains('ea-week') || el.classList.contains('ea-block')) return 'EA';
   return 'Guidebook';
 }
 // EA week ids pass the filter: the weeks are rendered in the same pass, so they are not in the DOM yet.
@@ -389,6 +390,9 @@ function renderAlliance() {
     return '<li><div class="ea-app-q"><b>' + esc(a.q) + '</b><span>' + esc(a.hint) + '</span></div>' + guideLinks(a.guide) + '</li>';
   }).join('');
   byId('eaAppNote').textContent = A.applicationNote || '';
+  var about = byId('eaAbout');
+  if (about) { if (A.about && A.about.length) about.innerHTML = A.about.map(function (a) { return '<div><dt>' + esc(a.title) + '</dt><dd>' + esc(a.text) + '</dd></div>'; }).join(''); else byId('ea-about').hidden = true; }
+  renderAwards(A.awards);
   byId('eaBefore').innerHTML = A.beforeWeek1.map(function (b) { return '<li><span>' + esc(b.text) + '</span>' + guideLinks(b.guide) + '</li>'; }).join('');
   byId('eaWeeks').innerHTML = A.weeks.map(function (w) {
     var list = function (head, items, ordered) {
@@ -436,6 +440,25 @@ function renderAlliance() {
   if (v) { v.textContent = new Date(A.verifiedOn + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }); v.setAttribute('datetime', A.verifiedOn); }
   markAllianceLinks(A);
 }
+// Awards and judging at the final: the award table, the rubric, and the scoring sheet.
+function renderAwards(W) {
+  var box = byId('ea-awards');
+  if (!box) return;
+  if (!W) { box.hidden = true; return; }
+  var pts = W.criteria.reduce(function (n, c) { return n + c.points; }, 0);
+  box.innerHTML = '<h3 class="ea-h3">Awards and judging</h3><p class="ea-sub">' + esc(W.intro) + '</p>'
+    + '<div class="ea-awards-grid"><div><div class="ea-wk-head">The awards</div><table class="ea-table ea-places"><thead><tr><th scope="col">Place</th><th scope="col">Award</th></tr></thead><tbody>'
+    + W.places.map(function (p) { return '<tr><td>' + esc(p.place) + '</td><td>' + esc(p.amount) + '</td></tr>'; }).join('')
+    + '</tbody><tfoot><tr><th scope="row">Total</th><td>' + esc(W.total) + '</td></tr></tfoot></table>'
+    + (W.funders ? '<p class="ea-note">' + esc(W.funders) + '</p>' : '') + '</div>'
+    + '<div><div class="ea-wk-head">How the judges score (' + pts + ' points)</div><table class="ea-table ea-rubric"><thead><tr><th scope="col">Criterion</th><th scope="col">Points</th><th scope="col">What judges look for</th></tr></thead><tbody>'
+    + W.criteria.map(function (c) { return '<tr><th scope="row">' + esc(c.name) + '</th><td>' + c.points + '</td><td>' + esc(c.text) + '</td></tr>'; }).join('')
+    + '</tbody></table></div></div>'
+    + '<div class="ea-wk-part"><div class="ea-wk-head">Within each criterion, judges use the full range</div><ul class="ea-scale">'
+    + W.scale.map(function (b) { return '<li><b>' + esc(b.band) + '</b><span>' + esc(b.range) + '</span>' + esc(b.text) + '</li>'; }).join('') + '</ul></div>'
+    + (W.sheet ? '<div class="ea-wk-part"><div class="ea-wk-head">Score your practice pitch</div>' + eaFiles([W.sheet]) + '</div>' : '')
+    + guideLinks(W.guide);
+}
 // The other direction: every Playbook question, glossary term, or calculator the
 // EA links to gets a line saying where in the program it is taught.
 function markAllianceLinks(A) {
@@ -445,6 +468,7 @@ function markAllianceLinks(A) {
   add([].concat.apply([], A.beforeWeek1.map(function (b) { return b.guide || []; })), 'Before Workshop 1', 'ea-before');
   A.weeks.forEach(function (w) { add(w.guide, 'Week ' + w.n + ': ' + w.title, 'ea-week-' + w.n); });
   add(A.final.guide, 'The final', 'ea-final');
+  if (A.awards) add(A.awards.guide, 'Awards and judging', 'ea-awards');
   Object.keys(refs).forEach(function (id) {
     var el = byId(id);
     if (!el || el.closest('#ea') || id === 'wins' || el.tagName === 'A') return;
