@@ -5,6 +5,7 @@
    "Updated …" stamp and the What's New strip both read from it.
    ============================================================ */
 const CHANGELOG = [
+  { date: '2026-11-24', text: 'The first EA workshop slides are up: <a href="#ea-week-6">Week 6, Learning to pitch</a>, walks through the Sequoia template every final pitch follows, slide by slide, with the murder board, judge Q&amp;A, and the rules for the final. A new <a href="#ea-misc">Miscellaneous</a> block at the end of the EA tab adds four Trulaske talks: Ben Horowitz on great entrepreneurs, the one-person services-as-software company, AI as a superpower, and David Deming on picking leaders.' },
   { date: '2026-11-16', text: 'All eight <a href="#ea-weeks">EA workshops</a> are now on the EA tab, from the Business Model Canvas to the final run-through: how each night runs, what it covers, and four files to download: a printable canvas, a customer-interview guide, a break-even calculator, and a profit-and-loss template.' },
   { date: '2026-10-30', text: 'Nineteen new finance terms in <a href="#glossary">the glossary</a>, from cash flow and break-even to valuation caps, preferred stock, revenue-based financing, and the power law that drives venture capital.' },
   { date: '2026-10-22', text: 'A simpler menu: fifteen links became four dropdowns (Start here, Programs, Learn, People) plus the EA tab, each link with a line on what you will find. The page now runs in the same order.' },

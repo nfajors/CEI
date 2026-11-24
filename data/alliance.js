@@ -16,6 +16,9 @@
      and calculators can go up as they are.
        { label, file, type, size, note (optional, e.g. which slides) }
      They also appear together under "Workshop files".
+   - `misc` is the Miscellaneous block at the end of the tab: talks and
+     decks that belong with the EA but are not one week's workshop.
+       { label, file, type, size, about, guide (optional) }
    - `guide` links connect the workshop to the rest of the guidebook.
      Each is { to, label } where `to` is an element id on this page:
        howto-…   a Playbook question (index.html, id="howto")
@@ -40,7 +43,7 @@ const ALLIANCE = {
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
   verifiedOn: '2026-10-22',
   // Shown under "Workshop files" until CEI's branded slide decks are posted.
-  slidesNote: 'Workshop slides: CEI is preparing branded versions for public posting. Until then, ask cei@missouri.edu.',
+  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Week 6 is posted. For the other weeks, ask cei@missouri.edu.',
 
   lede: 'CEI\'s flagship accelerator: eight Monday-night workshops that take you from an idea to a funded pitch, with dinner, a cohort of founders from every corner of campus, and up to $40,000 in startup funds for the winners. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
@@ -261,10 +264,15 @@ const ALLIANCE = {
         'Practice, out loud and on a timer, until the ten minutes are comfortable.',
         'Every EA pitch follows the Sequoia Capital template; the rules for the final are in Week 7.'
       ],
+      materials: [
+        { label: 'Learning to pitch (slides)', file: 'assets/ea/ea-week6-learning-to-pitch.pptx', type: 'PowerPoint', size: '280 KB', note: 'The Sequoia deck slide by slide, the murder board, judge Q&A, and the rules for the final' }
+      ],
       guide: [
         { to: 'howto-pitch-deck', label: 'How do I build my first pitch deck?' },
         { to: 'term-pitch-deck', label: 'Pitch Deck' },
         { to: 'term-traction', label: 'Traction' },
+        { to: 'term-tam-sam-som', label: 'TAM / SAM / SOM' },
+        { to: 'wbUnit', label: 'Unit economics calculator' },
         { to: 'ea-week-7', label: 'Week 7: the rules for the final' }
       ] },
     { n: 7, date: '2026-03-16', title: 'Pitch feedback and the Sequoia deck',
@@ -312,5 +320,26 @@ const ALLIANCE = {
       'The Monday after the final is a short debrief, under an hour (no dinner). CEI covers what it needs to pay your business, so come: it is how you receive your funding. Bring feedback on the program: what to keep, what to add, what to stop.'
     ],
     guide: [{ to: 'wins', label: 'Past EA winners in the wins feed' }, { to: 'phase-3', label: 'Phase 3: what comes after the money' }]
+  },
+
+  /* Miscellaneous: decks that go with the program but are not one
+     workshop. Trulaske College of Business talks, in PowerPoint. */
+  misc: {
+    title: 'Miscellaneous',
+    sub: 'Talks from the Trulaske College of Business that sit outside the eight workshops. Read one before you apply, between Mondays, or after the final.',
+    items: [
+      { label: 'What Makes a Great Entrepreneur?', file: 'assets/ea/ea-misc-what-makes-a-great-entrepreneur.pptx', type: 'PowerPoint', size: '85 KB',
+        about: 'Five lessons from Ben Horowitz on The a16z Show: the low point is part of the job, build around what your customer actually needs, bet on world-class strengths, widen the lens on talent, and AI changes who gets to build.',
+        guide: [{ to: 'howto-cofounder-campus', label: 'How do I find a co-founder on campus?' }, { to: 'howto-lead', label: 'How do I lead as the company grows?' }] },
+      { label: 'How to Build a One-Person Services-as-Software Company', file: 'assets/ea/ea-misc-one-person-services-as-software-company.pptx', type: 'PowerPoint', size: '545 KB',
+        about: 'Based on Alex Vacca: sell an outcome and use AI to deliver most of it. Picking a niche and an offer, a 12-week roadmap to first clients, and pricing.',
+        guide: [{ to: 'howto-first-customers', label: 'How do I secure my first ten customers?' }, { to: 'howto-pricing', label: 'How do I price my product?' }] },
+      { label: 'AI As A Superpower', file: 'assets/ea/ea-misc-ai-as-a-superpower.pptx', type: 'PowerPoint', size: '175 KB',
+        about: 'Why AI meets the four tests of a superpower (speed, capability, consistency, and cost), how competitive advantage moved from strength to wisdom, and short-, middle-, and long-term actions for students.',
+        guide: [{ to: 'ai', label: 'AI for founders, in the guidebook' }] },
+      { label: 'Who Will Make a Great Leader?', file: 'assets/ea/ea-misc-who-will-make-a-great-leader.pptx', type: 'PowerPoint', size: '720 KB',
+        about: 'David Deming\'s research on HBR IdeaCast: testing for teamwork, management, and leadership, and why the people most eager to manage did worse than managers picked at random. Useful when you pick a co-founder or your first hire.',
+        guide: [{ to: 'howto-hires', label: 'How do I make my first key hires?' }, { to: 'howto-equity', label: 'How do I choose a co-founder and split equity?' }] }
+    ]
   }
 };

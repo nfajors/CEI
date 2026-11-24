@@ -351,9 +351,10 @@ function guideKind(id) {
   if (el.classList.contains('ea-week')) return 'EA';
   return 'Guidebook';
 }
+// EA week ids pass the filter: the weeks are rendered in the same pass, so they are not in the DOM yet.
 function guideLinks(list, cls) {
   if (!list || !list.length) return '';
-  return '<ul class="' + (cls || 'ea-guide') + '">' + list.filter(function (g) { return g.url || byId(g.to); }).map(function (g) {
+  return '<ul class="' + (cls || 'ea-guide') + '">' + list.filter(function (g) { return g.url || byId(g.to) || /^ea-week-\d+$/.test(g.to); }).map(function (g) {
     if (g.url) return '<li><a href="' + esc(g.url) + '" target="_blank" rel="noopener"><span class="ea-kind">Link</span>' + esc(g.label) + ' ↗</a></li>';
     return '<li><a href="#' + esc(g.to) + '" onclick="return openGuide(\'' + esc(g.to) + '\', \'ea\')"><span class="ea-kind">' + guideKind(g.to) + '</span>' + esc(g.label) + '</a></li>';
   }).join('') + '</ul>';
@@ -423,6 +424,14 @@ function renderAlliance() {
   if (lib) lib.innerHTML = (A.slidesNote ? '<p class="ea-slides-note">' + esc(A.slidesNote) + '</p>' : '') + (all.length ? eaFiles(all.map(function (m) { return { label: m.label, file: m.file, type: m.type, size: m.size, note: (m.weeks.length > 1 ? 'Weeks ' : 'Week ') + m.weeks.join(', ') }; })) : '');
   var F = A.final;
   byId('ea-final').innerHTML = '<h3 class="ea-h3">' + esc(F.title) + ' and getting paid</h3><ol class="howto-steps">' + F.steps.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>' + guideLinks(F.guide);
+  var M = A.misc, misc = byId('ea-misc');
+  if (misc) {
+    if (!M || !M.items || !M.items.length) misc.hidden = true;
+    else misc.innerHTML = '<h3 class="ea-h3">' + esc(M.title) + '</h3>' + (M.sub ? '<p class="ea-sub">' + esc(M.sub) + '</p>' : '')
+      + '<ul class="ea-misc-list">' + M.items.map(function (m) {
+        return '<li>' + eaFiles([{ label: m.label, file: m.file, type: m.type, size: m.size }]) + (m.about ? '<p>' + esc(m.about) + '</p>' : '') + guideLinks(m.guide) + '</li>';
+      }).join('') + '</ul>';
+  }
   var v = byId('eaVerified');
   if (v) { v.textContent = new Date(A.verifiedOn + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }); v.setAttribute('datetime', A.verifiedOn); }
   markAllianceLinks(A);
