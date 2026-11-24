@@ -328,16 +328,16 @@ const ALLIANCE = {
     title: 'Miscellaneous',
     sub: 'Talks from the Trulaske College of Business that sit outside the eight workshops. Read one before you apply, between Mondays, or after the final.',
     items: [
-      { label: 'What Makes a Great Entrepreneur?', file: 'assets/ea/ea-misc-what-makes-a-great-entrepreneur.pptx', type: 'PowerPoint', size: '110 KB',
+      { label: 'What Makes a Great Entrepreneur?', file: 'assets/ea/ea-misc-what-makes-a-great-entrepreneur.pptx', type: 'PowerPoint', size: '85 KB',
         about: 'Five lessons from Ben Horowitz on The a16z Show: the low point is part of the job, build around what your customer actually needs, bet on world-class strengths, widen the lens on talent, and AI changes who gets to build.',
         guide: [{ to: 'howto-cofounder-campus', label: 'How do I find a co-founder on campus?' }, { to: 'howto-lead', label: 'How do I lead as the company grows?' }] },
-      { label: 'How to Build a One-Person Services-as-Software Company', file: 'assets/ea/ea-misc-one-person-services-as-software-company.pptx', type: 'PowerPoint', size: '575 KB',
+      { label: 'How to Build a One-Person Services-as-Software Company', file: 'assets/ea/ea-misc-one-person-services-as-software-company.pptx', type: 'PowerPoint', size: '545 KB',
         about: 'Based on Alex Vacca: sell an outcome and use AI to deliver most of it. Picking a niche and an offer, a 12-week roadmap to first clients, and pricing.',
         guide: [{ to: 'howto-first-customers', label: 'How do I secure my first ten customers?' }, { to: 'howto-pricing', label: 'How do I price my product?' }] },
-      { label: 'AI As A Superpower', file: 'assets/ea/ea-misc-ai-as-a-superpower.pptx', type: 'PowerPoint', size: '195 KB',
+      { label: 'AI As A Superpower', file: 'assets/ea/ea-misc-ai-as-a-superpower.pptx', type: 'PowerPoint', size: '175 KB',
         about: 'Why AI meets the four tests of a superpower (speed, capability, consistency, and cost), how competitive advantage moved from strength to wisdom, and short-, middle-, and long-term actions for students.',
         guide: [{ to: 'ai', label: 'AI for founders, in the guidebook' }] },
-      { label: 'Who Will Make a Great Leader?', file: 'assets/ea/ea-misc-who-will-make-a-great-leader.pptx', type: 'PowerPoint', size: '750 KB',
+      { label: 'Who Will Make a Great Leader?', file: 'assets/ea/ea-misc-who-will-make-a-great-leader.pptx', type: 'PowerPoint', size: '720 KB',
         about: 'David Deming\'s research on HBR IdeaCast: testing for teamwork, management, and leadership, and why the people most eager to manage did worse than managers picked at random. Useful when you pick a co-founder or your first hire.',
         guide: [{ to: 'howto-hires', label: 'How do I make my first key hires?' }, { to: 'howto-equity', label: 'How do I choose a co-founder and split equity?' }] }
     ]
