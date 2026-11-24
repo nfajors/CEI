@@ -37,7 +37,15 @@ const pageIds = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1])
 expect(ALLIANCE.weeks.map(w => w.n).join() === '1,2,3,4,5,6,7,8', 'data/alliance.js should list weeks 1 to 8 in order');
 for (const w of ALLIANCE.weeks) expect(/^\d{4}-\d{2}-\d{2}$/.test(w.date) && w.title, `EA week ${w.n} needs a date and a title`);
 const eaMisc = (ALLIANCE.misc && ALLIANCE.misc.items) || [];
-const eaLinks = [].concat(...ALLIANCE.weeks.map(w => w.guide || []), ...ALLIANCE.application.map(a => a.guide || []), ...ALLIANCE.beforeWeek1.map(b => b.guide || []), ALLIANCE.final.guide || [], ...eaMisc.map(m => m.guide || []));
+const eaAwards = ALLIANCE.awards;
+if (eaAwards) {
+  expect(eaAwards.criteria.reduce((n, c) => n + c.points, 0) === 100, 'EA judging criteria in data/alliance.js should add up to 100 points');
+  const dollars = v => Number(String(v).replace(/[^0-9]/g, ''));
+  const sum = eaAwards.places.reduce((n, p) => n + dollars(p.amount), 0);
+  expect(sum === dollars(eaAwards.total), 'EA awards add up to ' + sum + ', not ' + eaAwards.total);
+  if (eaAwards.sheet) expect(fs.existsSync(path.join(root, eaAwards.sheet.file)), 'EA scoring sheet is missing: ' + eaAwards.sheet.file);
+}
+const eaLinks = [].concat(...ALLIANCE.weeks.map(w => w.guide || []), ...ALLIANCE.application.map(a => a.guide || []), ...ALLIANCE.beforeWeek1.map(b => b.guide || []), ALLIANCE.final.guide || [], ...eaMisc.map(m => m.guide || []), (eaAwards && eaAwards.guide) || []);
 for (const g of eaLinks) expect(g.url ? /^https:\/\//.test(g.url) : pageIds.has(g.to), `data/alliance.js links to "${g.to || g.url}", which is not on the page`);
 for (const w of ALLIANCE.weeks) for (const m of (w.materials || [])) expect(fs.existsSync(path.join(root, m.file)), `EA week ${w.n} lists a missing file: ${m.file}`);
 for (const m of eaMisc) expect(m.label && fs.existsSync(path.join(root, m.file)), `EA Miscellaneous lists a missing file: ${m.file}`);
