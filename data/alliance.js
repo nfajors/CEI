@@ -47,11 +47,11 @@ const ALLIANCE = {
   // Shown under "Workshop files" until CEI's branded slide decks are posted.
   slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Week 6 is posted. For the other weeks, ask cei@missouri.edu.',
 
-  lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $35,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
+  lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $40,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
   facts: [
     { value: '8', label: 'Monday-night workshops' },
-    { value: '$35K', label: 'In awards for the top five' },
+    { value: '$40K', label: 'In awards for the top five' },
     { value: '10 + 4', label: 'Minutes to pitch, then judge Q&A' },
     { value: 'Free', label: 'Open to any Mizzou student. Dinner included' }
   ],
@@ -77,13 +77,13 @@ const ALLIANCE = {
   awards: {
     intro: 'Starting with the spring 2027 cohort, awards go to the top five businesses at the final pitch competition. Everyone else completes the program without a cash award.',
     places: [
-      { place: '1st', amount: '$15,000' },
+      { place: '1st', amount: '$20,000' },
       { place: '2nd', amount: '$10,000' },
       { place: '3rd', amount: '$5,000' },
       { place: '4th', amount: '$2,500' },
       { place: '5th', amount: '$2,500' }
     ],
-    total: '$35,000',
+    total: '$40,000',
     funders: 'Program costs, including the awards, are covered by the Eisenhart Family Foundation and the Steen Venture Fund.',
     criteria: [
       { name: 'Problem and opportunity', points: 15, text: 'A clear, real problem; evidence that customers have it; a sense of the market\'s size.' },

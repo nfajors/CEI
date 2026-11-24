@@ -66,7 +66,7 @@ const SITE = {
       { id: 'path', label: 'My Path', desc: 'Your founder checklist, saved on this device' }
     ] },
     { label: 'Programs', items: [
-      { id: 'ea', label: 'Entrepreneurship Alliance', desc: 'CEI\'s eight-week accelerator and $35K final', accent: 'ea' },
+      { id: 'ea', label: 'Entrepreneurship Alliance', desc: 'CEI\'s eight-week accelerator and $40K final', accent: 'ea' },
       { id: 'deadlines', label: 'Deadlines', desc: 'Grants, competitions, and accelerators open now' },
       { id: 'resources', label: 'Resources', desc: 'Every Mizzou program, searchable by phase' },
       { id: 'courses', label: 'Courses', desc: 'Classes for credit, the minor, and the certificate' },
