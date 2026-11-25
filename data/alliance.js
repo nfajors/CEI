@@ -45,7 +45,7 @@ const ALLIANCE = {
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
   verifiedOn: '2026-11-24',
   // Shown under "Workshop files" until CEI's branded slide decks are posted.
-  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Week 6 is posted. For the other weeks, ask cei@missouri.edu.',
+  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Weeks 1, 2, 3, and 6 are posted. For the other weeks, ask cei@missouri.edu.',
 
   lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $40,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
@@ -175,6 +175,7 @@ const ALLIANCE = {
         ] }
       ],
       materials: [
+        { label: 'Start with the problem (slides)', file: 'assets/ea/ea-week1-start-with-the-problem.pptx', type: 'PowerPoint', size: '200 KB', note: 'Where opportunities come from, the problem statement and its three common mistakes, "We help X do Y by doing Z," and where both sentences land on the canvas' },
         { label: 'Blank canvas to print', file: 'assets/ea/ea-week1-blank-business-model-canvas.pdf', type: 'PDF', size: '40 KB', note: 'Strategyzer, CC BY-SA 3.0. Prints on A3 or tabloid' }
       ],
       guide: [
@@ -224,6 +225,8 @@ const ALLIANCE = {
         { instead: '', ask: 'Who else should I talk to to learn more about this problem?' }
       ],
       materials: [
+        { label: 'Find your beachhead (slides)', file: 'assets/ea/ea-week2-find-your-beachhead.pptx', type: 'PowerPoint', size: '230 KB', note: 'Four ways to segment, scoping up and down, Bevel and Square, and choosing one beachhead and two backups' },
+        { label: 'Go talk to customers (slides)', file: 'assets/ea/ea-week2-go-talk-to-customers.pptx', type: 'PowerPoint', size: '450 KB', note: 'The fieldwork plan, recruiting, a cold email that works, gold words, pass lines, and two interview drills' },
         { label: 'Interviewing potential customers', file: 'assets/ea/ea-week4-interviewing-potential-customers.pdf', type: 'PDF', size: '70 KB', note: 'Questions to ask, and mistakes to avoid' }
       ],
       guide: [
@@ -245,7 +248,12 @@ const ALLIANCE = {
         'Ask "what if" of the business model: what if it were free, a subscription, a bundle, do-it-yourself like IKEA, a luxury item, or deliberately scarce?',
         'Write desirability hypotheses: "We believe our customers have these jobs, pains, and gains" and "We believe our product solves them." Then test each one.',
         'Tests, roughly from cheapest up: a survey (Mizzou has Qualtrics), a landing page that collects emails (WordPress, Mailchimp), A/B tests of your pitch, features, design, and price, a letter of intent, a mock sale, and crowdfunding.',
-        'Hardware founders can often build a first proof of concept by repurposing open-source devices instead of designing a custom system.'
+        'Hardware founders can often build a first proof of concept by repurposing open-source devices instead of designing a custom system.',
+        'Before you prototype, write down what must be true and map each assumption on two axes: how much it hurts if you are wrong, and how little evidence you have. Test the top-right corner first, with a pass line you set in advance.',
+        'Climb the truth curve only as far as you need: conversations, then mockups, then concierge and Wizard of Oz tests (you deliver the service by hand), then a working MVP. What people say is not what they do.'
+      ],
+      materials: [
+        { label: 'Test the riskiest assumption first (slides)', file: 'assets/ea/ea-week3-test-the-riskiest-assumption.pptx', type: 'PowerPoint', size: '205 KB', note: 'Twelve questions that surface assumptions, the risk and uncertainty map, pass lines, the truth curve, and concierge tests' }
       ],
       guide: [
         { to: 'term-mvp-minimum-viable-product', label: 'MVP (Minimum Viable Product)' },
@@ -374,6 +382,9 @@ const ALLIANCE = {
     title: 'Miscellaneous',
     sub: 'Talks from the Trulaske College of Business that sit outside the eight workshops. Read one before you apply, between Mondays, or after the final.',
     items: [
+      { label: 'Find a Problem Worth Solving', file: 'assets/ea/ea-misc-find-a-problem-worth-solving.pptx', type: 'PowerPoint', size: '185 KB',
+        about: 'For before you apply, or for anyone without an idea yet. Mine your own experience (with an AI interview prompt to help), frame one problem, and put it on a single Problem Gallery slide. Every field on the slide maps to a question on the EA application, and a blank slide to copy is at the end.',
+        guide: [{ to: 'howto-problem', label: 'How do I find a problem worth solving?' }, { to: 'howto-cofounder-campus', label: 'How do I find a co-founder on campus?' }] },
       { label: 'What Makes a Great Entrepreneur?', file: 'assets/ea/ea-misc-what-makes-a-great-entrepreneur.pptx', type: 'PowerPoint', size: '85 KB',
         about: 'Five lessons from Ben Horowitz on The a16z Show: the low point is part of the job, build around what your customer actually needs, bet on world-class strengths, widen the lens on talent, and AI changes who gets to build.',
         guide: [{ to: 'howto-cofounder-campus', label: 'How do I find a co-founder on campus?' }, { to: 'howto-lead', label: 'How do I lead as the company grows?' }] },
