@@ -5,6 +5,7 @@
    "Updated …" stamp and the What's New strip both read from it.
    ============================================================ */
 const CHANGELOG = [
+  { date: '2026-11-25', text: '<a href="#ea-week-5">Week 5</a> of the EA now has slides: B.A.I.L.L. and what a banker looks for, accounting basics, break-even with the two worked examples, cash flow and runway, LLC or C-Corp, and projections built on assumptions a judge can test.' },
   { date: '2026-11-25', text: 'New on the EA tab: <a href="#ea-week-4">Week 4, Pricing and scaling</a>, the workshop that is new in 2027, with a slide deck on value-based pricing, tiers, price tests, unit economics, and what breaks at ten times the customers.' },
   { date: '2026-11-25', text: 'Four more EA workshop decks are up: <a href="#ea-week-1">Week 1, Start with the problem</a>; two for <a href="#ea-week-2">Week 2</a>, Find your beachhead and Go talk to customers; and <a href="#ea-week-3">Week 3, Test the riskiest assumption first</a>. <a href="#ea-misc">Miscellaneous</a> adds Find a Problem Worth Solving, with a Problem Gallery slide to fill in before you apply.' },
   { date: '2026-11-24', text: 'The EA tab is updated for spring 2027: <a href="#ea-awards">awards and judging</a> (the top five businesses share $40,000, scored on seven criteria out of 100, with a scoring sheet you can use on practice pitches), who can apply, the 2027 workshop schedule with Pricing and Scaling as the new Week 4, and the new pitch format of 10 minutes plus 4 of judge Q&amp;A.' },

@@ -46,7 +46,7 @@ const ALLIANCE = {
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
   verifiedOn: '2026-11-24',
   // Shown under "Workshop files" until CEI's branded slide decks are posted.
-  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Weeks 1 to 4 and Week 6 are posted. For the other weeks, ask cei@missouri.edu.',
+  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Weeks 1 to 6 are posted. For the other weeks, ask cei@missouri.edu.',
 
   lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $40,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
@@ -304,10 +304,13 @@ const ALLIANCE = {
         'The break-even point is where revenue equals expenses. Use it to set sales targets and to see what a change in price or cost does.',
         'Worked example: a subscription news site with $70 a month in fixed costs (hosting, internet, marketing), $2 to win each subscriber, and $50 per article. At $8 a month and 5 articles, it breaks even at 54 subscribers.',
         'A second example: 3D-printed trinkets that sell for $10 and cost $1 to make, with $170 a month in internet and co-working rent and an $800 printer. Each sale contributes $9, so 19 sales a month cover the monthly costs, and about 89 more pay for the printer.',
-        'Cash comes and goes three ways: operating (day-to-day cash, receivables and payables, taxes), investing (equipment, land, securities), and financing (loans and long-term debt).'
+        'Cash comes and goes three ways: operating (day-to-day cash, receivables and payables, taxes), investing (equipment, land, securities), and financing (loans and long-term debt).',
+        'Legal structure: an LLC is simple and cheap and suits a business you fund yourself; a C-Corp, usually in Delaware, is what venture investors expect. Do nothing and your personal assets are exposed. The MU Law Entrepreneurship Legal Clinic helps you choose, for free.',
+        'Build projections bottom-up from assumptions a judge can test (new customers a month, churn, price), not from a share of the market. Use the price, margin, and acquisition cost from Week 4.'
       ],
       goals: ['Build a 1-year projection by month and a 5-year projection by year. The profit-and-loss template has a sheet for each.'],
       materials: [
+        { label: 'The numbers and the people (slides)', file: 'assets/ea/ea-week5-the-numbers-and-the-people.pptx', type: 'PowerPoint', size: '225 KB', note: 'B.A.I.L.L. and the five C\'s of credit, accounting basics, reading a P&L, break-even, cash flow and runway, LLC or C-Corp, and projections a judge can believe' },
         { label: 'Break-even calculator', file: 'assets/ea/ea-week5-break-even-calculator.xlsx', type: 'Excel', size: '9 KB', note: 'Three calculators: price, subscribers, open-ended' },
         { label: 'Profit-and-loss template', file: 'assets/ea/ea-week5-profit-and-loss-template.xlsx', type: 'Excel', size: '9 KB', note: 'Monthly for year 1, annual for 5 years' }
       ],
