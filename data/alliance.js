@@ -45,8 +45,8 @@ const ALLIANCE = {
   // The "Scan to Apply" QR on the spring 2027 recruiting slide opens this form.
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
   verifiedOn: '2026-11-24',
-  // Shown under "Workshop files" until CEI's branded slide decks are posted.
-  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Weeks 1 to 6 are posted. For the other weeks, ask cei@missouri.edu.',
+  // Shown above the list under "Workshop files".
+  slidesNote: 'CEI-branded slides are posted for all eight workshops, with each week\'s handouts beside them. Questions: cei@missouri.edu.',
 
   lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $40,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
@@ -363,6 +363,9 @@ const ALLIANCE = {
         'Ask CEI for a letter of excused absence now if the final clashes with a class. Send your professors\' names and contact details.',
         'Family, guests, and mentors who want to come to the final fill out the RSVP form CEI sends.'
       ],
+      materials: [
+        { label: 'Test pitch night (slides)', file: 'assets/ea/ea-week7-test-pitch-night.pptx', type: 'PowerPoint', size: '235 KB', note: 'How the night runs, scoring with the judge sheet, giving and taking feedback, triage, the usual fixes, and the 18 days to the final' }
+      ],
       guide: [
         { to: 'howto-pitch-deck', label: 'How do I build my first pitch deck?' },
         { to: 'term-pitch-deck', label: 'Pitch Deck' },
@@ -379,10 +382,14 @@ const ALLIANCE = {
         'On the day, arrive at Cornell Hall 205 between 9 and 9:15 am, no later, and stay for the whole event.',
         'Dress for your business. Company T-shirts are welcome; otherwise business casual or professional, unless that does not fit what you do. You are pitching for startup funds.'
       ],
+      materials: [
+        { label: 'Final run-through (slides)', file: 'assets/ea/ea-week8-final-run-through.pptx', type: 'PowerPoint', size: '270 KB', note: 'Testing everything in the room, the deck checklist and the Wednesday deadline, the morning of the final, who answers what, delivery, and getting paid' }
+      ],
       guide: [
         { to: 'howto-pitch-deck', label: 'How do I build my first pitch deck?' },
         { to: 'wbUnit', label: 'Unit economics calculator' },
-        { to: 'wbRunway', label: 'Runway & default alive calculator' }
+        { to: 'wbRunway', label: 'Runway & default alive calculator' },
+        { to: 'ea-awards', label: 'How the judges score the final' }
       ] }
   ],
 

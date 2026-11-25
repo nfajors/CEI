@@ -15,7 +15,7 @@ Live page: https://nfajors.github.io/CEI/
 | `assets/js/guidebook.js` | Core behaviour: navigation (the dropdown menu and scrollspy), accordions, printing, search and filters, the self-assessment, the Prompt Studio, and the GA4 event calls. |
 | `assets/js/features.js` | The five return-visit features: What's New, My Founder Path, the Deadline board, the Founder Workbench, and the Student Venture board. All state stays in the visitor's browser. |
 | `assets/img/` | Photos and the college logo, served as files so browsers cache them. |
-| `assets/ea/` | The EA workshop files (handouts, templates, calculators, and the CEI-branded workshop slides for Weeks 1 to 6) linked from each week in `data/alliance.js`, plus the `ea-misc-*` talks listed under Miscellaneous. Slide decks go up only in CEI- or Trulaske-branded public versions; keep PDFs small. |
+| `assets/ea/` | The EA workshop files (handouts, templates, calculators, and the CEI-branded workshop slides for all eight weeks) linked from each week in `data/alliance.js`, plus the `ea-misc-*` talks listed under Miscellaneous. Slide decks go up only in CEI- or Trulaske-branded public versions; keep PDFs small. |
 | `assets/vendor/qrcode-generator.js` | QR code library (MIT, Kazuhiko Arase) used by the share block and the printable flyer; loads deferred. |
 | `scripts/check-site.mjs` | Validates the data files and checks that the permanent address is the same everywhere. Run before committing. |
 | `scripts/build-ics.mjs` | Builds `deadlines.ics`, the subscribable calendar of confirmed deadlines. |
