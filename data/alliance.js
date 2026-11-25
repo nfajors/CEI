@@ -33,7 +33,8 @@
      fails if a target does not exist.
    - Week dates and titles are the spring 2027 schedule. The recaps describe
      the spring 2026 sessions on the same topics; replace each one as the
-     2027 workshop runs. Week 4 (pricing and scaling) is new in 2027.
+     2027 workshop runs. Week 4 (pricing and scaling) is new in 2027, so its
+     summary describes what the night covers; replace it with a recap after it runs.
    - Never put applicant names or team details here; this page is public.
    ============================================================ */
 const ALLIANCE = {
@@ -45,7 +46,7 @@ const ALLIANCE = {
   applyUrl: 'https://airtable.com/app4LkFA6G9yvhL13/pag6abyWP2OEtAAoK/form',
   verifiedOn: '2026-11-24',
   // Shown under "Workshop files" until CEI's branded slide decks are posted.
-  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Weeks 1, 2, 3, and 6 are posted. For the other weeks, ask cei@missouri.edu.',
+  slidesNote: 'Workshop slides go up as CEI-branded versions are ready; Weeks 1 to 4 and Week 6 are posted. For the other weeks, ask cei@missouri.edu.',
 
   lede: 'CEI\'s flagship accelerator: eight Monday-night workshops each spring that take you from an idea to launch, with mentors, dinner, a cohort of founders from every corner of campus, and $40,000 in awards for the top five businesses at the final. This tab has the whole program in one place, and every workshop links to the parts of the guidebook that go deeper.',
 
@@ -263,11 +264,30 @@ const ALLIANCE = {
         { url: 'https://missouri.qualtrics.com', label: 'Mizzou Qualtrics, for surveys' }
       ] },
     { n: 4, date: '2027-03-01', title: 'Pricing and scaling',
+      summary: 'New in 2027. Week 3 ends with willingness-to-pay tests; this week turns what they showed into a price, checks whether one customer makes you money, and asks what breaks when you have ten times the customers. The numbers you leave with feed the break-even and projections in Week 5.',
+      covers: [
+        'Price is the fastest lever you have. On a $20 product that costs $12 to make, a 10% price rise lifts what you keep on each sale by 25%; 10% more customers lifts it by 10%, and you have to go and find them.',
+        'Your price lives between your cost to deliver (the floor) and the value to the customer (the ceiling). Competitors\' prices are a reference point. Price on value and capture a fraction of it; cost plus a markup is the common mistake.',
+        'Value math: add up what you save or earn the customer each month, using numbers from your interviews, then charge a fraction of it.',
+        'Charge along a value metric that grows with the customer\'s value: per seat or location, per use, per outcome, a subscription, a device plus refills, or freemium.',
+        'Good, better, best: three tiers, with the top one anchoring the middle one you want most customers to pick.',
+        'Ask four price questions (too expensive to consider, expensive but worth it, a bargain, too cheap to trust), then try to sell: a deposit, a pre-order, or a letter of intent is the evidence that counts.',
+        'Test one price at a time and start high: a price ladder, split landing-page traffic, or a pre-order. Discounting down is easy; raising prices later is hard.',
+        'Unit economics: price, gross margin, the cost to win a customer (CAC), payback, lifetime, and lifetime value (LTV). Rules of thumb: LTV at least 3 times CAC, and CAC earned back inside 12 months.',
+        'Scaling means revenue grows faster than cost. Doing the work by hand breaks even early but barely grows; ask what breaks first at 10 times the customers: founder time, suppliers, acquisition, support, cash, or quality.'
+      ],
+      goals: ['Leave with a price (or three tiers), your gross margin per customer, your cost to win one, and one price test with a pass line. Bring them to Week 5.'],
+      materials: [
+        { label: 'Pricing and scaling (slides)', file: 'assets/ea/ea-week4-pricing-and-scaling.pptx', type: 'PowerPoint', size: '305 KB', note: 'Value-based pricing, the value metric, tiers, price questions and tests, unit economics, and what breaks at 10 times the customers' }
+      ],
       guide: [
         { to: 'howto-pricing', label: 'How do I price my product?' },
         { to: 'wbUnit', label: 'Unit economics calculator' },
         { to: 'term-unit-economics', label: 'Unit Economics' },
-        { to: 'term-gross-margin', label: 'Gross Margin' }
+        { to: 'term-gross-margin', label: 'Gross Margin' },
+        { to: 'term-ltv-cac', label: 'LTV / CAC' },
+        { to: 'term-cac-payback-period', label: 'CAC Payback Period' },
+        { to: 'term-churn', label: 'Churn' }
       ] },
     { n: 5, date: '2027-03-08', title: 'Financial projections, B.A.I.L.L., and legal structure',
       summary: 'Two halves: the people a business needs on its side, and the numbers. A local banker talks about the relationship with your bank and how small-business loans work, then a short course in accounting, then a work session on your own projections.',
